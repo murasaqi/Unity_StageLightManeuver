@@ -138,6 +138,26 @@ namespace StageLightManeuver
             }
         }
 
+        public void OverwriteDiffProperty()
+        {
+            if (referenceStageLightProfile == null) return;
+            var properties = behaviour.stageLightQueueData.stageLightProperties;
+            var profileData = referenceStageLightProfile.stageLightProperties;
+            // var diffData = new List<SlmProperty>();
+            foreach (var stageLightProperty in profileData)
+            {
+                var find = properties.Find(x => x.GetType() == stageLightProperty.GetType());
+                if (find != null)
+                {
+                    properties.Remove(find);
+                    find.isEditable = false;
+                    properties.Add(stageLightProperty);
+                }
+                properties.Add(stageLightProperty);
+
+            }
+
+        }
 
         [ContextMenu("Apply")]
         public void LoadProfile()
@@ -145,30 +165,32 @@ namespace StageLightManeuver
             if (referenceStageLightProfile == null) return;
 
 
-            var copy = new List<SlmProperty>();
+            var copyList = new List<SlmProperty>();
             foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
             {
                 if(stageLightProperty == null) continue;
                 var type = stageLightProperty.GetType();
-                copy.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
+                var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
                         new object[] { stageLightProperty }, null)
-                    as SlmProperty);
+                    as SlmProperty;
+                copy.isEditable = true;
+                copyList.Add(copy);
             }
 
-            var timeProperty = copy.Find(x => x.GetType() == typeof(ClockProperty));
+            var timeProperty = copyList.Find(x => x.GetType() == typeof(ClockProperty));
 
             if (timeProperty == null)
             {
-                copy.Insert(0, new ClockProperty());
+                copyList.Insert(0, new ClockProperty());
             }
             
-            var orderProperty = copy.Find(x => x.GetType() == typeof(StageLightOrderProperty));
+            var orderProperty = copyList.Find(x => x.GetType() == typeof(StageLightOrderProperty));
             if(orderProperty == null)
             {
-                copy.Insert(1, new StageLightOrderProperty());
+                copyList.Insert(1, new StageLightOrderProperty());
             }
             
-            behaviour.stageLightQueueData.stageLightProperties = copy;
+            behaviour.stageLightQueueData.stageLightProperties = copyList;
             stopEditorUiUpdate = false;
         }
         
@@ -182,18 +204,20 @@ namespace StageLightManeuver
         {
 #if UNITY_EDITOR
             Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
-            var copy = new List<SlmProperty>();
+            var copyList = new List<SlmProperty>();
             foreach (var stageLightProperty in StageLightQueueData.stageLightProperties)
             {
                 if(stageLightProperty ==null) continue;
                 var type = stageLightProperty.GetType();
-                copy.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
+                var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
                         new object[] { stageLightProperty }, null)
-                    as SlmProperty);
+                    as SlmProperty;
+                copy.isEditable = false;
+                copyList.Add(copy);
             }
 
             referenceStageLightProfile.stageLightProperties.Clear();
-            referenceStageLightProfile.stageLightProperties = copy;
+            referenceStageLightProfile.stageLightProperties = copyList;
             referenceStageLightProfile.isUpdateGuiFlag = true;
             EditorUtility.SetDirty(referenceStageLightProfile);
             AssetDatabase.SaveAssets();
@@ -208,17 +232,19 @@ namespace StageLightManeuver
             if (referenceStageLightProfile != null)
             {
 
-                var copy = new List<SlmProperty>();
+                var copyList = new List<SlmProperty>();
                 foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
                 {
                     if(stageLightProperty == null) continue;
                     var type = stageLightProperty.GetType();
-                    copy.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
+                    var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
                             new object[] { stageLightProperty }, null)
-                        as SlmProperty);
+                        as SlmProperty;
+                    copy.isEditable = true;
+                    copyList.Add(copy);
                 }
 
-                StageLightQueueData.stageLightProperties = copy;
+                StageLightQueueData.stageLightProperties = copyList;
             }
             
         }

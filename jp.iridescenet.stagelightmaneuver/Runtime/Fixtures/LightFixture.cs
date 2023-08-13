@@ -42,6 +42,7 @@ namespace StageLightManeuver
         public float limitSpotRangeMax = 100f;
 #if USE_VLB
         public VolumetricLightBeamHD volumetricLightBeamHd;
+        public VolumetricLightBeamSD volumetricLightBeamSd;
         public VolumetricCookieHD volumetricCookieHd;
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
@@ -81,6 +82,7 @@ namespace StageLightManeuver
 
 #if USE_VLB
                 volumetricLightBeamHd = light.GetComponent<VolumetricLightBeamHD>();
+                volumetricLightBeamSd = light.GetComponent<VolumetricLightBeamSD>();
                 volumetricCookieHd = light.GetComponent<VolumetricCookieHD>();
 #endif
                 // PropertyType.Add(typeof(property));

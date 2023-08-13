@@ -9,10 +9,10 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class VolumetricLightBeamHDFixture : StageLightFixtureBase
+    public class VolumetricLightBeamSDFixture : StageLightFixtureBase
     {
         public LightFixture lightFixture;
-        internal VolumetricLightBeamHD volumetricLightBeamHd;
+        internal VolumetricLightBeamSD volumetricLightBeamSd;
         public float intensityMultiplier;
         public float lightRangeMultiplier;
         public float spotAngleMultiplier;
@@ -24,11 +24,11 @@ namespace StageLightManeuver
         public override void Init()
         {
             base.Init();
-            volumetricLightBeamHd = lightFixture.volumetricLightBeamHd;
-            if (volumetricLightBeamHd == null) return;
-            intensityMultiplier = volumetricLightBeamHd.intensityMultiplier;
-            lightRangeMultiplier = volumetricLightBeamHd.fallOffEndMultiplier;
-            spotAngleMultiplier = volumetricLightBeamHd.spotAngleMultiplier;
+            volumetricLightBeamSd = lightFixture.volumetricLightBeamSd;
+            if (volumetricLightBeamSd == null) return;
+            intensityMultiplier = volumetricLightBeamSd.intensityMultiplier;
+            lightRangeMultiplier = volumetricLightBeamSd.fallOffEndMultiplier;
+            spotAngleMultiplier = volumetricLightBeamSd.spotAngleMultiplier;
 
             PropertyTypes = new List<Type>();
             PropertyTypes.Add(typeof(VLBProperty));
@@ -37,7 +37,7 @@ namespace StageLightManeuver
         public override void EvaluateQue(float currentTime)
         {
             base.EvaluateQue(currentTime);
-            if (volumetricLightBeamHd == null) return;
+            if (volumetricLightBeamSd == null) return;
             intensityMultiplierQue = 0f;
             lightRangeMultiplierQue = 0f;
             spotAngleMultiplierQue = 0f;
@@ -59,15 +59,15 @@ namespace StageLightManeuver
         public override void UpdateFixture()
         {
             base.UpdateFixture();
-            if (volumetricLightBeamHd == null)
+            if (volumetricLightBeamSd == null)
             {
-                volumetricLightBeamHd = lightFixture.volumetricLightBeamHd;
-                if(volumetricLightBeamHd == null) return;
+                volumetricLightBeamSd = lightFixture.volumetricLightBeamSd;
+                if(volumetricLightBeamSd == null) return;
             }
             // volumetricLightBeamHd.
-            volumetricLightBeamHd.intensityMultiplier = intensityMultiplierQue;
-            volumetricLightBeamHd.fallOffEndMultiplier = lightRangeMultiplierQue;
-            volumetricLightBeamHd.spotAngleMultiplier = spotAngleMultiplierQue;
+            volumetricLightBeamSd.intensityMultiplier = intensityMultiplierQue;
+            volumetricLightBeamSd.fallOffEndMultiplier = lightRangeMultiplierQue;
+            volumetricLightBeamSd.spotAngleMultiplier = spotAngleMultiplierQue;
         }
     }
 }

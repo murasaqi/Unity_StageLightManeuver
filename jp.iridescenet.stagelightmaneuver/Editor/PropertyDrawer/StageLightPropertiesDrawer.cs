@@ -27,11 +27,8 @@ namespace StageLightManeuver
             {
                 var slmProperty = stageLightProperties[i];
                 if (slmProperty == null) continue;
-                // if (i >= property.arraySize)
-                // {
-                //     return;
-                // }
 
+                // EditorGUI.BeginDisabledGroup(slmProperty.isEditable == false);
                 var serializedSlmProperty = property.GetArrayElementAtIndex(i);
                 EditorGUI.BeginChangeCheck();
                 EditorGUILayout.PropertyField(serializedSlmProperty, true);
@@ -53,6 +50,8 @@ namespace StageLightManeuver
                     DrawRemoveButton(property.serializedObject, stageLightProperties, action);
                     GUILayout.Space(SlmEditorStyleConst.Spacing);
                 }
+                
+                // EditorGUI.EndDisabledGroup();
             }
 
             GUILayout.Space(SlmEditorStyleConst.AddPropertyButtonTopMargin / 2);

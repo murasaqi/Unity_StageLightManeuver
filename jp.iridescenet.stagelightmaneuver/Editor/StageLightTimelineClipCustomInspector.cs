@@ -46,7 +46,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         {
             DrawProfileIO();
             EditorGUILayout.Space(2);
-            EditorGUI.BeginDisabledGroup(stageLightTimelineClip.syncReferenceProfile);
+            EditorGUI.BeginDisabledGroup( stageLightTimelineClip.syncReferenceProfile);
                 // isMultiSelect = false;
                 var stageLightProperties = new List<SlmProperty>();
                 SerializedProperty serializedProperty;
@@ -75,12 +75,9 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 if (EditorGUI.EndChangeCheck())
                 {
                     serializedProperty.serializedObject.ApplyModifiedProperties();
-
                     AssetDatabase.SaveAssets();
-                    // refresh editor gui
                     EditorUtility.SetDirty(stageLightTimelineClip);
                 }
-
             EditorGUI.EndDisabledGroup();
         }
         
@@ -145,6 +142,20 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     stageLightTimelineClip.stopEditorUiUpdate = false;
                     // Repaint();
                 }
+                GUI.backgroundColor= new Color(0.9f,0.5f,1f);
+                GUI.contentColor = Color.white;
+                if (GUILayout.Button("Load Diff",GUILayout.MaxWidth(100)))
+                {
+                    stageLightTimelineClip.stopEditorUiUpdate = true;
+                    // set dirty
+                    EditorUtility.SetDirty(stageLightTimelineClip);
+                    stageLightTimelineClip.OverwriteDiffProperty();
+                    serializedObject.ApplyModifiedProperties();
+                    stageLightTimelineClip.stopEditorUiUpdate = false;
+                    // Repaint();
+                }
+                
+                
                 GUI.backgroundColor= Color.white;
                 GUI.contentColor = Color.white;
                 if (GUILayout.Button("Save Profile",GUILayout.MaxWidth(100)))

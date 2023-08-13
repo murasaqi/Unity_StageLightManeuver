@@ -69,6 +69,7 @@ namespace StageLightManeuver
         [SlmValue(isHidden: true)] public StageLightPropertyType propertyType = StageLightPropertyType.None;
         [SlmValue(isHidden: true)] public string propertyName;
         [SlmValue(isHidden: true)] public int propertyOrder = 0;
+        [SlmValue(isHidden: true)] public bool isEditable = true;
         public virtual void ToggleOverride(bool toggle)
         {
             propertyOverride = toggle;

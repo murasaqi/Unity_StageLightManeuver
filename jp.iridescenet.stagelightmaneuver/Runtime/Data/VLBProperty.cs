@@ -3,7 +3,7 @@
 #if USE_VLB
     public class VLBProperty:SlmAdditionalProperty
     {
-        public SlmToggleValue<float> intensitymultiplier;
+        public SlmToggleValue<float> intensityMultiplier;
         public SlmToggleValue<float> lightRangeMultiplier;
         public SlmToggleValue<float> spotAngleMultiplier;
         
@@ -12,7 +12,7 @@
             propertyName = "VLB Property";
             propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
-            intensitymultiplier = new SlmToggleValue<float>() { value = 1f };
+            intensityMultiplier = new SlmToggleValue<float>() { value = 1f };
             lightRangeMultiplier = new SlmToggleValue<float>() { value = 1f };
             spotAngleMultiplier = new SlmToggleValue<float>() { value = 1f };
         }
@@ -21,7 +21,7 @@
         {
             base.ToggleOverride(toggle);
             clockOverride.propertyOverride = toggle;
-            intensitymultiplier.propertyOverride = toggle;
+            intensityMultiplier.propertyOverride = toggle;
             lightRangeMultiplier.propertyOverride = toggle;
             spotAngleMultiplier.propertyOverride = toggle;
         }
@@ -32,9 +32,9 @@
             propertyName = other.propertyName;
             clockOverride = new SlmToggleValue<ClockOverride>(other.clockOverride);
             propertyOverride = other.propertyOverride;
-            intensitymultiplier = new SlmToggleValue<float>(){value = other.intensitymultiplier.value};
-            lightRangeMultiplier = new SlmToggleValue<float>(){value = other.lightRangeMultiplier.value};
-            spotAngleMultiplier = new SlmToggleValue<float>(){value = other.spotAngleMultiplier.value};
+            intensityMultiplier = new SlmToggleValue<float>(other.intensityMultiplier);
+            lightRangeMultiplier = new SlmToggleValue<float>(other.lightRangeMultiplier);
+            spotAngleMultiplier = new SlmToggleValue<float>(other.spotAngleMultiplier);
         }
         
         
@@ -45,7 +45,7 @@
             if(clockOverride.propertyOverride) clockOverride = new  SlmToggleValue<ClockOverride>(vlbProperty.clockOverride);
             if (vlbProperty.propertyOverride)
             {
-                if(vlbProperty.intensitymultiplier.propertyOverride) intensitymultiplier.value = vlbProperty.intensitymultiplier.value;
+                if(vlbProperty.intensityMultiplier.propertyOverride) intensityMultiplier.value = vlbProperty.intensityMultiplier.value;
                 if(vlbProperty.lightRangeMultiplier.propertyOverride) lightRangeMultiplier.value = vlbProperty.lightRangeMultiplier.value;
                 if(vlbProperty.spotAngleMultiplier.propertyOverride) spotAngleMultiplier.value = vlbProperty.spotAngleMultiplier.value;
             }

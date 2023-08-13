@@ -1,0 +1,290 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a57934446d44b0ca793db9de904ce39, type: 3}
+  m_Name: New StageLightSetting_B
+  m_EditorClassIdentifier: 
+  isUpdateGuiFlag: 1
+  stageLightProperties:
+  - rid: 6126432800899072490
+  - rid: 6126432800899072491
+  - rid: 6126432800899072492
+  - rid: 6126432800899072493
+  - rid: 6126432800899072494
+  - rid: 6126432800899072495
+  references:
+    version: 2
+    RefIds:
+    - rid: 6126432800899072490
+      type: {class: TimeProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Time
+        clipProperty:
+          clipStartTime: 26.15
+          clipEndTime: 33.2
+        loopType:
+          propertyOverride: 1
+          value: 1
+        bpm:
+          propertyOverride: 1
+          value: 60
+        bpmScale:
+          propertyOverride: 0
+          value: 1
+        bpmOffset:
+          propertyOverride: 0
+          value: 0
+    - rid: 6126432800899072491
+      type: {class: LightProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Light
+        bpmOverrideData:
+          propertyOverride: 1
+          value:
+            propertyOverride: 0
+            loopType: 1
+            bpmOverride: 1
+            bpmScale: 1
+            bpmOffset: 0
+        lightToggleColor:
+          propertyOverride: 1
+          value:
+            serializedVersion: 2
+            key0: {r: 1, g: 0.55481756, b: 0, a: 1}
+            key1: {r: 1, g: 0.55481756, b: 0, a: 1}
+            key2: {r: 0.4278636, g: 0.16447127, b: 0.9339623, a: 0}
+            key3: {r: 0.8773585, g: 0.17933422, b: 0.27266467, a: 0}
+            key4: {r: 0.45356795, g: 0.2347217, b: 0.8113208, a: 0}
+            key5: {r: 0.19568045, g: 0.6641345, b: 0.9150943, a: 0}
+            key6: {r: 1, g: 1, b: 1, a: 0}
+            key7: {r: 1.6627452, g: 0, b: 0.72573525, a: 0}
+            ctime0: 0
+            ctime1: 65535
+            ctime2: 19776
+            ctime3: 33215
+            ctime4: 45119
+            ctime5: 55871
+            ctime6: 65535
+            ctime7: 65535
+            atime0: 0
+            atime1: 65535
+            atime2: 0
+            atime3: 0
+            atime4: 0
+            atime5: 0
+            atime6: 0
+            atime7: 0
+            m_Mode: 0
+            m_NumColorKeys: 2
+            m_NumAlphaKeys: 2
+        lightToggleIntensity:
+          propertyOverride: 1
+          value:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+        spotAngle:
+          propertyOverride: 0
+          value: 15
+        innerSpotAngle:
+          propertyOverride: 0
+          value: 10
+    - rid: 6126432800899072492
+      type: {class: PanProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Pan
+        bpmOverrideData:
+          propertyOverride: 1
+          value:
+            propertyOverride: 0
+            loopType: 1
+            bpmOverride: 1
+            bpmScale: 1
+            bpmOffset: 0.6
+        rollTransform:
+          propertyOverride: 0
+          value:
+            mode: 0
+            rollRange: {x: -22.897255, y: 61.23681}
+            rollMinMax: {x: -180, y: 180}
+            easeType: 3
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+    - rid: 6126432800899072493
+      type: {class: TiltProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Tilt
+        bpmOverrideData:
+          propertyOverride: 1
+          value:
+            propertyOverride: 0
+            loopType: 0
+            bpmOverride: 1
+            bpmScale: 0.5
+            bpmOffset: 0
+        rollTransform:
+          propertyOverride: 0
+          value:
+            mode: 0
+            rollRange: {x: -143.26018, y: 10.199081}
+            rollMinMax: {x: -180, y: 180}
+            easeType: 6
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0.33333334
+              - serializedVersion: 3
+                time: 1
+                value: 360
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+    - rid: 6126432800899072494
+      type: {class: DecalProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Decal
+        bpmOverrideData:
+          propertyOverride: 0
+          value:
+            propertyOverride: 0
+            loopType: 0
+            bpmOverride: 0
+            bpmScale: 1
+            bpmOffset: 0
+        decalTexture:
+          propertyOverride: 1
+          value: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
+        decalSizeScaler:
+          propertyOverride: 1
+          value: 0.7
+        floorHeight:
+          propertyOverride: 0
+          value: 0
+        decalDepthScaler:
+          propertyOverride: 1
+          value: 2
+        fadeFactor:
+          propertyOverride: 1
+          value: 1
+        opacity:
+          propertyOverride: 1
+          value: 0.1
+    - rid: 6126432800899072495
+      type: {class: GoboProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        propertyName: Gobo
+        bpmOverrideData:
+          propertyOverride: 1
+          value:
+            propertyOverride: 0
+            loopType: 0
+            bpmOverride: 0
+            bpmScale: 1
+            bpmOffset: 0
+        goboTexture:
+          propertyOverride: 1
+          value: {fileID: 2800000, guid: 4d1eec95034c81f458740c186fe4c2d0, type: 3}
+        goboPropertyName:
+          propertyOverride: 0
+          value: _GoboTexture
+        goroRotationSpeed:
+          propertyOverride: 1
+          value:
+            mode: 0
+            rollRange: {x: 7.679557, y: 9.06077}
+            rollMinMax: {x: 0, y: 10}
+            easeType: 0
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4

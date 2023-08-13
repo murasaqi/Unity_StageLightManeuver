@@ -1,0 +1,40 @@
+{
+    "name": "Iridescenent.SLM.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f06555f75b070af458a003d92f9efb00",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:631024d009dacbb4397630a0f8e71ced",
+        "GUID:457756d89b35d2941b3e7b37b4ece6f1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "USE_URP"
+        },
+        {
+            "name": "com.iridescent.volumetriclightbeam",
+            "expression": "",
+            "define": "USE_VLB_ALTER"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "",
+            "define": "USE_HDRP"
+        },
+        {
+            "name": "com.saladgamer.volumetriclightbeam",
+            "expression": "",
+            "define": "USE_VLB"
+        }
+    ],
+    "noEngineReferences": false
+}

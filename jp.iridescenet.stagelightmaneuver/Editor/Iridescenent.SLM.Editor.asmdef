@@ -1,0 +1,21 @@
+{
+    "name": "Iridescenent.SLM.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:02f771204943f4a40949438e873e3eff",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:f06555f75b070af458a003d92f9efb00",
+        "GUID:b58cfee7b2b89e44e831673c9b9aeb97"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

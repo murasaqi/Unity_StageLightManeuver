@@ -16,7 +16,7 @@ namespace StageLightManeuver
         public SlmToggleValue<float> radius;
         public DecalProperty()
         {
-            propertyOverride = false;
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             propertyName = "Decal";
             decalTexture = new SlmToggleValue<Texture2D>();

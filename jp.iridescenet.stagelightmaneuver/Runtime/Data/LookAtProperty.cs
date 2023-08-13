@@ -11,6 +11,7 @@ namespace StageLightManeuver
         public LookAtProperty()
         {
             propertyName = "Look At";
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             weight = new SlmToggleValue<float>(){value = 1f};
             lookAtIndex = new SlmToggleValue<int>(){value = 0};

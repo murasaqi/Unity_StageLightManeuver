@@ -12,14 +12,13 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public abstract class StageLightFixtureBase: MonoBehaviour,IStageLightFixture
     {
-        public List<Type> PropertyTypes = new List<Type>();
+        [HideInInspector] public List<Type> PropertyTypes = new List<Type>();
         public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
-        public int updateOrder = 0;
+        [HideInInspector]public int updateOrder = 0;
         public List<StageLightBase> SyncStageLight { get; set; }
-        public StageLight ParentStageLight { get; set; }
-        public float offsetDuration = 0f;
-        [FormerlySerializedAs("parentStageLightFixture")] [FormerlySerializedAs("parentStageLightFx")]
-        public StageLight parentStageLight;
+        // [HideInInspector]public StageLight ParentStageLight { get; set; }
+        [HideInInspector]public float offsetDuration = 0f;
+        [HideInInspector]public StageLight parentStageLight;
         // public int Index { get; set; }
         public virtual void EvaluateQue(float currentTime)
         {

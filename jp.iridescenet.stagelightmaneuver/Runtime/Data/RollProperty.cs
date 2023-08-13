@@ -15,7 +15,7 @@ namespace StageLightManeuver
         public RollProperty(RollProperty rollProperty)
         {
             propertyName = rollProperty.propertyName;
-
+        
             clockOverride = new SlmToggleValue<ClockOverride>()
             {
                 propertyOverride = rollProperty.clockOverride.propertyOverride,
@@ -42,7 +42,7 @@ namespace StageLightManeuver
 
         public RollProperty()
         {
-            propertyOverride = false;
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             rollTransform = new SlmToggleValue<MinMaxEasingValue>() {value = new MinMaxEasingValue()};
             smoothTime = new SlmToggleValue<float>() {value = 0.05f};

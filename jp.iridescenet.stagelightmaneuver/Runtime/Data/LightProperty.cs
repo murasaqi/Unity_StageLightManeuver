@@ -13,7 +13,7 @@ namespace StageLightManeuver
         public LightProperty()
         {
             propertyName = "Light";
-            propertyOverride = false;
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             spotAngle = new SlmToggleValue<MinMaxEasingValue>(){value = new MinMaxEasingValue()
             {

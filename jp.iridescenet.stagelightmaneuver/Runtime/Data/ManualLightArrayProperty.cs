@@ -53,6 +53,7 @@ namespace StageLightManeuver
         public ManualLightArrayProperty ()
         {
             propertyName = "Manual Light Array";
+            propertyOverride = true;
             lightValues = new SlmToggleValue<List<LightPrimitiveValue>>() { value = new List<LightPrimitiveValue>() };
         }
         

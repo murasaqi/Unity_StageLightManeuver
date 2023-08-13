@@ -26,7 +26,7 @@ namespace StageLightManeuver
         public ReflectionProbeProperty()
         {
             propertyName = "Reflection Probe";
-            propertyOverride = false;
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             intensity = new SlmToggleValue<MinMaxEasingValue>() {value = new MinMaxEasingValue()};
         }

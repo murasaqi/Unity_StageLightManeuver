@@ -30,6 +30,7 @@ namespace StageLightManeuver
         public ManualColorArrayProperty ()
         {
             propertyName = "Manual Color Array";
+            propertyOverride = true;
             colorValues = new SlmToggleValue<List<ColorPrimitiveValue>>() { value = new List<ColorPrimitiveValue>() };
         }
 

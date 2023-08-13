@@ -11,6 +11,7 @@ namespace StageLightManeuver
         public  MaterialTextureProperty()
         {
             propertyName = "Material Texture";
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             texturePropertyName = new SlmToggleValue<string>(){value = "_Texture"};
             materialindex = new SlmToggleValue<int>() {value = 0};

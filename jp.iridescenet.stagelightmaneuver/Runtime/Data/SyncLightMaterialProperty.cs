@@ -8,7 +8,7 @@
         public SyncLightMaterialProperty()
         {
             propertyName = "Sync Light Material";
-            propertyOverride = false;
+            propertyOverride = true;
             clockOverride = new SlmToggleValue<ClockOverride>();
             intensitymultiplier = new SlmToggleValue<float>() { value = 1f };
             brightnessDecreasesToBlack = new SlmToggleValue<bool>() { value = false };

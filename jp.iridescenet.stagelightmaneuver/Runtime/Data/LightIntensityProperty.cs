@@ -11,6 +11,7 @@ namespace StageLightManeuver
         [SlmValue("Intensity")]public SlmToggleValue<MinMaxEasingValue> lightToggleIntensity;// = new StageLightProperty<float>(){value = 1f};
         public LightIntensityProperty()
         {
+            propertyOverride = true;
             propertyName = "Intensity";
             clockOverride = new SlmToggleValue<ClockOverride>();
             lightToggleIntensity = new SlmToggleValue<MinMaxEasingValue>(){value = new MinMaxEasingValue()

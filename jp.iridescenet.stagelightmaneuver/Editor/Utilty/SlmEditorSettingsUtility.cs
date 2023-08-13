@@ -53,7 +53,15 @@ namespace StageLightManeuver
             foreach (var slmProperty in stageLightProperties)
             {
                 if (slmProperty == null) continue;
-                slmProperty.propertyOrder = slmPropertyOrder[slmProperty.GetType().Name];
+                if (slmPropertyOrder.ContainsKey(slmProperty.GetType().Name))
+                {
+                    slmProperty.propertyOrder = slmPropertyOrder[slmProperty.GetType().Name];    
+                }
+                else
+                {
+                    slmProperty.propertyOrder = 9999;
+                }
+                
             }
 
             return stageLightProperties;

@@ -162,9 +162,6 @@ namespace StageLightManeuver
                 if (weight > 0.5f)
                 {
                     lightCookie = lightProperty.cookie.value;
-#if USE_VLB
-                    if(volumetricCookieHd)volumetricCookieHd.cookieTexture = lightProperty.cookie.value;
-#endif
                 }
             }
             
@@ -193,7 +190,14 @@ namespace StageLightManeuver
                     hdAdditionalLightData.SetSpotAngle(spotAngle);
                     hdAdditionalLightData.innerSpotPercent = innerSpotAngle;
                     hdAdditionalLightData.range = spotRange;
-                    if(lightCookie)hdAdditionalLightData.SetCookie(lightCookie);
+                    if (lightCookie)
+                    {
+                        hdAdditionalLightData.SetCookie(lightCookie);
+                    }
+                    else
+                    {
+                        hdAdditionalLightData.SetCookie( Texture2D.whiteTexture);
+                    }
                     // hdAdditionalLightData.UpdateAllLightValues();
                     // hdAdditionalLightData.setli
                     // lightData[light].intensity=lightIntensity;
@@ -208,7 +212,10 @@ namespace StageLightManeuver
 #endif
 
 #if USE_VLB
-                if(volumetricCookieHd) volumetricCookieHd.cookieTexture = lightCookie;
+                if (volumetricCookieHd)
+                {
+                    volumetricCookieHd.cookieTexture = lightCookie;
+                }
 #endif
             }
             

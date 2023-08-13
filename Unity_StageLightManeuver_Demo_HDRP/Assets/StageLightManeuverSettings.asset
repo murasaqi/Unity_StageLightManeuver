@@ -15,56 +15,56 @@ MonoBehaviour:
   exportProfilePath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   propertyOrders:
   - key: ClockProperty
-    value: -999
-  - key: StageLightOrderProperty
-    value: -998
-  - key: LightProperty
     value: 0
-  - key: LightIntensityProperty
+  - key: StageLightOrderProperty
     value: 1
-  - key: SlmBarLightProperty
+  - key: LightProperty
     value: 2
-  - key: BarLightIntensityProperty
+  - key: LightIntensityProperty
     value: 3
-  - key: LightColorProperty
+  - key: SlmBarLightProperty
     value: 4
-  - key: LightArrayProperty
+  - key: BarLightIntensityProperty
     value: 5
-  - key: ManualLightArrayProperty
+  - key: LightColorProperty
     value: 6
-  - key: ManualColorArrayProperty
+  - key: LightArrayProperty
     value: 7
-  - key: MaterialColorProperty
+  - key: ManualLightArrayProperty
     value: 8
-  - key: MaterialTextureProperty
+  - key: ManualColorArrayProperty
     value: 9
-  - key: SyncLightMaterialProperty
+  - key: MaterialColorProperty
     value: 10
-  - key: DecalProperty
+  - key: MaterialTextureProperty
     value: 11
-  - key: XTransformProperty
+  - key: SyncLightMaterialProperty
     value: 12
-  - key: YTransformProperty
+  - key: DecalProperty
     value: 13
-  - key: ZTransformProperty
+  - key: XTransformProperty
     value: 14
-  - key: RotationProperty
+  - key: YTransformProperty
     value: 15
-  - key: PanProperty
+  - key: ZTransformProperty
     value: 16
-  - key: TiltProperty
+  - key: RotationProperty
     value: 17
-  - key: BarLightPanProperty
+  - key: PanProperty
     value: 18
-  - key: ManualPanTiltProperty
+  - key: TiltProperty
     value: 19
-  - key: LookAtProperty
+  - key: BarLightPanProperty
     value: 20
-  - key: SmoothLookAtProperty
+  - key: ManualPanTiltProperty
     value: 21
-  - key: EnvironmentProperty
+  - key: LookAtProperty
     value: 22
-  - key: ReflectionProbeProperty
+  - key: SmoothLookAtProperty
     value: 23
-  - key: SlmAdditionalProperty
+  - key: EnvironmentProperty
     value: 24
+  - key: ReflectionProbeProperty
+    value: 25
+  - key: SlmAdditionalProperty
+    value: 26

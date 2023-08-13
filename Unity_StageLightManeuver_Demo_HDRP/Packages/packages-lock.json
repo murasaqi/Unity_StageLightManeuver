@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.saladgamer.volumetriclightbeam": {
+      "version": "file:VolumetricLightBeam",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.7",
       "depth": 1,
@@ -213,7 +219,7 @@
       "url": "https://packages.unity.com"
     },
     "jp.iridescent.stagelightmaneuver": {
-      "version": "file:D:/works/Unity_StageLightManeuver/jp.iridescenet.stagelightmaneuver",
+      "version": "file:../../jp.iridescenet.stagelightmaneuver",
       "depth": 0,
       "source": "local",
       "dependencies": {}

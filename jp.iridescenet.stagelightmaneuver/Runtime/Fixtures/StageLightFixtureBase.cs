@@ -20,6 +20,7 @@ namespace StageLightManeuver
         [HideInInspector]public float offsetDuration = 0f;
         [HideInInspector]public StageLight parentStageLight;
         // public int Index { get; set; }
+        internal bool hasQue = false;
         public virtual void EvaluateQue(float currentTime)
         {
 

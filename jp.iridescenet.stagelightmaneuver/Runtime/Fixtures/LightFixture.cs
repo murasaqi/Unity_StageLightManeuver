@@ -19,7 +19,7 @@ using VLB;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    // [AddComponentMenu("")]
+    [AddComponentMenu("")]
     public class LightFixture : StageLightFixtureBase
     {
         public List<Light> lights = new List<Light>();

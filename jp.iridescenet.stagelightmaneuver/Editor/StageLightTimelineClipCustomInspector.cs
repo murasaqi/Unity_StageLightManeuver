@@ -164,11 +164,9 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     
                 }
             }
-            
             EditorGUI.EndDisabledGroup();
             
             EditorGUI.BeginChangeCheck();
-            
             EditorGUILayout.PropertyField(serializedObject.FindProperty("syncReferenceProfile"));
             if (EditorGUI.EndChangeCheck())
             {
@@ -176,6 +174,14 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 serializedObject.ApplyModifiedProperties();
                 stageLightTimelineClip.InitSyncData();
                 
+            }
+            
+            
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("syncClipName"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                serializedObject.ApplyModifiedProperties();
             }
             
            
@@ -245,26 +251,20 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             newProfile.stageLightProperties = stageLightTimelineClip.StageLightQueueData.stageLightProperties;
             var exportPath = SlmUtility.GetExportPath(stageLightTimelineClip.exportPath,stageLightTimelineClip.clipDisplayName);
 
-            // if directory not exist, create it
             var directory = Path.GetDirectoryName(exportPath);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
             
-            
-            // if same name file exist in directory, add (number) to file name
             var fileName = Path.GetFileNameWithoutExtension(exportPath);
             var fileExtension = Path.GetExtension(exportPath);
             var filePath = Path.GetDirectoryName(exportPath);
             
-            // try .asset file 
             var files = Directory.GetFiles(filePath, "*" + fileExtension).ToList().Where( f => f.Contains(fileName)).ToList();
             var fileNames = files.Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
-            // sort file names
             fileNames.Sort();
             
-            // fileNames.ForEach(f => Debug.Log(f));
             var lastFileNumber = 0;
             var exportFileName = fileName;
             if (fileNames.Count > 0)
@@ -288,21 +288,17 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             {
                 exportPath = filePath + "/" + fileName+ $"({lastFileNumber})" + fileExtension;
             }
-            
-                
 
-
-
+            if (!exportPath.EndsWith(".asset"))
+            {
+                exportPath = (exportPath + ".asset");   
+            }
 
             AssetDatabase.CreateAsset(newProfile, exportPath);
             AssetDatabase.Refresh();
             InitProfileList(stageLightTimelineClip);
             stageLightTimelineClip.referenceStageLightProfile = AssetDatabase.LoadAssetAtPath<StageLightProfile>(exportPath);
-            // EditorUtility.SetDirty(stageLightTimelineClip);
             AssetDatabase.SaveAssets();
-            // serializedObject.Apply(stageLightTimelineClip);
-            // AssetDatabase.SaveAssets();
-            // serializedObject.ApplyModifiedProperties();
         }
 
 

@@ -36,6 +36,7 @@ namespace StageLightManeuver
         }
         public bool forceTimelineClipUpdate;
         public bool syncReferenceProfile = false;
+        public bool syncClipName = false;
         public StageLightTimelineTrack track;
         public string exportPath = "";
         public StageLightTimelineMixerBehaviour mixer;

@@ -1,0 +1,847 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a57934446d44b0ca793db9de904ce39, type: 3}
+  m_Name: StageLightTimelineClip
+  m_EditorClassIdentifier: 
+  isUpdateGuiFlag: 0
+  stageLightProperties:
+  - rid: 149188687624142848
+  - rid: 149188687624142849
+  - rid: 149188687624142850
+  - rid: 149188687624142851
+  - rid: 149188687624142852
+  - rid: 149188687624142853
+  - rid: 149188687624142854
+  - rid: 149188687624142855
+  - rid: 149188687624142856
+  weight: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 149188687624142848
+      type: {class: ClockProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 0
+        propertyName: Clock
+        propertyOrder: 0
+        isEditable: 1
+        clipProperty:
+          clipStartTime: 4.016667
+          clipEndTime: 9.016666
+        loopType:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 0
+        bpm:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 60
+        bpmScale:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 1
+        offsetTime:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 0
+        staggerDelay:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+        arrayStaggerValue:
+          staggerCalculationType: 2
+          animationDuration: 1
+          delayRatio: 0.1
+          animationCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          lightStaggerInfo: []
+          randomStaggerInfo: []
+    - rid: 149188687624142849
+      type: {class: StageLightOrderProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 0
+        propertyName: StageLight Order
+        propertyOrder: 1
+        isEditable: 1
+        stageLightOrderQueue:
+          index: -1
+          stageLightOrderSettingList: []
+    - rid: 149188687624142850
+      type: {class: LightProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Light
+        propertyOrder: 2
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        spotAngle:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 180}
+            easeType: 0
+            constant: 33.91
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        innerSpotAngle:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 180}
+            easeType: 0
+            constant: 10
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        range:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 100}
+            easeType: 0
+            constant: 30
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        cookie:
+          propertyOverride: 1
+          sortOrder: 0
+          value: {fileID: 2800000, guid: 472e06da28058524f886ac84832fca68, type: 3}
+    - rid: 149188687624142851
+      type: {class: LightIntensityProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Intensity
+        propertyOrder: 3
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        lightToggleIntensity:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 10}
+            easeType: 0
+            constant: 100000
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+    - rid: 149188687624142852
+      type: {class: LightColorProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Light Color
+        propertyOrder: 6
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        lightToggleColor:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            serializedVersion: 2
+            key0: {r: 1, g: 1, b: 1, a: 1}
+            key1: {r: 1, g: 1, b: 1, a: 1}
+            key2: {r: 0, g: 0, b: 0, a: 0}
+            key3: {r: 0, g: 0, b: 0, a: 0}
+            key4: {r: 0, g: 0, b: 0, a: 0}
+            key5: {r: 0, g: 0, b: 0, a: 0}
+            key6: {r: 0, g: 0, b: 0, a: 0}
+            key7: {r: 0, g: 0, b: 0, a: 0}
+            ctime0: 0
+            ctime1: 65535
+            ctime2: 0
+            ctime3: 0
+            ctime4: 0
+            ctime5: 0
+            ctime6: 0
+            ctime7: 0
+            atime0: 0
+            atime1: 65535
+            atime2: 0
+            atime3: 0
+            atime4: 0
+            atime5: 0
+            atime6: 0
+            atime7: 0
+            m_Mode: 0
+            m_ColorSpace: -1
+            m_NumColorKeys: 2
+            m_NumAlphaKeys: 2
+    - rid: 149188687624142853
+      type: {class: SyncLightMaterialProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Sync Light Material
+        propertyOrder: 12
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        intensitymultiplier:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 1
+        brightnessDecreasesToBlack:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+        maxIntensityLimit:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 3
+    - rid: 149188687624142854
+      type: {class: RotationProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Rotation
+        propertyOrder: 17
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        rotationSpeed:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -30, y: 30}
+            minMaxValue: {x: -40, y: 40}
+            easeType: 0
+            constant: 30
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 40
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+    - rid: 149188687624142855
+      type: {class: PanProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Pan
+        propertyOrder: 18
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        rollTransform:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: -90, y: 90}
+            easeType: 0
+            constant: 90
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        smoothTime:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0.05
+        useSmoothness:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+    - rid: 149188687624142856
+      type: {class: TiltProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Tilt
+        propertyOrder: 19
+        isEditable: 1
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.014285714, y: 0.9142857}
+              - {x: 0.028571429, y: 0.9285714}
+              - {x: 0.042857144, y: 0.94285715}
+              - {x: 0.057142857, y: 0.95714283}
+              - {x: 0.071428575, y: 0.9714286}
+              - {x: 0.08571429, y: 0.98571426}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        rollTransform:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: -90, y: 90}
+            easeType: 0
+            constant: 80
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        smoothTime:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0.05
+        useSmoothness:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0

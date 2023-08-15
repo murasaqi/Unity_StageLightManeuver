@@ -52,7 +52,7 @@ namespace StageLightManeuver
             if (stageLightTimelineClip == null)
                 return;
             GetGradientTexture(clip, true);
-            if (stageLightTimelineClip.referenceStageLightProfile != null)
+            if (stageLightTimelineClip.referenceStageLightProfile != null && stageLightTimelineClip.syncClipName)
                 clip.displayName = stageLightTimelineClip.referenceStageLightProfile.name;
             
             stageLightTimelineClip.clipDisplayName = clip.displayName;

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ff0a1be3fd1e54990ef200772f9250, type: 3}
   m_Name: StageLightTimelineClip
   m_EditorClassIdentifier: 
-  referenceStageLightProfile: {fileID: 0}
+  referenceStageLightProfile: {fileID: 11400000, guid: f8d58329165fdb44fa5833dbbafc204f,
+    type: 2}
   behaviour:
     stageLightQueueData:
       stageLightProperties:
@@ -30,10 +31,11 @@ MonoBehaviour:
       stageLightProperties: []
       weight: 1
   forceTimelineClipUpdate: 0
-  syncReferenceProfile: 0
+  syncReferenceProfile: 1
+  syncClipName: 0
   track: {fileID: -4294888485152375112}
-  exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
-  clipDisplayName: StageLightTimelineClip
+  exportPath: Assets/fadfadfad.asset
+  clipDisplayName: fadfadfad
   stopEditorUiUpdate: 0
   references:
     version: 2
@@ -46,6 +48,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 4.016667
           clipEndTime: 9.016666
@@ -107,6 +110,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -118,6 +122,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -192,6 +197,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -296,6 +302,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -400,6 +407,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -568,6 +576,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -663,6 +672,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -759,6 +769,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -881,7 +892,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1000,7 +1029,8 @@ MonoBehaviour:
   stageLightTimelineClips:
   - {fileID: -1867052677698863057}
   - {fileID: -4182917732079585907}
-  selectedClips: []
+  selectedClips:
+  - {fileID: -8225776854239832928}
 --- !u!114 &-4985752999093307821
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1035,7 +1065,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1154,7 +1202,8 @@ MonoBehaviour:
   stageLightTimelineClips:
   - {fileID: 4146432243661323703}
   - {fileID: -480759760751469578}
-  selectedClips: []
+  selectedClips:
+  - {fileID: -8225776854239832928}
 --- !u!114 &-4294888485152375112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1189,7 +1238,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1226,7 +1293,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: StageLightTimelineClip
+    m_DisplayName: fadfadfad
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
@@ -1308,7 +1375,8 @@ MonoBehaviour:
   stageLightTimelineClips:
   - {fileID: 6363590097159679858}
   - {fileID: -8225776854239832928}
-  selectedClips: []
+  selectedClips:
+  - {fileID: -8225776854239832928}
 --- !u!114 &-4182917732079585907
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1340,6 +1408,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: -5751407683109544961}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -1355,6 +1424,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 4.016667
           clipEndTime: 9.016666
@@ -1416,6 +1486,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -1427,6 +1498,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1493,6 +1565,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1589,6 +1662,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1685,6 +1759,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1845,6 +1920,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1932,6 +2008,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2020,6 +2097,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2131,6 +2209,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: 6803431207997844158}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -2146,6 +2225,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -2207,6 +2287,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -2218,6 +2299,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2300,6 +2382,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2412,6 +2495,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2524,6 +2608,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2700,6 +2785,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2803,6 +2889,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2907,6 +2994,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3034,6 +3122,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: -5751407683109544961}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -3049,6 +3138,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -3110,6 +3200,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -3121,6 +3212,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3187,6 +3279,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3283,6 +3376,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3379,6 +3473,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3539,6 +3634,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3626,6 +3722,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3714,6 +3811,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3825,8 +3923,9 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: -4985752999093307821}
-  exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
+  exportPath: D:/works/StageLightManeuver_DemoMovie/Unity_StageLightManeuver_DemoMovie_HDRP/Assets/fdafdas.asset
   clipDisplayName: StageLightTimelineClip
   stopEditorUiUpdate: 0
   references:
@@ -3840,6 +3939,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 4.016667
           clipEndTime: 9.016666
@@ -3901,6 +4001,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -3912,6 +4013,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3974,6 +4076,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4066,6 +4169,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4158,6 +4262,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4314,6 +4419,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4397,6 +4503,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4481,6 +4588,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4612,6 +4720,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: -4985752999093307821}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -4627,6 +4736,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -4688,6 +4798,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -4699,6 +4810,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4761,6 +4873,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4853,6 +4966,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4945,6 +5059,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5101,6 +5216,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5184,6 +5300,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5268,6 +5385,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5375,6 +5493,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: -4294888485152375112}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -5390,6 +5509,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -5451,6 +5571,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -5462,6 +5583,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5536,6 +5658,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5640,6 +5763,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5744,6 +5868,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5912,6 +6037,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6007,6 +6133,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6103,6 +6230,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6222,6 +6350,7 @@ MonoBehaviour:
       weight: 1
   forceTimelineClipUpdate: 0
   syncReferenceProfile: 0
+  syncClipName: 0
   track: {fileID: 6803431207997844158}
   exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
   clipDisplayName: StageLightTimelineClip
@@ -6237,6 +6366,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: Clock
         propertyOrder: 0
+        isEditable: 1
         clipProperty:
           clipStartTime: 4.016667
           clipEndTime: 9.016666
@@ -6298,6 +6428,7 @@ MonoBehaviour:
         propertyType: 0
         propertyName: StageLight Order
         propertyOrder: 1
+        isEditable: 1
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -6309,6 +6440,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Sync Light Material
         propertyOrder: 12
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6391,6 +6523,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Tilt
         propertyOrder: 19
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6503,6 +6636,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Pan
         propertyOrder: 18
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6615,6 +6749,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light
         propertyOrder: 2
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6791,6 +6926,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Light Color
         propertyOrder: 6
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6894,6 +7030,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Intensity
         propertyOrder: 3
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6998,6 +7135,7 @@ MonoBehaviour:
         propertyType: 1
         propertyName: Rotation
         propertyOrder: 17
+        isEditable: 1
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -7197,7 +7335,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -7247,4 +7403,5 @@ MonoBehaviour:
   stageLightTimelineClips:
   - {fileID: -3860997070863861801}
   - {fileID: 6534025763947970619}
-  selectedClips: []
+  selectedClips:
+  - {fileID: -8225776854239832928}

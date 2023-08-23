@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1640345958}
   - component: {fileID: 1640345961}
-  - component: {fileID: 1640345960}
   - component: {fileID: 1640345959}
-  - component: {fileID: 311688395448931388}
+  - component: {fileID: 7461367180298716977}
   m_Layer: 0
   m_Name: Spotlight and Beam HD
   m_TagString: Untagged
@@ -27,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640345957}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6210712935237901636}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!108 &1640345961
 Light:
@@ -46,14 +45,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.5782198, g: 1.908113, b: 2.2538774, a: 2}
-  m_Intensity: 8.666666
-  m_Range: 86.66666
-  m_SpotAngle: 13.9
-  m_InnerSpotAngle: 13.9
+  m_Color: {r: 1, g: 1, b: 1, a: 2}
+  m_Intensity: 5
+  m_Range: 10
+  m_SpotAngle: 20
+  m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -78,7 +77,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
+  m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -97,7 +96,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1640345960
+--- !u!114 &1640345959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +105,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640345957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92b0a6142b2b0b449a62558873544363, type: 3}
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pluginVersion: 20001
-  m_ColorFromLight: 1
-  m_ColorMode: 0
-  m_ColorFlat: {r: 0.5782198, g: 1.908113, b: 2.2538774, a: 2}
-  m_ColorGradient:
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
+--- !u!114 &7461367180298716977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640345957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b69c542c9a8f4f44a3123e3fa103d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pluginVersion: 20002
+  colorFromLight: 1
+  colorMode: 0
+  color: {r: 1, g: 1, b: 1, a: 2}
+  colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
@@ -140,77 +162,57 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  m_BlendingMode: 0
-  m_Intensity: 8.666666
-  m_IntensityMultiplier: 0.1
-  m_HDRPExposureWeight: 0
-  m_SpotAngle: 13.9
-  m_SpotAngleMultiplier: 1
-  m_ConeRadiusStart: 0.1
-  m_Scalable: 0
-  m_FallOffStart: 0
-  m_FallOffEnd: 86.66666
-  m_FallOffEndMultiplier: 1
-  m_AttenuationEquation: 1
-  m_SideSoftness: 1
-  m_RaymarchingQualityID: 2
-  m_JitteringFactor: 1.22
-  m_JitteringFrameRate: 60
-  m_JitteringLerpRange:
-    m_MinValue: 0
-    m_MaxValue: 0.33
-  m_NoiseMode: 0
-  m_NoiseIntensity: 0.5
-  m_NoiseScaleUseGlobal: 1
-  m_NoiseScaleLocal: 0.5
-  m_NoiseVelocityUseGlobal: 1
-  m_NoiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
---- !u!114 &1640345959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640345957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &311688395448931388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640345957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bac7e82715c48546b7e9cdec13ae802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Contribution: 1
-  m_CookieTexture: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
-  m_Channel: 3
-  m_Negative: 0
-  m_Translation: {x: 0, y: 0}
-  m_Rotation: 0
-  m_Scale: {x: 1, y: 1}
+  intensityFromLight: 1
+  intensityModeAdvanced: 0
+  intensityInside: 0.049999997
+  intensityOutside: 0.049999997
+  intensityMultiplier: 0.01
+  hdrpExposureWeight: 0
+  blendingMode: 0
+  spotAngleFromLight: 1
+  spotAngle: 20
+  spotAngleMultiplier: 1
+  coneRadiusStart: 0.1
+  shaderAccuracy: 0
+  geomMeshType: 0
+  geomCustomSides: 18
+  geomCustomSegments: 5
+  skewingLocalForwardDirection: {x: 0, y: 0, z: 1}
+  clippingPlaneTransform: {fileID: 0}
+  geomCap: 0
+  attenuationEquation: 1
+  attenuationCustomBlending: 0.5
+  fallOffStart: 0
+  fallOffEnd: 10
+  fallOffEndFromLight: 1
+  fallOffEndMultiplier: 1
+  depthBlendDistance: 2
+  cameraClippingDistance: 0.5
+  glareFrontal: 0.5
+  glareBehind: 0.5
+  fresnelPow: 8
+  noiseMode: 0
+  noiseIntensity: 0.5
+  noiseScaleUseGlobal: 1
+  noiseScaleLocal: 0.5
+  noiseVelocityUseGlobal: 1
+  noiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
+  dimensions: 0
+  tiltFactor: {x: 0, y: 0}
+  _TrackChangesDuringPlaytime: 1
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!1001 &9119038500614976964
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b73fb611b52d67b49a373b62b8579901,
@@ -221,7 +223,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
@@ -271,12 +273,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_Name
-      value: SLM_Pointe
+      value: SLM_BasicMovingLight
       objectReference: {fileID: 0}
     - target: {fileID: 2581037735520656877, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000017484555
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2581037735520656877, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
@@ -286,12 +288,12 @@ PrefabInstance:
     - target: {fileID: 8857918353691153110, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.99483085
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8857918353691153110, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10154635
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8857918353691153110, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
@@ -304,6 +306,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -6287667530269759360, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1640345958}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750746124}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750746125}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750746126}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750746127}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1750746128}
   m_SourcePrefab: {fileID: 100100000, guid: b73fb611b52d67b49a373b62b8579901, type: 3}
 --- !u!4 &315516939632420626 stripped
 Transform:
@@ -349,6 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 1750746128}
   meshRenderers:
   - {fileID: 3342902194164989300}
   materialPropertyName: _EmissionColor
@@ -370,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 1750746128}
   rotationVector: {x: 1, y: 0, z: 0}
   rotateTransform: {fileID: 315516939632420626}
   ignore: 0
@@ -391,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 1750746128}
   rotationVector: {x: 0, y: 1, z: 0}
   rotateTransform: {fileID: 6727503829724719145}
   smoothTime: 0.05
@@ -411,12 +443,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 1750746128}
   lights:
   - {fileID: 1640345961}
   lightColor: {r: 0.5782198, g: 1.908113, b: 2.2538774, a: 2}
   lightIntensity: 8.666666
   spotAngle: 13.9
-  innerSpotAngle: 155.99998
+  innerSpotAngle: 13.9
   spotRange: 86.66666
   lightCookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
   limitIntensityMin: 0
@@ -439,10 +472,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c8e0991a34e9bb76553b0a3fd8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
-  syncStageLight: []
   stageLightFixtures:
-  - {fileID: 1750746127}
-  - {fileID: 1750746126}
-  - {fileID: 1750746125}
   - {fileID: 1750746124}
+  - {fileID: 1750746125}
+  - {fileID: 1750746126}
+  - {fileID: 1750746127}
+  order: 0

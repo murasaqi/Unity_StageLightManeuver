@@ -12,7 +12,7 @@ namespace StageLightManeuver
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var stageLightOrderQueue = property.GetValue<object>() as StageLightOrderQueue;
+            var stageLightOrderQueue = GetValueFromCache(property) as StageLightOrderQueue;
             var settingListName = new List<string>();
             if (stageLightOrderQueue == null) return;
             settingListName.Add("(0) None");

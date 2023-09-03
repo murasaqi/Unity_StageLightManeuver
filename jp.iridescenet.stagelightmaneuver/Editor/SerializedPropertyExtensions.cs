@@ -21,19 +21,32 @@ namespace StageLightManeuver
     public static class SerializedPropertyExtensions
     {
 
+        private static int GetArrayIndexFromPropertyName(string propertyNameWithIndex, out string purePropertyName)
+        {
+            if (!propertyNameWithIndex.EndsWith("]"))
+                throw new ArgumentException();
+            
+            int indexStart = propertyNameWithIndex.IndexOf("[", StringComparison.Ordinal) + 1;
+
+            if (!int.TryParse(propertyNameWithIndex.AsSpan()[indexStart..^1], out int index))
+                throw new ArgumentException();
+
+            purePropertyName = propertyNameWithIndex[..(indexStart - 1)];
+
+            return index;
+        }
+
         public static T GetValue<T>(this SerializedProperty property) where T : class
         {
             object obj = property.serializedObject.targetObject;
             string path = property.propertyPath.Replace(".Array.data", "");
             string[] fieldStructure = path.Split('.');
-            Regex rgx = new Regex(@"\[\d+\]");
             for (int i = 0; i < fieldStructure.Length; i++)
             {
                 if (fieldStructure[i].Contains("["))
                 {
-                    int index = System.Convert.ToInt32(new string(fieldStructure[i].Where(c => char.IsDigit(c))
-                        .ToArray()));
-                    obj = GetFieldValueWithIndex(rgx.Replace(fieldStructure[i], ""), obj, index);
+                    int index = GetArrayIndexFromPropertyName(fieldStructure[i], out var purePropertyName);
+                    obj = GetFieldValueWithIndex(purePropertyName, obj, index);
                 }
                 else
                 {
@@ -49,14 +62,12 @@ namespace StageLightManeuver
             object obj = property.serializedObject.targetObject;
             string path = property.propertyPath.Replace(".Array.data", "");
             string[] fieldStructure = path.Split('.');
-            Regex rgx = new Regex(@"\[\d+\]");
             for (int i = 0; i < fieldStructure.Length - 1; i++)
             {
                 if (fieldStructure[i].Contains("["))
                 {
-                    int index = System.Convert.ToInt32(new string(fieldStructure[i].Where(c => char.IsDigit(c))
-                        .ToArray()));
-                    obj = GetFieldValueWithIndex(rgx.Replace(fieldStructure[i], ""), obj, index);
+                    int index = GetArrayIndexFromPropertyName(fieldStructure[i], out var purePropertyName);
+                    obj = GetFieldValueWithIndex(purePropertyName, obj, index);
                 }
                 else
                 {
@@ -67,8 +78,8 @@ namespace StageLightManeuver
             string fieldName = fieldStructure.Last();
             if (fieldName.Contains("["))
             {
-                int index = System.Convert.ToInt32(new string(fieldName.Where(c => char.IsDigit(c)).ToArray()));
-                return SetFieldValueWithIndex(rgx.Replace(fieldName, ""), obj, index, value);
+                int index = GetArrayIndexFromPropertyName(fieldName, out var purePropertyName);
+                return SetFieldValueWithIndex(purePropertyName, obj, index, value);
             }
             else
             {

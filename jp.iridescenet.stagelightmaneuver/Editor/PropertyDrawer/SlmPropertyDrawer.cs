@@ -17,17 +17,16 @@ namespace StageLightManeuver
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             // Get SlmProperty from SerializedObject
-            var slmProperty = property.GetValue<object>() as SlmProperty;
-            if (slmProperty == null) return;
-            // if (slmProperty.propertyName != null)
-            label.text = slmProperty.propertyName;
+            label.text = property.FindPropertyRelative("propertyName").stringValue;
 
             //  Draw header
             DrawHeader(position, property, label);
             if (property.isExpanded == false) return;
 
-            var propertyOverride = slmProperty.propertyOverride;
+            var propertyOverride = property.FindPropertyRelative("propertyOverride").boolValue;
             EditorGUI.BeginDisabledGroup(propertyOverride == false);
+            
+            var slmProperty = GetValueFromCache(property) as SlmProperty;
             DrawToggleController(slmProperty);
 
             var fields = slmProperty.GetType().GetFields().ToList();
@@ -41,7 +40,7 @@ namespace StageLightManeuver
             var useIndent = property.serializedObject.targetObject.GetType() != typeof(StageLightTimelineClip);
             if (useIndent) EditorGUI.indentLevel++;
             // EditorGUI.indentLevel++;
-            fields.ForEach(f =>
+            foreach (var f in fields)
             {
                 // Draw SlmToggleValue
                 EditorGUI.BeginChangeCheck();
@@ -51,13 +50,13 @@ namespace StageLightManeuver
                 }
                 catch (NullReferenceException e)
                 {
-                    Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message); 
+                    // Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message); 
                 }
                 if (EditorGUI.EndChangeCheck())
                 {
                     property.serializedObject.ApplyModifiedProperties();
                 }
-            });
+            }
             // EditorGUI.indentLevel--;
             if (useIndent) EditorGUI.indentLevel--;
 

@@ -34,7 +34,8 @@ namespace StageLightManeuver
             var propertyOverride = property.FindPropertyRelative("propertyOverride");
             SerializedProperty value = property.FindPropertyRelative("value");
             if (value == null) return;
-            var valueObject = value.GetValue<object>();
+            // Debug.Log(value.type);
+            var valueObject = GetValueFromCache(value);
             if (valueObject == null) return;
 
             GUILayout.Space(SlmEditorStyleConst.NoSpacing);
@@ -137,7 +138,7 @@ namespace StageLightManeuver
         {
             var value = property.FindPropertyRelative("value");
             if (value == null) return SlmEditorStyleConst.NoMarginHeight;
-            var valueObject = value.GetValue<object>();
+            var valueObject = GetValueFromCache(value);
             if (valueObject == null) return SlmEditorStyleConst.NoMarginHeight;
             if (IsVerticalLayoutField(valueObject)) return SlmEditorStyleConst.NoMarginHeight;
 

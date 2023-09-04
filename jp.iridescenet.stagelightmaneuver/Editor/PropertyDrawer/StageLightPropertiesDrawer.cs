@@ -16,7 +16,7 @@ namespace StageLightManeuver
         bool isInitialized = false;
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var stageLightProperties = property.GetValue<object>() as List<SlmProperty>;
+            var stageLightProperties = GetValueFromCache(property) as List<SlmProperty>;
             stageLightProperties.RemoveAll(x => x == null);
             if (isInitialized == false)
             {
@@ -63,7 +63,7 @@ namespace StageLightManeuver
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             float height = 0f;
-            var stageLightProperties = property.GetValue<object>() as List<SlmProperty>;
+            var stageLightProperties = GetValueFromCache(property) as List<SlmProperty>;
             stageLightProperties.RemoveAll(x => x == null);
 
             for (int i = 0; i < stageLightProperties.Count; i++)
@@ -139,9 +139,9 @@ namespace StageLightManeuver
                     }
                 }
                 stageLightProperties.Add(property);
-
-                serializedObject.Update();
+                
                 serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(serializedObject.targetObject);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace StageLightManeuver
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             var childDepth = property.depth + 1;
-            var arrayStaggerValue = property.GetValue<object>() as ArrayStaggerValue;
+            var arrayStaggerValue = GetValueFromCache(property) as ArrayStaggerValue;
             while (property.NextVisible(true) && property.depth >= childDepth)
             {
                 if (property.depth == childDepth)
@@ -82,7 +82,7 @@ namespace StageLightManeuver
             }
 
             EditorGUI.indentLevel++;
-            var arrayValue = serializedProperty.GetValue<object>() as List<Vector2>;
+            var arrayValue = GetValueFromCache(serializedProperty) as List<Vector2>;
             if (arrayValue == null) return;
 
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace StageLightManeuver
     public struct SlmEditorStyleConst
     {
         public const float Spacing = 2f;
+
         // public static readonly float SingleLineHeight = EditorGUIUtility.singleLineHeight;
         // public static readonly float SpacingHeight = SingleLineHeight + Spacing;
         public const float NoSpacing = -4f;
@@ -43,10 +45,53 @@ namespace StageLightManeuver
         {
             var scriptAttributeUtilityType = typeof(EditorGUI).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
 
-            var getDrawerTypeForTypeMethod = scriptAttributeUtilityType.GetMethod("GetDrawerTypeForType", BindingFlags.Static | BindingFlags.NonPublic);
+            var getDrawerTypeForTypeMethod = scriptAttributeUtilityType.GetMethod("GetDrawerTypeForType",
+                BindingFlags.Static | BindingFlags.NonPublic);
             var drawerType = getDrawerTypeForTypeMethod.Invoke(null, new object[] { valueType }) as Type;
             return drawerType;
         }
+
+        /// <summary>
+        /// <see ref="SerializedProperty"/>からシリアライズ前の値を<see ref="CachedValue"/>から取得する
+        /// </summary>
+        protected static object GetValueFromCache(SerializedProperty property)
+        {
+            var hash = property.serializedObject.targetObject.GetHashCode();
+            var key = property.propertyPath;
+            object val = null;
+
+            Dictionary<string, object> clipValue = null;
+            if (CachedValue.TryGetValue(hash, out clipValue) == false)
+            {
+                clipValue = new Dictionary<string, object>();
+                CachedValue.Add(hash, clipValue);
+
+                val = property.GetValue<object>();
+                clipValue.Add(key, val);
+                return val;
+            }
+
+            if (clipValue.TryGetValue(key, out val) == false)
+            {
+                val = property.GetValue<object>();
+                clipValue.Add(key, val);
+            }
+
+            return val;
+        }
+
+        /// <summary>
+        /// <see cref="CachedValue"/> をクリア
+        /// </summary>
+        public static void ClearCache()
+        {
+            CachedValue.Clear();
+        }
+
+        /// <summary>
+        /// <see cref="SerializedPropertyExtensions.GetValue"/> の結果をキャッシュする Dictionary
+        /// </summary>
+        private static readonly Dictionary<int, Dictionary<string, object>> CachedValue = new();
     }
 
 
@@ -64,7 +109,9 @@ namespace StageLightManeuver
             if (displayName == null) displayName = label.text;
             var displayLabel = new GUIContent(displayName);
 
-            var valueType = property.GetValue<object>()?.GetType();
+
+            var value = GetValueFromCache(property);
+            var valueType = value.GetType();
             var drawerType = GetPropertyDrawerTypeForType(valueType);
             if (drawerType != null)
             {
@@ -87,7 +134,8 @@ namespace StageLightManeuver
             }
             else
             {
-                var valueType = property.GetValue<object>()?.GetType();
+                var val = GetValueFromCache(property);
+                var valueType = val.GetType();
                 var drawerType = GetPropertyDrawerTypeForType(valueType);
                 if (drawerType != null)
                 {

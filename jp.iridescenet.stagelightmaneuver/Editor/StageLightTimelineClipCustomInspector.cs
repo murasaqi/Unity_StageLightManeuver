@@ -69,14 +69,12 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 }
 
                 EditorGUI.BeginChangeCheck();
-                EditorUtility.SetDirty(stageLightTimelineClip);
+                // EditorUtility.SetDirty(stageLightTimelineClip);
                 var drawer = new StageLightPropertiesDrawer();
                 drawer.OnGUI(EditorGUILayout.GetControlRect(), serializedProperty, GUIContent.none);
                 if (EditorGUI.EndChangeCheck())
                 {
                     serializedProperty.serializedObject.ApplyModifiedProperties();
-                    AssetDatabase.SaveAssets();
-                    EditorUtility.SetDirty(stageLightTimelineClip);
                 }
             EditorGUI.EndDisabledGroup();
         }

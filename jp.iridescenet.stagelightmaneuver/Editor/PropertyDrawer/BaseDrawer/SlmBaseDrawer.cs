@@ -52,7 +52,7 @@ namespace StageLightManeuver
         }
 
         /// <summary>
-        // <ref="SerializedProperty"/>からシリアライズ前の値を<ref="_cachedValue"/>から取得する
+        /// <see ref="SerializedProperty"/>からシリアライズ前の値を<see ref="CachedValue"/>から取得する
         /// </summary>
         protected static object GetValueFromCache(SerializedProperty property)
         {
@@ -61,10 +61,10 @@ namespace StageLightManeuver
             object val = null;
 
             Dictionary<string, object> clipValue = null;
-            if (_cachedValue.TryGetValue(hash, out clipValue) == false)
+            if (CachedValue.TryGetValue(hash, out clipValue) == false)
             {
                 clipValue = new Dictionary<string, object>();
-                _cachedValue.Add(hash, clipValue);
+                CachedValue.Add(hash, clipValue);
 
                 val = property.GetValue<object>();
                 clipValue.Add(key, val);
@@ -81,9 +81,17 @@ namespace StageLightManeuver
         }
 
         /// <summary>
-        /// GetValue の結果をキャッシュする Dictionary
+        /// <see cref="CachedValue"/> をクリア
         /// </summary>
-        protected static Dictionary<int, Dictionary<string, object>> _cachedValue = new();
+        public static void ClearCache()
+        {
+            CachedValue.Clear();
+        }
+
+        /// <summary>
+        /// <see cref="SerializedPropertyExtensions.GetValue"/> の結果をキャッシュする Dictionary
+        /// </summary>
+        private static readonly Dictionary<int, Dictionary<string, object>> CachedValue = new();
     }
 
 

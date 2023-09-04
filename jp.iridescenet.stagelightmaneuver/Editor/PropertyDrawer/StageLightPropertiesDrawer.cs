@@ -139,9 +139,9 @@ namespace StageLightManeuver
                     }
                 }
                 stageLightProperties.Add(property);
-
-                serializedObject.Update();
+                
                 serializedObject.ApplyModifiedProperties();
+                EditorUtility.SetDirty(serializedObject.targetObject);
             }
         }
     }

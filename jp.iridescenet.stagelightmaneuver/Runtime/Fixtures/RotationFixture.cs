@@ -44,12 +44,12 @@ namespace StageLightManeuver
                     return;
 
                 var normalizedTime = SlmUtility.GetNormalizedTime(time, queueData, typeof(RotationProperty),index);
-                offsetTime += SlmUtility.GetOffsetTime(time, queueData, typeof(RotationProperty),index) * queueData.weight;
+                // offsetTime += SlmUtility.GetOffsetTime(time, queueData, typeof(RotationProperty),index) * queueData.weight;
                 rotationSpeed += rotationProperty.rotationSpeed.value.Evaluate(normalizedTime) * queueData.weight;
               
             }
 
-            rotation = (rotationSpeed * offsetTime) % 360;
+            rotation = rotationSpeed * time;
         }
 
         public override void UpdateFixture()

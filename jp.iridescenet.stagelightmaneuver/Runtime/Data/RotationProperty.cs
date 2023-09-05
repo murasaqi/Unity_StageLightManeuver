@@ -10,6 +10,7 @@ namespace StageLightManeuver
     {
         // public SlmToggleValue<Vector3> rotationAxis;
         [SlmValue("Rotation Speed")] public SlmToggleValue<MinMaxEasingValue> rotationSpeed;
+        // [SlmValue("test Speed")] public SlmToggleValue<float> v;
         public RotationProperty()
         {
             propertyName = "Rotation";
@@ -26,7 +27,6 @@ namespace StageLightManeuver
         public override void ToggleOverride(bool toggle)
         {
             propertyOverride = toggle;
-            // rotationAxis.propertyOverride=(toggle);
             rotationSpeed.propertyOverride=(toggle);
             clockOverride.propertyOverride=(toggle);
             clockOverride.propertyOverride = toggle;
@@ -34,12 +34,11 @@ namespace StageLightManeuver
 
         public override void OverwriteProperty(SlmProperty other)
         {
-            // if other propertyOverride is true, Override value if propertyOverride of property in other is true.
             if (other.propertyOverride) return;
             var rotationProperty = other as RotationProperty;
             if (rotationProperty == null) return;
             if (rotationProperty.propertyOverride) return;
-            if(rotationProperty.rotationSpeed.propertyOverride) rotationSpeed.value = rotationProperty.rotationSpeed.value; 
+            if(rotationProperty.rotationSpeed.propertyOverride) rotationSpeed = new SlmToggleValue<MinMaxEasingValue>(rotationProperty.rotationSpeed);
             if(rotationProperty.clockOverride.propertyOverride) clockOverride = new SlmToggleValue<ClockOverride>(rotationProperty.clockOverride);
             
         }

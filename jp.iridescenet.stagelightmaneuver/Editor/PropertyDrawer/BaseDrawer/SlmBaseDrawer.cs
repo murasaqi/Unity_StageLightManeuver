@@ -71,10 +71,27 @@ namespace StageLightManeuver
                 return val;
             }
 
-            if (clipValue.TryGetValue(key, out val) == false)
+            try
             {
-                val = property.GetValue<object>();
-                clipValue.Add(key, val);
+                if (clipValue.TryGetValue(key, out val) == false)
+                {
+                    val = property.GetValue<object>(); 
+                    clipValue.Add(key, val);
+                }
+                else if (val == null)
+                {
+                    Debug.Log($"val is null. key: {key}");
+                    val = property.GetValue<object>();
+                    clipValue[key] = val;
+                }
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                ClearCache();
+                val = GetValueFromCache(property);
+                throw;
             }
 
             return val;

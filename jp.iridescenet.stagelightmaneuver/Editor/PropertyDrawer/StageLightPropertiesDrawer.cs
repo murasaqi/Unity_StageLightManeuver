@@ -45,7 +45,7 @@ namespace StageLightManeuver
                     var action = new Action(() =>
                     {
                         stageLightProperties.Remove(slmProperty);
-                        return;
+                        ClearCache();
                     });
                     DrawRemoveButton(property.serializedObject, stageLightProperties, action);
                     GUILayout.Space(SlmEditorStyleConst.Spacing);
@@ -139,6 +139,7 @@ namespace StageLightManeuver
                     }
                 }
                 stageLightProperties.Add(property);
+                ClearCache();
                 
                 serializedObject.ApplyModifiedProperties();
                 EditorUtility.SetDirty(serializedObject.targetObject);

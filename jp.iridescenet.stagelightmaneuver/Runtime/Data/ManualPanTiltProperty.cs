@@ -17,11 +17,12 @@ namespace StageLightManeuver
 
 
     [Serializable]
-    // ManualPantiltMode enum Overwrite, Add, Subtract, Multiply, Divide
+    // ManualPanTiltMode enum Overwrite, Add, Subtract, Multiply, Divide
     public enum ManualPanTiltMode
     {
         Overwrite,
         Add,
+        Multiply,
     }
     
     

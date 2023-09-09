@@ -31,6 +31,7 @@ namespace StageLightManeuver
         public float spotAngle;
         public float innerSpotAngle;
         public float spotRange;
+        public bool ignoreLightCookie = false;
         public Texture lightCookie;
         public float limitIntensityMin = 0f;
         public float limitIntensityMax = 10000f;
@@ -206,15 +207,15 @@ namespace StageLightManeuver
                 }
 #else
                 light.color = lightColor;
-                 light.intensity = lightIntensity;
+                light.intensity = lightIntensity;
                 light.spotAngle = spotAngle;
                 light.innerSpotAngle = innerSpotAngle;
                 light.range = spotRange;
-                light.cookie = lightCookie;
+                if(!ignoreLightCookie)light.cookie = lightCookie;
 #endif
 
 #if USE_VLB
-                if (volumetricCookieHd)
+                if (volumetricCookieHd && !ignoreLightCookie)
                 {
                     volumetricCookieHd.cookieTexture = lightCookie;
                 }

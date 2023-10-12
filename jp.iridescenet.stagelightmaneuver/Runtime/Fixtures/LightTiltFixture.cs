@@ -57,6 +57,9 @@ namespace StageLightManeuver
                             case ManualPanTiltMode.Add:
                                 _angle += (positions[index].tilt+qTiltProperty.rollTransform.value.Evaluate(normalizedTime)) * weight;
                                 break;
+                            case ManualPanTiltMode.Multiply:
+                                _angle += (positions[index].tilt*qTiltProperty.rollTransform.value.Evaluate(normalizedTime)) * weight;
+                                break;
                         }
                         // Debug.Log($"tilt({Index}): {positions[Index].tilt}, weight: {weight}");
                     }

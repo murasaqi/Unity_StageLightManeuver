@@ -274,6 +274,7 @@ MonoBehaviour:
   updateOrder: 0
   offsetDuration: 0
   parentStageLight: {fileID: 1670494901922650878}
+  materialIndex: 0
   meshRenderers:
   - {fileID: 1805183507940211526}
   materialPropertyName: _EmissionColor
@@ -342,7 +343,7 @@ MonoBehaviour:
   lights:
   - {fileID: 5204920629700413608}
   lightColor: {r: 0.49685526, g: 1, b: 0.6525905, a: 2}
-  lightIntensity: 4180316
+  lightIntensity: 14853.624
   spotAngle: 2
   innerSpotAngle: 1
   spotRange: 20
@@ -356,6 +357,7 @@ MonoBehaviour:
   limitSpotRangeMin: 0
   limitSpotRangeMax: 100
   volumetricLightBeamHd: {fileID: 5843972643409726734}
+  volumetricLightBeamSd: {fileID: 0}
   volumetricCookieHd: {fileID: 658857192866621175}
 --- !u!114 &1670494901922650878
 MonoBehaviour:
@@ -375,6 +377,7 @@ MonoBehaviour:
   - {fileID: 9052024643016545388}
   - {fileID: 2554546372115543249}
   - {fileID: 4959078105341754525}
+  - {fileID: 8449551563874555954}
   order: 0
 --- !u!114 &4959078105341754525
 MonoBehaviour:
@@ -390,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
-  parentStageLight: {fileID: 0}
+  parentStageLight: {fileID: 1670494901922650878}
   target: {fileID: 3127394901526647414}
   rotationAxis: {x: 0, y: 0, z: 1}
   offsetRotation: {x: -90, y: 0, z: 0}
@@ -411,9 +414,9 @@ MonoBehaviour:
   offsetDuration: 0
   parentStageLight: {fileID: 1670494901922650878}
   lightFixture: {fileID: 2554546372115543249}
-  intensityMultiplier: 0
-  lightRangeMultiplier: 0
-  spotAngleMultiplier: 0
+  intensityMultiplier: 0.00001
+  lightRangeMultiplier: 1
+  spotAngleMultiplier: 1
 --- !u!1 &7078814195383961130
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +551,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.49685526, g: 1, b: 0.6525905, a: 2}
-  m_Intensity: 4180316
+  m_Intensity: 14853.624
   m_Range: 20
   m_SpotAngle: 2
   m_InnerSpotAngle: 1
@@ -735,7 +738,7 @@ MonoBehaviour:
   pluginVersion: 20002
   m_ColorFromLight: 1
   m_ColorMode: 0
-  m_ColorFlat: {r: 1.3323381, g: 0.285864, b: 0.7542265, a: 2}
+  m_ColorFlat: {r: 0.49685526, g: 0.97847027, b: 0.6520936, a: 2}
   m_ColorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -767,15 +770,15 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_BlendingMode: 0
-  m_Intensity: 0.0005204208
+  m_Intensity: 0.14853624
   m_IntensityMultiplier: 0.00001
   m_HDRPExposureWeight: 0
-  m_SpotAngle: 33.91
+  m_SpotAngle: 2
   m_SpotAngleMultiplier: 1
   m_ConeRadiusStart: 0.1
   m_Scalable: 1
   m_FallOffStart: 0
-  m_FallOffEnd: 30
+  m_FallOffEnd: 20
   m_FallOffEndMultiplier: 1
   m_AttenuationEquation: 1
   m_SideSoftness: 1
@@ -829,7 +832,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8843502483327033634}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e39f0f7e17f11f2448932da58e9b63d4, type: 3}
   m_Name: 

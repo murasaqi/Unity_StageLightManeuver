@@ -109,14 +109,15 @@ namespace StageLightManeuver
             while (stageLightDataQueue.Count>0)
             {
                 var data = stageLightDataQueue.Dequeue();
-                var stageLightBaseProperty= data.TryGetActiveProperty<ClockProperty>() as ClockProperty;
+                var clockProperty= data.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var lightProperty = data.TryGetActiveProperty<LightProperty>() as LightProperty;
                 var lightColorProperty = data.TryGetActiveProperty<LightColorProperty>() as LightColorProperty;
                 var lightIntensityProperty = data.TryGetActiveProperty<LightIntensityProperty>() as LightIntensityProperty;
+                var lightFlickerProperty = data.TryGetActiveProperty<LightFlickerProperty>() as LightFlickerProperty;
                 var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) :  parentStageLight.order;
-                if(lightProperty == null || stageLightBaseProperty == null) continue;
+                if(lightProperty == null || clockProperty == null) continue;
              
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
@@ -142,6 +143,14 @@ namespace StageLightManeuver
                         var t =lightIntensityProperty.clockOverride.propertyOverride ? SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index) : normalizedTime;
                         lightIntensity += lightIntensityProperty.lightToggleIntensity.value.Evaluate(t) * weight;
                     }
+                    if(lightFlickerProperty != null)
+                    {
+                        var staggerValue = clockProperty.staggerDelay.value * (index + 1);
+                        var clipDuration = clockProperty.clipProperty.clipEndTime - clockProperty.clipProperty.clipStartTime;
+                        var offset = clipDuration * staggerValue;
+                        lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
+                    }
+                    
                     spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
                     innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(normalizedTime) * weight;
                     spotRange += lightProperty.range.value.Evaluate(normalizedTime) * weight;

@@ -270,10 +270,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 451be7b0dfce5b34da171592a55b3127, type: 2}
     - target: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_Name
-      value: SLM_BasicMovingLight
+      value: SLM_BasicMovingLight_URP_SD
       objectReference: {fileID: 0}
     - target: {fileID: 2581037735520656877, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
@@ -285,6 +290,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4274563589713051705, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 451be7b0dfce5b34da171592a55b3127, type: 2}
+    - target: {fileID: 5830203175840762032, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fd930fda7a2f2243b8361bb47e6e105, type: 2}
+    - target: {fileID: 6320475052264186429, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 451be7b0dfce5b34da171592a55b3127, type: 2}
     - target: {fileID: 8857918353691153110, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -379,6 +399,7 @@ MonoBehaviour:
   updateOrder: 0
   offsetDuration: 0
   parentStageLight: {fileID: 1750746128}
+  materialIndex: 0
   meshRenderers:
   - {fileID: 3342902194164989300}
   materialPropertyName: _EmissionColor
@@ -451,6 +472,7 @@ MonoBehaviour:
   spotAngle: 13.9
   innerSpotAngle: 13.9
   spotRange: 86.66666
+  ignoreLightCookie: 0
   lightCookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
   limitIntensityMin: 0
   limitIntensityMax: 10000

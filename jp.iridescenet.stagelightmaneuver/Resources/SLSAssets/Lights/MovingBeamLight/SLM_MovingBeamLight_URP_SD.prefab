@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1640345961}
   - component: {fileID: 1640345959}
   - component: {fileID: 7461367180298716977}
+  - component: {fileID: 2665877540193614730}
   m_Layer: 0
   m_Name: Spotlight and Beam HD
   m_TagString: Untagged
@@ -191,8 +192,8 @@ MonoBehaviour:
   fallOffEndMultiplier: 1
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
-  glareFrontal: 0.5
-  glareBehind: 0.5
+  glareFrontal: 0.65
+  glareBehind: 0.65
   fresnelPow: 8
   noiseMode: 0
   noiseIntensity: 0.5
@@ -207,6 +208,132 @@ MonoBehaviour:
   _SortingOrder: 0
   _FadeOutBegin: -150
   _FadeOutEnd: -200
+--- !u!114 &2665877540193614730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640345957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LensFlareData: {fileID: 0}
+  intensity: 1.5
+  maxAttenuationDistance: 70
+  maxAttenuationScale: 50
+  distanceAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2910835
+      value: 0
+      inSlope: -0.008331303
+      outSlope: -0.008331303
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.84924626
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleByDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  attenuationByLightShape: 1
+  radialScreenAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useOcclusion: 1
+  occlusionRadius: 0.1
+  useBackgroundCloudOcclusion: 0
+  sampleCount: 32
+  occlusionOffset: 0.05
+  scale: 0.5
+  allowOffScreen: 0
+  volumetricCloudOcclusion: 0
+  occlusionRemapCurve:
+    <length>k__BackingField: 2
+    m_Loop: 0
+    m_ZeroValue: 1
+    m_Range: 1
+    m_Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1001 &9119038500614976964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,7 +405,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
       propertyPath: m_Name
-      value: SLM_BasicMovingLight_URP_SD
+      value: SLM_MovingBeamLight_URP_SD
       objectReference: {fileID: 0}
     - target: {fileID: 2581037735520656877, guid: b73fb611b52d67b49a373b62b8579901,
         type: 3}
@@ -353,6 +480,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1750746128}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b73fb611b52d67b49a373b62b8579901,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6972692290512801897}
   m_SourcePrefab: {fileID: 100100000, guid: b73fb611b52d67b49a373b62b8579901, type: 3}
 --- !u!4 &315516939632420626 stripped
 Transform:
@@ -467,13 +598,13 @@ MonoBehaviour:
   parentStageLight: {fileID: 1750746128}
   lights:
   - {fileID: 1640345961}
-  lightColor: {r: 0.5782198, g: 1.908113, b: 2.2538774, a: 2}
-  lightIntensity: 8.666666
-  spotAngle: 13.9
-  innerSpotAngle: 13.9
-  spotRange: 86.66666
+  lightColor: {r: 1, g: 1, b: 1, a: 2}
+  lightIntensity: 5
+  spotAngle: 20
+  innerSpotAngle: 0
+  spotRange: 10
   ignoreLightCookie: 0
-  lightCookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
+  lightCookie: {fileID: 0}
   limitIntensityMin: 0
   limitIntensityMax: 10000
   limitSpotAngleMin: 0
@@ -499,4 +630,24 @@ MonoBehaviour:
   - {fileID: 1750746125}
   - {fileID: 1750746126}
   - {fileID: 1750746127}
+  - {fileID: 6972692290512801897}
   order: 0
+--- !u!114 &6972692290512801897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236024762032785557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55fa36148794b05bbda2280cdcbdebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateOrder: 0
+  offsetDuration: 0
+  parentStageLight: {fileID: 0}
+  lensFlareSRP: {fileID: 2665877540193614730}
+  intensityMultiplier: 1
+  maxIntensityLimit: 3
+  lightFixture: {fileID: 1750746127}

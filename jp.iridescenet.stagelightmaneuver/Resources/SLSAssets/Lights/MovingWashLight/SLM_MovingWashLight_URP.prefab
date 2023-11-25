@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1838283645}
   - component: {fileID: 1838283643}
   - component: {fileID: 99687660779313503}
+  - component: {fileID: 8953128332874491812}
   m_Layer: 0
   m_Name: Spotlight and Beam SD
   m_TagString: Untagged
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838283641}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5285228457907690936}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1838283645
 Light:
@@ -47,8 +48,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 2}
   m_Intensity: 1
-  m_Range: 0.5
-  m_SpotAngle: 40
+  m_Range: 4
+  m_SpotAngle: 30
   m_InnerSpotAngle: 0
   m_CookieSize: 10
   m_Shadows:
@@ -108,14 +109,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!114 &99687660779313503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +163,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   intensityFromLight: 1
@@ -169,9 +174,9 @@ MonoBehaviour:
   hdrpExposureWeight: 0
   blendingMode: 0
   spotAngleFromLight: 1
-  spotAngle: 40
+  spotAngle: 30
   spotAngleMultiplier: 1
-  coneRadiusStart: 0.1
+  coneRadiusStart: 0.09
   shaderAccuracy: 1
   geomMeshType: 0
   geomCustomSides: 18
@@ -182,16 +187,16 @@ MonoBehaviour:
   attenuationEquation: 1
   attenuationCustomBlending: 0.5
   fallOffStart: 0
-  fallOffEnd: 0.5
+  fallOffEnd: 4
   fallOffEndFromLight: 1
   fallOffEndMultiplier: 1
   depthBlendDistance: 2
   cameraClippingDistance: 0.5
   glareFrontal: 0.5
   glareBehind: 0.5
-  fresnelPow: 10
+  fresnelPow: 8
   noiseMode: 0
-  noiseIntensity: 0.5
+  noiseIntensity: 0.8
   noiseScaleUseGlobal: 1
   noiseScaleLocal: 0.5
   noiseVelocityUseGlobal: 1
@@ -201,13 +206,140 @@ MonoBehaviour:
   _TrackChangesDuringPlaytime: 1
   _SortingLayerID: 0
   _SortingOrder: 0
-  _FadeOutBegin: -150
-  _FadeOutEnd: -200
+  _FadeOutBegin: 150
+  _FadeOutEnd: 200
+--- !u!114 &8953128332874491812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838283641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LensFlareData: {fileID: 0}
+  intensity: 1
+  maxAttenuationDistance: 70
+  maxAttenuationScale: 50
+  distanceAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.713562
+      value: 0
+      inSlope: -0.008331303
+      outSlope: -0.008331303
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.84924626
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  scaleByDistanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  attenuationByLightShape: 1
+  radialScreenAttenuationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useOcclusion: 1
+  occlusionRadius: 0.1
+  useBackgroundCloudOcclusion: 0
+  sampleCount: 32
+  occlusionOffset: 0.05
+  scale: 0.5
+  allowOffScreen: 0
+  volumetricCloudOcclusion: 0
+  occlusionRemapCurve:
+    <length>k__BackingField: 2
+    m_Loop: 0
+    m_ZeroValue: 1
+    m_Range: 1
+    m_Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1001 &6997429810463926282
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 218f2389920837441890b3577c6d00c2,
@@ -288,7 +420,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
         type: 3}
       propertyPath: m_Name
-      value: SLM_MAC_AURA
+      value: SLM_MovingWashLight_URP
       objectReference: {fileID: 0}
     - target: {fileID: 2901226429766301106, guid: 218f2389920837441890b3577c6d00c2,
         type: 3}
@@ -311,6 +443,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2901226429766301106, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1838283642}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866043991}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866043992}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866043993}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866043994}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866043995}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 218f2389920837441890b3577c6d00c2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1273425890645395873}
   m_SourcePrefab: {fileID: 100100000, guid: 218f2389920837441890b3577c6d00c2, type: 3}
 --- !u!23 &3094731882128107070 stripped
 MeshRenderer:
@@ -357,6 +520,7 @@ MonoBehaviour:
   updateOrder: 0
   offsetDuration: 0
   parentStageLight: {fileID: 1866043995}
+  materialIndex: 0
   meshRenderers:
   - {fileID: 3493649461328568911}
   - {fileID: 3094731882128107070}
@@ -364,7 +528,7 @@ MonoBehaviour:
   intensityMultiplier: 1
   maxIntensityLimit: 3
   brightnessDecreasesToBlack: 0
-  lightFixtureFixture: {fileID: 1866043994}
+  lightFixture: {fileID: 1866043994}
 --- !u!114 &1866043992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,18 +591,19 @@ MonoBehaviour:
   - {fileID: 1838283645}
   lightColor: {r: 1, g: 1, b: 1, a: 2}
   lightIntensity: 1
-  spotAngle: 40
+  spotAngle: 30
   innerSpotAngle: 0
-  spotRange: 0.5
-  lightCookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
+  spotRange: 4
+  ignoreLightCookie: 0
+  lightCookie: {fileID: 0}
   limitIntensityMin: 0
   limitIntensityMax: 10000
   limitSpotAngleMin: 0
   limitSpotAngleMax: 80
   limitInnerSpotAngleMin: 0
   limitInnerSpotAngleMax: 0
-  limitSpotRangeMin: 0
-  limitSpotRangeMax: 0.5
+  limitSpotRangeMin: 4
+  limitSpotRangeMax: 4
 --- !u!114 &1866043995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,4 +621,24 @@ MonoBehaviour:
   - {fileID: 1866043992}
   - {fileID: 1866043993}
   - {fileID: 1866043994}
+  - {fileID: 1273425890645395873}
   order: 0
+--- !u!114 &1273425890645395873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7915837788403225947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55fa36148794b05bbda2280cdcbdebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateOrder: 0
+  offsetDuration: 0
+  parentStageLight: {fileID: 0}
+  lensFlareSRP: {fileID: 8953128332874491812}
+  intensityMultiplier: 1
+  maxIntensityLimit: 3
+  lightFixture: {fileID: 1866043994}

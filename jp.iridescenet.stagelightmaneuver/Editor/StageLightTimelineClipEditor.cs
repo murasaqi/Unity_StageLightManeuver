@@ -18,7 +18,7 @@ namespace StageLightManeuver
             static EditorInitialize()
             {
                 backgroundTexture = new Texture2D(1, 1);
-                syncIconTexture = Resources.Load<Texture2D>("SLSAssets/Texture/icon_sync");
+                syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
                 backgroundTexture.SetPixel(0, 0, Color.white);
                 backgroundTexture.Apply();
            
@@ -83,7 +83,7 @@ namespace StageLightManeuver
         public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
         {
             base.DrawBackground(clip, region);
-            if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("SLSAssets/Texture/icon_sync");
+            if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
             var stageLightTimelineClip = (StageLightTimelineClip) clip.asset;
             stageLightTimelineClip.clipDisplayName = clip.displayName;
             var update = stageLightTimelineClip.forceTimelineClipUpdate;

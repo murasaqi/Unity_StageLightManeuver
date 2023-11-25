@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 4959078105341754525}
   - component: {fileID: 8449551563874555954}
   m_Layer: 0
-  m_Name: SLM_BasicMovingLight_HDRP
+  m_Name: SLM_MovingBeamLight_HDRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

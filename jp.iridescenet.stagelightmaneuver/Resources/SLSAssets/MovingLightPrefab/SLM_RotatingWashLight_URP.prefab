@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206093408}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6005104075495091796}
-  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1206093412
 Light:
@@ -139,6 +139,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
+    m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   m_BlendingMode: 0
@@ -178,19 +179,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1001 &1479227413363513879
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f5199f79457d1fe4dbb2aedc5f081067,
@@ -261,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f5199f79457d1fe4dbb2aedc5f081067,
         type: 3}
       propertyPath: m_Name
-      value: SLM_B-EYE
+      value: SLM_RotatingWashLight_URP
       objectReference: {fileID: 0}
     - target: {fileID: 5174969303600985155, guid: f5199f79457d1fe4dbb2aedc5f081067,
         type: 3}
@@ -284,6 +289,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5174969303600985155, guid: f5199f79457d1fe4dbb2aedc5f081067,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1206093409}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5199f79457d1fe4dbb2aedc5f081067,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353849464}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5199f79457d1fe4dbb2aedc5f081067,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353849465}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5199f79457d1fe4dbb2aedc5f081067,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353849466}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5199f79457d1fe4dbb2aedc5f081067,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353849467}
   m_SourcePrefab: {fileID: 100100000, guid: f5199f79457d1fe4dbb2aedc5f081067, type: 3}
 --- !u!1 &1749134636073641798 stripped
 GameObject:
@@ -305,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 0}
   lights:
   - {fileID: 1206093412}
   lightColor: {r: 0.5782198, g: 1.908113, b: 2.2538774, a: 2}
@@ -312,9 +341,16 @@ MonoBehaviour:
   spotAngle: 13.9
   innerSpotAngle: 155.99998
   spotRange: 86.66666
+  ignoreLightCookie: 0
   lightCookie: {fileID: 2800000, guid: 9236fc9922624c34892e8643960d85a4, type: 3}
-  volumetricLightBeamHd: {fileID: 1206093411}
-  volumetricCookieHd: {fileID: 0}
+  limitIntensityMin: 0
+  limitIntensityMax: 10000
+  limitSpotAngleMin: 0
+  limitSpotAngleMax: 100
+  limitInnerSpotAngleMin: 0
+  limitInnerSpotAngleMax: 100
+  limitSpotRangeMin: 0
+  limitSpotRangeMax: 100
 --- !u!114 &353849465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,11 +365,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 0}
   rotationVector: {x: 1, y: 0, z: 0}
   rotateTransform: {fileID: 6005104075495091796}
   ignore: 0
   smoothTime: 0.05
   useSmoothness: 1
+  minAngleValue: -360
+  maxAngleValue: 360
 --- !u!114 &353849466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,11 +387,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateOrder: 0
   offsetDuration: 0
+  parentStageLight: {fileID: 0}
   rotationVector: {x: 0, y: 1, z: 0}
   rotateTransform: {fileID: 6511826280056540260}
-  currentVelocity: {x: 0, y: 0, z: 0}
   smoothTime: 0.05
   useSmoothness: 1
+  minAngleValue: -360
+  maxAngleValue: 360
 --- !u!114 &353849467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,12 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c8e0991a34e9bb76553b0a3fd8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
-  syncStageLight: []
   stageLightFixtures:
   - {fileID: 353849466}
   - {fileID: 353849465}
   - {fileID: 353849464}
+  order: 0
 --- !u!4 &6005104075495091796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5174969303600985155, guid: f5199f79457d1fe4dbb2aedc5f081067,

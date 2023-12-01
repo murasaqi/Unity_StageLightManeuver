@@ -83,35 +83,44 @@ namespace StageLightManeuver
         public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
         {
             base.DrawBackground(clip, region);
-            if(syncIconTexture == null)syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
             var stageLightTimelineClip = (StageLightTimelineClip) clip.asset;
-            stageLightTimelineClip.clipDisplayName = clip.displayName;
-            var update = stageLightTimelineClip.forceTimelineClipUpdate;
-            if (stageLightTimelineClip.referenceStageLightProfile != null)
-            {
-                if (stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag) update = true;
-                stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag = false;
-            }
-            var tex = GetGradientTexture(clip, update);
-            if(stageLightTimelineClip.track == null) return;
-            var colorHeight = region.position.height * stageLightTimelineClip.track.colorLineHeight;
-            // var beatHeight = 2f;
 
-            UpdateBeatPoint(clip);
-            if (stageLightTimelineClip.track.drawBeat)
+
+
+            if (stageLightTimelineClip.clipDisplayName != clip.displayName)
             {
+                stageLightTimelineClip.clipDisplayName = clip.displayName;
+            }
+            if (stageLightTimelineClip.track.drawCustomClip)
+            {
+
+                if (syncIconTexture == null) syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
+                var update = stageLightTimelineClip.forceTimelineClipUpdate;
+                if (stageLightTimelineClip.referenceStageLightProfile != null)
+                {
+                    if (stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag) update = true;
+                    stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag = false;
+                }
+
+                var tex = GetGradientTexture(clip, update);
+                if (stageLightTimelineClip.track == null) return;
+                var colorHeight = region.position.height * stageLightTimelineClip.track.colorLineHeight;
+                // var beatHeight = 2f;
+
+                UpdateBeatPoint(clip);
+
                 if (_beatPoint.ContainsKey(stageLightTimelineClip))
                 {
                     var width = region.position.width;
                     var start = region.position.x;
                     foreach (var p in _beatPoint[stageLightTimelineClip])
                     {
-                       
-                        EditorGUI.DrawRect(new Rect(start+width* p, 0, 1, region.position.height),
-                            stageLightTimelineClip.track.beatLineColor);
-                    }     
 
-                   
+                        EditorGUI.DrawRect(new Rect(start + width * p, 0, 1, region.position.height),
+                            stageLightTimelineClip.track.beatLineColor);
+                    }
+
+
                 }
 
                 var size = 10;
@@ -121,28 +130,30 @@ namespace StageLightManeuver
                     // var with = region.position.width;
                     // EditorGUI.DrawRect(new Rect(region.position.x + with*, 0, 1, region.position.height),
                     //     stageLightTimelineClip.track.beatLineColor);
-                }    
-               
+                }
+
+                if (tex)
+                {
+                    GUI.DrawTexture(
+                        new Rect(region.position.x, region.position.height - colorHeight, region.position.width,
+                            colorHeight), tex);
+                }
+
+
+                var iconSize = 12;
+                var margin = 4;
+                if (syncIconTexture && stageLightTimelineClip.referenceStageLightProfile != null &&
+                    stageLightTimelineClip.syncReferenceProfile)
+                {
+                    GUI.DrawTexture(new Rect(region.position.width - iconSize - margin, margin, iconSize, iconSize),
+                        syncIconTexture, ScaleMode.ScaleAndCrop,
+                        true,
+                        0,
+                        new Color(1, 1, 1, 0.5f), 0, 0);
+
+                }
             }
 
-            if (tex)
-            {
-                GUI.DrawTexture(new Rect(region.position.x, region.position.height - colorHeight, region.position.width, colorHeight), tex);
-            }
-
-
-            var iconSize = 12;
-            var margin = 4;
-            if(syncIconTexture && stageLightTimelineClip.referenceStageLightProfile != null && stageLightTimelineClip.syncReferenceProfile)
-            {
-                GUI.DrawTexture(new Rect(region.position.width - iconSize - margin, margin, iconSize, iconSize),
-                    syncIconTexture, ScaleMode.ScaleAndCrop,
-                    true,
-                    0,
-                    new Color(1, 1, 1, 0.5f), 0, 0);
-                
-            }
-            
             stageLightTimelineClip.forceTimelineClipUpdate = false;
         }
         

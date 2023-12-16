@@ -191,6 +191,13 @@ namespace StageLightManeuver
             foreach (var light in lights)
             {
 #if USE_HDRP
+                
+                light.color = lightColor;
+                light.intensity = lightIntensity;
+                light.spotAngle = spotAngle;
+                light.innerSpotAngle = innerSpotAngle;
+                light.range = spotRange;
+                if(!ignoreLightCookie)light.cookie = lightCookie;
                 if (lightData.ContainsKey(light))
                 {
                     var hdAdditionalLightData = lightData[light];
@@ -215,12 +222,12 @@ namespace StageLightManeuver
                     // lightData[light].intensity=lightIntensity;
                 }
 #else
-                light.color = lightColor;
-                light.intensity = lightIntensity;
-                light.spotAngle = spotAngle;
-                light.innerSpotAngle = innerSpotAngle;
-                light.range = spotRange;
-                if(!ignoreLightCookie)light.cookie = lightCookie;
+                // light.color = lightColor;
+                // light.intensity = lightIntensity;
+                // light.spotAngle = spotAngle;
+                // light.innerSpotAngle = innerSpotAngle;
+                // light.range = spotRange;
+                // if(!ignoreLightCookie)light.cookie = lightCookie;
 #endif
 
 #if USE_VLB

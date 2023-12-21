@@ -250,6 +250,11 @@ namespace StageLightManeuver
             
         }
 
-
+        private void OnDestroy()
+        {
+#if UNITY_EDITOR
+            SlmBaseDrawer.ClearCache();
+#endif
+        }
     }
 }

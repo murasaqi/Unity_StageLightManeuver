@@ -177,6 +177,25 @@ namespace StageLightManeuver
                             // if(stageLightProfile)stageLightProfile.isUpdateGuiFlag = true;
                         }
                     }
+                    
+                    // if (mode.enumValueIndex == 3) //Noise
+                    // {
+                    //     var noiseMultiplier = property.FindPropertyRelative("noiseMultiplier");
+                    //     var noiseScale = property.FindPropertyRelative("noiseScale");
+                    //     var noiseSpeed = property.FindPropertyRelative("noiseSpeed");
+                    //     var noiseOffset = property.FindPropertyRelative("noiseOffset");
+                    //     var baseIntensity = property.FindPropertyRelative("baseIntensity");
+                    //     EditorGUI.BeginChangeCheck();
+                    //     EditorGUILayout.PropertyField(baseIntensity);
+                    //     EditorGUILayout.PropertyField(noiseMultiplier);
+                    //     EditorGUILayout.PropertyField(noiseScale);
+                    //     EditorGUILayout.PropertyField(noiseSpeed);
+                    //     EditorGUILayout.PropertyField(noiseOffset);
+                    //     if (EditorGUI.EndChangeCheck())
+                    //     {
+                    //         property.serializedObject.ApplyModifiedProperties();
+                    //     }
+                    // }
                 }
 
                 EditorGUI.indentLevel--;

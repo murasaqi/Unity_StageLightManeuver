@@ -5,7 +5,11 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+
+#if UNITY_EDITOR
 using UnityEditor;
+
+#endif
 
 namespace StageLightManeuver
 {
@@ -250,6 +254,11 @@ namespace StageLightManeuver
             
         }
 
-
+        private void OnDestroy()
+        {
+// #if UNITY_EDITOR
+//             SlmBaseDrawer.ClearCache();
+// #endif
+        }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 namespace StageLightManeuver
 {
 
+
     [Serializable]
     public class MinMaxEasingValue
     {
@@ -21,7 +22,15 @@ namespace StageLightManeuver
             new Keyframe(0,0),
             new Keyframe(1,1)
         });
-
+        [SlmValue("Base Intensity")] public float baseIntensity = 1f;
+        // [SlmValue("Noise Multiplier")]public AnimationCurve noiseMultiplier = new AnimationCurve(new Keyframe[]
+        // {
+        //     new Keyframe(0,0),
+        //     new Keyframe(1,1)
+        // });
+        // [SlmValue("Noise Scale")]public float noiseScale = 1f;
+        // [SlmValue("Noise Speed")]public float noiseSpeed = 1f;
+        // [SlmValue("Noise Offset")]public float noiseOffset = 0f;
 
         public MinMaxEasingValue()
         {
@@ -80,7 +89,14 @@ namespace StageLightManeuver
             else if (mode == AnimationMode.Constant)
             {
                 value = constant;
-            }
+            } 
+            // else if (mode == AnimationMode.Noise)
+            // {
+            //     var randomValue = Mathf.PerlinNoise(Time.time*noiseSpeed,noiseOffset);
+            //     var threshold = noiseMultiplier.Evaluate(randomValue);
+            //     randomValue = randomValue > threshold ? 1f : 0f;
+            //     value = randomValue * baseIntensity;
+            // }
 
             return value;
         }

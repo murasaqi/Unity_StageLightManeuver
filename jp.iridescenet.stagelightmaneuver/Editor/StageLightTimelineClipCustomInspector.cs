@@ -45,6 +45,15 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         private void BeginInspector()
         {
             DrawProfileIO();
+
+            // EditorGUILayout.Space(12);
+            // GUI.backgroundColor = Color.red;
+            // if (GUILayout.Button("Force Reflesh UI"))
+            // {
+            //     SlmBaseDrawer.ClearCache();
+            // }
+            // GUI.backgroundColor = Color.white;
+            
             EditorGUILayout.Space(2);
             EditorGUI.BeginDisabledGroup( stageLightTimelineClip.syncReferenceProfile);
                 // isMultiSelect = false;

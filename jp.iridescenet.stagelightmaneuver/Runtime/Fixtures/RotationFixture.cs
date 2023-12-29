@@ -12,7 +12,7 @@ namespace StageLightManeuver
         public Vector3 rotationAxis = new Vector3(0,0,1);
         public Vector3 offsetRotation = new Vector3(0,0,0);
         [FormerlySerializedAs("rotationScalar")] public float rotationSpeed = 0f;
-        private float rotation = 0f;
+        private Vector3 rotation = Vector3.zero;
 
 
         private void Start()
@@ -23,7 +23,8 @@ namespace StageLightManeuver
         public override void Init()
         {
             base.Init();
-            PropertyTypes.Add(typeof(RotationProperty));       
+            PropertyTypes.Add(typeof(RotationProperty));
+            rotation = Vector3.zero;
         }
         
 
@@ -31,8 +32,7 @@ namespace StageLightManeuver
         {
 
             rotationSpeed = 0f;
-            rotation = 0f;
-            var offsetTime = 0f;
+            // var offsetTime = 0f;
             while (stageLightDataQueue.Count > 0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
@@ -44,17 +44,18 @@ namespace StageLightManeuver
                     return;
 
                 var normalizedTime = SlmUtility.GetNormalizedTime(time, queueData, typeof(RotationProperty),index);
-                offsetTime += SlmUtility.GetOffsetTime(time, queueData, typeof(RotationProperty),index) * queueData.weight;
+                // offsetTime += SlmUtility.GetOffsetTime(time, queueData, typeof(RotationProperty),index) * queueData.weight;
                 rotationSpeed += rotationProperty.rotationSpeed.value.Evaluate(normalizedTime) * queueData.weight;
               
             }
 
-            rotation = (rotationSpeed * offsetTime) % 360;
+            // rotation = rotationSpeed * time;
         }
 
         public override void UpdateFixture()
         {
-            if(target) target.localEulerAngles = offsetRotation + rotationAxis * rotation;
+            rotation += rotationAxis * rotationSpeed * Time.deltaTime;
+            if(target) target.localEulerAngles = offsetRotation+rotation;
         }
     }
     

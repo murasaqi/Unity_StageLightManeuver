@@ -17,7 +17,7 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class SyncLightMaterialFixture : StageLightFixtureBase
     {
-        // public StageLightProperty<bool> fromLightFixture = new StageLightProperty<bool>();
+        [SerializeField] private int materialIndex = 0;
         public List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
 #if USE_HDRP
         public string materialPropertyName =  "_EmissiveColor";
@@ -50,7 +50,7 @@ namespace StageLightManeuver
             foreach (var meshRenderer in meshRenderers)
             {
                 var materialPropertyBlock = new MaterialPropertyBlock();
-                meshRenderer.GetPropertyBlock(materialPropertyBlock);
+                meshRenderer.GetPropertyBlock(materialPropertyBlock,materialIndex);
                 _materialPropertyBlocks.Add(meshRenderer,materialPropertyBlock);
             }
             
@@ -102,7 +102,7 @@ namespace StageLightManeuver
             foreach (var materialPropertyBlock in _materialPropertyBlocks)
             {
                 materialPropertyBlock.Value.SetColor(materialPropertyName,result);
-                materialPropertyBlock.Key.SetPropertyBlock(materialPropertyBlock.Value);
+                materialPropertyBlock.Key.SetPropertyBlock(materialPropertyBlock.Value,materialIndex);
             }
         }
     }

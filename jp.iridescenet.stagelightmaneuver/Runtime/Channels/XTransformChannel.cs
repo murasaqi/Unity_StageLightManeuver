@@ -42,7 +42,7 @@ namespace StageLightManeuver
                 if (xTransformProperty == null) continue;
                 var weight = queueData.weight;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) :  parentStageLight.order;
+                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(XTransformProperty),index);
                 
                 _positionX += xTransformProperty.positionX.value.Evaluate(normalizedTime) * weight;

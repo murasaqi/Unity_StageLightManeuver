@@ -94,7 +94,7 @@ namespace StageLightManeuver
                 var data = stageLightDataQueue.Dequeue();
                 var stageLightBaseProperty= data.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) :  parentStageLight.order;
+                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
                 var barLightProperty = data.TryGetActiveProperty<BarLightIntensityProperty>() as BarLightIntensityProperty;
                 var weight = data.weight;
                 if(barLightProperty == null || stageLightBaseProperty == null) continue;

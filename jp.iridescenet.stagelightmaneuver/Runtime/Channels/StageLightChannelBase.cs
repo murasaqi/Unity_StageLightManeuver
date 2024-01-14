@@ -15,10 +15,10 @@ namespace StageLightManeuver
         [HideInInspector] public List<Type> PropertyTypes = new List<Type>();
         public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
         [HideInInspector]public int updateOrder = 0;
-        public List<StageLightBase> SyncStageLight { get; set; }
-        // [HideInInspector]public StageLight ParentStageLight { get; set; }
+        public List<LightFixtureBase> SyncStageLight { get; set; }
+        // [HideInInspector]public LightFixture ParentStageLight { get; set; }
         [HideInInspector]public float offsetDuration = 0f;
-        [HideInInspector]public StageLight parentStageLight;
+        [FormerlySerializedAs("parentStageLight")] [HideInInspector]public LightFixture parentLightFixture;
         // public int Index { get; set; }
         internal bool hasQue = false;
         public virtual void EvaluateQue(float currentTime)
@@ -34,8 +34,8 @@ namespace StageLightManeuver
         public virtual void Init()
         {
             PropertyTypes.Clear();
-            SyncStageLight = new List<StageLightBase>();
-            foreach (var stageLightChannelBase in GetComponentsInChildren<StageLightBase>())
+            SyncStageLight = new List<LightFixtureBase>();
+            foreach (var stageLightChannelBase in GetComponentsInChildren<LightFixtureBase>())
             {
                 SyncStageLight.Add(stageLightChannelBase);
             }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
-    public class BarLightElement:StageLightBase
+    public class BarLightFixtureElement:LightFixtureBase
     {
         public Light light;
         public Transform pan;

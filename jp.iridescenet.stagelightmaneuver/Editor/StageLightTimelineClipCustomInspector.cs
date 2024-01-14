@@ -234,7 +234,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             EditorGUILayout.Space(1);
 
            
-            if (GUILayout.Button("Select StageLight",GUILayout.MaxWidth(120)))
+            if (GUILayout.Button("Select LightFixture",GUILayout.MaxWidth(120)))
             {
                 if (stageLightTimelineClip.mixer != null && stageLightTimelineClip.mixer.trackBinding != null)
                 {

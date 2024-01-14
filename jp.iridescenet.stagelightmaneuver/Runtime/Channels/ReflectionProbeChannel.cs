@@ -39,7 +39,7 @@ namespace StageLightManeuver
                 var queueData = stageLightDataQueue.Dequeue();
                 var reflectionProbeProperty = queueData.TryGetActiveProperty<ReflectionProbeProperty>() as ReflectionProbeProperty;
                 if (reflectionProbeProperty == null) continue;
-                var index = queueData.TryGetActiveProperty<StageLightOrderProperty>()?.stageLightOrderQueue.GetStageLightIndex(parentStageLight) ?? parentStageLight.order;
+                var index = queueData.TryGetActiveProperty<StageLightOrderProperty>()?.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) ?? parentLightFixture.order;
                 var weight = queueData.weight;
                 var t = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(ReflectionProbeProperty),index);
                 intensity += reflectionProbeProperty.intensity.value.Evaluate(t) * weight;

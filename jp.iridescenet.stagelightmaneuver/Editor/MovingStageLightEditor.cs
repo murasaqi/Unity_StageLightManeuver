@@ -9,18 +9,18 @@ using UnityEngine.UIElements;
 
 namespace StageLightManeuver
 {
-    [CustomEditor(typeof(StageLight))]
+    [CustomEditor(typeof(LightFixture))]
     [CanEditMultipleObjects]
     public class MovingStageLightEditor:Editor
     {
-        private StageLight targetStageLight;
+        private LightFixture _targetLightFixture;
         private List<string> channelList = new List<string>();
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
             // return base.CreateInspectorGUI();
             
-            targetStageLight = target as StageLight;
+            _targetLightFixture = target as LightFixture;
             var indexField = new PropertyField(serializedObject.FindProperty("index"));
             indexField.SetEnabled(false); 
             root.Add(indexField);
@@ -49,9 +49,9 @@ namespace StageLightManeuver
                         null
                     );
                     MethodInfo bound = mi.MakeGenericMethod(type);
-                    var channel =bound.Invoke(targetStageLight.gameObject, null) as StageLightChannelBase;
+                    var channel =bound.Invoke(_targetLightFixture.gameObject, null) as StageLightChannelBase;
                     if(channel)channel.Init();
-                    targetStageLight.FindChannels();
+                    _targetLightFixture.FindChannels();
                 }
             }));
             center.Add(popupField);
@@ -65,7 +65,7 @@ namespace StageLightManeuver
         {
             var executingAssembly = Assembly.GetExecutingAssembly();
             var referencedAssemblies = executingAssembly.GetReferencedAssemblies();
-            if(targetStageLight == null) return;
+            if(_targetLightFixture == null) return;
             foreach ( var assemblyName in referencedAssemblies )
             {
                 var assembly = Assembly.Load( assemblyName );
@@ -79,9 +79,9 @@ namespace StageLightManeuver
                     .ToList()
                     .ForEach(t =>
                     {
-                        if (targetStageLight.StageLightChannels != null && targetStageLight.StageLightChannels.Count>=0)
+                        if (_targetLightFixture.StageLightChannels != null && _targetLightFixture.StageLightChannels.Count>=0)
                         {
-                            if (targetStageLight.StageLightChannels.Find(x =>x!= null && x.GetType().Name == t.Name) == null)
+                            if (_targetLightFixture.StageLightChannels.Find(x =>x!= null && x.GetType().Name == t.Name) == null)
                             {
                                 // Debug.Log(t.Name);
                                 channelList.Add(t.Name);

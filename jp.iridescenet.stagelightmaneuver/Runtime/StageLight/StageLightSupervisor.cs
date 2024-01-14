@@ -13,7 +13,7 @@ namespace StageLightManeuver
     public class StageLightIndex
     {
         public int index = 0;
-        [FormerlySerializedAs("stageLightChannel")] [FormerlySerializedAs("stageLightFx")] public StageLight stageLight;
+        [FormerlySerializedAs("stageLight")] [FormerlySerializedAs("stageLightChannel")] [FormerlySerializedAs("stageLightFx")] public LightFixture lightFixture;
     }
     [Serializable]
     public class StageLightOrderSetting
@@ -25,10 +25,10 @@ namespace StageLightManeuver
     [ExecuteAlways]
     public class StageLightSupervisor: MonoBehaviour
     {
-        public List<StageLight> stageLights = new List<StageLight>();
+        public List<LightFixture> stageLights = new List<LightFixture>();
 
         [HideInInspector] public float weight = 0;
-        // public List<StageLight> AllStageLights => stageLights;
+        // public List<LightFixture> AllStageLights => stageLights;
         
         public List<StageLightOrderSetting> stageLightOrderSettings = new List<StageLightOrderSetting>();
 
@@ -56,7 +56,7 @@ namespace StageLightManeuver
         public void FindStageLightsInChildren()
         {
             stageLights.Clear();
-            stageLights.AddRange(GetComponentsInChildren<StageLight>());
+            stageLights.AddRange(GetComponentsInChildren<LightFixture>());
             Init();
         }
         
@@ -90,9 +90,9 @@ namespace StageLightManeuver
             foreach (var stageLight in stageLights)
             {
 
-                if (stageLight.GetType() == typeof(StageLight))
+                if (stageLight.GetType() == typeof(LightFixture))
                 {
-                    StageLight sl = (StageLight) stageLight;
+                    LightFixture sl = (LightFixture) stageLight;
                     types.AddRange(sl.StageLightChannels.SelectMany(channel => channel.PropertyTypes));
                 }
             }
@@ -114,18 +114,18 @@ namespace StageLightManeuver
             // if (a < stageLightSettings.Count)
             // {
             //     var stageLightSetting = stageLightSettings[a];
-            //     foreach (var stageLight in stageLights)
+            //     foreach (var lightFixture in stageLights)
             //     {
-            //         stageLight.AddQue(stageLightSetting,fader);
+            //         lightFixture.AddQue(stageLightSetting,fader);
             //     }
             // }
             //
             // if (b < stageLightSettings.Count)
             // {
             //     var stageLightSetting =stageLightSettings[b];
-            //     foreach (var stageLight in stageLights)
+            //     foreach (var lightFixture in stageLights)
             //     {
-            //         stageLight.AddQue(stageLightSetting, 1f-fader);
+            //         lightFixture.AddQue(stageLightSetting, 1f-fader);
             //     }
             // }
         }

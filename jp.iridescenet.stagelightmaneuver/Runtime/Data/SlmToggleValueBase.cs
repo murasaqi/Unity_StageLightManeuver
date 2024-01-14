@@ -126,7 +126,7 @@ namespace StageLightManeuver
       public interface IArrayProperty
       {
           // void ResyncArraySize(StageLightSupervisor stageLightSupervisor);
-          public void ResyncArraySize(List<StageLight> stageLights);
+          public void ResyncArraySize(List<LightFixture> stageLights);
       } 
     
     [Serializable]
@@ -145,7 +145,7 @@ namespace StageLightManeuver
             propertyOverride = true;
         }
 
-        public virtual void ResyncArraySize(List<StageLight> stageLights)
+        public virtual void ResyncArraySize(List<LightFixture> stageLights)
         {
             if(clockOverride.value != null && clockOverride.value.arrayStaggerValue != null)
                 clockOverride.value.arrayStaggerValue.ResyncArraySize(stageLights);

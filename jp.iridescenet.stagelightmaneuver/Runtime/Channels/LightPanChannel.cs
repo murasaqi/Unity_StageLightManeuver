@@ -63,7 +63,7 @@ namespace StageLightManeuver
                 var weight = queueData.weight;
                 if (qPanProperty == null || qLightBaseProperty == null) continue;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) :  parentStageLight.order;
+                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(PanProperty),index);
 
                 var manualPanTiltProperty = queueData.TryGetActiveProperty<ManualPanTiltProperty>();

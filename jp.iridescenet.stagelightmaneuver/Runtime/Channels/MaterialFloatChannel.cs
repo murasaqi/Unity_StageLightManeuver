@@ -69,7 +69,7 @@ namespace StageLightManeuver
                 if(materialFloatProperty == null) continue;
                 var weight = queueData.weight;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>();
-                var index = stageLightOrderProperty!= null ? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) : parentStageLight.order;
+                var index = stageLightOrderProperty!= null ? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) : parentLightFixture.order;
 
                 var t = SlmUtility.GetNormalizedTime(currentTime, queueData, typeof(MaterialFloatProperty), index);
                 floatValue += materialFloatProperty.floatValue.value.Evaluate(t) * weight;

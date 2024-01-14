@@ -6,7 +6,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class StageLight: MonoBehaviour,IStageLight
+    public class LightFixture: MonoBehaviour,ILightFixture
     {
         
         [SerializeReference] private List<StageLightChannelBase> stageLightChannels = new List<StageLightChannelBase>();
@@ -21,7 +21,7 @@ namespace StageLightManeuver
             foreach (var stageLightChannel in StageLightChannels)
             {
                 stageLightChannel.Init();
-                stageLightChannel.parentStageLight = this;
+                stageLightChannel.parentLightFixture = this;
             }
         }
 

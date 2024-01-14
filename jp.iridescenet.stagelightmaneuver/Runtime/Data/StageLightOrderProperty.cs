@@ -10,14 +10,14 @@ namespace StageLightManeuver
         public int index = -1;
         public List<StageLightOrderSetting> stageLightOrderSettingList = new List<StageLightOrderSetting>();
         
-        public int GetStageLightIndex(StageLight stageLight)
+        public int GetStageLightIndex(LightFixture lightFixture)
         {
             
-            if(stageLight == null) return 0;
+            if(lightFixture == null) return 0;
            
             if (index < 0)
             {
-                return stageLight.order;
+                return lightFixture.order;
             }
            
             if(stageLightOrderSettingList.Count > index)
@@ -25,14 +25,14 @@ namespace StageLightManeuver
                 var stageLightOrderSetting = stageLightOrderSettingList[index];
                 foreach (var stageLightData in stageLightOrderSetting.stageLightOrder)
                 {
-                    if (stageLightData.stageLight == stageLight)
+                    if (stageLightData.lightFixture == lightFixture)
                     {
                         return stageLightData.index;
                     }
                 }
             }
            
-            return stageLight.order;
+            return lightFixture.order;
         }
     }
     [SlmProperty(isRemovable: false)]
@@ -45,7 +45,7 @@ namespace StageLightManeuver
         {
             
             propertyOrder = -998;
-            propertyName = "StageLight Order";
+            propertyName = "LightFixture Order";
             propertyOverride = true;
             stageLightOrderQueue.stageLightOrderSettingList = new List<StageLightOrderSetting>();
             

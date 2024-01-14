@@ -15,10 +15,10 @@ namespace StageLightManeuver
         public StageLightTimelineTrack stageLightTimelineTrack;
         private bool firstFrameHappened = false;
 
-        public StageLightUniverse trackBinding;
+        public StageLightFixtureBase trackBinding;
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            trackBinding = playerData as StageLightUniverse;
+            trackBinding = playerData as StageLightFixtureBase;
 
             if (!trackBinding)
                 return;
@@ -48,7 +48,7 @@ namespace StageLightManeuver
                 foreach (var stageLightProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)
                 {
                     if(stageLightProperty == null) continue;
-                    stageLightProperty.InitStageLightSupervisor(trackBinding);
+                    stageLightProperty.InitStageLightFixture(trackBinding);
                     if (stageLightProperty.propertyType == StageLightPropertyType.Array )
                     {
                         var additionalArrayProperty = stageLightProperty as IArrayProperty;

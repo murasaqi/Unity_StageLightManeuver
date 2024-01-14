@@ -84,7 +84,7 @@ namespace StageLightManeuver
         {
         }
         
-        public virtual void InitStageLightSupervisor(StageLightUniverse stageLightUniverse)
+        public virtual void InitStageLightFixture(StageLightFixtureBase stageLightFixtureBase)
         {
         }
 

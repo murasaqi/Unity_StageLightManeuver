@@ -51,9 +51,12 @@ namespace StageLightManeuver
             
         }
 
-        public override void InitStageLightSupervisor(StageLightUniverse stageLightUniverse)
+        public override void InitStageLightFixture(StageLightFixtureBase stageLightFixtureBase)
         {
-            stageLightOrderQueue.stageLightOrderSettingList = stageLightUniverse.stageLightFixtureOrderSettings;
+            if (stageLightFixtureBase is StageLightUniverse stageLightUniverse)
+            {
+                stageLightOrderQueue.stageLightOrderSettingList = stageLightUniverse.stageLightFixtureOrderSettings;
+            }
         }
 
         public StageLightOrderProperty( StageLightOrderProperty other)

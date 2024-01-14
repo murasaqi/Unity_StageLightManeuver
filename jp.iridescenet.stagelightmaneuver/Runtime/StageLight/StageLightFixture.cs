@@ -6,15 +6,14 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public class StageLightFixture: MonoBehaviour,IStageLightFixture
+    public class StageLightFixture: StageLightFixtureBase,IStageLightFixture
     {
-        
         [SerializeReference] private List<StageLightChannelBase> stageLightChannels = new List<StageLightChannelBase>();
         public List<StageLightChannelBase> StageLightChannels { get => stageLightChannels; set => stageLightChannels = value; }
  
         public int order = 0;
         [ContextMenu("Init")]
-        public void Init()
+        public override void Init()
         {
             FindChannels();
             stageLightChannels.Sort( (a,b) => a.updateOrder.CompareTo(b.updateOrder));
@@ -23,6 +22,8 @@ namespace StageLightManeuver
                 stageLightChannel.Init();
                 stageLightChannel.parentStageLightFixture = this;
             }
+
+            stageLightFixtures = new List<StageLightFixture>() { this };
         }
 
 
@@ -31,7 +32,7 @@ namespace StageLightManeuver
             Init();
         }
 
-        public void AddQue(StageLightQueueData stageLightQueData)
+        public override void AddQue(StageLightQueueData stageLightQueData)
         {
             // base.AddQue(stageLightQueData);
             foreach (var stageLightChannel in StageLightChannels)
@@ -40,7 +41,7 @@ namespace StageLightManeuver
             }
         }
 
-        public void EvaluateQue(float time)
+        public override void EvaluateQue(float time)
         {
             // base.EvaluateQue(time);
             foreach (var stageLightChannel in StageLightChannels)
@@ -53,7 +54,7 @@ namespace StageLightManeuver
             }
         }
 
-        public void UpdateChannel()
+        public override void UpdateChannel()
         {
             if(stageLightChannels == null) stageLightChannels = new List<StageLightChannelBase>();
             foreach (var stageLightChannel in stageLightChannels)

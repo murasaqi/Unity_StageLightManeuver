@@ -23,21 +23,16 @@ namespace StageLightManeuver
     }
     
     [ExecuteAlways]
-    public class StageLightUniverse: MonoBehaviour
+    public class StageLightUniverse: StageLightFixtureBase
     {
-        [FormerlySerializedAs("stageLights")] public List<StageLightFixture> stageLightFixtures = new List<StageLightFixture>();
-
         [HideInInspector] public float weight = 0;
         // public List<StageLightFixture> AllStageLights => stageLightFixtures;
         
         [FormerlySerializedAs("stageLightOrderSettings")] public List<StageLightFixtureOrderSetting> stageLightFixtureOrderSettings = new List<StageLightFixtureOrderSetting>();
 
         [ContextMenu("Initialize")]
-        public void Init()
+        public override void Init()
         {
-            
-            
-            
             var index = 0;
             foreach (var stageLight in stageLightFixtures)
             {
@@ -65,7 +60,7 @@ namespace StageLightManeuver
             Init();
         }
 
-        public void AddQue(StageLightQueueData stageLightQueData)
+        public override void AddQue(StageLightQueueData stageLightQueData)
         {
             weight = stageLightQueData.weight;
             foreach (var stageLight in stageLightFixtures)
@@ -74,7 +69,7 @@ namespace StageLightManeuver
             }
         }
 
-        public void EvaluateQue(float time)
+        public override void EvaluateQue(float time)
         {
             foreach (var stageLight in stageLightFixtures)
             {
@@ -102,7 +97,7 @@ namespace StageLightManeuver
             return types;
         }
 
-        public void UpdateChannel()
+        public override void UpdateChannel()
         {
             foreach (var stageLightBase in stageLightFixtures)
             {

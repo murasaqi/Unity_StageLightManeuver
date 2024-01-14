@@ -18,7 +18,7 @@ namespace StageLightManeuver
         public List<LightFixtureBase> SyncStageLight { get; set; }
         // [HideInInspector]public StageLightFixture ParentStageLight { get; set; }
         [HideInInspector]public float offsetDuration = 0f;
-        [FormerlySerializedAs("parentStageLightFixture")] [FormerlySerializedAs("parentLightFixture")] [FormerlySerializedAs("parentStageLight")] [HideInInspector]public StageLightFixture parentStageLightFixture;
+        [FormerlySerializedAs("parentStageLightFixture")] [FormerlySerializedAs("parentStageLight")] [HideInInspector]public StageLightFixture parentStageLightFixture;
         // public int Index { get; set; }
         internal bool hasQue = false;
         public virtual void EvaluateQue(float currentTime)

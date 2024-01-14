@@ -6,7 +6,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class LightTiltFixture: StageLightFixtureBase
+    public class LightTiltChannel: StageLightChannelBase
     {
         // private LightTransformType _lightTransformType = LightTransformType.Tilt;
         private float _angle =0f;
@@ -87,7 +87,7 @@ namespace StageLightManeuver
             Init();
         }
         
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             if(ignore) return;
             

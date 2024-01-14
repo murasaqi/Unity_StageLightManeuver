@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
-    public class SmoothLookAtFixture:StageLightFixtureBase
+    public class SmoothLookAtChannel:StageLightChannelBase
     {
         public List<Transform> targetList = new List<Transform>();
         public SmoothLookAt smoothLookAt;
@@ -28,9 +28,9 @@ namespace StageLightManeuver
             }
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
             if(smoothLookAt == null) return;
             if (_targetIndex == 0)
             {

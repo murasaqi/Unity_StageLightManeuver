@@ -86,34 +86,34 @@ namespace StageLightManeuver
         //     
         // }
 
-        public void TryCreatePropertyListByComponentList(List<StageLightFixtureBase> stageLightExtensions)
+        public void TryCreatePropertyListByComponentList(List<StageLightChannelBase> stageLightExtensions)
         {
             stageLightProperties.Clear();
             foreach (var extension in stageLightExtensions)
             {
                 Debug.Log(extension);
-                if (extension.GetType() == typeof(LightFixture))
+                if (extension.GetType() == typeof(LightChannel))
                 {
                     stageLightProperties.Add(new LightProperty());
                 }
             
-                if (extension.GetType() == typeof(LightPanFixture))
+                if (extension.GetType() == typeof(LightPanChannel))
                 {
                     stageLightProperties.Add(new PanProperty());
                 }
             
-                if (extension.GetType() == typeof(LightTiltFixture))
+                if (extension.GetType() == typeof(LightTiltChannel))
                 {
                     stageLightProperties.Add(new TiltProperty());
                 }
                 
-                if (extension.GetType() == typeof(DecalFixture))
+                if (extension.GetType() == typeof(DecalChannel))
                 {
                     stageLightProperties.Add(new DecalProperty());
                 }
 #if USE_VLB_ALTER
                 
-                if (extension.GetType() == typeof(GoboFixture))
+                if (extension.GetType() == typeof(GoboChannel))
                 {
                     stageLightProperties.Add(new GoboProperty());
                 }

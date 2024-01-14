@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 
 namespace StageLightManeuver
 {
-    public class EnvironmentFixture:StageLightFixtureBase
+    public class EnvironmentChannel:StageLightChannelBase
     {
         public AmbientMode initialAmbientMode = AmbientMode.Flat;
         public float initialIntensity = 1;
@@ -51,9 +51,9 @@ namespace StageLightManeuver
             }
         }
         
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
             RenderSettings.ambientMode = _ambientMode;
             RenderSettings.ambientSkyColor = SlmUtility.GetHDRColor(_ambientColor, _intensity);
         }

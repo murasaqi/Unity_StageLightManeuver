@@ -33,7 +33,7 @@ namespace StageLightManeuver
         
     }
 
-    public class BarLightFixture : StageLightFixtureBase
+    public class BarLightChannel : StageLightChannelBase
     {
         private float lightIndex = 0;
         public List<Light> lights = new List<Light>();
@@ -121,7 +121,7 @@ namespace StageLightManeuver
             
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
 //             if (lights==null) return;
 //             foreach (var light in lights)

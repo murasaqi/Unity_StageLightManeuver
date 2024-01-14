@@ -5,7 +5,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class ReflectionProbeFixture:StageLightFixtureBase
+    public class ReflectionProbeChannel:StageLightChannelBase
     {
         public List<ReflectionProbe> reflectionProbes = new List<ReflectionProbe>();
         public List<float> intensityBias = new List<float>();
@@ -46,9 +46,9 @@ namespace StageLightManeuver
             }
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
             foreach (var reflectionProbe in reflectionProbes)
             {
                 var i = reflectionProbes.IndexOf(reflectionProbe);

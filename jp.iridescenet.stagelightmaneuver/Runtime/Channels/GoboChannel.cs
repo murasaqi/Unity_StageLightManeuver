@@ -9,7 +9,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class GoboFixture:StageLightFixtureBase
+    public class GoboChannel:StageLightChannelBase
     {
         public VolumetricLightBeam volumetricLightBeam;
         public MeshRenderer meshRenderer;
@@ -80,7 +80,7 @@ namespace StageLightManeuver
         }
         
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             
             if (goboTransform != null)

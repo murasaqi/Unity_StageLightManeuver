@@ -6,7 +6,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class RotationFixture:StageLightFixtureBase
+    public class RotationChannel:StageLightChannelBase
     {
         public Transform target;
         public Vector3 rotationAxis = new Vector3(0,0,1);
@@ -52,7 +52,7 @@ namespace StageLightManeuver
             // rotation = rotationSpeed * time;
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             rotation += rotationAxis * rotationSpeed * Time.deltaTime;
             if(target) target.localEulerAngles = offsetRotation+rotation;

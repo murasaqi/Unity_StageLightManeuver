@@ -7,10 +7,10 @@ namespace StageLightManeuver
  
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class BarLightPanFixture: StageLightFixtureBase
+    public class BarLightPanChannel: StageLightChannelBase
     {
         // private LightTransformType _lightTransformType = LightTransformType.Pan;
-        public List<LightPanFixture> lightPanFixtures = new List<LightPanFixture>();
+        public List<LightPanChannel> lightPanChannels = new List<LightPanChannel>();
         void Start()
         {
             Init();
@@ -76,7 +76,7 @@ namespace StageLightManeuver
             // _angle = Mathf.Clamp(_angle, minAngleValue, maxAngleValue);
         
         
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             // if(ignore) return;
             //

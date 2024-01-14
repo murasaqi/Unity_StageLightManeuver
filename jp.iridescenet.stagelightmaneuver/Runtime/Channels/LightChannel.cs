@@ -20,7 +20,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class LightFixture : StageLightFixtureBase
+    public class LightChannel : StageLightChannelBase
     {
         public List<Light> lights = new List<Light>();
 #if USE_HDRP
@@ -185,7 +185,7 @@ namespace StageLightManeuver
             
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             if (lights==null) return;
             foreach (var light in lights)

@@ -15,7 +15,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class SyncLightMaterialFixture : StageLightFixtureBase
+    public class SyncLightMaterialChannel : StageLightChannelBase
     {
         [SerializeField] private int materialIndex = 0;
         public List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
@@ -29,8 +29,8 @@ namespace StageLightManeuver
         public float maxIntensityLimit = 3;
         public bool brightnessDecreasesToBlack = true;
         private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
-        [FormerlySerializedAs("lightFixtureFixture")] [FormerlySerializedAs("lightFxFixture")]
-        public LightFixture lightFixture;
+        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
+        public LightChannel lightChannel;
         private void Start()
         {
             Init();
@@ -39,7 +39,7 @@ namespace StageLightManeuver
         private void OnEnable()
         {
             Init(); 
-            lightFixture = GetComponent<LightFixture>();
+            lightChannel = GetComponent<LightChannel>();
         }
 
         public override void Init()
@@ -86,16 +86,16 @@ namespace StageLightManeuver
 
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            if(lightFixture == null) return;
+            if(lightChannel == null) return;
             if (_materialPropertyBlocks == null|| _materialPropertyBlocks.Count != meshRenderers.Count)
             {
                 Init();
             }
             
-            var intensity = Mathf.Min(lightFixture.lightIntensity * intensityMultiplier,maxIntensityLimit);
-            var hdrColor = SlmUtility.GetHDRColor(lightFixture.lightColor,
+            var intensity = Mathf.Min(lightChannel.lightIntensity * intensityMultiplier,maxIntensityLimit);
+            var hdrColor = SlmUtility.GetHDRColor(lightChannel.lightColor,
                 intensity);
             var result = brightnessDecreasesToBlack ? Color.Lerp(Color.black,hdrColor, Mathf.Clamp(intensity, 0, 1f)) : hdrColor;
 

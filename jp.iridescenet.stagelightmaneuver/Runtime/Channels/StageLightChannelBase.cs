@@ -10,7 +10,7 @@ namespace StageLightManeuver
   
     [Serializable]
     [AddComponentMenu("")]
-    public abstract class StageLightFixtureBase: MonoBehaviour,IStageLightFixture
+    public abstract class StageLightChannelBase: MonoBehaviour,IStageLightChannel
     {
         [HideInInspector] public List<Type> PropertyTypes = new List<Type>();
         public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
@@ -26,7 +26,7 @@ namespace StageLightManeuver
 
         }
 
-        public virtual void UpdateFixture()
+        public virtual void UpdateChannel()
         {
             
         }
@@ -35,9 +35,9 @@ namespace StageLightManeuver
         {
             PropertyTypes.Clear();
             SyncStageLight = new List<StageLightBase>();
-            foreach (var stageLightFixtureBase in GetComponentsInChildren<StageLightBase>())
+            foreach (var stageLightChannelBase in GetComponentsInChildren<StageLightBase>())
             {
-                SyncStageLight.Add(stageLightFixtureBase);
+                SyncStageLight.Add(stageLightChannelBase);
             }
         }
         

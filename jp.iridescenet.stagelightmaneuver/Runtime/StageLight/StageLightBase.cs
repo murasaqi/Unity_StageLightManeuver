@@ -6,7 +6,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [ExecuteAlways]
-    public abstract class StageLightBase: MonoBehaviour,IStageLightFixture
+    public abstract class StageLightBase: MonoBehaviour,IStageLightChannel
     {
         
         // [SerializeField]private int index = 0;
@@ -24,7 +24,7 @@ namespace StageLightManeuver
             
         }
 
-        public virtual void UpdateFixture()
+        public virtual void UpdateChannel()
         {
             
         }

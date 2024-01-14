@@ -9,9 +9,9 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class VolumetricLightBeamSDFixture : StageLightFixtureBase
+    public class VolumetricLightBeamSDChannel : StageLightChannelBase
     {
-        public LightFixture lightFixture;
+        public LightChannel lightChannel;
         internal VolumetricLightBeamSD volumetricLightBeamSd;
         public float intensityMultiplier;
         public float lightRangeMultiplier;
@@ -24,7 +24,7 @@ namespace StageLightManeuver
         public override void Init()
         {
             base.Init();
-            volumetricLightBeamSd = lightFixture.volumetricLightBeamSd;
+            volumetricLightBeamSd = lightChannel.volumetricLightBeamSd;
             if (volumetricLightBeamSd == null) return;
             intensityMultiplier = volumetricLightBeamSd.intensityMultiplier;
             lightRangeMultiplier = volumetricLightBeamSd.fallOffEndMultiplier;
@@ -56,12 +56,12 @@ namespace StageLightManeuver
             }
         }
         
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
             if (volumetricLightBeamSd == null)
             {
-                volumetricLightBeamSd = lightFixture.volumetricLightBeamSd;
+                volumetricLightBeamSd = lightChannel.volumetricLightBeamSd;
                 if(volumetricLightBeamSd == null) return;
             }
             // volumetricLightBeamHd.

@@ -8,15 +8,15 @@ namespace StageLightManeuver
 
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class XTransformFixture : StageLightFixtureBase
+    public class YTransformChannel : StageLightChannelBase
     {
         public Transform target;
-        private float _positionX;
-        public float offsetX = 0f;
+        private float _positionY;
+        public float offsetY = 0f;
         public float smoothTime = 0.1f;
         public bool useSmoothness = false;
-        public float previousPositionX = 0f;
-        public float currentPositionX = 0f;
+        public float previousPositionY = 0f;
+        public float currentPositionY = 0f;
       
         void Start()
         {
@@ -33,7 +33,7 @@ namespace StageLightManeuver
         {
             base.EvaluateQue(currentTime);
             smoothTime = 0f;
-            _positionX = 0f;
+            _positionY = 0f;
 
             while (stageLightDataQueue.Count >0)
             {
@@ -43,30 +43,30 @@ namespace StageLightManeuver
                 var weight = queueData.weight;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLight) :  parentStageLight.order;
-                var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(XTransformProperty),index);
+                var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(YTransformProperty),index);
                 
-                _positionX += xTransformProperty.positionX.value.Evaluate(normalizedTime) * weight;
+                _positionY += xTransformProperty.positionX.value.Evaluate(normalizedTime) * weight;
             }
             
             
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
            if(useSmoothness) return;
            if(target == null) return;
-           target.localPosition = new Vector3(_positionX+offsetX, target.localPosition.y, target.localPosition.z);
+           target.localPosition = new Vector3(target.localPosition.x, _positionY+offsetY, target.localPosition.z);
         }
 
         public void Update()
         {
             if(!useSmoothness) return;
-            var smoothPositionX = Mathf.SmoothDamp(previousPositionX, _positionX+offsetX, ref currentPositionX, smoothTime);
+            var smoothPositionX = Mathf.SmoothDamp(previousPositionY, _positionY, ref currentPositionY, smoothTime);
             if(target == null) return;
-            target.localPosition = new Vector3(smoothPositionX, target.localPosition.y, target.localPosition.z);
-            previousPositionX = smoothPositionX;
-            
+            target.localPosition = new Vector3(target.localPosition.x, smoothPositionX+offsetY, target.localPosition.z);
+            previousPositionY = smoothPositionX;
+
         }
     }
 

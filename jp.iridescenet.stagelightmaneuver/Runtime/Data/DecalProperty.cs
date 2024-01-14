@@ -6,7 +6,7 @@ namespace StageLightManeuver
     [Serializable]
     public class DecalProperty : SlmAdditionalProperty
     {
-        public SlmToggleValue<bool> syncLightFixture;
+        public SlmToggleValue<bool> syncLightChannel;
         public SlmToggleValue<Texture2D> decalTexture;
         public SlmToggleValue<float> decalSizeScaler;
         public SlmToggleValue<float> floorHeight;
@@ -25,7 +25,7 @@ namespace StageLightManeuver
             decalDepthScaler = new SlmToggleValue<float> { value = 1f };
             fadeFactor = new SlmToggleValue<float> { value = 1f };
             opacity = new SlmToggleValue<float> { value = 1f };
-            syncLightFixture = new SlmToggleValue<bool>(){value = true};
+            syncLightChannel = new SlmToggleValue<bool>(){value = true};
             radius = new SlmToggleValue<float>(){value = 1f};
             
         }
@@ -41,7 +41,7 @@ namespace StageLightManeuver
             decalDepthScaler.propertyOverride = toggle;
             fadeFactor.propertyOverride = toggle;
             opacity.propertyOverride = toggle;
-            syncLightFixture.propertyOverride = toggle;
+            syncLightChannel.propertyOverride = toggle;
             radius.propertyOverride = toggle;
             
         }
@@ -61,7 +61,7 @@ namespace StageLightManeuver
             decalDepthScaler = new SlmToggleValue<float>(other.decalDepthScaler);
             fadeFactor = new SlmToggleValue<float>(other.fadeFactor);
             opacity = new SlmToggleValue<float>(other.opacity);
-            syncLightFixture = new SlmToggleValue<bool>(other.syncLightFixture);
+            syncLightChannel = new SlmToggleValue<bool>(other.syncLightChannel);
             radius = new SlmToggleValue<float>(other.radius);
             
         }
@@ -80,7 +80,7 @@ namespace StageLightManeuver
                 if(decalProperty.decalDepthScaler.propertyOverride) decalDepthScaler.value = decalProperty.decalDepthScaler.value;
                 if(decalProperty.fadeFactor.propertyOverride) fadeFactor.value = decalProperty.fadeFactor.value;
                 if(decalProperty.opacity.propertyOverride) opacity.value = decalProperty.opacity.value;
-                if(decalProperty.syncLightFixture.propertyOverride) syncLightFixture.value = decalProperty.syncLightFixture.value;
+                if(decalProperty.syncLightChannel.propertyOverride) syncLightChannel.value = decalProperty.syncLightChannel.value;
                 if(decalProperty.radius.propertyOverride) radius.value = decalProperty.radius.value;
             }
         }

@@ -14,7 +14,7 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class SyncLensFlareFixture : StageLightFixtureBase
+    public class SyncLensFlareChannel : StageLightChannelBase
     {
        
 
@@ -22,7 +22,7 @@ namespace StageLightManeuver
         
         public float intensityMultiplier = 1f;
         public float maxIntensityLimit = 3;
-        public LightFixture lightFixture;
+        public LightChannel lightChannel;
         private float scale = 0f;
         private void Start()
         {
@@ -32,7 +32,7 @@ namespace StageLightManeuver
         private void OnEnable()
         {
             Init(); 
-            lightFixture = GetComponent<LightFixture>();
+            lightChannel = GetComponent<LightChannel>();
         }
 
         public override void Init()
@@ -65,11 +65,11 @@ namespace StageLightManeuver
 
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            if(lightFixture == null) return;
+            if(lightChannel == null) return;
            
-            var intensity = Mathf.Min(lightFixture.lightIntensity * intensityMultiplier,maxIntensityLimit);
+            var intensity = Mathf.Min(lightChannel.lightIntensity * intensityMultiplier,maxIntensityLimit);
             lensFlareSRP.intensity = intensity;
             lensFlareSRP.scale = scale;
         }

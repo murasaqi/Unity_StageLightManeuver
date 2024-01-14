@@ -69,12 +69,12 @@ namespace StageLightManeuver
                 if (!hasAnyClipPlaying)
                 {
                     if (stageLightTimelineTrack.updateOnOutOfClip) trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateFixture();
+                    trackBinding.UpdateChannel();
                 }
                 else
                 {
                     trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateFixture();
+                    trackBinding.UpdateChannel();
                 }
             }
 

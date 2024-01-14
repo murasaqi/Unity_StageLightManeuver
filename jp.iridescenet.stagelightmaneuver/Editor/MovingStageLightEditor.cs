@@ -14,7 +14,7 @@ namespace StageLightManeuver
     public class MovingStageLightEditor:Editor
     {
         private StageLight targetStageLight;
-        private List<string> fixtureList = new List<string>();
+        private List<string> channelList = new List<string>();
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
@@ -24,9 +24,9 @@ namespace StageLightManeuver
             var indexField = new PropertyField(serializedObject.FindProperty("index"));
             indexField.SetEnabled(false); 
             root.Add(indexField);
-            root.Add(new PropertyField(serializedObject.FindProperty("stageLightFixtures")));
-            fixtureList = new List<string>();
-            fixtureList.Add("Add New Fixture");
+            root.Add(new PropertyField(serializedObject.FindProperty("stageLightChannels")));
+            channelList = new List<string>();
+            channelList.Add("Add New Channel");
           
            
 
@@ -34,8 +34,8 @@ namespace StageLightManeuver
 
             var center = new VisualElement();
             center.style.alignItems = Align.Center;
-            var popupField = new PopupField<string>(fixtureList, 0);
-            popupField.SetEnabled( fixtureList.Count > 1 );
+            var popupField = new PopupField<string>(channelList, 0);
+            popupField.SetEnabled( channelList.Count > 1 );
             popupField.RegisterValueChangedCallback((evt =>
             {
                 if (popupField.index != 0)
@@ -49,9 +49,9 @@ namespace StageLightManeuver
                         null
                     );
                     MethodInfo bound = mi.MakeGenericMethod(type);
-                    var fixture =bound.Invoke(targetStageLight.gameObject, null) as StageLightFixtureBase;
-                    if(fixture)fixture.Init();
-                    targetStageLight.FindFixtures();
+                    var channel =bound.Invoke(targetStageLight.gameObject, null) as StageLightChannelBase;
+                    if(channel)channel.Init();
+                    targetStageLight.FindChannels();
                 }
             }));
             center.Add(popupField);
@@ -75,16 +75,16 @@ namespace StageLightManeuver
                     continue;
                 }
                 var types = assembly.GetTypes();
-                types.Where(t => t.IsSubclassOf(typeof(StageLightFixtureBase)))
+                types.Where(t => t.IsSubclassOf(typeof(StageLightChannelBase)))
                     .ToList()
                     .ForEach(t =>
                     {
-                        if (targetStageLight.StageLightFixtures != null && targetStageLight.StageLightFixtures.Count>=0)
+                        if (targetStageLight.StageLightChannels != null && targetStageLight.StageLightChannels.Count>=0)
                         {
-                            if (targetStageLight.StageLightFixtures.Find(x =>x!= null && x.GetType().Name == t.Name) == null)
+                            if (targetStageLight.StageLightChannels.Find(x =>x!= null && x.GetType().Name == t.Name) == null)
                             {
                                 // Debug.Log(t.Name);
-                                fixtureList.Add(t.Name);
+                                channelList.Add(t.Name);
                             }      
                         }
                     });

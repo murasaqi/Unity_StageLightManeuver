@@ -13,7 +13,7 @@ namespace StageLightManeuver
     public class StageLightIndex
     {
         public int index = 0;
-        [FormerlySerializedAs("stageLightFixture")] [FormerlySerializedAs("stageLightFx")] public StageLight stageLight;
+        [FormerlySerializedAs("stageLightChannel")] [FormerlySerializedAs("stageLightFx")] public StageLight stageLight;
     }
     [Serializable]
     public class StageLightOrderSetting
@@ -93,7 +93,7 @@ namespace StageLightManeuver
                 if (stageLight.GetType() == typeof(StageLight))
                 {
                     StageLight sl = (StageLight) stageLight;
-                    types.AddRange(sl.StageLightFixtures.SelectMany(fixture => fixture.PropertyTypes));
+                    types.AddRange(sl.StageLightChannels.SelectMany(channel => channel.PropertyTypes));
                 }
             }
 
@@ -102,11 +102,11 @@ namespace StageLightManeuver
             return types;
         }
 
-        public void UpdateFixture()
+        public void UpdateChannel()
         {
             foreach (var stageLightBase in stageLights)
             {
-                if(stageLightBase != null)stageLightBase.UpdateFixture();
+                if(stageLightBase != null)stageLightBase.UpdateChannel();
             }
         }
         void Update()

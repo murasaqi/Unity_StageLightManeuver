@@ -124,11 +124,11 @@ namespace StageLightManeuver
 
             foreach (var propertyType in propertyTypes)
             {
-                // if not contain fixture type in queData, add it
+                // if not contain channel type in queData, add it
                 if (queData.stageLightProperties.Find( x => x.GetType() == propertyType) == null)
                 {
-                    var fixture = Activator.CreateInstance(propertyType) as SlmProperty;
-                    queData.stageLightProperties.Add(fixture);
+                    var channel = Activator.CreateInstance(propertyType) as SlmProperty;
+                    queData.stageLightProperties.Add(channel);
                 }
             }
         }

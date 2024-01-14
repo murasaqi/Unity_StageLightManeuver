@@ -8,7 +8,7 @@ namespace StageLightManeuver
 
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class ZTransformFixture : StageLightFixtureBase
+    public class ZTransformChannel : StageLightChannelBase
     {
         public Transform target;
         private float _positionZ;
@@ -51,9 +51,9 @@ namespace StageLightManeuver
             
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
-            base.UpdateFixture();
+            base.UpdateChannel();
            if(useSmoothness) return;
            if(target == null) return;
               target.localPosition = new Vector3(target.localPosition.x, target.localPosition.y, _positionZ+offsetZ);

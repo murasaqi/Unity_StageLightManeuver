@@ -5,12 +5,12 @@ namespace StageLightManeuver
 {
     public interface IStageLight
     {
-        public List<StageLightFixtureBase> StageLightFixtures { get; set; }
+        public List<StageLightChannelBase> StageLightChannels { get; set; }
         // public void Init(StageLight stageLight);
 
-        public T TryGetFixture<T>() where T : StageLightFixtureBase
+        public T TryGetChannel<T>() where T : StageLightChannelBase
         {
-            return StageLightFixtures.FirstOrDefault(x => x is T) as T;
+            return StageLightChannels.FirstOrDefault(x => x is T) as T;
         }
         
         public void Init()

@@ -6,12 +6,12 @@ using UnityEngine.Serialization;
 
 namespace StageLightManeuver
 {
-    public class LookAtFixture:StageLightFixtureBase
+    public class LookAtChannel:StageLightChannelBase
     {
         
-        [FormerlySerializedAs("panFixtureFixture")] [FormerlySerializedAs("fxPanFixture")] public LightPanFixture panFixture;
-        [FormerlySerializedAs("tiltFixtureFixture")] [FormerlySerializedAs("fxTiltFixture")]
-        public LightTiltFixture tiltFixture;
+        [FormerlySerializedAs("panChannelChannel")] [FormerlySerializedAs("fxPanChannel")] public LightPanChannel panChannel;
+        [FormerlySerializedAs("tiltChannelChannel")] [FormerlySerializedAs("fxTiltChannel")]
+        public LightTiltChannel tiltChannel;
         public List<Transform> lookAtTransforms = new List<Transform>();
         public int lookAtTransformIndex = 0;
         public float lookAtWeight = 1f;
@@ -105,34 +105,34 @@ namespace StageLightManeuver
             }
         }
         
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             if(lookAtDummy == null)
                 InitLookAt();
 
             var lookAtTransformLocalEulerAngles = lookAtDummy.transform.localEulerAngles;
-            if (panFixture)
+            if (panChannel)
             {
                 var panAngle =
-                    panoffset + new Vector3(lookAtTransformLocalEulerAngles.x * panFixture.rotationVector.x,
-                        lookAtTransformLocalEulerAngles.y * panFixture.rotationVector.y,
-                        lookAtTransformLocalEulerAngles.z * panFixture.rotationVector.z);
+                    panoffset + new Vector3(lookAtTransformLocalEulerAngles.x * panChannel.rotationVector.x,
+                        lookAtTransformLocalEulerAngles.y * panChannel.rotationVector.y,
+                        lookAtTransformLocalEulerAngles.z * panChannel.rotationVector.z);
 
-                panFixture.rotateTransform.localEulerAngles = panAngle;
-                // panFixture.rotateTransform.localEulerAngles += ( panAngle - panFixture.rotateTransform.localEulerAngles) * speed;
+                panChannel.rotateTransform.localEulerAngles = panAngle;
+                // panChannel.rotateTransform.localEulerAngles += ( panAngle - panChannel.rotateTransform.localEulerAngles) * speed;
             }
 
-            if (tiltFixture)
+            if (tiltChannel)
             {
-                // Debug.Log(tiltFixture);
+                // Debug.Log(tiltChannel);
                var tiltAngle =
-                    tiltOffset + new Vector3(lookAtTransformLocalEulerAngles.x * tiltFixture.rotationVector.x,
-                        lookAtTransformLocalEulerAngles.y * tiltFixture.rotationVector.y,
-                        lookAtTransformLocalEulerAngles.z * tiltFixture.rotationVector.z);
+                    tiltOffset + new Vector3(lookAtTransformLocalEulerAngles.x * tiltChannel.rotationVector.x,
+                        lookAtTransformLocalEulerAngles.y * tiltChannel.rotationVector.y,
+                        lookAtTransformLocalEulerAngles.z * tiltChannel.rotationVector.z);
                
                 
-                tiltFixture.rotateTransform.localEulerAngles = tiltAngle;
-                // tiltFixture.rotateTransform.localEulerAngles += (tiltAngle - tiltFixture.rotateTransform.localEulerAngles)  * speed;
+                tiltChannel.rotateTransform.localEulerAngles = tiltAngle;
+                // tiltChannel.rotateTransform.localEulerAngles += (tiltAngle - tiltChannel.rotateTransform.localEulerAngles)  * speed;
                 
             }
         }

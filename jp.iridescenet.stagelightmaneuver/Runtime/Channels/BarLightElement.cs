@@ -17,7 +17,7 @@ namespace StageLightManeuver
             }
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     [AddComponentMenu("")]
-    public class MaterialTextureFixture:StageLightFixtureBase
+    public class MaterialTextureChannel:StageLightChannelBase
     {
         public List<MeshRenderer> meshRenderers;
         public int materialIndex;
@@ -70,7 +70,7 @@ namespace StageLightManeuver
             }
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             
             if (_materialPropertyBlockDictionary == null )

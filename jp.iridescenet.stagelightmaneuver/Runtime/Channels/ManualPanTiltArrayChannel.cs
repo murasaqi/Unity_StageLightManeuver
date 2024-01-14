@@ -5,10 +5,10 @@
 // namespace StageLightManeuver
 // {
 //     [AddComponentMenu("")]
-//     public class ManualPanTiltArrayFixture : StageLightFixtureBase
+//     public class ManualPanTiltArrayChannel : StageLightChannelBase
 //     {
 //         // public List<Vector2> panTiltPositions = new List<Vector2>();
-//         [SerializeReference]public List<IStageLightFixture> stageLights = new List<IStageLightFixture>();
+//         [SerializeReference]public List<IStageLightChannel> stageLights = new List<IStageLightChannel>();
 //
 //
 //         public override void Init()
@@ -23,14 +23,14 @@
 // //             {
 // //                 if (i < stageLights.Count)
 // //                 {
-// //                     var iStageLightFixture = stageLights[i];
+// //                     var iStageLightChannel = stageLights[i];
 // //                     
-// //                     panTiltPositions[i].X += panFixture.rotationSpeed;
+// //                     panTiltPositions[i].X += panChannel.rotationSpeed;
 // //                     
-// //                     var tiltFixture = iStageLightFixture.TryGetFixture<LightTiltFixture>();
+// //                     var tiltChannel = iStageLightChannel.TryGetChannel<LightTiltChannel>();
 // //                     // rotationVector = til
-// //                     tiltFixture.rotateTransform.transform.localEulerAngles = tiltFixture.rotationVector * panTiltPositions[i].Y;
-// // Debug.Log($"{panTiltPositions[i].X},{panTiltPositions[i].Y},{panFixture.rotationVector},{tiltFixture.rotationVector}");
+// //                     tiltChannel.rotateTransform.transform.localEulerAngles = tiltChannel.rotationVector * panTiltPositions[i].Y;
+// // Debug.Log($"{panTiltPositions[i].X},{panTiltPositions[i].Y},{panChannel.rotationVector},{tiltChannel.rotationVector}");
 // //                 }
 // //             }
 //         }

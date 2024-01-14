@@ -8,7 +8,7 @@ namespace StageLightManeuver
     
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class MaterialColorFixture:StageLightFixtureBase
+    public class MaterialColorChannel:StageLightChannelBase
     {
         public Renderer meshRenderer;
         public List<Renderer> syncMeshRenderers = new List<Renderer>();
@@ -91,7 +91,7 @@ namespace StageLightManeuver
             }
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             if (_materialPropertyBlock == null || _materialPropertyBlocks == null) return;
             {

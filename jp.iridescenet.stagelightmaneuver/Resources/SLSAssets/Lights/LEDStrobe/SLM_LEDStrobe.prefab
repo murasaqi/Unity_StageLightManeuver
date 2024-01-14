@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c8e0991a34e9bb76553b0a3fd8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLightFixtures:
+  stageLightChannels:
   - {fileID: 0}
   - {fileID: 1216909968924142055}
   - {fileID: 6856750791723279793}
@@ -334,7 +334,7 @@ MonoBehaviour:
   intensityMultiplier: 1
   maxIntensityLimit: 3
   brightnessDecreasesToBlack: 1
-  lightFixture: {fileID: 6856750791723279793}
+  lightChannel: {fileID: 6856750791723279793}
 --- !u!4 &1759961522659136311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e826000cf6109d45a55d0b2b02ac077,

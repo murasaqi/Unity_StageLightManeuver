@@ -9,19 +9,19 @@ namespace StageLightManeuver
     public class StageLight: MonoBehaviour,IStageLight
     {
         
-        [SerializeReference] private List<StageLightFixtureBase> stageLightFixtures = new List<StageLightFixtureBase>();
-        public List<StageLightFixtureBase> StageLightFixtures { get => stageLightFixtures; set => stageLightFixtures = value; }
+        [SerializeReference] private List<StageLightChannelBase> stageLightChannels = new List<StageLightChannelBase>();
+        public List<StageLightChannelBase> StageLightChannels { get => stageLightChannels; set => stageLightChannels = value; }
  
         public int order = 0;
         [ContextMenu("Init")]
         public void Init()
         {
-            FindFixtures();
-            stageLightFixtures.Sort( (a,b) => a.updateOrder.CompareTo(b.updateOrder));
-            foreach (var stageLightFixture in StageLightFixtures)
+            FindChannels();
+            stageLightChannels.Sort( (a,b) => a.updateOrder.CompareTo(b.updateOrder));
+            foreach (var stageLightChannel in StageLightChannels)
             {
-                stageLightFixture.Init();
-                stageLightFixture.parentStageLight = this;
+                stageLightChannel.Init();
+                stageLightChannel.parentStageLight = this;
             }
         }
 
@@ -34,48 +34,48 @@ namespace StageLightManeuver
         public void AddQue(StageLightQueueData stageLightQueData)
         {
             // base.AddQue(stageLightQueData);
-            foreach (var stageLightFixture in StageLightFixtures)
+            foreach (var stageLightChannel in StageLightChannels)
             {
-                if(stageLightFixture != null)stageLightFixture.stageLightDataQueue.Enqueue(stageLightQueData);
+                if(stageLightChannel != null)stageLightChannel.stageLightDataQueue.Enqueue(stageLightQueData);
             }
         }
 
         public void EvaluateQue(float time)
         {
             // base.EvaluateQue(time);
-            foreach (var stageLightFixture in StageLightFixtures)
+            foreach (var stageLightChannel in StageLightChannels)
             {
-                if (stageLightFixture != null)
+                if (stageLightChannel != null)
                 {
-                    stageLightFixture.EvaluateQue(time);
-                    // stageLightFixture.Index = Index;
+                    stageLightChannel.EvaluateQue(time);
+                    // stageLightChannel.Index = Index;
                 }
             }
         }
 
-        public void UpdateFixture()
+        public void UpdateChannel()
         {
-            if(stageLightFixtures == null) stageLightFixtures = new List<StageLightFixtureBase>();
-            foreach (var stageLightFixture in stageLightFixtures)
+            if(stageLightChannels == null) stageLightChannels = new List<StageLightChannelBase>();
+            foreach (var stageLightChannel in stageLightChannels)
             {
-                if(stageLightFixture)stageLightFixture.UpdateFixture();
+                if(stageLightChannel)stageLightChannel.UpdateChannel();
             }
         }
 
 
         private void Update()
         {
-            // UpdateFixture();
+            // UpdateChannel();
         }
 
         private void OnDestroy()
         {
             // Debug.Log("On Destroy");
-            // for (int i = stageLightFixtures.Count-1; i >=0; i--)
+            // for (int i = stageLightChannels.Count-1; i >=0; i--)
             // {
             //     try
             //     {
-            //         if(stageLightFixtures[i]!= null)DestroyImmediate(stageLightFixtures[i]);
+            //         if(stageLightChannels[i]!= null)DestroyImmediate(stageLightChannels[i]);
             //     }
             //     catch (Exception e)
             //     {
@@ -86,18 +86,18 @@ namespace StageLightManeuver
         }
 
 
-        [ContextMenu("Find Fixtures")]
-        public void FindFixtures()
+        [ContextMenu("Find Channels")]
+        public void FindChannels()
         {
-            if (stageLightFixtures != null)
+            if (stageLightChannels != null)
             {
-                StageLightFixtures.Clear();
+                StageLightChannels.Clear();
             }
             else
             {
-                stageLightFixtures = new List<StageLightFixtureBase>();
+                stageLightChannels = new List<StageLightChannelBase>();
             }
-            StageLightFixtures = GetComponents<StageLightFixtureBase>().ToList();
+            StageLightChannels = GetComponents<StageLightChannelBase>().ToList();
         }
     }
 }

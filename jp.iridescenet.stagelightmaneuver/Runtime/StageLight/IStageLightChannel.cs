@@ -5,7 +5,7 @@ using UnityEngine;
 namespace StageLightManeuver
 {
 
-    public interface IStageLightFixture
+    public interface IStageLightChannel
     {
         public List<StageLightBase> SyncStageLight { get; set; }
         public void EvaluateQue(float time);

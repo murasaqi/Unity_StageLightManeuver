@@ -12,10 +12,10 @@ namespace StageLightManeuver
 {
     [ExecuteAlways]
     [AddComponentMenu("")]
-    public class DecalFixture: StageLightFixtureBase
+    public class DecalChannel: StageLightChannelBase
     {
-        [FormerlySerializedAs("lightFixtureFixture")] [FormerlySerializedAs("lightFxFixture")]
-        public LightFixture lightFixture;
+        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
+        public LightChannel lightChannel;
         public Texture2D decalTexture;
         public Color decalColor = Color.white;
         public float decalSizeScaler = 1f;
@@ -75,19 +75,19 @@ namespace StageLightManeuver
                 _autoDisableDecalTime = autoDisableDecalTime;
             }
 
-            if(lightFixture)decalColor = lightFixture.lightColor;
+            if(lightChannel)decalColor = lightChannel.lightColor;
 
         }
 
-        public override void UpdateFixture()
+        public override void UpdateChannel()
         {
             if(decalProjector ==null) return;
             
             var floor = new Vector3(0,floorHeight,0);
             var distance = Vector3.Distance(transform.position,floor);
-            if (lightFixture != null)
+            if (lightChannel != null)
             {
-                var angle = lightFixture.spotAngle;
+                var angle = lightChannel.spotAngle;
                 _radius = Mathf.Tan(angle * Mathf.Deg2Rad) * distance * decalSizeScaler;     
             }else
             {
@@ -97,7 +97,7 @@ namespace StageLightManeuver
             _depth = distance * decalDepthScaler;
             decalProjector.size = new Vector3(_radius,_radius, _depth);
             decalProjector.fadeFactor = fadeFactor;
-            if (lightFixture != null) decalProjector.fadeFactor *= lightFixture.lightIntensity; 
+            if (lightChannel != null) decalProjector.fadeFactor *= lightChannel.lightIntensity; 
             decalProjector.pivot = new Vector3(0, 0, _depth / 2f);
             
             decalProjector.material.SetFloat("_Alpha",opacity*
@@ -147,7 +147,7 @@ namespace StageLightManeuver
                 decalProjector.material = _instancedDecalMaterial;     
             }
             
-            lightFixture = GetComponent<LightFixture>();
+            lightChannel = GetComponent<LightChannel>();
             PropertyTypes.Add( typeof(DecalProperty));
         }
         

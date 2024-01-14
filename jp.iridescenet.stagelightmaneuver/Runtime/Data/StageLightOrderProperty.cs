@@ -8,31 +8,31 @@ namespace StageLightManeuver
     public class StageLightOrderQueue
     {
         public int index = -1;
-        public List<StageLightOrderSetting> stageLightOrderSettingList = new List<StageLightOrderSetting>();
+        public List<StageLightFixtureOrderSetting> stageLightOrderSettingList = new List<StageLightFixtureOrderSetting>();
         
-        public int GetStageLightIndex(LightFixture lightFixture)
+        public int GetStageLightIndex(StageLightFixture stageLightFixture)
         {
             
-            if(lightFixture == null) return 0;
+            if(stageLightFixture == null) return 0;
            
             if (index < 0)
             {
-                return lightFixture.order;
+                return stageLightFixture.order;
             }
            
             if(stageLightOrderSettingList.Count > index)
             {
                 var stageLightOrderSetting = stageLightOrderSettingList[index];
-                foreach (var stageLightData in stageLightOrderSetting.stageLightOrder)
+                foreach (var stageLightData in stageLightOrderSetting.stageLightFixtureOrder)
                 {
-                    if (stageLightData.lightFixture == lightFixture)
+                    if (stageLightData.stageLightFixture == stageLightFixture)
                     {
                         return stageLightData.index;
                     }
                 }
             }
            
-            return lightFixture.order;
+            return stageLightFixture.order;
         }
     }
     [SlmProperty(isRemovable: false)]
@@ -45,15 +45,15 @@ namespace StageLightManeuver
         {
             
             propertyOrder = -998;
-            propertyName = "LightFixture Order";
+            propertyName = "StageLightFixture Order";
             propertyOverride = true;
-            stageLightOrderQueue.stageLightOrderSettingList = new List<StageLightOrderSetting>();
+            stageLightOrderQueue.stageLightOrderSettingList = new List<StageLightFixtureOrderSetting>();
             
         }
 
-        public override void InitStageLightSupervisor(StageLightSupervisor stageLightSupervisor)
+        public override void InitStageLightSupervisor(StageLightUniverse stageLightUniverse)
         {
-            stageLightOrderQueue.stageLightOrderSettingList = stageLightSupervisor.stageLightOrderSettings;
+            stageLightOrderQueue.stageLightOrderSettingList = stageLightUniverse.stageLightFixtureOrderSettings;
         }
 
         public StageLightOrderProperty( StageLightOrderProperty other)

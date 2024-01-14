@@ -7,7 +7,7 @@ namespace StageLightManeuver
     [Serializable]
     public class StageLightQueueData
     {
-        public Dictionary<LightFixture,int> stageLightOrder = new Dictionary<LightFixture, int>();
+        public Dictionary<StageLightFixture,int> stageLightOrder = new Dictionary<StageLightFixture, int>();
         [SerializeReference]public List<SlmProperty> stageLightProperties = new List<SlmProperty>();
         public float weight = 1;
         
@@ -18,15 +18,15 @@ namespace StageLightManeuver
             this.weight = stageLightQueueData.weight;
         }
         
-        public int GetOrder(LightFixture lightFixture)
+        public int GetOrder(StageLightFixture stageLightFixture)
         {
-            if (stageLightOrder.ContainsKey(lightFixture))
+            if (stageLightOrder.ContainsKey(stageLightFixture))
             {
-                return stageLightOrder[lightFixture];
+                return stageLightOrder[stageLightFixture];
             }
             else
             {
-                stageLightOrder.Add(lightFixture, 0);
+                stageLightOrder.Add(stageLightFixture, 0);
                 return 0;
             }
         }

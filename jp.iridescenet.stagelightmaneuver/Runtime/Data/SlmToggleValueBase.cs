@@ -84,7 +84,7 @@ namespace StageLightManeuver
         {
         }
         
-        public virtual void InitStageLightSupervisor(StageLightSupervisor stageLightSupervisor)
+        public virtual void InitStageLightSupervisor(StageLightUniverse stageLightUniverse)
         {
         }
 
@@ -125,8 +125,8 @@ namespace StageLightManeuver
       
       public interface IArrayProperty
       {
-          // void ResyncArraySize(StageLightSupervisor stageLightSupervisor);
-          public void ResyncArraySize(List<LightFixture> stageLights);
+          // void ResyncArraySize(StageLightUniverse stageLightUniverse);
+          public void ResyncArraySize(List<StageLightFixture> stageLights);
       } 
     
     [Serializable]
@@ -145,7 +145,7 @@ namespace StageLightManeuver
             propertyOverride = true;
         }
 
-        public virtual void ResyncArraySize(List<LightFixture> stageLights)
+        public virtual void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             if(clockOverride.value != null && clockOverride.value.arrayStaggerValue != null)
                 clockOverride.value.arrayStaggerValue.ResyncArraySize(stageLights);
@@ -168,7 +168,7 @@ namespace StageLightManeuver
     //     {
     //         sortOrder = -999
     //     };
-    //     public virtual void ResyncArraySize(StageLightSupervisor stageLightSupervisor)
+    //     public virtual void ResyncArraySize(StageLightUniverse stageLightUniverse)
     //     {
     //         
     //     }

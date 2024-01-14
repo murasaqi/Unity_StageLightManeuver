@@ -61,7 +61,7 @@ namespace StageLightManeuver
                 var stageLightBaseProperties = queueData.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var goboProperty = queueData.TryGetActiveProperty<GoboProperty>() as GoboProperty;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
+                var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(goboProperty == null || stageLightBaseProperties == null)continue;
 
                 var t = SlmUtility.GetNormalizedTime(time, queueData, typeof(GoboProperty), index);

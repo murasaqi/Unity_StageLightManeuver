@@ -43,8 +43,8 @@ namespace StageLightManeuver
             var i = 0;
             foreach (var stageLight in SyncStageLight)
             {
-                // Debug.Log(lightFixture.name);
-                // lightFixture.Index = i;
+                // Debug.Log(stageLightFixture.name);
+                // stageLightFixture.Index = i;
                 stageLight.EvaluateQue(time);
                 i++;
             }

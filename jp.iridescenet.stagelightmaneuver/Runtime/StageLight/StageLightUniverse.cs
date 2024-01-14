@@ -13,24 +13,24 @@ namespace StageLightManeuver
     public class StageLightIndex
     {
         public int index = 0;
-        [FormerlySerializedAs("stageLight")] [FormerlySerializedAs("stageLightChannel")] [FormerlySerializedAs("stageLightFx")] public LightFixture lightFixture;
+        [FormerlySerializedAs("stageLightFixture")] [FormerlySerializedAs("stageLightFx")] public StageLightFixture stageLightFixture;
     }
     [Serializable]
-    public class StageLightOrderSetting
+    public class StageLightFixtureOrderSetting
     {
-        public string name = "New Stage Light Order";
-        public List<StageLightIndex> stageLightOrder = new List<StageLightIndex>();
+        public string name = "New Stage Light Fixture Order";
+        [FormerlySerializedAs("stageLightOrder")] public List<StageLightIndex> stageLightFixtureOrder = new List<StageLightIndex>();
     }
     
     [ExecuteAlways]
-    public class StageLightSupervisor: MonoBehaviour
+    public class StageLightUniverse: MonoBehaviour
     {
-        public List<LightFixture> stageLights = new List<LightFixture>();
+        [FormerlySerializedAs("stageLights")] public List<StageLightFixture> stageLightFixtures = new List<StageLightFixture>();
 
         [HideInInspector] public float weight = 0;
-        // public List<LightFixture> AllStageLights => stageLights;
+        // public List<StageLightFixture> AllStageLights => stageLightFixtures;
         
-        public List<StageLightOrderSetting> stageLightOrderSettings = new List<StageLightOrderSetting>();
+        [FormerlySerializedAs("stageLightOrderSettings")] public List<StageLightFixtureOrderSetting> stageLightFixtureOrderSettings = new List<StageLightFixtureOrderSetting>();
 
         [ContextMenu("Initialize")]
         public void Init()
@@ -39,7 +39,7 @@ namespace StageLightManeuver
             
             
             var index = 0;
-            foreach (var stageLight in stageLights)
+            foreach (var stageLight in stageLightFixtures)
             {
                 if (stageLight)
                 {
@@ -52,11 +52,11 @@ namespace StageLightManeuver
         }
 
         
-        [ContextMenu("Find Stage Lights in Children")]
+        [ContextMenu("Find Stage Light Fixtures in Children")]
         public void FindStageLightsInChildren()
         {
-            stageLights.Clear();
-            stageLights.AddRange(GetComponentsInChildren<LightFixture>());
+            stageLightFixtures.Clear();
+            stageLightFixtures.AddRange(GetComponentsInChildren<StageLightFixture>());
             Init();
         }
         
@@ -68,7 +68,7 @@ namespace StageLightManeuver
         public void AddQue(StageLightQueueData stageLightQueData)
         {
             weight = stageLightQueData.weight;
-            foreach (var stageLight in stageLights)
+            foreach (var stageLight in stageLightFixtures)
             {
                 if(stageLight != null)stageLight.AddQue(stageLightQueData);
             }
@@ -76,7 +76,7 @@ namespace StageLightManeuver
 
         public void EvaluateQue(float time)
         {
-            foreach (var stageLight in stageLights)
+            foreach (var stageLight in stageLightFixtures)
             {
                  if(stageLight != null)stageLight.EvaluateQue(time);
             }
@@ -87,12 +87,12 @@ namespace StageLightManeuver
         public List<Type> GetAllPropertyType()
         {
             var types = new List<Type>();
-            foreach (var stageLight in stageLights)
+            foreach (var stageLight in stageLightFixtures)
             {
 
-                if (stageLight.GetType() == typeof(LightFixture))
+                if (stageLight.GetType() == typeof(StageLightFixture))
                 {
-                    LightFixture sl = (LightFixture) stageLight;
+                    StageLightFixture sl = (StageLightFixture) stageLight;
                     types.AddRange(sl.StageLightChannels.SelectMany(channel => channel.PropertyTypes));
                 }
             }
@@ -104,7 +104,7 @@ namespace StageLightManeuver
 
         public void UpdateChannel()
         {
-            foreach (var stageLightBase in stageLights)
+            foreach (var stageLightBase in stageLightFixtures)
             {
                 if(stageLightBase != null)stageLightBase.UpdateChannel();
             }
@@ -114,18 +114,18 @@ namespace StageLightManeuver
             // if (a < stageLightSettings.Count)
             // {
             //     var stageLightSetting = stageLightSettings[a];
-            //     foreach (var lightFixture in stageLights)
+            //     foreach (var stageLightFixture in stageLightFixtures)
             //     {
-            //         lightFixture.AddQue(stageLightSetting,fader);
+            //         stageLightFixture.AddQue(stageLightSetting,fader);
             //     }
             // }
             //
             // if (b < stageLightSettings.Count)
             // {
             //     var stageLightSetting =stageLightSettings[b];
-            //     foreach (var lightFixture in stageLights)
+            //     foreach (var stageLightFixture in stageLightFixtures)
             //     {
-            //         lightFixture.AddQue(stageLightSetting, 1f-fader);
+            //         stageLightFixture.AddQue(stageLightSetting, 1f-fader);
             //     }
             // }
         }

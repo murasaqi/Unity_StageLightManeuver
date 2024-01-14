@@ -68,7 +68,7 @@ namespace StageLightManeuver
                 var stageLightBaseProperties = queueData.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var lookAtProperty = queueData.TryGetActiveProperty<LookAtProperty>() as LookAtProperty;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
+                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if (lookAtProperty == null || stageLightBaseProperties == null)
                     return;
 

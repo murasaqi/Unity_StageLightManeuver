@@ -34,7 +34,7 @@ namespace StageLightManeuver
                 var timeProperty = queueData.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var weight = queueData.weight;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
+                var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
 
                 if (qTiltProperty == null || timeProperty == null) continue;
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, queueData, typeof(TiltProperty), index);

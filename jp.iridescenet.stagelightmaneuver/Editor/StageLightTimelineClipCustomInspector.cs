@@ -234,12 +234,12 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             EditorGUILayout.Space(1);
 
            
-            if (GUILayout.Button("Select LightFixture",GUILayout.MaxWidth(120)))
+            if (GUILayout.Button("Select StageLightFixture",GUILayout.MaxWidth(180)))
             {
                 if (stageLightTimelineClip.mixer != null && stageLightTimelineClip.mixer.trackBinding != null)
                 {
                     var gameObjects = new List<GameObject>();
-                    foreach (var stageLight in stageLightTimelineClip.mixer.trackBinding.stageLights)
+                    foreach (var stageLight in stageLightTimelineClip.mixer.trackBinding.stageLightFixtures)
                     {
                         gameObjects.Add(stageLight.gameObject);
                     }

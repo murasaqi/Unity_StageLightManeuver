@@ -42,7 +42,7 @@ namespace StageLightManeuver
                 var queueData = stageLightDataQueue.Dequeue();
                 var environmentProperty = queueData.TryGetActiveProperty<EnvironmentProperty>() as EnvironmentProperty;
                 if (environmentProperty == null) continue;
-                var index = queueData.TryGetActiveProperty<StageLightOrderProperty>()?.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) ?? parentLightFixture.order;
+                var index = queueData.TryGetActiveProperty<StageLightOrderProperty>()?.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) ?? parentStageLightFixture.order;
                 var weight = queueData.weight;
                 var t = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(EnvironmentProperty),index);
                 _intensity += environmentProperty.ambientintensity.value.Evaluate(t) * weight;

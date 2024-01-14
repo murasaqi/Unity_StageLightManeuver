@@ -16,9 +16,9 @@ namespace StageLightManeuver
         public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
         [HideInInspector]public int updateOrder = 0;
         public List<LightFixtureBase> SyncStageLight { get; set; }
-        // [HideInInspector]public LightFixture ParentStageLight { get; set; }
+        // [HideInInspector]public StageLightFixture ParentStageLight { get; set; }
         [HideInInspector]public float offsetDuration = 0f;
-        [FormerlySerializedAs("parentStageLight")] [HideInInspector]public LightFixture parentLightFixture;
+        [FormerlySerializedAs("parentStageLightFixture")] [FormerlySerializedAs("parentLightFixture")] [FormerlySerializedAs("parentStageLight")] [HideInInspector]public StageLightFixture parentStageLightFixture;
         // public int Index { get; set; }
         internal bool hasQue = false;
         public virtual void EvaluateQue(float currentTime)

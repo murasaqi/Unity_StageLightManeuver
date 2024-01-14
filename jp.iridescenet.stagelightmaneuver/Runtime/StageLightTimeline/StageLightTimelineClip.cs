@@ -110,7 +110,7 @@ namespace StageLightManeuver
                             var binding = playabledirector.GetGenericBinding(track);
                             if (binding != null)
                             {
-                                var stageLightSupervisor = binding as StageLightSupervisor;
+                                var stageLightSupervisor = binding as StageLightUniverse;
                                 if (stageLightSupervisor != null)
                                 {
                                     propertyTypes.AddRange(stageLightSupervisor.GetAllPropertyType());

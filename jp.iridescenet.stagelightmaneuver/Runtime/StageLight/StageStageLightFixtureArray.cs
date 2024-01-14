@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
-    public class LightFixtureArray : LightFixture
+    public class StageLightFixtureArray : StageLightFixture
     {
         
     }

@@ -41,7 +41,7 @@ namespace StageLightManeuver
             clockOverride.propertyOverride = toggle;
         }
 
-        public override void ResyncArraySize(List<LightFixture> stageLights)
+        public override void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             var colorPrimitiveValues = colorValues.value;
             if (colorPrimitiveValues.Count < stageLights.Count)

@@ -116,7 +116,7 @@ namespace StageLightManeuver
                 var lightFlickerProperty = data.TryGetActiveProperty<LightFlickerProperty>() as LightFlickerProperty;
                 var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
-                var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentLightFixture) :  parentLightFixture.order;
+                var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(lightProperty == null || clockProperty == null) continue;
              
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");

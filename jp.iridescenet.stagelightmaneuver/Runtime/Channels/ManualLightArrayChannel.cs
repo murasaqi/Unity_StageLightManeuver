@@ -11,7 +11,7 @@
 //     public class ManualLightArrayChannel:StageLightChannelBase
 //     {
 //         public List<LightPrimitiveValue> lightPrimitiveValues = new List<LightPrimitiveValue>();
-//         [SerializeReference]public List<IStageLightChannel> stageLights = new List<IStageLightChannel>();
+//         [SerializeReference]public List<IStageLightChannel> stageLightFixtures = new List<IStageLightChannel>();
 //
 //         public override void Init()
 //         {
@@ -23,9 +23,9 @@
 //         {
 //             for (int i = 0; i < lightPrimitiveValues.Count; i++)
 //             {
-//                 if (i < stageLights.Count)
+//                 if (i < stageLightFixtures.Count)
 //                 {
-//                     var iStageLightChannel = stageLights[i];
+//                     var iStageLightChannel = stageLightFixtures[i];
 //                     var lightChannel = iStageLightChannel.TryGetChannel<LightChannel>();
 //                     lightChannel.lightIntensity = lightPrimitiveValues[i].intensity;
 //                     lightChannel.spotAngle = lightPrimitiveValues[i].angle;

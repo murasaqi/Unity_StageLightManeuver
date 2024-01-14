@@ -48,7 +48,7 @@ namespace StageLightManeuver
             lightStaggerInfo = new List<Vector2>(arrayStaggerValue.lightStaggerInfo);
             randomStaggerInfo = new List<Vector2>(arrayStaggerValue.randomStaggerInfo);
         }
-        public void ResyncArraySize(List<LightFixture> stageLights)
+        public void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             var countDifference = stageLights.Count - lightStaggerInfo.Count;
             if (countDifference > 0)
@@ -171,7 +171,7 @@ namespace StageLightManeuver
             offsetTime = new SlmToggleValue<float>() { value = 0f , propertyOverride = true};
         }
 
-        public void ResyncArraySize(List<LightFixture> stageLights)
+        public void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             arrayStaggerValue.ResyncArraySize(stageLights);
         }

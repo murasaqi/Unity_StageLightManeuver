@@ -15,7 +15,7 @@ namespace StageLightManeuver
 
     [TrackColor(0.8239978f, 0.9150943f, 0.3338079f)]
     [TrackClipType(typeof(StageLightTimelineClip))]
-    [TrackBindingType(typeof(StageLightSupervisor))]
+    [TrackBindingType(typeof(StageLightUniverse))]
     public class StageLightTimelineTrack : TrackAsset
     {
         

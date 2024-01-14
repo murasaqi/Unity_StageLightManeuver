@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace StageLightManeuver
 {
-    public interface ILightFixture
+    public interface IStageLightFixture
     {
         public List<StageLightChannelBase> StageLightChannels { get; set; }
-        // public void Init(LightFixture lightFixture);
+        // public void Init(StageLightFixture stageLightFixture);
 
         public T TryGetChannel<T>() where T : StageLightChannelBase
         {

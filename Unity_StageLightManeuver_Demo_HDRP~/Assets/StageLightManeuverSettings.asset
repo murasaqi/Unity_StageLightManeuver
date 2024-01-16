@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be4795c8c580b944a593bb34e551d24, type: 3}
+  m_Name: StageLightManeuverSettings
+  m_EditorClassIdentifier: 
+  exportProfilePath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
+  propertyOrders:
+  - key: ClockProperty
+    value: 0
+  - key: StageLightOrderProperty
+    value: 1
+  - key: LightProperty
+    value: 2
+  - key: LightIntensityProperty
+    value: 3
+  - key: SlmBarLightProperty
+    value: 4
+  - key: BarLightIntensityProperty
+    value: 5
+  - key: LightColorProperty
+    value: 6
+  - key: LightArrayProperty
+    value: 7
+  - key: ManualLightArrayProperty
+    value: 8
+  - key: ManualColorArrayProperty
+    value: 9
+  - key: MaterialColorProperty
+    value: 10
+  - key: MaterialTextureProperty
+    value: 11
+  - key: SyncLightMaterialProperty
+    value: 12
+  - key: DecalProperty
+    value: 13
+  - key: XTransformProperty
+    value: 14
+  - key: YTransformProperty
+    value: 15
+  - key: ZTransformProperty
+    value: 16
+  - key: RotationProperty
+    value: 17
+  - key: PanProperty
+    value: 18
+  - key: TiltProperty
+    value: 19
+  - key: BarLightPanProperty
+    value: 20
+  - key: ManualPanTiltProperty
+    value: 21
+  - key: LookAtProperty
+    value: 22
+  - key: SmoothLookAtProperty
+    value: 23
+  - key: EnvironmentProperty
+    value: 24
+  - key: ReflectionProbeProperty
+    value: 25
+  - key: SlmAdditionalProperty
+    value: 26

@@ -29,7 +29,7 @@ namespace StageLightManeuver
             mode = new SlmToggleValue<ManualPanTiltMode>() { value = other.mode.value };
         }
 
-        public override void ResyncArraySize(List<StageLight> stageLights)
+        public override void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             base.ResyncArraySize(stageLights);
             var manualPanTiltArray = positions.value;

@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c8e0991a34e9bb76553b0a3fd8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLightFixtures:
+  stageLightChannels:
   - {fileID: 353849466}
   - {fileID: 353849465}
   - {fileID: 353849464}

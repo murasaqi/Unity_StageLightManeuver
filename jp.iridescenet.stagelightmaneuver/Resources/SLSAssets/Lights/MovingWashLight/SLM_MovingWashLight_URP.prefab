@@ -528,7 +528,7 @@ MonoBehaviour:
   intensityMultiplier: 1
   maxIntensityLimit: 3
   brightnessDecreasesToBlack: 0
-  lightFixture: {fileID: 1866043994}
+  lightChannel: {fileID: 1866043994}
 --- !u!114 &1866043992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1c8e0991a34e9bb76553b0a3fd8a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLightFixtures:
+  stageLightChannels:
   - {fileID: 1866043991}
   - {fileID: 1866043992}
   - {fileID: 1866043993}
@@ -641,4 +641,4 @@ MonoBehaviour:
   lensFlareSRP: {fileID: 8953128332874491812}
   intensityMultiplier: 1
   maxIntensityLimit: 3
-  lightFixture: {fileID: 1866043994}
+  lightChannel: {fileID: 1866043994}

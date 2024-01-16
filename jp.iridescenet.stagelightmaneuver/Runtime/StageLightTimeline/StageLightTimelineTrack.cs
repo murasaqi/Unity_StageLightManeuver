@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 #if UNITY_EDITOR
@@ -14,9 +15,12 @@ namespace StageLightManeuver
 
     [TrackColor(0.8239978f, 0.9150943f, 0.3338079f)]
     [TrackClipType(typeof(StageLightTimelineClip))]
-    [TrackBindingType(typeof(StageLightSupervisor))]
+    [TrackBindingType(typeof(StageLightFixtureBase))]
     public class StageLightTimelineTrack : TrackAsset
     {
+        
+        [FormerlySerializedAs("drawBeat")] [SerializeField] public bool drawCustomClip = true;
+        
         [Header("Base Settings")] [SerializeField]
         public float bpm = 120;
 
@@ -25,8 +29,6 @@ namespace StageLightManeuver
 
         [Header("Clip UI Options", order = 0)] [SerializeField] [Range(0, 1f)]
         public float colorLineHeight = 0.1f;
-
-        [SerializeField] public bool drawBeat = true;
         [SerializeField] public Color beatLineColor = new Color(0, 1, 0.7126422f, 0.2f);
         [SerializeField] public bool updateOnOutOfClip = false;
         public List<StageLightTimelineClip> stageLightTimelineClips = new List<StageLightTimelineClip>();

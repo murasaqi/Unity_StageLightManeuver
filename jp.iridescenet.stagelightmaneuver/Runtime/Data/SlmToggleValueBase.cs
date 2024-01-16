@@ -84,7 +84,7 @@ namespace StageLightManeuver
         {
         }
         
-        public virtual void InitStageLightSupervisor(StageLightSupervisor stageLightSupervisor)
+        public virtual void InitStageLightFixture(StageLightFixtureBase stageLightFixtureBase)
         {
         }
 
@@ -125,8 +125,8 @@ namespace StageLightManeuver
       
       public interface IArrayProperty
       {
-          // void ResyncArraySize(StageLightSupervisor stageLightSupervisor);
-          public void ResyncArraySize(List<StageLight> stageLights);
+          // void ResyncArraySize(StageLightUniverse stageLightUniverse);
+          public void ResyncArraySize(List<StageLightFixture> stageLights);
       } 
     
     [Serializable]
@@ -145,7 +145,7 @@ namespace StageLightManeuver
             propertyOverride = true;
         }
 
-        public virtual void ResyncArraySize(List<StageLight> stageLights)
+        public virtual void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             if(clockOverride.value != null && clockOverride.value.arrayStaggerValue != null)
                 clockOverride.value.arrayStaggerValue.ResyncArraySize(stageLights);
@@ -155,7 +155,7 @@ namespace StageLightManeuver
     [Serializable]
     public class SlmBarLightProperty : SlmAdditionalProperty
     {
-        public virtual void ResizeBarLightArray(List<LightFixture> lightFixtures)
+        public virtual void ResizeBarLightArray(List<LightChannel> lightChannels)
         {
         }
     }
@@ -168,7 +168,7 @@ namespace StageLightManeuver
     //     {
     //         sortOrder = -999
     //     };
-    //     public virtual void ResyncArraySize(StageLightSupervisor stageLightSupervisor)
+    //     public virtual void ResyncArraySize(StageLightUniverse stageLightUniverse)
     //     {
     //         
     //     }

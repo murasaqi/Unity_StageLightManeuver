@@ -5,7 +5,11 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+
+#if UNITY_EDITOR
 using UnityEditor;
+
+#endif
 
 namespace StageLightManeuver
 {
@@ -106,7 +110,7 @@ namespace StageLightManeuver
                             var binding = playabledirector.GetGenericBinding(track);
                             if (binding != null)
                             {
-                                var stageLightSupervisor = binding as StageLightSupervisor;
+                                var stageLightSupervisor = binding as StageLightUniverse;
                                 if (stageLightSupervisor != null)
                                 {
                                     propertyTypes.AddRange(stageLightSupervisor.GetAllPropertyType());
@@ -120,11 +124,11 @@ namespace StageLightManeuver
 
             foreach (var propertyType in propertyTypes)
             {
-                // if not contain fixture type in queData, add it
+                // if not contain channel type in queData, add it
                 if (queData.stageLightProperties.Find( x => x.GetType() == propertyType) == null)
                 {
-                    var fixture = Activator.CreateInstance(propertyType) as SlmProperty;
-                    queData.stageLightProperties.Add(fixture);
+                    var channel = Activator.CreateInstance(propertyType) as SlmProperty;
+                    queData.stageLightProperties.Add(channel);
                 }
             }
         }
@@ -250,6 +254,11 @@ namespace StageLightManeuver
             
         }
 
-
+        private void OnDestroy()
+        {
+// #if UNITY_EDITOR
+//             SlmBaseDrawer.ClearCache();
+// #endif
+        }
     }
 }

@@ -1,31 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace StageLightManeuver
 {
-
     public interface IStageLightFixture
     {
-        public List<StageLightBase> SyncStageLight { get; set; }
-        public void EvaluateQue(float time);
+        public List<StageLightChannelBase> StageLightChannels { get; set; }
+        // public void Init(StageLightFixture stageLightFixture);
 
-        public void AddStageLightInChild()
+        public T TryGetChannel<T>() where T : StageLightChannelBase
         {
+            return StageLightChannels.FirstOrDefault(x => x is T) as T;
         }
-
-        public void AddQue(SlmToggleValueBase slmToggleValueBase, float weight)
-        {
-        }
-
+        
         public void Init()
         {
         }
-
+        
+        
+        public void AddQue(SlmToggleValueBase slmToggleValueBase, float weight)
+        {
+        }
+        
+        public void EvaluateQue(float time);
+    
     }
-    
- 
-    
-    
     
 }

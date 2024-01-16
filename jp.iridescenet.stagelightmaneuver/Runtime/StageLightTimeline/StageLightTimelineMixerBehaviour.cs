@@ -15,10 +15,10 @@ namespace StageLightManeuver
         public StageLightTimelineTrack stageLightTimelineTrack;
         private bool firstFrameHappened = false;
 
-        public StageLightSupervisor trackBinding;
+        public StageLightFixtureBase trackBinding;
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            trackBinding = playerData as StageLightSupervisor;
+            trackBinding = playerData as StageLightFixtureBase;
 
             if (!trackBinding)
                 return;
@@ -48,11 +48,11 @@ namespace StageLightManeuver
                 foreach (var stageLightProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)
                 {
                     if(stageLightProperty == null) continue;
-                    stageLightProperty.InitStageLightSupervisor(trackBinding);
+                    stageLightProperty.InitStageLightFixture(trackBinding);
                     if (stageLightProperty.propertyType == StageLightPropertyType.Array )
                     {
                         var additionalArrayProperty = stageLightProperty as IArrayProperty;
-                        additionalArrayProperty?.ResyncArraySize(trackBinding.stageLights);
+                        additionalArrayProperty?.ResyncArraySize(trackBinding.stageLightFixtures);
                     }
                 }
                 
@@ -69,12 +69,12 @@ namespace StageLightManeuver
                 if (!hasAnyClipPlaying)
                 {
                     if (stageLightTimelineTrack.updateOnOutOfClip) trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateFixture();
+                    trackBinding.UpdateChannel();
                 }
                 else
                 {
                     trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateFixture();
+                    trackBinding.UpdateChannel();
                 }
             }
 

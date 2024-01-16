@@ -51,14 +51,23 @@ namespace StageLightManeuver
             return drawerType;
         }
 
+
+        private static readonly int MAX_CACHE_SIZE = 100;
+
         /// <summary>
         /// <see ref="SerializedProperty"/>からシリアライズ前の値を<see ref="CachedValue"/>から取得する
         /// </summary>
         protected static object GetValueFromCache(SerializedProperty property)
         {
+            // todoキャッシュ周りの設計の見直し
             var hash = property.serializedObject.targetObject.GetHashCode();
             var key = property.propertyPath;
             object val = null;
+
+            if (CachedValue.Count > MAX_CACHE_SIZE)
+            {
+                ClearCache();
+            }
 
             Dictionary<string, object> clipValue = null;
             if (CachedValue.TryGetValue(hash, out clipValue) == false)
@@ -95,6 +104,21 @@ namespace StageLightManeuver
             }
 
             return val;
+        }
+
+        protected static void RemoveValueFromCache(SerializedProperty property)
+        {
+            var hash = property.serializedObject.targetObject.GetHashCode();
+            var key = property.propertyPath;
+
+            Dictionary<string, object> clipValue = null;
+            if (CachedValue.TryGetValue(hash, out clipValue) == false)
+            {
+                return;
+            }
+
+            clipValue.Remove(key);
+            return;
         }
 
         /// <summary>

@@ -45,6 +45,15 @@ namespace StageLightManeuver.StageLightTimeline.Editor
         private void BeginInspector()
         {
             DrawProfileIO();
+
+            // EditorGUILayout.Space(12);
+            // GUI.backgroundColor = Color.red;
+            // if (GUILayout.Button("Force Reflesh UI"))
+            // {
+            //     SlmBaseDrawer.ClearCache();
+            // }
+            // GUI.backgroundColor = Color.white;
+            
             EditorGUILayout.Space(2);
             EditorGUI.BeginDisabledGroup( stageLightTimelineClip.syncReferenceProfile);
                 // isMultiSelect = false;
@@ -225,12 +234,12 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             EditorGUILayout.Space(1);
 
            
-            if (GUILayout.Button("Select StageLight",GUILayout.MaxWidth(120)))
+            if (GUILayout.Button("Select StageLightFixture",GUILayout.MaxWidth(180)))
             {
                 if (stageLightTimelineClip.mixer != null && stageLightTimelineClip.mixer.trackBinding != null)
                 {
                     var gameObjects = new List<GameObject>();
-                    foreach (var stageLight in stageLightTimelineClip.mixer.trackBinding.stageLights)
+                    foreach (var stageLight in stageLightTimelineClip.mixer.trackBinding.stageLightFixtures)
                     {
                         gameObjects.Add(stageLight.gameObject);
                     }

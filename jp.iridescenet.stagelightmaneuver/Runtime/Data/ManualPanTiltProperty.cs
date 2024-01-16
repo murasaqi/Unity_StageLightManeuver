@@ -52,7 +52,7 @@ namespace StageLightManeuver
             propertyOverride = true;
         }
 
-        public override void ResyncArraySize(List<StageLight> stageLights)
+        public override void ResyncArraySize(List<StageLightFixture> stageLights)
         {
             base.ResyncArraySize(stageLights);
             var manualPanTiltArray = positions.value;

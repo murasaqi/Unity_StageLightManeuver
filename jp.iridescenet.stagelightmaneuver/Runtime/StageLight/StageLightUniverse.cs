@@ -13,7 +13,7 @@ namespace StageLightManeuver
     public class StageLightIndex
     {
         public int index = 0;
-        [FormerlySerializedAs("stageLightFixture")] [FormerlySerializedAs("stageLightFx")] public StageLightFixture stageLightFixture;
+        [FormerlySerializedAs("stageLight")] [FormerlySerializedAs("stageLightFx")] public StageLightFixture stageLightFixture;
     }
     [Serializable]
     public class StageLightFixtureOrderSetting

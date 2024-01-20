@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.SceneManagement;
 
 // using System.Reflection;
@@ -58,34 +60,42 @@ namespace StageLightManeuver
 
         public static List<SlmProperty> CopyProperties(StageLightProfile referenceStageLightProfile)
         {
-            var copy = new List<SlmProperty>();
-            foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
+            // プロファイルのコピーを作成
+            var profile = UnityEngine.Object.Instantiate(referenceStageLightProfile);
+            var copyList = new List<SlmProperty>();
+            foreach (var stageLightProperty in profile.stageLightProperties)
             {
                 if(stageLightProperty == null) continue;
-                var type = stageLightProperty.GetType();
-                copy.Add(Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
-                        new object[] { stageLightProperty }, null)
-                    as SlmProperty);
-            }
 
-            var timeProperty = copy.Find(x => x.GetType() == typeof(ClockProperty));
+                var type = stageLightProperty.GetType();
+                var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
+                        new object[] { stageLightProperty }, null)
+                    as SlmProperty;
+                copy.isEditable = true;
+                copyList.Add(copy);
+            }
+            // プロファイルのコピーを破棄
+            UnityEngine.Object.DestroyImmediate(profile);
+
+            var timeProperty = copyList.Find(x => x.GetType() == typeof(ClockProperty));
 
             if (timeProperty == null)
             {
-                copy.Insert(0, new ClockProperty());
+                copyList.Insert(0, new ClockProperty());
             }
             
-            var orderProperty = copy.Find(x => x.GetType() == typeof(StageLightOrderProperty));
+            var orderProperty = copyList.Find(x => x.GetType() == typeof(StageLightOrderProperty));
             if(orderProperty == null)
             {
-                copy.Insert(1, new StageLightOrderProperty());
+                copyList.Insert(1, new StageLightOrderProperty());
             }
-            return copy;
+
+            return copyList;
         }
 
-        public static float GetNormalizedTime(float time ,StageLightQueueData queData, Type propertyType,int index = 0)
+        public static float GetNormalizedTime(float time, StageLightQueueData queData, Type propertyType, int index = 0)
         {
-            
+
             var additionalProperty = queData.TryGetActiveProperty(propertyType);
             var clockProperty = queData.TryGetActiveProperty<ClockProperty>();
             var weight = queData.weight;

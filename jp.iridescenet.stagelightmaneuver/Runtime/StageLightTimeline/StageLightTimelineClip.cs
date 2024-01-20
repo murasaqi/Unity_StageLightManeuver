@@ -167,34 +167,9 @@ namespace StageLightManeuver
         [ContextMenu("Apply")]
         public void LoadProfile()
         {
-            if (referenceStageLightProfile == null) return;
-
-
-            var copyList = new List<SlmProperty>();
-            foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
-            {
-                if(stageLightProperty == null) continue;
-                var type = stageLightProperty.GetType();
-                var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
-                        new object[] { stageLightProperty }, null)
-                    as SlmProperty;
-                copy.isEditable = true;
-                copyList.Add(copy);
-            }
-
-            var timeProperty = copyList.Find(x => x.GetType() == typeof(ClockProperty));
-
-            if (timeProperty == null)
-            {
-                copyList.Insert(0, new ClockProperty());
-            }
+            if (referenceStageLightProfile == null) return;            
             
-            var orderProperty = copyList.Find(x => x.GetType() == typeof(StageLightOrderProperty));
-            if(orderProperty == null)
-            {
-                copyList.Insert(1, new StageLightOrderProperty());
-            }
-            
+            var copyList = SlmUtility.CopyProperties(referenceStageLightProfile);
             behaviour.stageLightQueueData.stageLightProperties = copyList;
             stopEditorUiUpdate = false;
         }

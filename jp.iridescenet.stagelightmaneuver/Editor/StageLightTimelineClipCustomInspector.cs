@@ -145,6 +145,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     // set dirty
                     EditorUtility.SetDirty(stageLightTimelineClip);
                     stageLightTimelineClip.LoadProfile();
+                    SlmBaseDrawer.ClearCache();
                     serializedObject.ApplyModifiedProperties();
                     stageLightTimelineClip.stopEditorUiUpdate = false;
                     // Repaint();
@@ -157,6 +158,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     // set dirty
                     EditorUtility.SetDirty(stageLightTimelineClip);
                     stageLightTimelineClip.OverwriteDiffProperty();
+                    SlmBaseDrawer.ClearCache();
                     serializedObject.ApplyModifiedProperties();
                     stageLightTimelineClip.stopEditorUiUpdate = false;
                     // Repaint();
@@ -168,7 +170,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 if (GUILayout.Button("Save Profile",GUILayout.MaxWidth(100)))
                 {
                     stageLightTimelineClip.SaveProfile();
-                    
+                    SlmBaseDrawer.ClearCache();
                 }
             }
             EditorGUI.EndDisabledGroup();
@@ -224,6 +226,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 if (GUILayout.Button("Save as",GUILayout.MaxWidth(100)))
                 {
                     ExportProfile(stageLightTimelineClip);
+                    SlmBaseDrawer.ClearCache();
                 }
                 
                 GUI.backgroundColor = Color.white;

@@ -183,7 +183,10 @@ namespace StageLightManeuver
 #if UNITY_EDITOR
             Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
             var copyList = new List<SlmProperty>();
-            foreach (var stageLightProperty in StageLightQueueData.stageLightProperties)
+            // Clipのコピーを作成してからプロパティーの取り出しをしているが、多分もっといい方法がある
+            var clipInstance = UnityEngine.Object.Instantiate(this);
+            var propertyList = clipInstance.StageLightQueueData.stageLightProperties;
+            foreach (var stageLightProperty in propertyList)
             {
                 if(stageLightProperty ==null) continue;
                 var type = stageLightProperty.GetType();
@@ -193,6 +196,8 @@ namespace StageLightManeuver
                 copy.isEditable = false;
                 copyList.Add(copy);
             }
+            // クリップのコピーを破棄
+            UnityEngine.Object.DestroyImmediate(clipInstance);
 
             referenceStageLightProfile.stageLightProperties.Clear();
             referenceStageLightProfile.stageLightProperties = copyList;

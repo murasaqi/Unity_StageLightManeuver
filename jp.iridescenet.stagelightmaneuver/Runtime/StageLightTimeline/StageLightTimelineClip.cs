@@ -158,8 +158,6 @@ namespace StageLightManeuver
                     find.isEditable = false;
                     properties.Add(stageLightProperty);
                 }
-                properties.Add(stageLightProperty);
-
             }
 
         }

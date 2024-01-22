@@ -147,7 +147,7 @@ namespace StageLightManeuver
         {
             if (referenceStageLightProfile == null) return;
             var properties = behaviour.stageLightQueueData.stageLightProperties;
-            var profileData = referenceStageLightProfile.stageLightProperties;
+            var profileData = SlmUtility.CopyProperties(referenceStageLightProfile);
             // var diffData = new List<SlmProperty>();
             foreach (var stageLightProperty in profileData)
             {

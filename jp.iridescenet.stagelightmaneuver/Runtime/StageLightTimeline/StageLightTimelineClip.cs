@@ -147,7 +147,7 @@ namespace StageLightManeuver
         {
             if (referenceStageLightProfile == null) return;
             var properties = behaviour.stageLightQueueData.stageLightProperties;
-            var profileData = referenceStageLightProfile.stageLightProperties;
+            var profileData = SlmUtility.CopyProperties(referenceStageLightProfile);
             // var diffData = new List<SlmProperty>();
             foreach (var stageLightProperty in profileData)
             {
@@ -158,8 +158,6 @@ namespace StageLightManeuver
                     find.isEditable = false;
                     properties.Add(stageLightProperty);
                 }
-                properties.Add(stageLightProperty);
-
             }
 
         }
@@ -167,34 +165,9 @@ namespace StageLightManeuver
         [ContextMenu("Apply")]
         public void LoadProfile()
         {
-            if (referenceStageLightProfile == null) return;
-
-
-            var copyList = new List<SlmProperty>();
-            foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
-            {
-                if(stageLightProperty == null) continue;
-                var type = stageLightProperty.GetType();
-                var copy = Activator.CreateInstance(type, BindingFlags.CreateInstance, null,
-                        new object[] { stageLightProperty }, null)
-                    as SlmProperty;
-                copy.isEditable = true;
-                copyList.Add(copy);
-            }
-
-            var timeProperty = copyList.Find(x => x.GetType() == typeof(ClockProperty));
-
-            if (timeProperty == null)
-            {
-                copyList.Insert(0, new ClockProperty());
-            }
+            if (referenceStageLightProfile == null) return;            
             
-            var orderProperty = copyList.Find(x => x.GetType() == typeof(StageLightOrderProperty));
-            if(orderProperty == null)
-            {
-                copyList.Insert(1, new StageLightOrderProperty());
-            }
-            
+            var copyList = SlmUtility.CopyProperties(referenceStageLightProfile);
             behaviour.stageLightQueueData.stageLightProperties = copyList;
             stopEditorUiUpdate = false;
         }
@@ -208,9 +181,15 @@ namespace StageLightManeuver
         public void SaveProfile()
         {
 #if UNITY_EDITOR
-            Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
+            if (referenceStageLightProfile.stageLightProperties.Count > 0)
+            {
+                Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
+            }
             var copyList = new List<SlmProperty>();
-            foreach (var stageLightProperty in StageLightQueueData.stageLightProperties)
+            // Clipのコピーを作成してからプロパティーの取り出しをしているが、多分もっといい方法がある
+            var clipInstance = UnityEngine.Object.Instantiate(this);
+            var propertyList = clipInstance.StageLightQueueData.stageLightProperties;
+            foreach (var stageLightProperty in propertyList)
             {
                 if(stageLightProperty ==null) continue;
                 var type = stageLightProperty.GetType();
@@ -220,6 +199,8 @@ namespace StageLightManeuver
                 copy.isEditable = false;
                 copyList.Add(copy);
             }
+            // クリップのコピーを破棄
+            UnityEngine.Object.DestroyImmediate(clipInstance);
 
             referenceStageLightProfile.stageLightProperties.Clear();
             referenceStageLightProfile.stageLightProperties = copyList;

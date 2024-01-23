@@ -222,12 +222,12 @@ namespace StageLightManeuver
                     // lightData[light].intensity=lightIntensity;
                 }
 #else
-                // light.color = lightColor;
-                // light.intensity = lightIntensity;
-                // light.spotAngle = spotAngle;
-                // light.innerSpotAngle = innerSpotAngle;
-                // light.range = spotRange;
-                // if(!ignoreLightCookie)light.cookie = lightCookie;
+                light.color = lightColor;
+                light.intensity = lightIntensity;
+                light.spotAngle = spotAngle;
+                light.innerSpotAngle = innerSpotAngle;
+                light.range = spotRange;
+                if(!ignoreLightCookie)light.cookie = lightCookie;
 #endif
 
 #if USE_VLB

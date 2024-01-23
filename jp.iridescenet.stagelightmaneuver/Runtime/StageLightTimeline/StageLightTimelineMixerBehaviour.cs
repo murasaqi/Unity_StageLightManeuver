@@ -83,7 +83,8 @@ namespace StageLightManeuver
                                     var lightChannel = stageLightChannel as LightChannel;
                                     if (lightChannel != null)
                                     {
-                                        lightChannel.lightIntensity *= Mathf.Max(0f, stageLightTimelineTrack.intensityMultiplier);   
+                                        lightChannel.lightIntensity *= Mathf.Max(0f, stageLightTimelineTrack.intensityMultiplier);
+                                        lightChannel.lightIntensity = Mathf.Clamp(lightChannel.lightIntensity, lightChannel.lightIntensityMin, lightChannel.lightIntensityMax);
                                     }
                                 }
                             }
@@ -109,6 +110,7 @@ namespace StageLightManeuver
                                     if (lightChannel != null)
                                     {
                                         lightChannel.lightIntensity *= Mathf.Max(0f, stageLightTimelineTrack.intensityMultiplier);   
+                                        lightChannel.lightIntensity = Mathf.Clamp(lightChannel.lightIntensity, lightChannel.lightIntensityMin, lightChannel.lightIntensityMax);
                                     }
                                 }
                             }

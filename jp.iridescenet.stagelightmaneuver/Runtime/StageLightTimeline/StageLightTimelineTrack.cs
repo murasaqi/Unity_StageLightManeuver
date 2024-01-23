@@ -28,7 +28,7 @@ namespace StageLightManeuver
         [SerializeField] public string exportPath = "Assets/";
         
         [Header("LightFixture Settings")]
-        [SerializeField] public bool useIntensityMultiplier = false;
+        [SerializeField] public bool useIntensityMultiplier = true;
         [SerializeField] public float intensityMultiplier = 1f; 
 
         // [Header("Clip Settings")] [SerializeField]

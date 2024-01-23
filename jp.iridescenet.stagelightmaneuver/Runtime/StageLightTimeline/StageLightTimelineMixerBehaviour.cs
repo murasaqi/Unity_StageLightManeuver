@@ -66,7 +66,6 @@ namespace StageLightManeuver
 
             if (stageLightTimelineTrack)
             {
-                Debug.Log(stageLightTimelineTrack.useIntensityMultiplier + ": " + stageLightTimelineTrack.intensityMultiplier);
                 if (!hasAnyClipPlaying)
                 {
                     if (stageLightTimelineTrack.updateOnOutOfClip) trackBinding.EvaluateQue((float)time);

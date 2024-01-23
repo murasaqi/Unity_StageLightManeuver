@@ -26,6 +26,12 @@ namespace StageLightManeuver
 
         [SerializeField] public float bpmScale = 1;
         [SerializeField] public string exportPath = "Assets/";
+        
+        [Header("LightFixture Settings")]
+        [SerializeField] public bool useIntensityMultiplier = false;
+        [SerializeField] public float intensityMultiplier = 1f; 
+
+        // [Header("Clip Settings")] [SerializeField]
 
         [Header("Clip UI Options", order = 0)] [SerializeField] [Range(0, 1f)]
         public float colorLineHeight = 0.1f;

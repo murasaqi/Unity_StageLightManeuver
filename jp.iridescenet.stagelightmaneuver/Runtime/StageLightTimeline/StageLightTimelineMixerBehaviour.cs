@@ -66,14 +66,55 @@ namespace StageLightManeuver
 
             if (stageLightTimelineTrack)
             {
+                Debug.Log(stageLightTimelineTrack.useIntensityMultiplier + ": " + stageLightTimelineTrack.intensityMultiplier);
                 if (!hasAnyClipPlaying)
                 {
                     if (stageLightTimelineTrack.updateOnOutOfClip) trackBinding.EvaluateQue((float)time);
+
+                    // LightIntensityはTrack側intensityMultiplierを考慮する
+                    if (stageLightTimelineTrack.useIntensityMultiplier) 
+                    {
+                        foreach (var stageLightFixture in trackBinding.stageLightFixtures)
+                        {
+                            foreach (var stageLightChannel in stageLightFixture.StageLightChannels)
+                            {
+                                if (stageLightChannel is LightChannel)
+                                {
+                                    var lightChannel = stageLightChannel as LightChannel;
+                                    if (lightChannel != null)
+                                    {
+                                        lightChannel.lightIntensity *= Mathf.Max(0f, stageLightTimelineTrack.intensityMultiplier);   
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     trackBinding.UpdateChannel();
                 }
                 else
                 {
                     trackBinding.EvaluateQue((float)time);
+
+                    // LightIntensityはTrack側intensityMultiplierを考慮する
+                    if (stageLightTimelineTrack.useIntensityMultiplier) 
+                    {
+                        foreach (var stageLightFixture in trackBinding.stageLightFixtures)
+                        {
+                            foreach (var stageLightChannel in stageLightFixture.StageLightChannels)
+                            {
+                                if (stageLightChannel is LightChannel)
+                                {
+                                    var lightChannel = stageLightChannel as LightChannel;
+                                    if (lightChannel != null)
+                                    {
+                                        lightChannel.lightIntensity *= Mathf.Max(0f, stageLightTimelineTrack.intensityMultiplier);   
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     trackBinding.UpdateChannel();
                 }
             }

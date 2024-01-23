@@ -181,7 +181,10 @@ namespace StageLightManeuver
         public void SaveProfile()
         {
 #if UNITY_EDITOR
-            Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
+            if (referenceStageLightProfile.stageLightProperties.Count > 0)
+            {
+                Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
+            }
             var copyList = new List<SlmProperty>();
             // Clipのコピーを作成してからプロパティーの取り出しをしているが、多分もっといい方法がある
             var clipInstance = UnityEngine.Object.Instantiate(this);

@@ -10,10 +10,12 @@ namespace StageLightManeuver
     [CreateAssetMenu(fileName = "StageLightManeuverSetting", menuName = "StageLightManeuver/GlobalSettings")]
     public class StageLightManeuverSettings : ScriptableObject
     {
+        [Tooltip("Default export path for StageLightProfile")]
         public string exportProfilePath = SlmSettingsUtility.BaseExportProfilePath; 
         [SerializeField] 
         private SerializableKeyPair<string,int>[] propertyOrders;
         private Dictionary<string, int> _slmPropertyOrder;
+        [Tooltip("Property order for inspector view of StageLightProfile and StageLightClip")]
         public Dictionary<string, int> SlmPropertyOrder 
         {
             get

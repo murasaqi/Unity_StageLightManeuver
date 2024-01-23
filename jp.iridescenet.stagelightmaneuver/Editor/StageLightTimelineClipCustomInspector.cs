@@ -145,6 +145,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     // set dirty
                     EditorUtility.SetDirty(stageLightTimelineClip);
                     stageLightTimelineClip.LoadProfile();
+                    SlmBaseDrawer.ClearCache();
                     serializedObject.ApplyModifiedProperties();
                     stageLightTimelineClip.stopEditorUiUpdate = false;
                     // Repaint();
@@ -157,6 +158,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                     // set dirty
                     EditorUtility.SetDirty(stageLightTimelineClip);
                     stageLightTimelineClip.OverwriteDiffProperty();
+                    SlmBaseDrawer.ClearCache();
                     serializedObject.ApplyModifiedProperties();
                     stageLightTimelineClip.stopEditorUiUpdate = false;
                     // Repaint();
@@ -168,7 +170,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 if (GUILayout.Button("Save Profile",GUILayout.MaxWidth(100)))
                 {
                     stageLightTimelineClip.SaveProfile();
-                    
+                    SlmBaseDrawer.ClearCache();
                 }
             }
             EditorGUI.EndDisabledGroup();
@@ -224,6 +226,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 if (GUILayout.Button("Save as",GUILayout.MaxWidth(100)))
                 {
                     ExportProfile(stageLightTimelineClip);
+                    SlmBaseDrawer.ClearCache();
                 }
                 
                 GUI.backgroundColor = Color.white;
@@ -251,36 +254,41 @@ namespace StageLightManeuver.StageLightTimeline.Editor
 
         private void ExportProfile(StageLightTimelineClip stageLightTimelineClip)
         {
-           
+            // ステージライトタイムラインクリップをアンドゥに登録して、変更済みとしてマーク
             Undo.RegisterCompleteObjectUndo(stageLightTimelineClip, stageLightTimelineClip.name);
             EditorUtility.SetDirty(stageLightTimelineClip);
-            var newProfile = CreateInstance<StageLightProfile>();
-            newProfile.stageLightProperties = stageLightTimelineClip.StageLightQueueData.stageLightProperties;
-            var exportPath = SlmUtility.GetExportPath(stageLightTimelineClip.exportPath,stageLightTimelineClip.clipDisplayName);
 
+            var newProfile = CreateInstance<StageLightProfile>();
+            var exportPath = SlmUtility.GetExportPath(stageLightTimelineClip.exportPath, stageLightTimelineClip.clipDisplayName);
+
+            // ディレクトリが存在しない場合は作成
             var directory = Path.GetDirectoryName(exportPath);
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
+            // ファイル名と拡張子を取得
             var fileName = Path.GetFileNameWithoutExtension(exportPath);
             var fileExtension = Path.GetExtension(exportPath);
             var filePath = Path.GetDirectoryName(exportPath);
-            
-            var files = Directory.GetFiles(filePath, "*" + fileExtension).ToList().Where( f => f.Contains(fileName)).ToList();
+
+            // 同じファイル名のファイルを検索
+            var files = Directory.GetFiles(filePath, "*" + fileExtension).ToList().Where(f => f.Contains(fileName)).ToList();
             var fileNames = files.Select(f => Path.GetFileNameWithoutExtension(f)).ToList();
             fileNames.Sort();
-            
+
             var lastFileNumber = 0;
             var exportFileName = fileName;
+
+            // ファイル名の設定
             if (fileNames.Count > 0)
             {
                 var lastFile = fileNames.Last();
                 var match = Regex.Match(lastFile, @"\((\d+)\)$");
                 if (match.Success)
                 {
-                    lastFileNumber = int.TryParse (match.Groups[1].Value, out lastFileNumber) ? lastFileNumber : 0;
+                    lastFileNumber = int.TryParse(match.Groups[1].Value, out lastFileNumber) ? lastFileNumber : 0;
                 }
 
                 fileName = fileName.Replace($"({lastFileNumber})", "");
@@ -293,19 +301,22 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             }
             else
             {
-                exportPath = filePath + "/" + fileName+ $"({lastFileNumber})" + fileExtension;
+                exportPath = filePath + "/" + fileName + $"({lastFileNumber})" + fileExtension;
             }
 
             if (!exportPath.EndsWith(".asset"))
             {
-                exportPath = (exportPath + ".asset");   
+                exportPath = (exportPath + ".asset");
             }
 
+            // 新しいプロファイルをアセットとして作成
             AssetDatabase.CreateAsset(newProfile, exportPath);
             AssetDatabase.Refresh();
             InitProfileList(stageLightTimelineClip);
+            // ステージライトタイムラインクリップの参照ステージライトプロファイルを設定
             stageLightTimelineClip.referenceStageLightProfile = AssetDatabase.LoadAssetAtPath<StageLightProfile>(exportPath);
-            AssetDatabase.SaveAssets();
+            stageLightTimelineClip.SaveProfile();
+            // AssetDatabase.SaveAssets();
         }
 
 

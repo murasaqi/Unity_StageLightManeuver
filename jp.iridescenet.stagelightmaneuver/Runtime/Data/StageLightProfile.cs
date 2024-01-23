@@ -19,7 +19,7 @@ namespace StageLightManeuver
         public string type;
         public string jsonInfo;
     }
-    [CreateAssetMenu(fileName = "New StageLightSetting", menuName = "StageLightManeuver/StageLightSetting")]
+    [CreateAssetMenu(fileName = "New StageLightProfile", menuName = "StageLightManeuver/StageLightProfile")]
     public class StageLightProfile: ScriptableObject
     {
        
@@ -28,7 +28,7 @@ namespace StageLightManeuver
   
         public float weight = 1f;
 
-        [ContextMenu("Init")]
+        // [ContextMenu("Init")]
         public void Init()
         {
             // timeProperty = new TimeProperty();

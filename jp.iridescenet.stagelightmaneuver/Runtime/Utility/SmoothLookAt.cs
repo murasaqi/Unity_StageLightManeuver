@@ -13,7 +13,7 @@ namespace StageLightManeuver
         public Transform target;
         private Vector3 panVelocity;
         [Range(0.001f, 0.1f)] public float speed = 0.02f;
-        private float _maxSpeed = float.PositiveInfinity;
+        private float _maxSpeed = float.PositiveInfinity; //TODO: warning CS0414: 使用予定はあるか確認
 
         // Start is called before the first frame update
         void Start()

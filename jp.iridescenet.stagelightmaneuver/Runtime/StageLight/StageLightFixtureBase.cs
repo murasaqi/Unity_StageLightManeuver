@@ -7,7 +7,7 @@ namespace StageLightManeuver
 {
     public abstract class StageLightFixtureBase : MonoBehaviour
     {
-        [FormerlySerializedAs("stageLights")] public List<StageLightFixture> stageLightFixtures;
+        [FormerlySerializedAs("stageLights")] public List<StageLightFixture> stageLightFixtures = new List<StageLightFixture>();
         public virtual void Init()
         {
         }

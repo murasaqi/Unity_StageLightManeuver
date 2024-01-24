@@ -28,11 +28,13 @@ namespace StageLightManeuver
         [HideInInspector] public float weight = 0;
         // public List<StageLightFixture> AllStageLights => stageLightFixtures;
         
-        [FormerlySerializedAs("stageLightOrderSettings")] public List<StageLightFixtureOrderSetting> stageLightFixtureOrderSettings = new List<StageLightFixtureOrderSetting>();
+        [FormerlySerializedAs("stageLightOrderSettings")] 
+        public List<StageLightFixtureOrderSetting> stageLightFixtureOrderSettings = new List<StageLightFixtureOrderSetting>();
 
         [ContextMenu("Initialize")]
         public override void Init()
         {
+            stageLightFixtures ??= new List<StageLightFixture>();
             var index = 0;
             foreach (var stageLight in stageLightFixtures)
             {

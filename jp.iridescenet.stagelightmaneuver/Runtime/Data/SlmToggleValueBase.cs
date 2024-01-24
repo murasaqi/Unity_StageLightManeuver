@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+// Disable warning CS8632
+// CS8632 : '#nullable' 注釈コンテキスト内のコードでのみ、Null 許容参照型の注釈を使用する必要があります。
+// ファイル全体を Nullable コンテキストにしたくないので一旦警告無視
+#pragma warning disable 8632
 
 namespace StageLightManeuver
 {
@@ -11,7 +15,7 @@ namespace StageLightManeuver
     [System.AttributeUsage(System.AttributeTargets.Field)]
     public class SlmValueAttribute : PropertyAttribute
     {
-        public readonly string? name;
+        public readonly string? name; //TODO CS8632: ここでNull許容型を使う必要があるか確認
         public readonly bool isHidden;
         public SlmValueAttribute(string? name = null, bool isHidden = false)
         {
@@ -46,6 +50,12 @@ namespace StageLightManeuver
         {
             propertyOverride = slmToggleValue.propertyOverride;
             this.value = slmToggleValue.value;
+        }
+
+        public SlmToggleValue(T value)
+        {
+            propertyOverride = false;
+            this.value = value;
         }
 
         public SlmToggleValue()

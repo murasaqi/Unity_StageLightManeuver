@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+// Disable warning CS8632
+// CS8632 : '#nullable' 注釈コンテキスト内のコードでのみ、Null 許容参照型の注釈を使用する必要があります。
+// ファイル全体を Nullable コンテキストにしたくないので一旦警告無視
+#pragma warning disable 8632
+
 namespace StageLightManeuver
 {
     public static class SlmEditorSettingsUtility
     {
-        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;
+        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;　//TODO CS8632: ここでNull許容型を使う必要があるか確認
         private const string _defaultStageLightManeuverSettingsPath = "Assets/StageLightManeuverSettings.asset";
 
         /// <summary>

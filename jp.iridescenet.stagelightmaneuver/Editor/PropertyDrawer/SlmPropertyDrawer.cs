@@ -50,7 +50,7 @@ namespace StageLightManeuver
                 }
                 catch (NullReferenceException e)
                 {
-                    // Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message); 
+                    Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message); 
                 }
                 if (EditorGUI.EndChangeCheck())
                 {

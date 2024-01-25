@@ -39,7 +39,7 @@ namespace StageLightManeuver
         public MaterialColorProperty(MaterialColorProperty materialColorProperty)
         {
             propertyName = materialColorProperty.propertyName;
-            clockOverride = new SlmToggleValue<ClockOverride>();
+            clockOverride = new SlmToggleValue<ClockOverride>(materialColorProperty.clockOverride);
             // colorPropertyName = new SlmToggleValue<string>(){value = materialColorProperty.colorPropertyName.value};
             // materialindex = new SlmToggleValue<int>(){value = materialColorProperty.materialindex.value};
             

@@ -47,7 +47,7 @@ namespace StageLightManeuver
         {
             propertyName = other.propertyName;
             propertyOverride = other.propertyOverride;
-            clockOverride = new SlmToggleValue<ClockOverride>();
+            clockOverride = new SlmToggleValue<ClockOverride>(other.clockOverride);
             // rotationAxis = new SlmToggleValue<Vector3>(other.rotationAxis){};
             rotationSpeed = new SlmToggleValue<MinMaxEasingValue>()
             {

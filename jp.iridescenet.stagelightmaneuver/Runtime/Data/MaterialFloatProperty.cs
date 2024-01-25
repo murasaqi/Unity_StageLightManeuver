@@ -30,7 +30,7 @@ namespace StageLightManeuver
         public MaterialFloatProperty(MaterialFloatProperty materialFloatProperty)
         {
             propertyName = materialFloatProperty.propertyName;
-            clockOverride = new SlmToggleValue<ClockOverride>();
+            clockOverride = new SlmToggleValue<ClockOverride>(materialFloatProperty.clockOverride);
             floatValue = new SlmToggleValue<MinMaxEasingValue>()
             {
                 propertyOverride = materialFloatProperty.floatValue.propertyOverride,

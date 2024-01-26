@@ -231,6 +231,30 @@ namespace StageLightManeuver
 #endif
 
 #if USE_VLB
+                // VLB のプロパティをライトに合わせて更新
+                //! BeamSD 動作未チェック 
+                //TODO: 動作確認
+                if (volumetricLightBeamHd )
+                {
+                    // VLB.VolumetricLightBeamHD.AssignPropertiesFromAttachedSpotLight の実装を参照
+                    // volumetricLightBeamHd.colorMode = ColorMode.Flat;
+                    // volumetricLightBeamHd.colorFlat = lightColor;
+
+                    // volumetricLightBeamHd.AssignPropertiesFromAttachedSpotLight();
+                    
+                    // UpdateAfterManualPropertyChange 内で AssignPropertiesFromAttachedSpotLight が呼ばれる
+                    volumetricLightBeamHd.UpdateAfterManualPropertyChange();
+                } 
+                else if (volumetricLightBeamSd && volumetricLightBeamSd.trackChangesDuringPlaytime)
+                {
+                    // VLB.VolumetricLightBeamSD.AssignPropertiesFromAttachedSpotLight の実装を参照
+                    // volumetricLightBeamSd.colorMode = ColorMode.Flat;
+                    // volumetricLightBeamSd.color = lightColor; 
+
+                    // UpdateAfterManualPropertyChange 内で AssignPropertiesFromAttachedSpotLight が呼ばれる
+                    volumetricLightBeamSd.UpdateAfterManualPropertyChange();
+                }
+                
                 if (volumetricCookieHd && !ignoreLightCookie)
                 {
                     volumetricCookieHd.cookieTexture = lightCookie;

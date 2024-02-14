@@ -20,7 +20,8 @@ namespace StageLightManeuver
     {
         [SlmValue("Flicker")] public SlmToggleValue<FastNoise.NoiseType> noiseType;
         private FastNoise fastNoise = new FastNoise();
-        [SlmValue("Noise Curve")] public SlmToggleValue<AnimationCurve> noiseCurve;
+        [SlmValue("Noise Amplitude")] public SlmToggleValue<float> noiseAmplitude;
+        // [SlmValue("Noise Curve")] public SlmToggleValue<AnimationCurve> noiseCurve;
         [SlmValue("Time Scale")] public SlmToggleValue<float> timeScale;
         [SlmValue("Randomize")] public SlmToggleValue<float> randomize;
     [SlmValue("Noise Seed")] public SlmToggleValue<Vector2> noiseSeed;
@@ -29,11 +30,7 @@ namespace StageLightManeuver
             propertyName = "Flicker";
             propertyOverride = true;
             noiseType = new SlmToggleValue<FastNoise.NoiseType>(){value = FastNoise.NoiseType.Simplex};
-            noiseCurve  = new SlmToggleValue<AnimationCurve>(){value = new AnimationCurve(new Keyframe[]
-            {
-                new Keyframe(0,0),
-                new Keyframe(1,1)
-            })};
+            noiseAmplitude = new SlmToggleValue<float>(){value = 1f};
             noiseSeed = new SlmToggleValue<Vector2>(){value = new Vector2(0,0)};
             timeScale = new SlmToggleValue<float>(){value = 1f};
             randomize = new SlmToggleValue<float>(){value = 0f};
@@ -44,7 +41,7 @@ namespace StageLightManeuver
             propertyOverride = toggle;
             // clockOverride.propertyOverride = toggle;
             noiseType.propertyOverride = toggle;
-            noiseCurve.propertyOverride = toggle;
+            noiseAmplitude.propertyOverride = toggle;
             noiseSeed.propertyOverride = toggle;
             timeScale.propertyOverride = toggle;
             randomize.propertyOverride = toggle;
@@ -62,7 +59,7 @@ namespace StageLightManeuver
             fastNoise.SetCellularDistanceFunction(FastNoise.CellularDistanceFunction.Euclidean);
             fastNoise.SetCellularReturnType(FastNoise.CellularReturnType.Distance2Add); 
             
-            return noiseCurve.value.Evaluate(fastNoise.GetNoise( time*timeScale.value + randomize.value*childIndex , noiseSeed.value.x, noiseSeed.value.y));
+            return noiseAmplitude.value* fastNoise.GetNoise(time * timeScale.value, childIndex * randomize.value);
                 
         }
         
@@ -76,11 +73,7 @@ namespace StageLightManeuver
                 propertyOverride = other.noiseType.propertyOverride,
                 value = other.noiseType.value
             };
-            noiseCurve = new SlmToggleValue<AnimationCurve>()
-            {
-                propertyOverride = other.noiseCurve.propertyOverride,
-                value = SlmUtility.CopyAnimationCurve(other.noiseCurve.value)
-            };
+            noiseAmplitude = new SlmToggleValue<float>(other.noiseAmplitude);
             noiseSeed = new SlmToggleValue<Vector2>()
             {
                 propertyOverride = other.noiseSeed.propertyOverride,
@@ -108,18 +101,27 @@ namespace StageLightManeuver
                 {
                     if(otherProperty.noiseType.propertyOverride) noiseType.value = otherProperty.noiseType.value;
                     // if(otherProperty.clockOverride.propertyOverride) clockOverride = new SlmToggleValue<ClockOverride>(otherProperty.clockOverride);
-                    if(otherProperty.noiseCurve.propertyOverride) noiseCurve = new SlmToggleValue<AnimationCurve>()
+                    if(otherProperty.noiseAmplitude.propertyOverride) 
                     {
-                        value = SlmUtility.CopyAnimationCurve(otherProperty.noiseCurve.value)
-                    };
-                    if(otherProperty.noiseSeed.propertyOverride) noiseSeed = new SlmToggleValue<Vector2>()
+                        noiseAmplitude = new SlmToggleValue<float>()
+                        {
+                            value = otherProperty.noiseAmplitude.value
+                        };
+                            
+                    }
+                    if(otherProperty.noiseSeed.propertyOverride) 
                     {
-                        value = new Vector2(otherProperty.noiseSeed.value.x, otherProperty.noiseSeed.value.y)
-                    };
-                    if(otherProperty.timeScale.propertyOverride) timeScale = new SlmToggleValue<float>()
-                    {
-                        value = otherProperty.timeScale.value
-                    };
+                        noiseSeed = new SlmToggleValue<Vector2>()
+                        {
+                            value = new Vector2(otherProperty.noiseSeed.value.x, otherProperty.noiseSeed.value.y)
+                        };
+                    }
+                    if(otherProperty.timeScale.propertyOverride) {
+                        timeScale = new SlmToggleValue<float>()
+                        {
+                            value = otherProperty.timeScale.value
+                        };
+                    }
                     randomize = new SlmToggleValue<float>()
                     {
                         value = otherProperty.randomize.value

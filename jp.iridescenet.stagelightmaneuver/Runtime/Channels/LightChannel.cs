@@ -147,7 +147,7 @@ namespace StageLightManeuver
                         var staggerValue = clockProperty.staggerDelay.value * (index + 1);
                         var clipDuration = clockProperty.clipProperty.clipEndTime - clockProperty.clipProperty.clipStartTime;
                         var offset = clipDuration * staggerValue;
-                        lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
+                        lightIntensity += lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
                     }
 
                     if (lightProperty != null)

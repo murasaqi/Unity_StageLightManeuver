@@ -22,6 +22,7 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightChannel : StageLightChannelBase
     {
+        private float gameTime = 0f;
         public List<Light> lights = new List<Light>();
 #if USE_HDRP
         public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
@@ -47,7 +48,6 @@ namespace StageLightManeuver
         public VolumetricCookieHD volumetricCookieHd;
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
-
 
         public void GetLightInChildrenAndFetchData()
         {
@@ -147,7 +147,8 @@ namespace StageLightManeuver
                         var staggerValue = clockProperty.staggerDelay.value * (index + 1);
                         var clipDuration = clockProperty.clipProperty.clipEndTime - clockProperty.clipProperty.clipStartTime;
                         var offset = clipDuration * staggerValue;
-                        lightIntensity += lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
+                        var flickerTime = lightFlickerProperty.gameTime.value? gameTime : currentTime + offset;
+                        lightIntensity += lightFlickerProperty.GetNoiseValue(flickerTime, index) * weight;
                     }
 
                     if (lightProperty != null)
@@ -279,6 +280,11 @@ namespace StageLightManeuver
         private void OnEnable()
         {
             Init();
+        }
+        
+        private void Update()
+        {
+            gameTime += Time.deltaTime;
         }
     }
 }

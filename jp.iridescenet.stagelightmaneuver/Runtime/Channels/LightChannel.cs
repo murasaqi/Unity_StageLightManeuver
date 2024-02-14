@@ -48,7 +48,6 @@ namespace StageLightManeuver
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
 
-
         public void GetLightInChildrenAndFetchData()
         {
             var lightList = GetComponentsInChildren<Light>().ToList();
@@ -95,6 +94,8 @@ namespace StageLightManeuver
 
         }
 
+
+        private float gameTime = 0f;
         public override void EvaluateQue(float currentTime)
         {
             if(lights == null) return;
@@ -118,8 +119,6 @@ namespace StageLightManeuver
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(lightProperty == null || clockProperty == null) continue;
-             
-                // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
                 var manualColorArrayProperty = data.TryGetActiveProperty<ManualColorArrayProperty>();
@@ -148,7 +147,8 @@ namespace StageLightManeuver
                         var staggerValue = clockProperty.staggerDelay.value * (index + 1);
                         var clipDuration = clockProperty.clipProperty.clipEndTime - clockProperty.clipProperty.clipStartTime;
                         var offset = clipDuration * staggerValue;
-                        lightIntensity += lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
+                        var flickerTime = lightFlickerProperty.gameTime.value? gameTime : currentTime + offset;
+                        lightIntensity += lightFlickerProperty.GetNoiseValue(flickerTime, index) * weight;
                     }
                     
                     spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
@@ -249,6 +249,11 @@ namespace StageLightManeuver
         private void OnEnable()
         {
             Init();
+        }
+        
+        private void Update()
+        {
+            gameTime += Time.deltaTime;
         }
     }
 }

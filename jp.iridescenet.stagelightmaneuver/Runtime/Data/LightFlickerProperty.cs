@@ -18,6 +18,8 @@ namespace StageLightManeuver
     [Serializable]
     public class LightFlickerProperty : SlmProperty
     {
+        
+        [SlmValue("GameTIme")] public SlmToggleValue<bool> gameTime;
         [SlmValue("Flicker")] public SlmToggleValue<FastNoise.NoiseType> noiseType;
         private FastNoise fastNoise = new FastNoise();
         [SlmValue("Noise Amplitude")] public SlmToggleValue<float> noiseAmplitude;
@@ -29,6 +31,7 @@ namespace StageLightManeuver
         {
             propertyName = "Flicker";
             propertyOverride = true;
+            gameTime = new SlmToggleValue<bool>(){value = false};
             noiseType = new SlmToggleValue<FastNoise.NoiseType>(){value = FastNoise.NoiseType.Simplex};
             noiseAmplitude = new SlmToggleValue<float>(){value = 1f};
             noiseSeed = new SlmToggleValue<Vector2>(){value = new Vector2(0,0)};
@@ -39,6 +42,7 @@ namespace StageLightManeuver
         public override void ToggleOverride(bool toggle)
         {
             propertyOverride = toggle;
+            gameTime.propertyOverride = toggle;
             // clockOverride.propertyOverride = toggle;
             noiseType.propertyOverride = toggle;
             noiseAmplitude.propertyOverride = toggle;
@@ -67,7 +71,7 @@ namespace StageLightManeuver
         {
             propertyName = other.propertyName;
             propertyOverride = other.propertyOverride;
-            // clockOverride = new SlmToggleValue<ClockOverride>(other.clockOverride);
+            gameTime = new SlmToggleValue<bool>(other.gameTime);
             noiseType = new SlmToggleValue<FastNoise.NoiseType>()
             {
                 propertyOverride = other.noiseType.propertyOverride,
@@ -89,6 +93,7 @@ namespace StageLightManeuver
                 propertyOverride = other.randomize.propertyOverride,
                 value = other.randomize.value
             };
+            
         }
         
         
@@ -99,6 +104,7 @@ namespace StageLightManeuver
                 var otherProperty = other as LightFlickerProperty;
                 if (other.propertyOverride)
                 {
+                    if(otherProperty.gameTime.propertyOverride) gameTime = new SlmToggleValue<bool>(otherProperty.gameTime);
                     if(otherProperty.noiseType.propertyOverride) noiseType.value = otherProperty.noiseType.value;
                     // if(otherProperty.clockOverride.propertyOverride) clockOverride = new SlmToggleValue<ClockOverride>(otherProperty.clockOverride);
                     if(otherProperty.noiseAmplitude.propertyOverride) 

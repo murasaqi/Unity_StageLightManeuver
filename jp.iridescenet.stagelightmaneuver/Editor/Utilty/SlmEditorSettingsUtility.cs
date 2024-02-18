@@ -12,8 +12,8 @@ namespace StageLightManeuver
 {
     public static class SlmEditorSettingsUtility
     {
-        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;　//TODO CS8632: ここでNull許容型を使う必要があるか確認
-        private const string _defaultStageLightManeuverSettingsPath = "Assets/StageLightManeuverSettings.asset";
+        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath; //TODO CS8632: ここでNull許容型を使う必要があるか確認
+        private const string _defaultStageLightManeuverSettingsPath = "Assets/StageLightManeuver/StageLightManeuverSettings.asset";
 
         /// <summary>
         /// <see cref="StageLightManeuverSettings"/>のアセットを返す。無ければ作成する。

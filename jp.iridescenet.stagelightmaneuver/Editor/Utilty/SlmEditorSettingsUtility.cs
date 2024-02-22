@@ -30,6 +30,12 @@ namespace StageLightManeuver
                 {
                     var slmSettings = StageLightManeuverSettings.CreateInstance<StageLightManeuverSettings>();
                     stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;
+                    // Create Directory if not exist
+                    var directoryPath = System.IO.Path.GetDirectoryName(stageLightManeuverSettingsPath);
+                    if (!AssetDatabase.IsValidFolder(directoryPath))
+                    {
+                        AssetDatabase.CreateFolder("Assets", "StageLightManeuver");
+                    }
                     AssetDatabase.CreateAsset(slmSettings, _defaultStageLightManeuverSettingsPath);
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();

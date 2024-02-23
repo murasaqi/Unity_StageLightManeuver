@@ -12,8 +12,8 @@ namespace StageLightManeuver
 {
     public static class SlmEditorSettingsUtility
     {
-        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;　//TODO CS8632: ここでNull許容型を使う必要があるか確認
-        private const string _defaultStageLightManeuverSettingsPath = "Assets/StageLightManeuverSettings.asset";
+        private static string? stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath; //TODO CS8632: ここでNull許容型を使う必要があるか確認
+        private const string _defaultStageLightManeuverSettingsPath = "Assets/StageLightManeuver/StageLightManeuverSettings.asset";
 
         /// <summary>
         /// <see cref="StageLightManeuverSettings"/>のアセットを返す。無ければ作成する。
@@ -30,6 +30,12 @@ namespace StageLightManeuver
                 {
                     var slmSettings = StageLightManeuverSettings.CreateInstance<StageLightManeuverSettings>();
                     stageLightManeuverSettingsPath = _defaultStageLightManeuverSettingsPath;
+                    // Create Directory if not exist
+                    var directoryPath = System.IO.Path.GetDirectoryName(stageLightManeuverSettingsPath);
+                    if (!AssetDatabase.IsValidFolder(directoryPath))
+                    {
+                        AssetDatabase.CreateFolder("Assets", "StageLightManeuver");
+                    }
                     AssetDatabase.CreateAsset(slmSettings, _defaultStageLightManeuverSettingsPath);
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();

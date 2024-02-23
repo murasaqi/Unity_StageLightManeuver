@@ -171,7 +171,7 @@ namespace StageLightManeuver
                     lightColor += lightColorProperty.lightToggleColor.value.Evaluate(t) * weight;
                 }
 
-                if (weight > 0.5f)
+                if (weight >= 0.5f)
                 {
                     lightCookie = lightProperty.cookie.value;
                 }

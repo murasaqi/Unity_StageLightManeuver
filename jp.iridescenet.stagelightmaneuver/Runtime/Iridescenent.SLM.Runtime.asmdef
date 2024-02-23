@@ -4,7 +4,7 @@
     "references": [
         "GUID:f06555f75b070af458a003d92f9efb00",
         "GUID:15fc0a57446b3144c949da3e2b9737a9",
-        "GUID:631024d009dacbb4397630a0f8e71ced",
+        "com.saladgamer.volumetriclightbeam",
         "GUID:457756d89b35d2941b3e7b37b4ece6f1",
         "GUID:df380645f10b7bc4b97d4f5eb6303d95"
     ],

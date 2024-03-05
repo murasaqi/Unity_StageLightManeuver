@@ -1,4 +1,13 @@
-# Unity_StageLightManeuver
+# Unity StageLightManeuver
+
+> [!Note]
+> インストール用URLはこちら
+> ```
+> https://github.com/murasaqi/Unity_StageLightManeuver.git?path=/jp.iridescenet.stagelightmaneuver
+> ```
+
+> [!Important] 
+> 旧版の StageLightManeuver をお探しの方は[こちら](https://github.com/murasaqi/StageLightManeuver)を参照してください
 
 ## 概要
 UnityのTimeline上で直感的に照明演出を設計することができるアセットです。
@@ -13,13 +22,12 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 3. ```https://github.com/murasaqi/Unity_StageLightManeuver.git?path=/jp.iridescenet.stagelightmaneuver``` を入力し、`Add` を押すことで最新版がインストールされます。
 
 ## 要件
-
-- Unity 2021.3.6f1 以上
-- URP or HDRP
+* Unity 2021.3.6f1 以上
+* URP or HDRP
 #### Optional
-- [Volumetric Light Beam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)の操作にも対応しています。
+* [Volumetric Light Beam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)の操作にも対応しています。
 Volumetric Light Beamと連携させるためには別途asmdefの設定が必要です。
-詳細については [Volumetric Light Beamとの連携]() を参照してください
+詳細については [Volumetric Light Beamとの連携](#volumetric-light-beamとの連携) を参照してください
 
 ## 機能例
 
@@ -35,9 +43,7 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
     - クリップをブレンドすることで演出同士を自然に遷移することも可能です
     
     ![propDiff](prop_diff.png)
-    
     ![Light, Pan/Tilt Property 単体の動作と組み合わせた際の動作](props.gif)
-    
     Light, Pan/Tilt Property 単体の動作と組み合わせた際の動作
     
     ![クリップのブレンドによるライト消灯](clip_blend.gif)
@@ -48,7 +54,7 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
     - 演出をプロファイルにすることで、変更や再利用が容易になります
 - [VolumetricLightBeam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)と連携させることで、軽量なボリューメトリックライトを演出に組み込むことができます
     
-    ![link_vlb](link_vlb.gif)
+    ![link_vlb](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/b3ada0a7-3cc6-4b11-87a0-d719b5d7e266)
     
 
 ## プリセット灯体
@@ -72,10 +78,10 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 この例ではURP上でMoving Beam Lightを扱います。
 
 1. シーンに `/Resources/SLSAssets/Lights/SLM_MovingBeamLight_URP_HD.prefab` を配置し、必要に応じてLightFixtureと各LightChannelの設定を変更します
-    1. 灯体がどんな機能に対応しているかは Stage Light Fixture によって管理されます
-    2. Stage Light Fixture に機能を登録するにはFixtureコンポーネントの `Add New Channel`から追加したい機能を選択します
+    * 灯体がどんな機能に対応しているかは Stage Light Fixture によって管理されます
+    * Stage Light Fixture に機能を登録するにはFixtureコンポーネントの `Add New Channel`から追加したい機能を選択します
     
-    ![fixture_ui](fixture_ui.png)
+    ![fixture_ui](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/a1569ee6-a03a-4816-a3c3-6e57f765664f)
     
 2. 1で作成した灯体を複製し配置した後、それらを Stage Light Universe コンポーネントをもつゲームオブジェクトの子にします
 3. Stage Light Universe コンポーネントのコンテキストメニューから「**Find Stage Light Fixtures**」と「**Initialize**」を実行してください。これで灯体をタイムラインから操作できるようになります。
@@ -83,7 +89,7 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 5. トラックにクリップを作成すると灯体の対応チャンネルに応じて自動的にプロパティが追加されます
 6. クリップからプロパティの設定を変更すると、それに応じて灯体が制御されます
     
-    [tutorial](tutorial.mp4)
+    [tutorial](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/acd11990-80a2-4ea1-ba1c-964e0ed2a19a)
     
 
 ### **Volumetric Light Beamとの連携**
@@ -92,16 +98,15 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 以下の手順でVLBをパッケージとして取り込むことで、VLB付き灯体をStage Light Maneuverで制御できるようになります。
 
 1. アセットストアからVLBをインストール後 VLBのフォルダに`com.saladgamer.volumetriclightbeam`という名前の Assembly Definition を作成してください
-    1. URPを使用する場合、Assembly Definition References に`Unity.RenderPipelines.Universal.Runtime` を設定してください
-    2. プラットフォーム設定はAnyに設定します
+    * プラットフォーム設定はAnyに設定します
+    * URPを使用する場合、Assembly Definition References に`Unity.RenderPipelines.Universal.Runtime` を設定してください
 
 ![vlb_asmdef](vlb_asmdef.png)
-
 ![vlb_asmdef_refurp](vlb_asmdef_refurp.png)
 
-1. Assembly Definition の設置後、VLBのフォルダをPackagesフォルダ以下に移動してください
+2. Assembly Definition の設置後、VLBのフォルダをPackagesフォルダ以下に移動してください
     
-    ![move_vlb](move_vlb.png)
+    ![move_vlb](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/6308e122-cc8c-49a3-920d-86476b5ea0ab)
     
 3. 以降VLBがついた灯体をStage Light Maneuverで制御すると、自動的にVLBのパラメータも更新されるようになります。
 

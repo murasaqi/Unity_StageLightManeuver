@@ -97,7 +97,7 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 
 1. アセットストアからVLBをインストール後 VLBのフォルダに`com.saladgamer.volumetriclightbeam`という名前の Assembly Definition を作成してください
     * プラットフォーム設定はAnyに設定します
-    * URPを使用する場合、Assembly Definition References に`Unity.RenderPipelines.Universal.Runtime` を設定してください
+    * URPを使用する場合、`com.saladgamer.volumetriclightbeam`ファイルの設定内にあるAssembly Definition References に`Unity.RenderPipelines.Universal.Runtime` を設定してください
           <blockquote><details><summary>参考</summary>
               ![vlb_asmdef_refurp](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/73a2ae12-f58a-422d-9290-47e82f9a9f8d)
           </details></blockquote>

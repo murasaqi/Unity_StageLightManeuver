@@ -70,7 +70,8 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 ## 使い方
 
 ### **クイックスタート**
-
+ [tutorial](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/acd11990-80a2-4ea1-ba1c-964e0ed2a19a)
+ 
 以下にプリセット灯体を用いたタイムラインからの灯体制御例を示します。
 この例ではURP上でMoving Beam Lightを扱います。
 
@@ -87,7 +88,6 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 5. トラックにクリップを作成すると灯体の対応チャンネルに応じて自動的にプロパティが追加されます
 6. クリップからプロパティの設定を変更すると、それに応じて灯体が制御されます
     
-    [tutorial](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/acd11990-80a2-4ea1-ba1c-964e0ed2a19a)
     
 
 ### **Volumetric Light Beamとの連携**

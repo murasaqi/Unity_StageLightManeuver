@@ -6,8 +6,6 @@
 > https://github.com/murasaqi/Unity_StageLightManeuver.git?path=/jp.iridescenet.stagelightmaneuver
 > ```
 
-> [!Important] 
-> 旧版の StageLightManeuver をお探しの方は[こちら](https://github.com/murasaqi/StageLightManeuver)を参照してください
 
 ## 概要
 UnityのTimeline上で直感的に照明演出を設計することができるアセットです。

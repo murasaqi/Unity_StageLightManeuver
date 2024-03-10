@@ -11,7 +11,7 @@
 UnityのTimeline上で直感的に照明演出を設計することができるアセットです。
 DMXやArtnetで制御される照明コントロールシステムを参考に開発されており、実際のライブ照明に近い演出をつけることが可能です。
 
-![Overview](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/f3b9a163-09ee-4e65-993d-8727118e82b6)
+![Overview](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/69f82e8a-3115-4442-8db2-5d69b145a264)
 
 ## インストール
 #### Git URLを使用してインストール
@@ -23,9 +23,9 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 * Unity 2021.3.6f1 以上
 * URP or HDRP
 #### Optional
-* [Volumetric Light Beam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)の操作にも対応しています。
-Volumetric Light Beamと連携させるためには別途asmdefの設定が必要です。
-詳細については [Volumetric Light Beamとの連携](#volumetric-light-beamとの連携) を参照してください
+* [Volumetric Light Beam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)の制御に対応しています。
+    * Volumetric Light Beamと連携するには別途Assembly Definitionの設定が必要です。
+    * 詳細については [Volumetric Light Beamとの連携](#volumetric-light-beamとの連携) を参照してください
 
 ## 機能例
 
@@ -92,7 +92,9 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 
 ### **Volumetric Light Beamとの連携**
 
-本パッケージはVolumetric Light Beam(以下VLB)と連携することができます。
+本パッケージはVolumetric Light Beam(以下VLB)との連携にも対応しています。
+- 
+
 以下の手順でVLBをパッケージとして取り込むことで、VLB付き灯体をStage Light Maneuverで制御できるようになります。
 
 1. アセットストアからVLBをインストール後 VLBのフォルダに`com.saladgamer.volumetriclightbeam`という名前の Assembly Definition を作成してください
@@ -104,11 +106,11 @@ Volumetric Light Beamと連携させるためには別途asmdefの設定が必�
 
 2. Assembly Definition の設置後、VLBのフォルダをPackagesフォルダ以下に移動してください
     
-    ![move_vlb](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/6308e122-cc8c-49a3-920d-86476b5ea0ab)
+    ![move_vlb](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/e4c89bea-7b2e-486f-9f29-bf92387cc524)
     
 3. 以降VLBがついた灯体をStage Light Maneuverで制御すると、自動的にVLBのパラメータも更新されるようになります。
 
-## コントリビューション
+## Contributor
 
 TRIBALCON inc  
 Compositon inc  
@@ -117,7 +119,7 @@ Compositon inc
 [Kuyuri Iroha](https://github.com/kuyuri-iroha)  
 [pon](https://github.com/AJpon)  
 
-## ライセンス
+## License
 
 MIT License
 Copyright (c) 2024 Murasaqi

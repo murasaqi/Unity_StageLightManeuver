@@ -22,5 +22,10 @@ namespace StageLightManeuver
         public virtual void UpdateChannel()
         {
         }
+
+        public virtual List<Type> GetAllPropertyType()
+        {
+            return new List<Type>();
+        }
     }
 }

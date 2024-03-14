@@ -81,17 +81,12 @@ namespace StageLightManeuver
         
         
         
-        public List<Type> GetAllPropertyType()
+        public override List<Type> GetAllPropertyType()
         {
             var types = new List<Type>();
             foreach (var stageLight in stageLightFixtures)
             {
-
-                if (stageLight.GetType() == typeof(StageLightFixture))
-                {
-                    StageLightFixture sl = (StageLightFixture) stageLight;
-                    types.AddRange(sl.StageLightChannels.SelectMany(channel => channel.PropertyTypes));
-                }
+                types.AddRange(stageLight.GetAllPropertyType());
             }
 
             // remove same type from list

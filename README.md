@@ -60,12 +60,12 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 
 | Light Type | File Name | RenderPipeLine | Rendering Image |
 |:-----------|:----------|:--------------:|:---------------:|
-| LED Strobe | `SLM_LEDStrobe.prefab` | URP | <img src="SLM_LEDStrobe.png" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_HDRP.prefab` | HDRP | <img src="SLM_MovingBeamLight_HDRP.png" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_URP_HD.prefab` | URP | <img src="SLM_MovingBeamLight_URP_HD.png" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_URP_SD.prefab` | URP | <img src="SLM_MovingBeamLight_URP_SD.png" width="64"> |
-| Moving Wash Light | `SLM_MovingWashLight_URl.prefab` | URP | <img src="SLM_MovingWashLight_URp.png" width="64"> |
-| Rotating Wash Light | `SLM_RotatingWashLight_URP.prefab` | URP | <img src="SLM_RotatingWashLight_URP.png" width="64"> |
+| LED Strobe | `SLM_LEDStrobe.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/c3df799b-4bd5-484b-a7c0-0a35c22a008a" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_HDRP.prefab` | HDRP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/009226e2-5918-4609-9cbc-82bc733783c2" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_URP_HD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/2f0b3b68-dda4-4a40-b3a4-1f33cb2f0b96" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_URP_SD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/2f0b3b68-dda4-4a40-b3a4-1f33cb2f0b96" width="64"> |
+| Moving Wash Light | `SLM_MovingWashLight_URl.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/d4e6141c-5407-4c85-8fd4-371b039ced32" width="64"> |
+| Rotating Wash Light | `SLM_RotatingWashLight_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/6fca80dc-6d36-42de-8a76-15c92b396573" width="64"> |
 
 ## 使い方
 
@@ -88,13 +88,24 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 5. トラックにクリップを作成すると灯体の対応チャンネルに応じて自動的にプロパティが追加されます
 6. クリップからプロパティの設定を変更すると、それに応じて灯体が制御されます
     
-    
+
+### **Volumetric Light Beam**
+ムービングライトの演出を作るうえでボリューメトリックライトの存在は欠かせません。
+ボリューメトリックライトを使うことでムービングライトの光が空間全体に広がり、よりリアルな演出を作ることができます。/
+<!-- VLB有り無しの画像 or GIF -->
+
+しかし標準でボリューメトリックライトをサポートしているのはHDRPのみで、URPではサポートされていません。
+またHDRPのボリューメトリックライトは高負荷であるため、大量に使うことはできません。
+
+これらの問題に対処するために、Stage Light Maneuver では Volumetric Light Beam を利用することを推奨します。
+
+Volumetric Light Beam はURP、HDRPの両方で使用可能な、軽量で高品質なボリューメトリックライトエフェクトを提供します。
+StageLightManeunver は Volumetric Light Beam を使ったボリューメトリックライトの演出設計に対応しているので、ぜひご利用ください。
+
 
 ### **Volumetric Light Beamとの連携**
 
 本パッケージはVolumetric Light Beam(以下VLB)との連携にも対応しています。
-- 
-
 以下の手順でVLBをパッケージとして取り込むことで、VLB付き灯体をStage Light Maneuverで制御できるようになります。
 
 1. アセットストアからVLBをインストール後 VLBのフォルダに`com.saladgamer.volumetriclightbeam`という名前の Assembly Definition を作成してください

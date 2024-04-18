@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace StageLightManeuver
@@ -107,5 +112,48 @@ namespace StageLightManeuver
             }
             StageLightChannels = GetComponents<StageLightChannelBase>().ToList();
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Save Profile (Testing)")]
+        public void SaveProfile()
+        {
+            var channels = StageLightChannels;
+
+            var profile = ScriptableObject.CreateInstance<LightFixtureProfile>();
+            profile.Init(channels);
+
+            var lightName = gameObject.name;
+            var path = EditorUtility.SaveFilePanel("Save LightFixtureProfile Asset", "Asset", lightName, "asset");
+            string fileName = Path.GetFileName(path);
+            if(path == "") return;
+            path = path.Replace("\\", "/").Replace(Application.dataPath, "Assets");
+            // string dir = Path.GetDirectoryName(path);
+
+            AssetDatabase.CreateAsset(profile, path);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+        }
+
+        [ContextMenu("Load Profile (Testing)")]
+        public void LoadProfile()
+        {
+            var path = EditorUtility.OpenFilePanel("Load LightFixtureProfile Asset", "Asset", "asset");
+            if(path == "") return;
+            path = path.Replace("\\", "/").Replace(Application.dataPath, "Assets");
+            var profile = AssetDatabase.LoadAssetAtPath<LightFixtureProfile>(path);
+            if(profile == null || profile.GetType() != typeof(LightFixtureProfile)) return;
+
+            var channels = StageLightChannels;
+
+            // gameObject に channels 内の各チャンネルをコンポーネントとして追加する
+            // 同じチャンネルが存在する場合はフィールドをコピー
+
+            // var listChannelData = profile.LoadChannelData();
+            
+            profile.RestoreChannelData(channels);
+            Init(); 
+        }
+#endif
     }
 }

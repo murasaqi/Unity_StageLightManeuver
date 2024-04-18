@@ -38,31 +38,6 @@ namespace StageLightManeuver
     //     public string jsonInfo;
     // }
 
-    /// <summary>
-    /// </summary>
-    // [Serializable]
-    // public class FieldData
-    // {
-    //     /// <summary>
-    //     /// フィールドの名前
-    //     /// </summary>
-    //     public string fieldName;
-    //     public string fieldType;
-    //     public object value;
-
-    //     public FieldData(string fieldName, object value)
-    //     {
-    //         this.fieldName = fieldName;
-    //         this.fieldType = value.GetType().ToString();
-    //         this.value = value;
-    //     }
-
-    //     public Type GetFieldType()
-    //     {
-    //         return Type.GetType(fieldType);
-    //     }
-    // }
-
 
     // 参照以外の情報をシリアライズ、デシリアライズするためのクラス
     // StageLightChannel は MonoBehaviour を継承しているため

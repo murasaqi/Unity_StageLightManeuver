@@ -58,6 +58,24 @@ namespace StageLightManeuver
             root.Add(center);
             root.Add(new PropertyField(serializedObject.FindProperty("syncStageLight")));
 
+            var right = new VisualElement();
+            right.style.alignItems = Align.FlexEnd;
+            right.Add(new Button(() =>
+            {
+                _targetStageLightFixture.SaveProfile();
+            })
+            {
+                text = "Export FixtureProfile"
+            });
+            right.Add(new Button(() =>
+            {
+                _targetStageLightFixture.LoadProfile();
+            })
+            {
+                text = "Import FixtureProfile"
+            });
+            root.Add(right);
+
             return root;
         }
 

@@ -114,7 +114,7 @@ namespace StageLightManeuver
         }
 
 #if UNITY_EDITOR
-        [ContextMenu("Save Profile (Testing)")]
+        // [ContextMenu("Save Profile (Testing)")]
         public void SaveProfile()
         {
             var channels = StageLightChannels;
@@ -135,7 +135,7 @@ namespace StageLightManeuver
 
         }
 
-        [ContextMenu("Load Profile (Testing)")]
+        // [ContextMenu("Load Profile (Testing)")]
         public void LoadProfile()
         {
             var path = EditorUtility.OpenFilePanel("Load LightFixtureProfile Asset", "Asset", "asset");

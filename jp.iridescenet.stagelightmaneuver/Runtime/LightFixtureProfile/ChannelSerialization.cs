@@ -86,7 +86,7 @@ namespace StageLightManeuver
             foreach (var field in fields)
             {
                 // フィールド内が参照型の場合はシリアライズしない
-                if (field.FieldType.IsClass)
+                if (field.FieldType.IsClass && field.FieldType != typeof(string))
                 {
                     continue;
                 }
@@ -96,6 +96,10 @@ namespace StageLightManeuver
                 if (field.FieldType.IsPrimitive)
                 {
                     channelData.fieldInfo[field.Name] = value.ToString();
+                }
+                else if (field.FieldType == typeof(string))
+                {
+                    channelData.fieldInfo[field.Name] = value as string;
                 }
                 else
                 {
@@ -141,6 +145,11 @@ namespace StageLightManeuver
                     {
                         var strValue = channelData.fieldInfo[field.Name];
                         var value = Convert.ChangeType(strValue, type);
+                        field.SetValue(channel, value);
+                    }
+                    else if (type == typeof(string))
+                    {
+                        var value = channelData.fieldInfo[field.Name];
                         field.SetValue(channel, value);
                     }
                     else

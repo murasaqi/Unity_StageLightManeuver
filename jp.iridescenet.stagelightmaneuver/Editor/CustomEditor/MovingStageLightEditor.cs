@@ -50,7 +50,7 @@ namespace StageLightManeuver
                     );
                     MethodInfo bound = mi.MakeGenericMethod(type);
                     
-                    foreach (var obj in serializedObject.targetObjects)　//! Add Channel to all Fixtures when multiple selections are made
+                    foreach (var obj in targets) //! Add Channel to all Fixtures when multiple selections are made
                     {
                         var stageLightFixture = obj as StageLightFixture;
                         if (stageLightFixture == null) continue;

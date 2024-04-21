@@ -10,9 +10,14 @@ namespace StageLightManeuver
     public static class SlmSettingsUtility
     {
         /// <summary>
-        ///  <see cref="StageLightProfile"/>のデフォルトのエクスポート先のパス
+        /// <see cref="StageLightProfile"/>のデフォルトのエクスポート先のパス
         /// </summary>
         public const string BaseExportProfilePath = "Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>";
+
+        /// <summary>
+        /// <see cref="LightFixtureProfile"/> のデフォルトのエクスポートパス
+        /// </summary>
+        public const string FixtureProfileDefaultExportPath = "Assets/StageLightManeuver/Profiles/FixtureProfiles/<LightName>";
 
         /// <summary>
         /// 全ての<see cref="SlmProperty"/>を含むリストを返す。このリストの順番が<see cref="StageLightProfile"/>のデフォルトの順番になる。
@@ -50,5 +55,22 @@ namespace StageLightManeuver
             typeof(ReflectionProbeProperty),
             typeof(SlmAdditionalProperty),
         };
+
+        /// <summary>
+        /// <see cref="StageLightManeuverSettings"/>のアセットを返す
+        /// </summary>
+        // public static StageLightManeuverSettings GetStageLightManeuverSettingsAsset()
+        // {
+        //     StageLightManeuverSettings stageLightManeuverSettingsAsset;
+        //     var guids = AssetDatabase.FindAssets("t:StageLightManeuverSettings");
+        //     if (guids.Length > 0)
+        //     {
+        //         stageLightManeuverSettingsPath = AssetDatabase.GUIDToAssetPath(guids[0]);
+        //         stageLightManeuverSettingsAsset =
+        //             AssetDatabase.LoadAssetAtPath<StageLightManeuverSettings>(stageLightManeuverSettingsPath);
+        //     }
+
+        //     return stageLightManeuverSettingsAsset;
+        // }
     }
 }

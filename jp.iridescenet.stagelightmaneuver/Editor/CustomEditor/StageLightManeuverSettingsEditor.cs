@@ -33,6 +33,8 @@ namespace StageLightManeuver
 
             var exportProfilePathProp = serializedObject.FindProperty("exportProfilePath");
             EditorGUILayout.PropertyField(exportProfilePathProp);
+            var lightFixtureProfileExportPathProp = serializedObject.FindProperty("lightFixtureProfileExportPath");
+            EditorGUILayout.PropertyField(lightFixtureProfileExportPathProp);
 
             // Property order Setting
             EditorGUILayout.Space(SlmEditorStyleConst.Spacing);

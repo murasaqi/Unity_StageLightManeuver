@@ -11,7 +11,9 @@ namespace StageLightManeuver
     public class StageLightManeuverSettings : ScriptableObject
     {
         [Tooltip("Default export path for StageLightProfile")]
-        public string exportProfilePath = SlmSettingsUtility.BaseExportProfilePath; 
+        public string exportProfilePath = SlmSettingsUtility.BaseExportProfilePath;
+        [Tooltip("Default export path for LightFixtureProfile")]
+        public string lightFixtureProfileExportPath = SlmSettingsUtility.FixtureProfileDefaultExportPath;
         [SerializeField] 
         private SerializableKeyPair<string,int>[] propertyOrders;
         private Dictionary<string, int> _slmPropertyOrder;

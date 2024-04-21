@@ -76,7 +76,6 @@ namespace StageLightManeuver
 
         public void RestoreChannelData(List<StageLightChannelBase> channels)
         {
-            Debug.Log(channels[0].GetType().ToString());
             var channelDataCollection = LoadChannelData();
             foreach (var channelData in channelDataCollection)
             {
@@ -87,7 +86,7 @@ namespace StageLightManeuver
                 }
                 else
                 {
-                    Debug.LogError("Channel Type is not found: " + channelData.channelType);
+                    Debug.LogWarning("Channel Type is not found: " + channelData.channelType);
                 } 
             }
         }

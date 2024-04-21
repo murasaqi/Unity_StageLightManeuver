@@ -65,6 +65,7 @@ namespace StageLightManeuver
                 {
                     var stageLightFixture = obj as StageLightFixture;
                     if (stageLightFixture == null) continue;
+                    stageLightFixture.FindChannels();
                     LoadProfile(stageLightFixture);
                 }
             })

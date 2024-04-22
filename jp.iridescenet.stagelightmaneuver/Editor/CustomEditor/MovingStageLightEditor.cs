@@ -49,9 +49,15 @@ namespace StageLightManeuver
                         null
                     );
                     MethodInfo bound = mi.MakeGenericMethod(type);
-                    var channel =bound.Invoke(_targetStageLightFixture.gameObject, null) as StageLightChannelBase;
-                    if(channel)channel.Init();
-                    _targetStageLightFixture.FindChannels();
+                    
+                    foreach (var obj in targets) //! Add Channel to all Fixtures when multiple selections are made
+                    {
+                        var stageLightFixture = obj as StageLightFixture;
+                        if (stageLightFixture == null) continue;
+                        var channel =bound.Invoke(stageLightFixture.gameObject, null) as StageLightChannelBase;
+                        if(channel)channel.Init();
+                        stageLightFixture.FindChannels();
+                    }
                 }
             }));
             center.Add(popupField);

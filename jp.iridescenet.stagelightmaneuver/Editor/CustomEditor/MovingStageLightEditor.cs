@@ -24,10 +24,25 @@ namespace StageLightManeuver
             
             _targetStageLightFixture = target as StageLightFixture;
 
-             // ----- Fixture Profile -----
-            root.Add(new PropertyField(serializedObject.FindProperty("lightFixtureProfile"), "Fixture Profile"));
-            // lightFixtureProfile がセットされているか
-            // bool isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
+            // ----- Fixture Profile -----
+            var profileField = new PropertyField(serializedObject.FindProperty("lightFixtureProfile"),  "Fixture Profile");
+            var pathField = new TextField("Export Path")
+            {
+                value = _targetStageLightFixture.profileExportPath,
+                isDelayed = true,
+            };
+            
+            pathField.RegisterValueChangedCallback(evt =>
+            {
+                _targetStageLightFixture.profileExportPath = evt.newValue;
+                
+                if (_targetStageLightFixture.profileExportPath == "")
+                {
+                    var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
+                    _targetStageLightFixture.profileExportPath = settings.lightFixtureProfileExportPath;
+                }
+                serializedObject.ApplyModifiedProperties();
+            });
 
             var horizontal = new VisualElement();
             horizontal.style.flexDirection = FlexDirection.Row;
@@ -40,13 +55,14 @@ namespace StageLightManeuver
                 {
                     var stageLightFixture = obj as StageLightFixture;
                     if (stageLightFixture == null) continue;
-                    SaveProfile(stageLightFixture);
+                    SaveProfile(stageLightFixture, stageLightFixture.profileExportPath);
                 }
             })
             {
                 text = "Save as"
             });
-            horizontal.Add(new Button(() =>
+
+            var buttonSave = new Button(() =>
             {
                 foreach (var obj in targets)
                 {
@@ -57,22 +73,39 @@ namespace StageLightManeuver
             })
             {
                 text = "Save",
-                // clickable = isProfileSet
-            });
-            horizontal.Add(new Button(() =>
+            };
+            
+            var buttonLoad = new Button(() =>
             {
                 foreach (var obj in targets)
                 {
                     var stageLightFixture = obj as StageLightFixture;
                     if (stageLightFixture == null) continue;
-                    stageLightFixture.FindChannels();
                     LoadProfile(stageLightFixture);
                 }
             })
             {
                 text = "Load",
-                // clickable = isProfileSet
-            });
+            };
+            
+            void UpdateButtonState()
+            {
+                var isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
+                buttonSave.SetEnabled(isProfileSet);
+                buttonLoad.SetEnabled(isProfileSet);
+            }
+            
+            UpdateButtonState();
+
+            profileField.RegisterValueChangeCallback(evt => UpdateButtonState());   
+            
+            horizontal.Add(buttonSave);
+            horizontal.Add(buttonLoad);
+
+
+            root.Add(profileField);
+            pathField.SetEnabled(false);
+            root.Add(pathField);
             root.Add(horizontal);
 
             // -----
@@ -91,8 +124,6 @@ namespace StageLightManeuver
             root.Add(new PropertyField(serializedObject.FindProperty("stageLightChannels")));
             channelList = new List<string>();
             channelList.Add("Add New Channel");
-          
-           
 
             Init();
 
@@ -127,6 +158,17 @@ namespace StageLightManeuver
             center.Add(popupField);
             root.Add(center);
             root.Add(new PropertyField(serializedObject.FindProperty("syncStageLight")));
+            
+            // pathField.RegisterValueChangeCallback(evt =>
+            // {
+            //     var defaultPath = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset().lightFixtureProfileExportPath;
+            //     var path = _targetStageLightFixture.profileExportPath;
+            //     if (root.focusController.focusedElement != pathField && path == "")
+            //     {
+            //         _targetStageLightFixture.profileExportPath = defaultPath;
+            //         serializedObject.ApplyModifiedProperties();
+            //     }
+            // });
 
             return root;
         }

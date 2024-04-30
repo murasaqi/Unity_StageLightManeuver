@@ -82,13 +82,6 @@ namespace StageLightManeuver
             return types;
         }
 
-        public override List<Type> GetAllPropertyType()
-        {
-            var types = new List<Type>();
-            types.AddRange(StageLightChannels.SelectMany(channel => channel.PropertyTypes));
-            return types;
-        }
-
 
         private void Update()
         {

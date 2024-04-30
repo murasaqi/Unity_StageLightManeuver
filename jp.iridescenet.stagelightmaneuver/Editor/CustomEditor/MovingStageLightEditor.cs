@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
@@ -21,14 +23,107 @@ namespace StageLightManeuver
             // return base.CreateInspectorGUI();
             
             _targetStageLightFixture = target as StageLightFixture;
+
+            // ----- Fixture Profile -----
+            var profileField = new PropertyField(serializedObject.FindProperty("lightFixtureProfile"),  "Fixture Profile");
+            var pathField = new TextField("Export Path")
+            {
+                value = _targetStageLightFixture.profileExportPath,
+                isDelayed = true,
+            };
+            
+            pathField.RegisterValueChangedCallback(evt =>
+            {
+                _targetStageLightFixture.profileExportPath = evt.newValue;
+                
+                if (_targetStageLightFixture.profileExportPath == "")
+                {
+                    var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
+                    _targetStageLightFixture.profileExportPath = settings.lightFixtureProfileExportPath;
+                }
+                serializedObject.ApplyModifiedProperties();
+            });
+
+            var horizontal = new VisualElement();
+            horizontal.style.flexDirection = FlexDirection.Row;
+            // horizontal.style.paddingBottom = 4;
+            horizontal.style.justifyContent = Justify.FlexEnd;
+
+            horizontal.Add(new Button(() =>
+            {
+                foreach (var obj in targets)
+                {
+                    var stageLightFixture = obj as StageLightFixture;
+                    if (stageLightFixture == null) continue;
+                    SaveProfile(stageLightFixture, stageLightFixture.profileExportPath);
+                }
+            })
+            {
+                text = "Save as"
+            });
+
+            var buttonSave = new Button(() =>
+            {
+                foreach (var obj in targets)
+                {
+                    var stageLightFixture = obj as StageLightFixture;
+                    if (stageLightFixture == null) continue;
+                    SaveProfile(stageLightFixture);
+                }
+            })
+            {
+                text = "Save",
+            };
+            
+            var buttonLoad = new Button(() =>
+            {
+                foreach (var obj in targets)
+                {
+                    var stageLightFixture = obj as StageLightFixture;
+                    if (stageLightFixture == null) continue;
+                    LoadProfile(stageLightFixture);
+                }
+            })
+            {
+                text = "Load",
+            };
+            
+            void UpdateButtonState()
+            {
+                var isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
+                buttonSave.SetEnabled(isProfileSet);
+                buttonLoad.SetEnabled(isProfileSet);
+            }
+            
+            UpdateButtonState();
+
+            profileField.RegisterValueChangeCallback(evt => UpdateButtonState());   
+            
+            horizontal.Add(buttonSave);
+            horizontal.Add(buttonLoad);
+
+
+            root.Add(profileField);
+            pathField.SetEnabled(false);
+            root.Add(pathField);
+            root.Add(horizontal);
+
+            // -----
+            // 水平線を追加
+            root.Add(new IMGUIContainer(() =>
+            {
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+                // EditorGUILayout.LabelField("Fixture Profile", EditorStyles.boldLabel);
+
+            }));
+
             var indexField = new PropertyField(serializedObject.FindProperty("index"));
             indexField.SetEnabled(false); 
             root.Add(indexField);
             root.Add(new PropertyField(serializedObject.FindProperty("stageLightChannels")));
             channelList = new List<string>();
             channelList.Add("Add New Channel");
-          
-           
 
             Init();
 
@@ -63,6 +158,17 @@ namespace StageLightManeuver
             center.Add(popupField);
             root.Add(center);
             root.Add(new PropertyField(serializedObject.FindProperty("syncStageLight")));
+            
+            // pathField.RegisterValueChangeCallback(evt =>
+            // {
+            //     var defaultPath = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset().lightFixtureProfileExportPath;
+            //     var path = _targetStageLightFixture.profileExportPath;
+            //     if (root.focusController.focusedElement != pathField && path == "")
+            //     {
+            //         _targetStageLightFixture.profileExportPath = defaultPath;
+            //         serializedObject.ApplyModifiedProperties();
+            //     }
+            // });
 
             return root;
         }
@@ -106,6 +212,53 @@ namespace StageLightManeuver
                 }
             }
             return null;
+        }
+
+
+        public void SaveProfile(StageLightFixture fixture, string? savePath=null)
+        {
+            var channels = fixture.StageLightChannels;
+            var profile = fixture.lightFixtureProfile;
+            if (profile == null) 
+            {
+                string path = savePath;
+                if(path == "" || path == null) 
+                {
+                    var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
+                    path = settings.lightFixtureProfileExportPath;
+                }
+                profile = ScriptableObject.CreateInstance<LightFixtureProfile>();
+
+                var lightName = fixture.gameObject.name;
+                path = path.Replace("<LightName>", lightName);
+                if (!path.EndsWith(".asset"))
+                {
+                    path = (path + ".asset");
+                }
+                string fileName = Path.GetFileName(path);
+                path = path.Replace("\\", "/").Replace(Application.dataPath, "Assets");
+                string dir = Path.GetDirectoryName(path);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                AssetDatabase.CreateAsset(profile, path);
+                fixture.lightFixtureProfile = profile;
+            }
+            profile.Init(channels);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        public void LoadProfile(StageLightFixture fixture)
+        {
+            var profile = fixture.lightFixtureProfile;
+            if (profile == null) return;
+
+            var channels = fixture.StageLightChannels;
+            
+            profile.RestoreChannelData(channels);
+            Init(); 
         }
     }
 }

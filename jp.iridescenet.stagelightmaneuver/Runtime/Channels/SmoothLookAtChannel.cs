@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
+    [ExecuteAlways]
+    [AddComponentMenu("")]
     public class SmoothLookAtChannel:StageLightChannelBase
     {
         public List<Transform> targetList = new List<Transform>();

@@ -4,6 +4,8 @@ using UnityEngine.Rendering;
 
 namespace StageLightManeuver
 {
+    [ExecuteAlways]
+    [AddComponentMenu("")]
     public class EnvironmentChannel:StageLightChannelBase
     {
         public AmbientMode initialAmbientMode = AmbientMode.Flat;

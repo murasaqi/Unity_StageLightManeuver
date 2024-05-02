@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
+    // [ExecuteAlways]
     [AddComponentMenu("")]
     public class MaterialTextureChannel:StageLightChannelBase
     {

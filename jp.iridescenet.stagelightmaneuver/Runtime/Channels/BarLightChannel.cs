@@ -33,6 +33,8 @@ namespace StageLightManeuver
         
     }
 
+    [ExecuteAlways]
+    [AddComponentMenu("")]
     public class BarLightChannel : StageLightChannelBase
     {
         private float lightIndex = 0;

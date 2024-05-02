@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StageLightManeuver
 { 
     [ExecuteAlways]
-    // [AddComponentMenu("")]
+    [AddComponentMenu("")]
     public class MaterialFloatChannel:StageLightChannelBase
     {
         public Renderer meshRenderer;

@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 
 namespace StageLightManeuver
 {
+    [ExecuteAlways]
+    [AddComponentMenu("")]
     public class LookAtChannel:StageLightChannelBase
     {
         

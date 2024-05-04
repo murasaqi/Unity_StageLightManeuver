@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using log4net.Layout;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -16,7 +17,7 @@ namespace StageLightManeuver
     [TrackColor(0.8239978f, 0.9150943f, 0.3338079f)]
     [TrackClipType(typeof(StageLightTimelineClip))]
     [TrackBindingType(typeof(StageLightFixtureBase))]
-    public class StageLightTimelineTrack : TrackAsset
+    public class StageLightTimelineTrack : TrackAsset,ILayerable
     {
         
         [FormerlySerializedAs("drawBeat")] [SerializeField] public bool drawCustomClip = true;
@@ -60,6 +61,15 @@ namespace StageLightManeuver
                 stageLightTimelineClips.Add(stageLightTimelineClip);
             }
 
+            return mixer;
+        }
+        
+        public Playable CreateLayerMixer(PlayableGraph graph, GameObject go, int inputCount)
+        {
+            var mixer = ScriptPlayable<StageLightTimelineLayerMixerBehaviour>.Create(graph, inputCount);
+            var stageLightTimelineLayerMixer = mixer.GetBehaviour();
+            stageLightTimelineLayerMixer.stageLightTimelineTrack = this;
+            //return Playable.Null;
             return mixer;
         }
 

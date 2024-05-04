@@ -16,6 +16,8 @@ namespace StageLightManeuver
         private bool firstFrameHappened = false;
 
         public StageLightFixtureBase trackBinding;
+        private List<StageLightQueueData> queueDatas;
+        public List<StageLightQueueData> QueueDatas => queueDatas;
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             trackBinding = playerData as StageLightFixtureBase;
@@ -28,10 +30,11 @@ namespace StageLightManeuver
                 trackBinding.Init();
                 firstFrameHappened = true;
             }
+            
+            queueDatas = new List<StageLightQueueData>();
 
 
             var hasAnyClipPlaying = false;
-            var time = playable.GetTime();
             for (int i = 0; i < clips.Count; i++)
             {
                 var clip = clips[i];
@@ -59,22 +62,8 @@ namespace StageLightManeuver
                 if (inputWeight > 0)
                 {
                     stageLightTimelineClip.StageLightQueueData.weight = inputWeight;
-                    trackBinding.AddQue(stageLightTimelineClip.StageLightQueueData);
+                    queueDatas.Add(stageLightTimelineClip.StageLightQueueData);
                     hasAnyClipPlaying = true;
-                }
-            }
-
-            if (stageLightTimelineTrack)
-            {
-                if (!hasAnyClipPlaying)
-                {
-                    if (stageLightTimelineTrack.updateOnOutOfClip) trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateChannel();
-                }
-                else
-                {
-                    trackBinding.EvaluateQue((float)time);
-                    trackBinding.UpdateChannel();
                 }
             }
 

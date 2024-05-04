@@ -49,7 +49,7 @@ namespace StageLightManeuver
                 {
                     str += propName + ",";
                 }
-                Debug.Log(str);
+                // Debug.Log(str);
 
                 foreach (var queueData in queueDatas)
                 {

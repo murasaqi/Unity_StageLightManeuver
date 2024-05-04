@@ -41,11 +41,11 @@ namespace StageLightManeuver
                 var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
                 if (stageLightTimelineClip == null) continue;
                 float inputWeight = playable.GetInputWeight(i);
-                var timeProperty = stageLightTimelineClip.StageLightQueueData.TryGetActiveProperty<ClockProperty>();
-                if (timeProperty != null)
+                var clockProperty = stageLightTimelineClip.StageLightQueueData.TryGetActiveProperty<ClockProperty>();
+                if (clockProperty != null)
                 {
-                    timeProperty.clipProperty.clipStartTime = (float)clip.start;
-                    timeProperty.clipProperty.clipEndTime = (float)clip.end;
+                    clockProperty.clipProperty.clipStartTime = (float)clip.start;
+                    clockProperty.clipProperty.clipEndTime = (float)clip.end;
                 }
 
                 foreach (var stageLightProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)

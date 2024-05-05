@@ -16,7 +16,9 @@ namespace StageLightManeuver
     public class MovingStageLightEditor:Editor
     {
         private StageLightFixture _targetStageLightFixture;
-        private List<string> channelList = new List<string>();
+        private List<string> _channelList = new List<string>();
+        private bool IsMultipleSelectionMode => targets.Length > 1;
+
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
@@ -36,7 +38,7 @@ namespace StageLightManeuver
             {
                 _targetStageLightFixture.profileExportPath = evt.newValue;
                 
-                if (_targetStageLightFixture.profileExportPath == "")
+                if (string.IsNullOrEmpty(_targetStageLightFixture.profileExportPath))
                 {
                     var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
                     _targetStageLightFixture.profileExportPath = settings.lightFixtureProfileExportPath;
@@ -49,7 +51,7 @@ namespace StageLightManeuver
             // horizontal.style.paddingBottom = 4;
             horizontal.style.justifyContent = Justify.FlexEnd;
 
-            horizontal.Add(new Button(() =>
+            var buttonSaveAs = new Button(() =>
             {
                 foreach (var obj in targets)
                 {
@@ -60,7 +62,7 @@ namespace StageLightManeuver
             })
             {
                 text = "Save as"
-            });
+            };
 
             var buttonSave = new Button(() =>
             {
@@ -87,24 +89,19 @@ namespace StageLightManeuver
             {
                 text = "Load",
             };
-            
-            void UpdateButtonState()
-            {
-                var isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
-                buttonSave.SetEnabled(isProfileSet);
-                buttonLoad.SetEnabled(isProfileSet);
-            }
-            
+
             UpdateButtonState();
 
-            profileField.RegisterValueChangeCallback(evt => UpdateButtonState());   
+            profileField.RegisterValueChangeCallback(evt => UpdateButtonState());  
             
+            horizontal.Add(buttonSaveAs);
             horizontal.Add(buttonSave);
             horizontal.Add(buttonLoad);
 
 
             root.Add(profileField);
             pathField.SetEnabled(false);
+            // pathField.SetEnabled(!IsMultipleSelectionMode);
             root.Add(pathField);
             root.Add(horizontal);
 
@@ -122,15 +119,15 @@ namespace StageLightManeuver
             indexField.SetEnabled(false); 
             root.Add(indexField);
             root.Add(new PropertyField(serializedObject.FindProperty("stageLightChannels")));
-            channelList = new List<string>();
-            channelList.Add("Add New Channel");
+            _channelList = new List<string>();
+            _channelList.Add("Add New Channel");
 
             Init();
 
             var center = new VisualElement();
             center.style.alignItems = Align.Center;
-            var popupField = new PopupField<string>(channelList, 0);
-            popupField.SetEnabled( channelList.Count > 1 );
+            var popupField = new PopupField<string>(_channelList, 0);
+            popupField.SetEnabled( _channelList.Count > 1 );
             popupField.RegisterValueChangedCallback((evt =>
             {
                 if (popupField.index != 0)
@@ -171,6 +168,19 @@ namespace StageLightManeuver
             // });
 
             return root;
+
+            void UpdateButtonState()
+            {
+                var isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
+                var isSingleSelection = IsMultipleSelectionMode == false;
+                var canSave = isProfileSet 
+                              && string.IsNullOrEmpty(_targetStageLightFixture.profileExportPath) == false 
+                              && isSingleSelection;
+                
+                buttonSaveAs.SetEnabled(isSingleSelection);
+                buttonSave.SetEnabled(canSave);
+                buttonLoad.SetEnabled(isProfileSet);
+            }
         }
 
         private void Init()
@@ -196,13 +206,14 @@ namespace StageLightManeuver
                             if (_targetStageLightFixture.StageLightChannels.Find(x =>x!= null && x.GetType().Name == t.Name) == null)
                             {
                                 // Debug.Log(t.Name);
-                                channelList.Add(t.Name);
+                                _channelList.Add(t.Name);
                             }      
                         }
                     });
             }
         }
-        public static Type GetTypeByClassName( string className )
+
+        private static Type GetTypeByClassName( string className )
         {
             foreach( Assembly assembly in AppDomain.CurrentDomain.GetAssemblies() ) {
                 foreach( Type type in assembly.GetTypes() ) {
@@ -222,7 +233,7 @@ namespace StageLightManeuver
             if (profile == null) 
             {
                 string path = savePath;
-                if(path == "" || path == null) 
+                if(string.IsNullOrEmpty(path)) 
                 {
                     var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
                     path = settings.lightFixtureProfileExportPath;

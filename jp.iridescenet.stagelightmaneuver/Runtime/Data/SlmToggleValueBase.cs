@@ -162,13 +162,13 @@ namespace StageLightManeuver
         }
     }
 
-    [Serializable]
-    public class SlmBarLightProperty : SlmAdditionalProperty
-    {
-        public virtual void ResizeBarLightArray(List<LightChannel> lightChannels)
-        {
-        }
-    }
+    // [Serializable]
+    // public class SlmBarLightProperty : SlmAdditionalProperty
+    // {
+    //     public virtual void ResizeBarLightArray(List<LightChannel> lightChannels)
+    //     {
+    //     }
+    // }
  
     
     // [Serializable]

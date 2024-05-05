@@ -22,29 +22,31 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightChannel : StageLightChannelBase
     {
-        public List<Light> lights = new List<Light>();
+        [ChannelFieldBehavior(false)] public List<Light> lights = new List<Light>();
 #if USE_HDRP
-        public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
+        [ChannelFieldBehavior(false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
 #endif
-        public Color lightColor;
-        public float lightIntensity;
-        public float innerSpotAngle;
-        public float spotAngle;
-        public float spotRange;
-        public bool ignoreLightCookie = false;
-        public Texture lightCookie;
-        public float limitIntensityMin = 0f;
-        public float limitIntensityMax = 10000f;
-        public float limitInnerSpotAngleMin = 0f;
-        public float limitInnerSpotAngleMax = 100f;
-        public float limitSpotAngleMin = 0f;
-        public float limitSpotAngleMax = 100f;
-        public float limitSpotRangeMin = 0f;
-        public float limitSpotRangeMax = 100f;
+        [ChannelFieldBehavior(false)] public Color lightColor;
+        [ChannelFieldBehavior(false)] public float lightIntensity;
+        [ChannelFieldBehavior(false)] public float innerSpotAngle;
+        [ChannelFieldBehavior(false)] public float spotAngle;
+        [ChannelFieldBehavior(false)] public float spotRange;
+        [ChannelFieldBehavior(false)] public bool ignoreLightCookie = false;
+        [ChannelFieldBehavior(false)] public Texture lightCookie;
+        
+        // Light Config
+        [ChannelFieldBehavior(true)] public float limitIntensityMin = 0f;
+        [ChannelFieldBehavior(true)] public float limitIntensityMax = 10000f;
+        [ChannelFieldBehavior(true)] public float limitInnerSpotAngleMin = 0f;
+        [ChannelFieldBehavior(true)] public float limitInnerSpotAngleMax = 100f;
+        [ChannelFieldBehavior(true)] public float limitSpotAngleMin = 0f;
+        [ChannelFieldBehavior(true)] public float limitSpotAngleMax = 100f;
+        [ChannelFieldBehavior(true)] public float limitSpotRangeMin = 0f;
+        [ChannelFieldBehavior(true)] public float limitSpotRangeMax = 100f;
 #if USE_VLB
-        public VolumetricLightBeamHD volumetricLightBeamHd;
-        public VolumetricLightBeamSD volumetricLightBeamSd;
-        public VolumetricCookieHD volumetricCookieHd;
+        [ChannelFieldBehavior(true, false)] public VolumetricLightBeamHD volumetricLightBeamHd;
+        [ChannelFieldBehavior(true, false)] public VolumetricLightBeamSD volumetricLightBeamSd;
+        [ChannelFieldBehavior(true, false)] public VolumetricCookieHD volumetricCookieHd;
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
 

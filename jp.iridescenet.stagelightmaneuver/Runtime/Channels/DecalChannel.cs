@@ -14,20 +14,23 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class DecalChannel: StageLightChannelBase
     {
-        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
-        public LightChannel lightChannel;
-        public Texture2D decalTexture;
-        public Color decalColor = Color.white;
-        public float decalSizeScaler = 1f;
-        public float floorHeight = 0f;
-        public float decalDepthScaler = 1f;
-        public float fadeFactor = 1f;
-        public float opacity = 1f;
-        public float radius = 1f;
-        public DecalProjector decalProjector;
-        public Material decalMaterial;
-        public bool autoDisableDecal = true;
-        public float autoDisableDecalTime = 1f;
+        [FormerlySerializedAs("lightFxChannel")]
+        [ChannelFieldBehavior(true, false)] public LightChannel lightChannel;
+        
+        [ChannelFieldBehavior(false)] public Texture2D decalTexture;
+        [ChannelFieldBehavior(false)] public Color decalColor = Color.white;
+        [ChannelFieldBehavior(false)] public float decalSizeScaler = 1f;
+        [ChannelFieldBehavior(false)] public float floorHeight = 0f;
+        [ChannelFieldBehavior(false)] public float decalDepthScaler = 1f;
+        [ChannelFieldBehavior(false)] public float fadeFactor = 1f;
+        [ChannelFieldBehavior(false)] public float opacity = 1f;
+        [ChannelFieldBehavior(false)] public float radius = 1f;
+
+        [ChannelFieldBehavior(true, false)] public DecalProjector decalProjector;
+        [ChannelFieldBehavior(true, false)] public Material decalMaterial;
+        [ChannelFieldBehavior(true)] public bool autoDisableDecal = true;
+        [ChannelFieldBehavior(true)] public float autoDisableDecalTime = 1f;
+        
         private float _autoDisableDecalTime = 0f;
         private Material _instancedDecalMaterial = null;
         private float _radius = 1f;

@@ -8,13 +8,25 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class SmoothLookAtChannel:StageLightChannelBase
     {
-        public List<Transform> targetList = new List<Transform>();
-        public SmoothLookAt smoothLookAt;
-        private int _targetIndex = 0;
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<Transform> targetList = new List<Transform>();
+        [ChannelField(true, false)] public SmoothLookAt smoothLookAt;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float autoDisableTime = 1f;
+#endregion
+
+
+#region params
+        [ChannelField(false)] private float _autoDisableTime = 0f;
+        [ChannelField(false)] private int _targetIndex = 0;
         
-        public bool autoDisableLookAt = true;
-        public float autoDisableTime = 1f;
-        private float _autoDisableTime = 0f;
+        [ChannelField(false)] public bool autoDisableLookAt = true;
+#endregion
+
+
         public override void EvaluateQue(float currentTime)
         {
             base.EvaluateQue(currentTime);

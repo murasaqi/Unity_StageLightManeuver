@@ -10,14 +10,25 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class YTransformChannel : StageLightChannelBase
     {
-        public Transform target;
-        private float _positionY;
-        public float offsetY = 0f;
-        public float smoothTime = 0.1f;
-        public bool useSmoothness = false;
-        public float previousPositionY = 0f;
-        public float currentPositionY = 0f;
-      
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Transform target;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float offsetY = 0f;
+#endregion
+
+
+#region params
+        [ChannelField(false)] private float _positionY;
+        [ChannelField(false)] public float smoothTime = 0.1f;
+        [ChannelField(false)] public bool useSmoothness = false;
+        [ChannelField(false)] public float previousPositionY = 0f;
+        [ChannelField(false)] public float currentPositionY = 0f;
+#endregion
+
+
         void Start()
         {
             Init();
@@ -26,7 +37,7 @@ namespace StageLightManeuver
         public override void Init()
         {
             base.Init();
-            PropertyTypes.Add(typeof(XTransformProperty));
+            PropertyTypes.Add(typeof(YTransformProperty));
         }
 
         public override void EvaluateQue(float currentTime)
@@ -38,14 +49,20 @@ namespace StageLightManeuver
             while (stageLightDataQueue.Count >0)
             {
                 var queueData = stageLightDataQueue.Dequeue();
-                var xTransformProperty = queueData.TryGetActiveProperty<XTransformProperty>() as XTransformProperty;
-                if (xTransformProperty == null) continue;
+                var yTransformProperty = queueData.TryGetActiveProperty<YTransformProperty>() as YTransformProperty;
+                if (yTransformProperty == null) continue;
                 var weight = queueData.weight;
                 var stageLightOrderProperty = queueData.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index = stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(YTransformProperty),index);
                 
-                _positionY += xTransformProperty.positionX.value.Evaluate(normalizedTime) * weight;
+                _positionY += yTransformProperty.positionY.value.Evaluate(normalizedTime) * weight;
+
+                smoothTime += yTransformProperty.smoothTime.value * weight;
+                if(weight > 0.5f)
+                {
+                    useSmoothness = yTransformProperty.useSmoothness.value;
+                }
             }
             
             
@@ -54,19 +71,18 @@ namespace StageLightManeuver
         public override void UpdateChannel()
         {
             base.UpdateChannel();
-           if(useSmoothness) return;
-           if(target == null) return;
-           target.localPosition = new Vector3(target.localPosition.x, _positionY+offsetY, target.localPosition.z);
+            if(useSmoothness) return;
+            if(target == null) return;
+            target.localPosition = new Vector3(target.localPosition.x, _positionY+offsetY, target.localPosition.z);
         }
 
         public void Update()
         {
             if(!useSmoothness) return;
-            var smoothPositionX = Mathf.SmoothDamp(previousPositionY, _positionY, ref currentPositionY, smoothTime);
+            var smoothPositionY = Mathf.SmoothDamp(previousPositionY, _positionY, ref currentPositionY, smoothTime);
             if(target == null) return;
-            target.localPosition = new Vector3(target.localPosition.x, smoothPositionX+offsetY, target.localPosition.z);
-            previousPositionY = smoothPositionX;
-
+            target.localPosition = new Vector3(target.localPosition.x, smoothPositionY+offsetY, target.localPosition.z);
+            previousPositionY = smoothPositionY;
         }
     }
 

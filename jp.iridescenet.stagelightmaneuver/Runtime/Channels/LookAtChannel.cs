@@ -10,23 +10,32 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LookAtChannel:StageLightChannelBase
     {
-        
-        [FormerlySerializedAs("panChannelChannel")] [FormerlySerializedAs("fxPanChannel")] public LightPanChannel panChannel;
+#region DoNotSaveToProfile-Configs
+        [FormerlySerializedAs("panChannelChannel")] [FormerlySerializedAs("fxPanChannel")] 
+        [ChannelField(true, false)] public LightPanChannel panChannel;
         [FormerlySerializedAs("tiltChannelChannel")] [FormerlySerializedAs("fxTiltChannel")]
-        public LightTiltChannel tiltChannel;
-        public List<Transform> lookAtTransforms = new List<Transform>();
-        public int lookAtTransformIndex = 0;
-        public float lookAtWeight = 1f;
-        public Vector3 resultAngle = Vector3.zero;
-        
-        public Vector3 panoffset = Vector3.zero;
-        public Vector3 tiltOffset = Vector3.zero;
+        [ChannelField(true, false)] public LightTiltChannel tiltChannel;
+        [ChannelField(true, false)] public List<Transform> lookAtTransforms = new List<Transform>();
+        [ChannelField(true, false)] public LookAtConstraint lookAtDummy;
+#endregion
 
 
-        public LookAtConstraint lookAtDummy;
-        private Vector3 panVelocity = Vector3.zero;
-        private Vector3 tiltVelocity = Vector3.zero;
-        public float speed = 1f;
+#region Configs
+        [ChannelField(true)] public Vector3 panoffset = Vector3.zero;
+        [ChannelField(true)] public Vector3 tiltOffset = Vector3.zero;
+#endregion
+
+
+#region params
+        [ChannelField(false)] public int lookAtTransformIndex = 0;
+        [ChannelField(false)] public float lookAtWeight = 1f; //! don't use
+        [ChannelField(false)] public Vector3 resultAngle = Vector3.zero;
+        [ChannelField(false)] private Vector3 panVelocity = Vector3.zero; //! don't use
+        [ChannelField(false)] private Vector3 tiltVelocity = Vector3.zero; //! don't use
+        [ChannelField(false)] public float speed = 1f;
+#endregion
+
+
         private void Start()
         {
             Init();
@@ -101,7 +110,6 @@ namespace StageLightManeuver
                     
                     speed += lookAtProperty.speed.value * queueData.weight;
                 }
-                   
                 
                 
             }
@@ -127,11 +135,11 @@ namespace StageLightManeuver
             if (tiltChannel)
             {
                 // Debug.Log(tiltChannel);
-               var tiltAngle =
+                var tiltAngle =
                     tiltOffset + new Vector3(lookAtTransformLocalEulerAngles.x * tiltChannel.rotationVector.x,
                         lookAtTransformLocalEulerAngles.y * tiltChannel.rotationVector.y,
                         lookAtTransformLocalEulerAngles.z * tiltChannel.rotationVector.z);
-               
+                
                 
                 tiltChannel.rotateTransform.localEulerAngles = tiltAngle;
                 // tiltChannel.rotateTransform.localEulerAngles += (tiltAngle - tiltChannel.rotateTransform.localEulerAngles)  * speed;

@@ -8,19 +8,28 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightTiltChannel: StageLightChannelBase
     {
-        // private LightTransformType _lightTransformType = LightTransformType.Tilt;
-        private float _angle =0f;
-        public Vector3 rotationVector = Vector3.left;
-        public Transform rotateTransform;
-        public bool ignore = false;
-        private Vector3 currentVelocity;
-        public float smoothTime = 0.05f;
-        private float maxSpeed = float.PositiveInfinity;
-        [FormerlySerializedAs("smoothness")] public bool useSmoothness = false;
-        private float previousAngle = 0f;
-        public float minAngleValue = -360;
-        public float maxAngleValue = 360;
-        
+#region prams
+        // [ChannelFieldBehavior(false)] private LightTransformType _lightTransformType = LightTransformType.Tilt;
+        [ChannelField(false)] private float _angle =0f;
+        [ChannelField(false)] public Vector3 rotationVector = Vector3.left;
+        [ChannelField(false)] public Transform rotateTransform;
+        [ChannelField(false)] public bool ignore = false;
+        [ChannelField(false)] private Vector3 currentVelocity;
+        [ChannelField(false)] public float smoothTime = 0.05f;
+        [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
+        [ChannelField(false)] [FormerlySerializedAs("smoothness")] public bool useSmoothness = false;
+        [ChannelField(false)] private float previousAngle = 0f;
+#endregion
+
+
+#region Config
+        [ChannelField(true)] public float minAngleValue = -360;
+        [ChannelField(true)] public float maxAngleValue = 360;
+#endregion
+
+#region DoNotSaveToProfile-Configs
+#endregion
+
         public override void EvaluateQue(float currentTime)
         {
             base.EvaluateQue(currentTime);
@@ -70,7 +79,10 @@ namespace StageLightManeuver
                 }
                 
                 smoothTime += qTiltProperty.smoothTime.value * weight;
-                if(weight > 0.5f) useSmoothness = qTiltProperty.useSmoothness.value;
+                if(weight > 0.5f)
+                {
+                    useSmoothness = qTiltProperty.useSmoothness.value;
+                }
 
             }
             
@@ -105,7 +117,7 @@ namespace StageLightManeuver
                 previousAngle = smoothAngle;
             }
             
-           
+            
         }
 
         public override void Init()

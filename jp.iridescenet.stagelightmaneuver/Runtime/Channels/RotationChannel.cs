@@ -8,11 +8,21 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class RotationChannel:StageLightChannelBase
     {
-        public Transform target;
-        public Vector3 rotationAxis = new Vector3(0,0,1);
-        public Vector3 offsetRotation = new Vector3(0,0,0);
-        [FormerlySerializedAs("rotationScalar")] public float rotationSpeed = 0f;
-        private Vector3 rotation = Vector3.zero;
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Transform target;
+#endregion
+
+
+#region Configs
+        [ChannelField(false)] public Vector3 rotationAxis = new Vector3(0,0,1);
+        [ChannelField(false)] public Vector3 offsetRotation = new Vector3(0,0,0);
+#endregion
+
+
+#region params
+        [ChannelField(false)] [FormerlySerializedAs("rotationScalar")] public float rotationSpeed = 0f;
+        [ChannelField(false)] private Vector3 rotation = Vector3.zero;
+#endregion
 
 
         private void Start()
@@ -46,7 +56,7 @@ namespace StageLightManeuver
                 var normalizedTime = SlmUtility.GetNormalizedTime(time, queueData, typeof(RotationProperty),index);
                 // offsetTime += SlmUtility.GetOffsetTime(time, queueData, typeof(RotationProperty),index) * queueData.weight;
                 rotationSpeed += rotationProperty.rotationSpeed.value.Evaluate(normalizedTime) * queueData.weight;
-              
+                
             }
 
             // rotation = rotationSpeed * time;

@@ -15,26 +15,41 @@ namespace StageLightManeuver
     public class DecalChannel: StageLightChannelBase
     {
         [FormerlySerializedAs("lightFxChannel")]
-        [ChannelFieldBehavior(true, false)] public LightChannel lightChannel;
-        
-        [ChannelFieldBehavior(false)] public Texture2D decalTexture;
-        [ChannelFieldBehavior(false)] public Color decalColor = Color.white;
-        [ChannelFieldBehavior(false)] public float decalSizeScaler = 1f;
-        [ChannelFieldBehavior(false)] public float floorHeight = 0f;
-        [ChannelFieldBehavior(false)] public float decalDepthScaler = 1f;
-        [ChannelFieldBehavior(false)] public float fadeFactor = 1f;
-        [ChannelFieldBehavior(false)] public float opacity = 1f;
-        [ChannelFieldBehavior(false)] public float radius = 1f;
+        [ChannelField(true, false)] public LightChannel lightChannel;
 
-        [ChannelFieldBehavior(true, false)] public DecalProjector decalProjector;
-        [ChannelFieldBehavior(true, false)] public Material decalMaterial;
-        [ChannelFieldBehavior(true)] public bool autoDisableDecal = true;
-        [ChannelFieldBehavior(true)] public float autoDisableDecalTime = 1f;
-        
+
+#region params
+        [ChannelField(false)] public Texture2D decalTexture;
+        [ChannelField(false)] public Color decalColor = Color.white;
+        [ChannelField(false)] public float decalSizeScaler = 1f;
+        [ChannelField(false)] public float floorHeight = 0f;
+        [ChannelField(false)] public float decalDepthScaler = 1f;
+        [ChannelField(false)] public float fadeFactor = 1f;
+        [ChannelField(false)] public float opacity = 1f;
+        [ChannelField(false)] public float radius = 1f;
+#endregion
+
+
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public DecalProjector decalProjector;
+        [ChannelField(true, false)] public Material decalMaterial;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public bool autoDisableDecal = true;
+        [ChannelField(true)] public float autoDisableDecalTime = 1f;
+#endregion
+
+
+#region params
         private float _autoDisableDecalTime = 0f;
         private Material _instancedDecalMaterial = null;
         private float _radius = 1f;
         private float _depth = 1f;
+#endregion
+
+
         private void Start()
         {
             Init();

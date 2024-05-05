@@ -16,14 +16,22 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class SyncLensFlareChannel : StageLightChannelBase
     {
-       
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public LensFlareComponentSRP lensFlareSRP;
+        [ChannelField(true, false)] public LightChannel lightChannel;
+#endregion
 
-        public LensFlareComponentSRP lensFlareSRP;
-        
-        public float intensityMultiplier = 1f;
-        public float maxIntensityLimit = 3;
-        public LightChannel lightChannel;
-        private float scale = 0f;
+
+#region Configs
+        [ChannelField(true)] public float maxIntensityLimit = 3;
+#endregion
+
+
+#region params
+        [ChannelField(false)] public float intensityMultiplier = 1f;
+        [ChannelField(false)] private float scale = 0f;
+#endregion
+
         private void Start()
         {
             Init();
@@ -60,7 +68,7 @@ namespace StageLightManeuver
                 }
 
             }
-           
+            
             base.EvaluateQue(currentTime);
 
         }
@@ -68,7 +76,7 @@ namespace StageLightManeuver
         public override void UpdateChannel()
         {
             if(lightChannel == null) return;
-           
+            
             var intensity = Mathf.Min(lightChannel.lightIntensity * intensityMultiplier,maxIntensityLimit);
             lensFlareSRP.intensity = intensity;
             lensFlareSRP.scale = scale;

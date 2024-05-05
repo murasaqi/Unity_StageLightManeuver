@@ -8,11 +8,21 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class MaterialTextureChannel:StageLightChannelBase
     {
-        public List<MeshRenderer> meshRenderers;
-        public int materialIndex;
-        public Texture2D texture2D;
-        public string propertyName;
-        private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlockDictionary = new Dictionary<MeshRenderer, MaterialPropertyBlock>();
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<MeshRenderer> meshRenderers;
+        [ChannelField(true, false)] public int materialIndex;
+        [ChannelField(true, false)] public Texture2D texture2D;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public string propertyName;
+#endregion
+
+
+#region params
+        [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlockDictionary = new Dictionary<MeshRenderer, MaterialPropertyBlock>();
+#endregion
 
         private void Start()
         {
@@ -42,9 +52,9 @@ namespace StageLightManeuver
             Init();
         }
         
-         public override void EvaluateQue(float currentTime)
-         {
-             texture2D = Texture2D.whiteTexture;
+        public override void EvaluateQue(float currentTime)
+        {
+            texture2D = Texture2D.whiteTexture;
 
             while (stageLightDataQueue.Count>0)
             {
@@ -66,7 +76,7 @@ namespace StageLightManeuver
                         Init();
                     }
                 }
-              
+                
                 
             }
         }

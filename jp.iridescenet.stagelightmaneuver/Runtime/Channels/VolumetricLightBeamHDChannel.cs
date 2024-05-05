@@ -11,15 +11,25 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class VolumetricLightBeamHDChannel : StageLightChannelBase
     {
-        public LightChannel lightChannel;
-        internal VolumetricLightBeamHD volumetricLightBeamHd;
-        public float intensityMultiplier;
-        public float lightRangeMultiplier;
-        public float spotAngleMultiplier;
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public LightChannel lightChannel;
+        [ChannelField(true, false)] internal VolumetricLightBeamHD volumetricLightBeamHd;
+#endregion
+
+
+#region Configs
+#endregion
+
+
+#region params
+        [ChannelField(false)] public float intensityMultiplier;
+        [ChannelField(false)] public float lightRangeMultiplier;
+        [ChannelField(false)] public float spotAngleMultiplier;
         
-        private float intensityMultiplierQue;
-        private float lightRangeMultiplierQue;
-        private float spotAngleMultiplierQue;
+        [ChannelField(false)] private float intensityMultiplierQue;
+        [ChannelField(false)] private float lightRangeMultiplierQue;
+        [ChannelField(false)] private float spotAngleMultiplierQue;
+#endregion
 
         public override void Init()
         {

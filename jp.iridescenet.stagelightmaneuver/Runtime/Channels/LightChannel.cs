@@ -22,33 +22,45 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightChannel : StageLightChannelBase
     {
-        [ChannelFieldBehavior(false)] public List<Light> lights = new List<Light>();
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<Light> lights = new List<Light>();
 #if USE_HDRP
-        [ChannelFieldBehavior(false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
+        [ChannelFieldBehavior(true, false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
 #endif
-        [ChannelFieldBehavior(false)] public Color lightColor;
-        [ChannelFieldBehavior(false)] public float lightIntensity;
-        [ChannelFieldBehavior(false)] public float innerSpotAngle;
-        [ChannelFieldBehavior(false)] public float spotAngle;
-        [ChannelFieldBehavior(false)] public float spotRange;
-        [ChannelFieldBehavior(false)] public bool ignoreLightCookie = false;
-        [ChannelFieldBehavior(false)] public Texture lightCookie;
-        
-        // Light Config
-        [ChannelFieldBehavior(true)] public float limitIntensityMin = 0f;
-        [ChannelFieldBehavior(true)] public float limitIntensityMax = 10000f;
-        [ChannelFieldBehavior(true)] public float limitInnerSpotAngleMin = 0f;
-        [ChannelFieldBehavior(true)] public float limitInnerSpotAngleMax = 100f;
-        [ChannelFieldBehavior(true)] public float limitSpotAngleMin = 0f;
-        [ChannelFieldBehavior(true)] public float limitSpotAngleMax = 100f;
-        [ChannelFieldBehavior(true)] public float limitSpotRangeMin = 0f;
-        [ChannelFieldBehavior(true)] public float limitSpotRangeMax = 100f;
+#endregion
+
+
+#region params
+        [ChannelField(false)] public Color lightColor;
+        [ChannelField(false)] public float lightIntensity;
+        [ChannelField(false)] public float innerSpotAngle;
+        [ChannelField(false)] public float spotAngle;
+        [ChannelField(false)] public float spotRange;
+        [ChannelField(false)] public bool ignoreLightCookie = false;
+        [ChannelField(false)] public Texture lightCookie;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float limitIntensityMin = 0f;
+        [ChannelField(true)] public float limitIntensityMax = 10000f;
+        [ChannelField(true)] public float limitInnerSpotAngleMin = 0f;
+        [ChannelField(true)] public float limitInnerSpotAngleMax = 100f;
+        [ChannelField(true)] public float limitSpotAngleMin = 0f;
+        [ChannelField(true)] public float limitSpotAngleMax = 100f;
+        [ChannelField(true)] public float limitSpotRangeMin = 0f;
+        [ChannelField(true)] public float limitSpotRangeMax = 100f;
+#endregion
+
+
+#region DoNotSaveToProfile-Configs
 #if USE_VLB
-        [ChannelFieldBehavior(true, false)] public VolumetricLightBeamHD volumetricLightBeamHd;
-        [ChannelFieldBehavior(true, false)] public VolumetricLightBeamSD volumetricLightBeamSd;
-        [ChannelFieldBehavior(true, false)] public VolumetricCookieHD volumetricCookieHd;
+        [ChannelField(true, false)] public VolumetricLightBeamHD volumetricLightBeamHd;
+        [ChannelField(true, false)] public VolumetricLightBeamSD volumetricLightBeamSd;
+        [ChannelField(true, false)] public VolumetricCookieHD volumetricCookieHd;
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
+#endregion
 
 
         public void GetLightInChildrenAndFetchData()

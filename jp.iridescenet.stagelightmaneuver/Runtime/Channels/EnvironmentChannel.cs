@@ -8,12 +8,19 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class EnvironmentChannel:StageLightChannelBase
     {
-        [ChannelFieldBehavior(false)] public AmbientMode initialAmbientMode = AmbientMode.Flat;
-        [ChannelFieldBehavior(true)] public float initialIntensity = 1;
-        [ChannelFieldBehavior(true)] public Color initialAmbientColor = new Color(0.212f, 0.227f, 0.259f);
-        private float _intensity = 0;
-        private Color _ambientColor;
-        private AmbientMode _ambientMode;
+        [ChannelField(false)] public AmbientMode initialAmbientMode = AmbientMode.Flat;
+
+#region Configs
+        [ChannelField(true)] public float initialIntensity = 1;
+        [ChannelField(true)] public Color initialAmbientColor = new Color(0.212f, 0.227f, 0.259f);
+#endregion
+
+#region params
+        [ChannelField(false)] private float _intensity = 0;
+        [ChannelField(false)] private Color _ambientColor;
+        [ChannelField(false)] private AmbientMode _ambientMode;
+#endregion
+
         public override void Init()
         {
             base.Init();

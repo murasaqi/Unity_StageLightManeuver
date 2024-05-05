@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace StageLightManeuver
@@ -10,14 +10,24 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class XTransformChannel : StageLightChannelBase
     {
-        public Transform target;
-        private float _positionX;
-        public float offsetX = 0f;
-        public float smoothTime = 0.1f;
-        public bool useSmoothness = false;
-        public float previousPositionX = 0f;
-        public float currentPositionX = 0f;
-      
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Transform target;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float offsetX = 0f;
+#endregion
+
+
+#region params
+        [ChannelField(false)] private float _positionX;
+        [ChannelField(false)] public float smoothTime = 0.1f;
+        [ChannelField(false)] public bool useSmoothness = false;
+        [ChannelField(false)] public float previousPositionX = 0f;
+        [ChannelField(false)] public float currentPositionX = 0f;
+#endregion
+
         void Start()
         {
             Init();
@@ -46,6 +56,12 @@ namespace StageLightManeuver
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(XTransformProperty),index);
                 
                 _positionX += xTransformProperty.positionX.value.Evaluate(normalizedTime) * weight;
+
+                smoothTime += xTransformProperty.smoothTime.value * weight;
+                if(weight > 0.5f)
+                {
+                    useSmoothness = xTransformProperty.useSmoothness.value;
+                }
             }
             
             
@@ -54,9 +70,9 @@ namespace StageLightManeuver
         public override void UpdateChannel()
         {
             base.UpdateChannel();
-           if(useSmoothness) return;
-           if(target == null) return;
-           target.localPosition = new Vector3(_positionX+offsetX, target.localPosition.y, target.localPosition.z);
+            if(useSmoothness) return;
+            if(target == null) return;
+            target.localPosition = new Vector3(_positionX+offsetX, target.localPosition.y, target.localPosition.z);
         }
 
         public void Update()

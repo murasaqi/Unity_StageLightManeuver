@@ -7,15 +7,23 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class MaterialFloatChannel:StageLightChannelBase
     {
-        public Renderer meshRenderer;
-        public List<Renderer> syncMeshRenderers = new List<Renderer>();
-        public int materialIndex;
-        private MaterialPropertyBlock _materialPropertyBlock;
-        [SerializeField] private float floatValue = 1;
-        // [SerializeField] private Color color = Color.white;
-        [SerializeField] private string colorPropertyName = "_materialPropertyName";
-        private Dictionary<Renderer,MaterialPropertyBlock> _materialPropertyBlocks = null;
-        private int propertyId;
+#region Configs
+#endregion
+
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Renderer meshRenderer;
+        [ChannelField(true, false)] public List<Renderer> syncMeshRenderers = new List<Renderer>();
+        [ChannelField(true, false)] public int materialIndex;
+#endregion
+
+#region params
+        [ChannelField(false)] private MaterialPropertyBlock _materialPropertyBlock;
+        [ChannelField(false)] [SerializeField] private float floatValue = 1;
+        // [ChannelFieldBehavior(false)] [SerializeField] private Color color = Color.white;
+        [ChannelField(false)] [SerializeField] private string colorPropertyName = "_materialPropertyName";
+        [ChannelField(false)] private Dictionary<Renderer,MaterialPropertyBlock> _materialPropertyBlocks = null;
+        [ChannelField(false)] private int propertyId;
+#endregion
         
         void Start()
         {

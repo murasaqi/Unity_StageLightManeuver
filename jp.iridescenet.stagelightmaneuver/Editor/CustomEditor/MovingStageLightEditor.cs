@@ -257,6 +257,8 @@ namespace StageLightManeuver
                 fixture.lightFixtureProfile = profile;
             }
             profile.Init(channels);
+
+            EditorUtility.SetDirty(profile);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }

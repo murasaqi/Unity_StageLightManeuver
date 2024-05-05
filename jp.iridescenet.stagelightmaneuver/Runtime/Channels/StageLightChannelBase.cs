@@ -1,12 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.Serialization;
 
 namespace StageLightManeuver
 {
-    
+    [System.AttributeUsage(System.AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
+    [BaseTypeRequired(typeof(StageLightChannelBase))]
+    public class ChannelFieldBehaviorAttribute : PropertyAttribute
+    {
+        public bool IsConfigField;
+        private bool _saveToProfile;
+        public bool SaveToProfile
+        {
+            get => _saveToProfile && IsConfigField;
+            set => _saveToProfile = value;
+        }
+
+        public ChannelFieldBehaviorAttribute(bool isConfigField, bool saveToProfile=true)
+        {
+            IsConfigField = isConfigField;
+            SaveToProfile = saveToProfile;
+        }
+    }
   
     [Serializable]
     [AddComponentMenu("")]
@@ -18,7 +37,7 @@ namespace StageLightManeuver
         public List<LightFixtureBase> SyncStageLight { get; set; }
         // [HideInInspector]public StageLightFixture ParentStageLight { get; set; }
         [HideInInspector]public float offsetDuration = 0f;
-        [FormerlySerializedAs("parentStageLightFixture")] [FormerlySerializedAs("parentStageLight")] [HideInInspector]public StageLightFixture parentStageLightFixture;
+        [FormerlySerializedAs("parentStageLight")] [HideInInspector]public StageLightFixture parentStageLightFixture;
         // public int Index { get; set; }
         internal bool hasQue = false;
         public virtual void EvaluateQue(float currentTime)

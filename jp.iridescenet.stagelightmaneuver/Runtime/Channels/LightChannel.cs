@@ -117,7 +117,7 @@ namespace StageLightManeuver
                 var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
-                if(lightProperty == null || clockProperty == null) continue;
+                if(clockProperty == null) continue;
              
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
@@ -150,10 +150,13 @@ namespace StageLightManeuver
                         var offset = clipDuration * staggerValue;
                         lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
                     }
-                    
-                    spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
-                    innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(normalizedTime) * weight;
-                    spotRange += lightProperty.range.value.Evaluate(normalizedTime) * weight;
+
+                    if (lightProperty != null)
+                    {
+                        spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
+                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(normalizedTime) * weight;
+                        spotRange += lightProperty.range.value.Evaluate(normalizedTime) * weight;
+                    }
                 }
 
                 if (manualColorArrayProperty != null)
@@ -173,7 +176,10 @@ namespace StageLightManeuver
 
                 if (weight >= 0.5f)
                 {
-                    lightCookie = lightProperty.cookie.value;
+                    if (lightProperty != null)
+                    {
+                        lightCookie = lightProperty.cookie.value;
+                    }
                 }
             }
             

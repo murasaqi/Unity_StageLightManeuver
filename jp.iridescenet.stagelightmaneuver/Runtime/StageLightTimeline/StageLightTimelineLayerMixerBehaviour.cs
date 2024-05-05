@@ -67,9 +67,9 @@ namespace StageLightManeuver
                 }
             }
 
-            foreach (var queueData in composedQueueDatas)
+            for (int i = 0; i < composedQueueDatas.Count; i++)
             {
-                trackBinding.AddQue(queueData);
+                trackBinding.AddQue(composedQueueDatas[composedQueueDatas.Count - 1 - i]);
                 hasAnyClipPlaying = true;
             }
             

@@ -120,7 +120,6 @@ namespace StageLightManeuver
                 if(clockProperty == null) continue;
              
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
-                var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
                 var manualColorArrayProperty = data.TryGetActiveProperty<ManualColorArrayProperty>();
                 
@@ -140,7 +139,7 @@ namespace StageLightManeuver
                 {
                     if (lightIntensityProperty != null)
                     {
-                        var t =lightIntensityProperty.clockOverride.propertyOverride ? SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index) : normalizedTime;
+                        var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index);
                         lightIntensity += lightIntensityProperty.lightToggleIntensity.value.Evaluate(t) * weight;
                     }
                     if(lightFlickerProperty != null)
@@ -153,9 +152,10 @@ namespace StageLightManeuver
 
                     if (lightProperty != null)
                     {
-                        spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
-                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(normalizedTime) * weight;
-                        spotRange += lightProperty.range.value.Evaluate(normalizedTime) * weight;
+                        var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
+                        spotAngle += lightProperty.spotAngle.value.Evaluate(t) * weight;
+                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(t) * weight;
+                        spotRange += lightProperty.range.value.Evaluate(t) * weight;
                     }
                 }
 
@@ -170,7 +170,7 @@ namespace StageLightManeuver
                     
                 }else if (lightColorProperty != null)
                 {
-                    var t =lightColorProperty.clockOverride.propertyOverride ? SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightColorProperty),index) : normalizedTime;
+                    var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightColorProperty),index);
                     lightColor += lightColorProperty.lightToggleColor.value.Evaluate(t) * weight;
                 }
 

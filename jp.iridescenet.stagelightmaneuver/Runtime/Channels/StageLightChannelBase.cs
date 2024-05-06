@@ -62,15 +62,9 @@ namespace StageLightManeuver
     [RequireComponent(typeof(StageLightFixture))]
     public abstract class StageLightChannelBase: MonoBehaviour,IStageLightChannel
     {
-#region DoNotSaveToProfile-Configs
-        [ChannelField(true, false)] public List<Type> PropertyTypes = new List<Type>();
-        [ChannelField(true, false)] public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
-        [ChannelField(true, false)] public int updateOrder = 0;
         public List<LightFixtureBase> SyncStageLight { get; set; }
-        // [ChannelFieldBehavior(true, false)] public StageLightFixture ParentStageLight { get; set; }
-        [ChannelField(true, false)] public float offsetDuration = 0f;
-        [ChannelField(true, false)] [FormerlySerializedAs("parentStageLight")] public StageLightFixture parentStageLightFixture;
-        // public int Index { get; set; }
+
+#region DoNotSaveToProfile-Configs
 #endregion
 
 
@@ -79,6 +73,13 @@ namespace StageLightManeuver
 
 
 #region params
+        [ChannelField(false)] public List<Type> PropertyTypes = new List<Type>();
+        [ChannelField(false)] public Queue<StageLightQueueData> stageLightDataQueue = new Queue<StageLightQueueData>();
+        [ChannelField(false)] public int updateOrder = 0;
+        // public int Index { get; set; }
+        [ChannelField(false)] public float offsetDuration = 0f;
+        // [ChannelFieldBehavior(true, false)] public StageLightFixture ParentStageLight { get; set; }
+        [ChannelField(false)] [FormerlySerializedAs("parentStageLight")] public StageLightFixture parentStageLightFixture;
         [ChannelField(false)]internal bool hasQue = false; //! do not use
 #endregion
 
@@ -102,6 +103,5 @@ namespace StageLightManeuver
                 SyncStageLight.Add(stageLightChannelBase);
             }
         }
-        
     }
 }

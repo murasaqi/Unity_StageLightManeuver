@@ -16,20 +16,51 @@ namespace StageLightManeuver
     public class StageLightFixture : StageLightFixtureBase, IStageLightFixture
     {
         [SerializeReference] private List<StageLightChannelBase> stageLightChannels = new List<StageLightChannelBase>();
-        public List<StageLightChannelBase> StageLightChannels { get => stageLightChannels; set => stageLightChannels = value; }
+        // private List<StageLightChannelBase> channelsBuffer = new List<StageLightChannelBase>();
+        public bool isSync { get => syncReferenceProfile && lightFixtureProfile != null; }
+        public List<StageLightChannelBase> StageLightChannels 
+        {
+            get
+            {
+                return stageLightChannels;
+                // if (isSync)
+                // {
+                //     return channelsBuffer;
+                // }
+                // else
+                // {
+                //     return stageLightChannels;
+                // }
+            }
+            set
+            {
+                stageLightChannels = value;
+
+                // if (isSync)
+                // {
+                //     channelsBuffer = value;
+                // }
+                // else
+                // {
+                //     stageLightChannels = value;
+                // }
+            }
+        }
+
+        public LightFixtureProfile lightFixtureProfile;
+        [SerializeField] private bool syncReferenceProfile = false;
 
 #if UNITY_EDITOR
-        public LightFixtureProfile lightFixtureProfile;
-        [Delayed]
-        public string profileExportPath = null;
+        [Delayed] public string profileExportPath = null;
 #endif
 
         public int order = 0;
+
         [ContextMenu("Init")]
         public override void Init()
         {
             FindChannels();
-            stageLightChannels.Sort((a, b) => a.updateOrder.CompareTo(b.updateOrder));
+            StageLightChannels.Sort((a, b) => a.updateOrder.CompareTo(b.updateOrder));
             foreach (var stageLightChannel in StageLightChannels)
             {
                 stageLightChannel.Init();
@@ -37,6 +68,15 @@ namespace StageLightManeuver
             }
 
             stageLightFixtures = new List<StageLightFixture>() { this };
+
+            // if (isSync)
+            // {
+            //     InitSyncChannel();
+            // }
+            // else
+            // {
+            //     channelsBuffer.Clear();
+            // }
         }
 
 
@@ -69,8 +109,8 @@ namespace StageLightManeuver
 
         public override void UpdateChannel()
         {
-            if (stageLightChannels == null) stageLightChannels = new List<StageLightChannelBase>();
-            foreach (var stageLightChannel in stageLightChannels)
+            if (StageLightChannels == null) StageLightChannels = new List<StageLightChannelBase>();
+            foreach (var stageLightChannel in StageLightChannels)
             {
                 if (stageLightChannel) stageLightChannel.UpdateChannel();
             }
@@ -92,11 +132,11 @@ namespace StageLightManeuver
         private void OnDestroy()
         {
             // Debug.Log("On Destroy");
-            // for (int i = stageLightChannels.Count-1; i >=0; i--)
+            // for (int i = StageLightChannels.Count-1; i >=0; i--)
             // {
             //     try
             //     {
-            //         if(stageLightChannels[i]!= null)DestroyImmediate(stageLightChannels[i]);
+            //         if(StageLightChannels[i]!= null)DestroyImmediate(StageLightChannels[i]);
             //     }
             //     catch (Exception e)
             //     {
@@ -112,14 +152,26 @@ namespace StageLightManeuver
         {
             if (stageLightChannels != null)
             {
-                StageLightChannels.Clear();
+                stageLightChannels.Clear();
             }
             else
             {
                 stageLightChannels = new List<StageLightChannelBase>();
             }
-            StageLightChannels = GetComponents<StageLightChannelBase>().ToList();
+            stageLightChannels = GetComponents<StageLightChannelBase>().ToList();
         }
 
+        // private void InitSyncChannel()
+        // {
+        //     if(lightFixtureProfile == null) return;
+
+        //     channelsBuffer.Clear();
+        //     channelsBuffer = new List<StageLightChannelBase>(stageLightChannels);
+        //     foreach (var channel in channelsBuffer)
+        //     {
+        //         channel.parentStageLightFixture = this;
+        //         channel.Init();
+        //     }
+        // }
     }
 }

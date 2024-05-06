@@ -59,6 +59,7 @@ namespace StageLightManeuver
 
     [Serializable]
     [AddComponentMenu("")]
+    [RequireComponent(typeof(StageLightFixture))]
     public abstract class StageLightChannelBase: MonoBehaviour,IStageLightChannel
     {
 #region DoNotSaveToProfile-Configs

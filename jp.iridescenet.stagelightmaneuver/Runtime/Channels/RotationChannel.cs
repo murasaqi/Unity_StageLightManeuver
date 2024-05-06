@@ -14,8 +14,8 @@ namespace StageLightManeuver
 
 
 #region Configs
-        [ChannelField(false)] public Vector3 rotationAxis = new Vector3(0,0,1);
-        [ChannelField(false)] public Vector3 offsetRotation = new Vector3(0,0,0);
+        [ChannelField(true)] public Vector3 rotationAxis = new Vector3(0,0,1);
+        [ChannelField(true)] public Vector3 offsetRotation = new Vector3(0,0,0);
 #endregion
 
 

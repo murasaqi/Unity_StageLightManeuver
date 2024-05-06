@@ -240,8 +240,8 @@ namespace StageLightManeuver
                 var stageLightFixture = obj as StageLightFixture;
                 if (stageLightFixture.isSync)
                 {
-                    horizontal.SetEnabled(false);
-                    center.SetEnabled(false);
+                    // horizontal.SetEnabled(false);
+                    // center.SetEnabled(false);
                     break;
                 }
             }

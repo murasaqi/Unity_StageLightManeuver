@@ -25,7 +25,7 @@ namespace StageLightManeuver
 
             var propertyOverride = property.FindPropertyRelative("propertyOverride").boolValue;
             EditorGUI.BeginDisabledGroup(propertyOverride == false);
-            
+
             var slmProperty = GetValueFromCache(property) as SlmProperty;
             DrawToggleController(slmProperty);
 
@@ -50,7 +50,7 @@ namespace StageLightManeuver
                 }
                 catch (NullReferenceException e)
                 {
-                    Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message); 
+                    Debug.LogWarning(slmProperty.propertyName + "." + f.Name + " is null.\n" + e.Message);
                 }
                 if (EditorGUI.EndChangeCheck())
                 {
@@ -64,8 +64,17 @@ namespace StageLightManeuver
             EditorGUI.EndDisabledGroup();
         }
 
-
-        protected void DrawHeader(Rect position, SerializedProperty property, GUIContent label) => base.OnGUI(position, property, label);
+        protected void DrawHeader(Rect position, SerializedProperty property, GUIContent label, bool withToggle = true)
+        {
+            if (withToggle)
+            {
+                base.OnGUI(position, property, label);
+            }
+            else
+            {
+                base.DrawHeader(position, property, label);
+            }
+        }
 
         protected static void DrawToggleController(SlmProperty slmProperty)
         {

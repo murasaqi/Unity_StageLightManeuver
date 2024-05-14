@@ -1,4 +1,5 @@
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,6 +14,7 @@ namespace StageLightManeuver
     // [CustomPropertyDrawer(typeof(List<SlmProperty>))]
     public class StageLightPropertiesDrawer : SlmBaseDrawer
     {
+        private static readonly List<Type> ClipProperty = new List<Type> { typeof(ClockProperty), typeof(StageLightOrderProperty) };
         bool isInitialized = false;
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -23,10 +25,34 @@ namespace StageLightManeuver
                 stageLightProperties = SlmEditorSettingsUtility.SortByPropertyOrder(stageLightProperties);
                 isInitialized = true;
             }
+
+            // ClipProperty に含まれるプロパティは先頭に描画
+            EditorGUI.indentLevel--;
+            EditorGUILayout.Space(SlmEditorStyleConst.NoSpacing);
+            EditorGUILayout.HelpBox("ClipProperties", MessageType.None);
+            EditorGUILayout.Space(SlmEditorStyleConst.Spacing);
+            EditorGUI.indentLevel++;
+            foreach (var propertyType in ClipProperty)
+            {
+                var serializedSlmProperty = property.GetArrayElementAtIndex(stageLightProperties.FindIndex(x => x.GetType() == propertyType));
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(serializedSlmProperty, true);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    serializedSlmProperty.serializedObject.ApplyModifiedProperties();
+                }
+            }
+
+
+            EditorGUI.indentLevel--;
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            EditorGUILayout.HelpBox("StageLightProperties", MessageType.None);
+            EditorGUI.indentLevel++;
+
             for (int i = 0; i < stageLightProperties.Count; i++)
             {
                 var slmProperty = stageLightProperties[i];
-                if (slmProperty == null) continue;
+                if (slmProperty == null || ClipProperty.Contains(slmProperty.GetType())) continue;
 
                 // EditorGUI.BeginDisabledGroup(slmProperty.isEditable == false);
                 var serializedSlmProperty = property.GetArrayElementAtIndex(i);
@@ -50,7 +76,7 @@ namespace StageLightManeuver
                     DrawRemoveButton(property.serializedObject, stageLightProperties, action);
                     GUILayout.Space(SlmEditorStyleConst.Spacing);
                 }
-                
+
                 // EditorGUI.EndDisabledGroup();
             }
 
@@ -140,7 +166,7 @@ namespace StageLightManeuver
                 }
                 stageLightProperties.Add(property);
                 ClearCache();
-                
+
                 serializedObject.ApplyModifiedProperties();
                 EditorUtility.SetDirty(serializedObject.targetObject);
             }

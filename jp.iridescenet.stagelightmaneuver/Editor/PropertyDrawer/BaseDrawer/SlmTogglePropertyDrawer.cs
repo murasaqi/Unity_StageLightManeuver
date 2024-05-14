@@ -32,6 +32,12 @@ namespace StageLightManeuver
             DrawToggle(position, property, label);
         }
 
+        protected virtual void DrawHeader(Rect position, SerializedProperty property, GUIContent label)
+        {
+            // Draw header
+            base.OnGUI(position, property, label);
+        }
+
         public bool DrawToggle(Rect position, SerializedProperty property, GUIContent label)
         {
             var propertyOverride = property.FindPropertyRelative("propertyOverride");

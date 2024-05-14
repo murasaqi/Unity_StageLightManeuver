@@ -54,7 +54,11 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             // }
             // GUI.backgroundColor = Color.white;
             
-            EditorGUILayout.Space(2);
+            EditorGUI.indentLevel--;
+            // EditorGUILayout.Space(2);
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            EditorGUILayout.Space(-18);
+            EditorGUI.indentLevel++;
             EditorGUI.BeginDisabledGroup( stageLightTimelineClip.syncReferenceProfile);
                 // isMultiSelect = false;
                 var stageLightProperties = new List<SlmProperty>();

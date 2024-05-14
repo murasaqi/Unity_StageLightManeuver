@@ -14,7 +14,7 @@ namespace StageLightManeuver
         {
             label.text = property.FindPropertyRelative("propertyName").stringValue;
 
-            DrawHeader(position, property, label);
+            DrawHeader(position, property, label, withToggle: false);
             if (property.isExpanded == false) return;
             var clockProperty = GetValueFromCache(property) as ClockProperty;
             DrawToggleController(clockProperty);

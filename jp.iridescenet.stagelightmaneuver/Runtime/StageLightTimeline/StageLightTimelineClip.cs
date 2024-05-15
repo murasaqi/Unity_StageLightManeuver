@@ -101,19 +101,27 @@ namespace StageLightManeuver
                 if(tAssetOutput.sourceObject == null) continue;
                 if(tAssetOutput.sourceObject.GetType() == typeof(StageLightTimelineTrack))
                 {
-                    var track = tAssetOutput.sourceObject as TrackAsset;
-                    foreach (var timelineClip in track.GetClips())
+                    var primaryTrack = tAssetOutput.sourceObject as TrackAsset;
+                    var subTracks = primaryTrack.GetChildTracks() as List<TrackAsset>;
+                    var tracks = new List<TrackAsset>();
+                    tracks.Add(primaryTrack);
+                    tracks.AddRange(subTracks);
+
+                    foreach (var track in tracks)
                     {
-                        var stageLightTimelineClip = timelineClip.asset as StageLightTimelineClip;
-                        if (stageLightTimelineClip == this)
+                        foreach (var timelineClip in track.GetClips())
                         {
-                            var binding = playabledirector.GetGenericBinding(track);
-                            if (binding != null)
+                            var stageLightTimelineClip = timelineClip.asset as StageLightTimelineClip;
+                            if (stageLightTimelineClip == this)
                             {
-                                var stageLightFixtureBase = binding as StageLightFixtureBase;
-                                if (stageLightFixtureBase != null)
+                                var binding = playabledirector.GetGenericBinding((track.isSubTrack) ? track.parent as TrackAsset : track);
+                                if (binding != null)
                                 {
-                                    propertyTypes.AddRange(stageLightFixtureBase.GetAllPropertyType());
+                                    var stageLightFixtureBase = binding as StageLightFixtureBase;
+                                    if (stageLightFixtureBase != null)
+                                    {
+                                        propertyTypes.AddRange(stageLightFixtureBase.GetAllPropertyType());
+                                    }
                                 }
                             }
                         }

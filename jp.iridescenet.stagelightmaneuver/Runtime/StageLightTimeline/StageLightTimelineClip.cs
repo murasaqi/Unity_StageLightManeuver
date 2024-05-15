@@ -95,6 +95,7 @@ namespace StageLightManeuver
                 StageLightQueueData.stageLightProperties.Insert(1,new StageLightOrderProperty());
             }
             
+            var isInSubTrack = false;
             var propertyTypes = new List<Type>();
             foreach (var tAssetOutput in playabledirector.playableAsset.outputs)
             {
@@ -102,6 +103,7 @@ namespace StageLightManeuver
                 if(tAssetOutput.sourceObject.GetType() == typeof(StageLightTimelineTrack))
                 {
                     var primaryTrack = tAssetOutput.sourceObject as TrackAsset;
+                    // オーバーライドトラックを取得
                     var subTracks = primaryTrack.GetChildTracks() as List<TrackAsset>;
                     var tracks = new List<TrackAsset>();
                     tracks.Add(primaryTrack);
@@ -114,14 +116,22 @@ namespace StageLightManeuver
                             var stageLightTimelineClip = timelineClip.asset as StageLightTimelineClip;
                             if (stageLightTimelineClip == this)
                             {
-                                var binding = playabledirector.GetGenericBinding((track.isSubTrack) ? track.parent as TrackAsset : track);
+                                isInSubTrack = track.isSubTrack;
+                                // オーバーライドトラック内のクリップの場合、プライマリトラックのバインディングを
+                                // プライマリトラックの場合は直接バインディングを取得
+                                var binding = playabledirector.GetGenericBinding((isInSubTrack) ? track.parent as TrackAsset : track);
                                 if (binding != null)
                                 {
+                                    // Debug.Log(track.name + " is binding to " + binding);
                                     var stageLightFixtureBase = binding as StageLightFixtureBase;
                                     if (stageLightFixtureBase != null)
                                     {
                                         propertyTypes.AddRange(stageLightFixtureBase.GetAllPropertyType());
                                     }
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("Binding is null\n" + track.name + " is not binding to StageLightFixtureBase");
                                 }
                             }
                         }
@@ -137,6 +147,15 @@ namespace StageLightManeuver
                 {
                     var channel = Activator.CreateInstance(propertyType) as SlmProperty;
                     queData.stageLightProperties.Add(channel);
+
+                    // オーバライドトラックのクリップの場合、Clock と Order 以外の propertyOverride フラグを立てない
+                    if (isInSubTrack)
+                    {
+                        if (channel.GetType() != typeof(ClockProperty) && channel.GetType() != typeof(StageLightOrderProperty))
+                        {
+                            channel.propertyOverride = false;
+                        }
+                    }
                 }
             }
         }

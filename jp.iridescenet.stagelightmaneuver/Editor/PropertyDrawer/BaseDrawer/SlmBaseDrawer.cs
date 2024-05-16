@@ -89,7 +89,7 @@ namespace StageLightManeuver
                 }
                 else if (val == null)
                 {
-                    Debug.Log($"val is null. key: {key}");
+                    // Debug.Log($"val is null. key: {key}");
                     val = property.GetValue<object>();
                     clipValue[key] = val;
                 }

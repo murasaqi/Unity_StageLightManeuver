@@ -107,7 +107,10 @@ namespace StageLightManeuver
                     var subTracks = primaryTrack.GetChildTracks() as List<TrackAsset>;
                     var tracks = new List<TrackAsset>();
                     tracks.Add(primaryTrack);
-                    tracks.AddRange(subTracks);
+                    if (subTracks != null)
+                    {
+                        tracks.AddRange(subTracks);
+                    }
 
                     foreach (var track in tracks)
                     {

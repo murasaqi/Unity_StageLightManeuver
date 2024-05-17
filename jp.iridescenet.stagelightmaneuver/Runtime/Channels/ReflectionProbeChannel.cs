@@ -7,9 +7,19 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class ReflectionProbeChannel:StageLightChannelBase
     {
-        public List<ReflectionProbe> reflectionProbes = new List<ReflectionProbe>();
-        public List<float> intensityBias = new List<float>();
-        private float intensity = 0;
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<ReflectionProbe> reflectionProbes = new List<ReflectionProbe>();
+        [ChannelField(true, false)] public List<float> intensityBias = new List<float>();
+#endregion
+
+
+#region Configs
+#endregion
+
+
+#region params
+        [ChannelField(false)] private float intensity = 0;
+#endregion
 
         public override void Init()
         {

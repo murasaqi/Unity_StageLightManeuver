@@ -22,31 +22,45 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightChannel : StageLightChannelBase
     {
-        public List<Light> lights = new List<Light>();
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<Light> lights = new List<Light>();
 #if USE_HDRP
-        public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
+        [ChannelFieldBehavior(true, false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
 #endif
-        public Color lightColor;
-        public float lightIntensity;
-        public float innerSpotAngle;
-        public float spotAngle;
-        public float spotRange;
-        public bool ignoreLightCookie = false;
-        public Texture lightCookie;
-        public float limitIntensityMin = 0f;
-        public float limitIntensityMax = 10000f;
-        public float limitInnerSpotAngleMin = 0f;
-        public float limitInnerSpotAngleMax = 100f;
-        public float limitSpotAngleMin = 0f;
-        public float limitSpotAngleMax = 100f;
-        public float limitSpotRangeMin = 0f;
-        public float limitSpotRangeMax = 100f;
+#endregion
+
+
+#region params
+        [ChannelField(false)] public Color lightColor;
+        [ChannelField(false)] public float lightIntensity;
+        [ChannelField(false)] public float innerSpotAngle;
+        [ChannelField(false)] public float spotAngle;
+        [ChannelField(false)] public float spotRange;
+        [ChannelField(false)] public bool ignoreLightCookie = false;
+        [ChannelField(false)] public Texture lightCookie;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float limitIntensityMin = 0f;
+        [ChannelField(true)] public float limitIntensityMax = 10000f;
+        [ChannelField(true)] public float limitInnerSpotAngleMin = 0f;
+        [ChannelField(true)] public float limitInnerSpotAngleMax = 100f;
+        [ChannelField(true)] public float limitSpotAngleMin = 0f;
+        [ChannelField(true)] public float limitSpotAngleMax = 100f;
+        [ChannelField(true)] public float limitSpotRangeMin = 0f;
+        [ChannelField(true)] public float limitSpotRangeMax = 100f;
+#endregion
+
+
+#region DoNotSaveToProfile-Configs
 #if USE_VLB
-        public VolumetricLightBeamHD volumetricLightBeamHd;
-        public VolumetricLightBeamSD volumetricLightBeamSd;
-        public VolumetricCookieHD volumetricCookieHd;
+        [ChannelField(true, false)] public VolumetricLightBeamHD volumetricLightBeamHd;
+        [ChannelField(true, false)] public VolumetricLightBeamSD volumetricLightBeamSd;
+        [ChannelField(true, false)] public VolumetricCookieHD volumetricCookieHd;
 #endif
         // public UniversalAdditionalLightData universalAdditionalLightData;
+#endregion
 
 
         public void GetLightInChildrenAndFetchData()
@@ -117,10 +131,9 @@ namespace StageLightManeuver
                 var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
-                if(lightProperty == null || clockProperty == null) continue;
+                if(clockProperty == null) continue;
              
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
-                var normalizedTime = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
                 var manualColorArrayProperty = data.TryGetActiveProperty<ManualColorArrayProperty>();
                 
@@ -140,7 +153,7 @@ namespace StageLightManeuver
                 {
                     if (lightIntensityProperty != null)
                     {
-                        var t =lightIntensityProperty.clockOverride.propertyOverride ? SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index) : normalizedTime;
+                        var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index);
                         lightIntensity += lightIntensityProperty.lightToggleIntensity.value.Evaluate(t) * weight;
                     }
                     if(lightFlickerProperty != null)
@@ -150,10 +163,14 @@ namespace StageLightManeuver
                         var offset = clipDuration * staggerValue;
                         lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
                     }
-                    
-                    spotAngle += lightProperty.spotAngle.value.Evaluate(normalizedTime) * weight;
-                    innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(normalizedTime) * weight;
-                    spotRange += lightProperty.range.value.Evaluate(normalizedTime) * weight;
+
+                    if (lightProperty != null)
+                    {
+                        var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
+                        spotAngle += lightProperty.spotAngle.value.Evaluate(t) * weight;
+                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(t) * weight;
+                        spotRange += lightProperty.range.value.Evaluate(t) * weight;
+                    }
                 }
 
                 if (manualColorArrayProperty != null)
@@ -167,13 +184,16 @@ namespace StageLightManeuver
                     
                 }else if (lightColorProperty != null)
                 {
-                    var t =lightColorProperty.clockOverride.propertyOverride ? SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightColorProperty),index) : normalizedTime;
+                    var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightColorProperty),index);
                     lightColor += lightColorProperty.lightToggleColor.value.Evaluate(t) * weight;
                 }
 
                 if (weight >= 0.5f)
                 {
-                    lightCookie = lightProperty.cookie.value;
+                    if (lightProperty != null)
+                    {
+                        lightCookie = lightProperty.cookie.value;
+                    }
                 }
             }
             

@@ -14,24 +14,42 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class DecalChannel: StageLightChannelBase
     {
-        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
-        public LightChannel lightChannel;
-        public Texture2D decalTexture;
-        public Color decalColor = Color.white;
-        public float decalSizeScaler = 1f;
-        public float floorHeight = 0f;
-        public float decalDepthScaler = 1f;
-        public float fadeFactor = 1f;
-        public float opacity = 1f;
-        public float radius = 1f;
-        public DecalProjector decalProjector;
-        public Material decalMaterial;
-        public bool autoDisableDecal = true;
-        public float autoDisableDecalTime = 1f;
+        [FormerlySerializedAs("lightFxChannel")]
+        [ChannelField(true, false)] public LightChannel lightChannel;
+
+
+#region params
+        [ChannelField(false)] public Texture2D decalTexture;
+        [ChannelField(false)] public Color decalColor = Color.white;
+        [ChannelField(false)] public float decalSizeScaler = 1f;
+        [ChannelField(false)] public float floorHeight = 0f;
+        [ChannelField(false)] public float decalDepthScaler = 1f;
+        [ChannelField(false)] public float fadeFactor = 1f;
+        [ChannelField(false)] public float opacity = 1f;
+        [ChannelField(false)] public float radius = 1f;
+#endregion
+
+
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public DecalProjector decalProjector;
+        [ChannelField(true, false)] public Material decalMaterial;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public bool autoDisableDecal = true;
+        [ChannelField(true)] public float autoDisableDecalTime = 1f;
+#endregion
+
+
+#region params
         private float _autoDisableDecalTime = 0f;
         private Material _instancedDecalMaterial = null;
         private float _radius = 1f;
         private float _depth = 1f;
+#endregion
+
+
         private void Start()
         {
             Init();

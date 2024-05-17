@@ -66,6 +66,22 @@ namespace StageLightManeuver
                     continue;
                 }
 
+                // ChannelFieldAttribute を取得
+                var attribute = field.GetCustomAttributes(typeof(ChannelFieldAttribute), false) as ChannelFieldAttribute[];
+
+                // ChannelFieldAttribute が付与されていない場合はスキップ
+                if (attribute.Length == 0)
+                {
+                    continue;
+                }
+
+                // フィールドが設定フィールドとしてマークされていて、
+                // かつプロファイル保存フラグが立てられているときのみ保存する
+                if (attribute[0].IsConfigField == false || attribute[0].SaveToProfile == false)
+                {
+                    continue;
+                }
+
                 var value = field.GetValue(channel);
 
                 if (field.FieldType.IsPrimitive)

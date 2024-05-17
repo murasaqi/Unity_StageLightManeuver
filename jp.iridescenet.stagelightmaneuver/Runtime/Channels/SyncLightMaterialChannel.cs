@@ -17,20 +17,31 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class SyncLightMaterialChannel : StageLightChannelBase
     {
-        [SerializeField] private int materialIndex = 0;
-        public List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
+#endregion
+
+
+#region Configs
 #if USE_HDRP
-        public string materialPropertyName =  "_EmissiveColor";
+        [ChannelFieldBehavior(false)] public string materialPropertyName =  "_EmissiveColor";
 #elif USE_URP
-        public string materialPropertyName =  "_EmissionColor";
+        [ChannelField(false)] public string materialPropertyName =  "_EmissionColor";
 #endif
-        
-        public float intensityMultiplier = 1f;
-        public float maxIntensityLimit = 3;
-        public bool brightnessDecreasesToBlack = true;
-        private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
+        [ChannelField(false)] public float maxIntensityLimit = 3;
+        [ChannelField(false)] public bool brightnessDecreasesToBlack = true;
         [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
-        public LightChannel lightChannel;
+        [ChannelField(false)] public LightChannel lightChannel;
+#endregion
+
+
+#region params
+        [ChannelField(false)] [SerializeField] private int materialIndex = 0;
+        [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
+        [ChannelField(false)] public float intensityMultiplier = 1f;
+#endregion
+
+
         private void Start()
         {
             Init();
@@ -81,7 +92,7 @@ namespace StageLightManeuver
                 }
 
             }
-           
+            
             base.EvaluateQue(currentTime);
 
         }
@@ -95,8 +106,7 @@ namespace StageLightManeuver
             }
             
             var intensity = Mathf.Min(lightChannel.lightIntensity * intensityMultiplier,maxIntensityLimit);
-            var hdrColor = SlmUtility.GetHDRColor(lightChannel.lightColor,
-                intensity);
+            var hdrColor = SlmUtility.GetHDRColor(lightChannel.lightColor, intensity);
             var result = brightnessDecreasesToBlack ? Color.Lerp(Color.black,hdrColor, Mathf.Clamp(intensity, 0, 1f)) : hdrColor;
 
             foreach (var materialPropertyBlock in _materialPropertyBlocks)

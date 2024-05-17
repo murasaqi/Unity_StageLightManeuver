@@ -20,7 +20,8 @@ namespace StageLightManeuver
 
 #if UNITY_EDITOR
         public LightFixtureProfile lightFixtureProfile;
-        public string profileExportPath = "";
+        [Delayed]
+        public string profileExportPath = null;
 #endif
 
         public int order = 0;

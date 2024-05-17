@@ -11,17 +11,26 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class GoboChannel:StageLightChannelBase
     {
-        public VolumetricLightBeam volumetricLightBeam;
-        public MeshRenderer meshRenderer;
-        public Texture2D goboTexture;
-        public string goboPropertyName = "_GoboTexture";
-        private MaterialPropertyBlock _materialPropertyBlock;
-        public Transform goboTransform;
-        public float speed = 0f;
-        public Vector3 goboRotateVector = new Vector3(0, 0, 1);
-        public Vector3 goboRotationOffset = new Vector3(0, 0, 0);
-        public bool rotateStartOffsetRandom = false;
-        private float timelineTime = 0f;
+#region DoNotSaveToProfile-Configs
+        [ChannelFieldBehavior(true, false)] public VolumetricLightBeam volumetricLightBeam;
+        [ChannelFieldBehavior(true, false)] public MeshRenderer meshRenderer;
+        [ChannelFieldBehavior(true, false)] public Transform goboTransform;
+        [ChannelFieldBehavior(true, false)] public Texture2D goboTexture;
+#endregion
+
+#region Configs
+        [ChannelFieldBehavior(true)] public string goboPropertyName = "_GoboTexture";
+        [ChannelFieldBehavior(true)] public float speed = 0f;
+        [ChannelFieldBehavior(true)] public Vector3 goboRotateVector = new Vector3(0, 0, 1);
+        [ChannelFieldBehavior(true)] public Vector3 goboRotationOffset = new Vector3(0, 0, 0);
+        [ChannelFieldBehavior(true)] public bool rotateStartOffsetRandom = false;
+#endregion
+
+#region params
+        [ChannelFieldBehavior(false)] private MaterialPropertyBlock _materialPropertyBlock;
+        [ChannelFieldBehavior(false)] private float timelineTime = 0f;
+#endregion
+
         private void Start()
         {
             Init();
@@ -73,7 +82,7 @@ namespace StageLightManeuver
                 }
                 
                 speed += goboProperty.goboRotationSpeed.value.Evaluate(t) * queueData.weight;
-               
+                
             }
             
             
@@ -105,11 +114,7 @@ namespace StageLightManeuver
                 }
                 meshRenderer.SetPropertyBlock(_materialPropertyBlock);
             }
-
-           
-           
         }
-    
     }
 }
 #endif

@@ -21,18 +21,30 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightPanChannel: StageLightChannelBase
     {
-        // private LightTransformType _lightTransformType = LightTransformType.Pan;
-        private float _angle;
-        public Vector3 rotationVector = Vector3.up;
-        public Transform rotateTransform;
-        private Vector3 currentVelocity;
-        public float smoothTime = 0.1f;
-        private float maxSpeed = float.PositiveInfinity;
-        private bool ignore = false;
-        public bool useSmoothness = false;
-        private float previousAngle = 0f;
-        public float minAngleValue = -360;
-        public float maxAngleValue = 360;
+#region params
+        // [ChannelFieldBehavior(false)] private LightTransformType _lightTransformType = LightTransformType.Pan;
+        [ChannelField(false)] private float _angle;
+        [ChannelField(false)] public Vector3 rotationVector = Vector3.up;
+        [ChannelField(false)] public Transform rotateTransform;
+        [ChannelField(false)] private Vector3 currentVelocity;
+        [ChannelField(false)] public float smoothTime = 0.1f;
+        [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
+        [ChannelField(false)] private bool ignore = false;
+        [ChannelField(false)] public bool useSmoothness = false;
+        [ChannelField(false)] private float previousAngle = 0f;
+#endregion
+
+
+#region Configs
+        [ChannelField(true)] public float minAngleValue = -360;
+        [ChannelField(true)] public float maxAngleValue = 360;
+#endregion
+
+
+#region DoNotSaveToProfile-Configs
+#endregion
+
+
         void Start()
         {
             Init();
@@ -52,7 +64,7 @@ namespace StageLightManeuver
         {   
             base.EvaluateQue(currentTime);
             if(rotateTransform == null) return;
-           smoothTime = 0f;
+            smoothTime = 0f;
             _angle = 0f;
             while (stageLightDataQueue.Count>0)
             {
@@ -67,15 +79,15 @@ namespace StageLightManeuver
                 var normalizedTime = SlmUtility.GetNormalizedTime(currentTime,queueData,typeof(PanProperty),index);
 
                 var manualPanTiltProperty = queueData.TryGetActiveProperty<ManualPanTiltProperty>();
-               var lookAtProperty = queueData.TryGetActiveProperty<LookAtProperty>();
-               ignore = lookAtProperty != null;
-                   if(manualPanTiltProperty != null)
+                var lookAtProperty = queueData.TryGetActiveProperty<LookAtProperty>();
+                ignore = lookAtProperty != null;
+                if(manualPanTiltProperty != null)
                 {
                     var positions = manualPanTiltProperty.positions.value;
                     var mode = manualPanTiltProperty.mode.value;
                     if (index < positions.Count)
                     {
-                       switch (mode)
+                        switch (mode)
                         {
                             case ManualPanTiltMode.Overwrite:
                                 _angle += positions[index].pan * weight;
@@ -95,8 +107,11 @@ namespace StageLightManeuver
                 }
                 
                 smoothTime += qPanProperty.smoothTime.value * weight;
-                if(weight > 0.5f) useSmoothness = qPanProperty.useSmoothness.value;
-               
+                if(weight > 0.5f) 
+                {
+                    useSmoothness = qPanProperty.useSmoothness.value;
+                }
+                
                 
             }
             // if over limit angle, clamp it

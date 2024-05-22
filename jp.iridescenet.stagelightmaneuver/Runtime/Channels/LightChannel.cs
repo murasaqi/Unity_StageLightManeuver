@@ -50,6 +50,9 @@ namespace StageLightManeuver
         [ChannelField(true)] public float limitSpotAngleMax = 100f;
         [ChannelField(true)] public float limitSpotRangeMin = 0f;
         [ChannelField(true)] public float limitSpotRangeMax = 100f;
+        [ChannelField(true)] public bool syncColorToIntensity = false;
+        [ChannelField(true)] public float syncIntensityRangeMin = 0f;
+        [ChannelField(true)] public float syncIntensityRangeMax = 20f;
 #endregion
 
 
@@ -132,7 +135,7 @@ namespace StageLightManeuver
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(clockProperty == null) continue;
-             
+                
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
                 var manualColorArrayProperty = data.TryGetActiveProperty<ManualColorArrayProperty>();
@@ -202,7 +205,15 @@ namespace StageLightManeuver
             innerSpotAngle = Mathf.Clamp(innerSpotAngle, limitInnerSpotAngleMin, limitInnerSpotAngleMax);
             spotRange = Mathf.Clamp(spotRange, limitSpotRangeMin, limitSpotRangeMax);
             
-            
+            if (syncColorToIntensity)
+            {
+                // ライト輝度に合わせて、カラーの輝度を調整
+                float h, s, l;
+                Color.RGBToHSV(lightColor, out h, out s, out l);
+                var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
+                l = Mathf.Lerp(0.0f, 1f, ratio);
+                lightColor = Color.HSVToRGB(h, s, l);
+            }
         }
 
         public override void UpdateChannel()

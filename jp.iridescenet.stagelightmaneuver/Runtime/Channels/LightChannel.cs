@@ -53,6 +53,7 @@ namespace StageLightManeuver
         [ChannelField(true)] public bool syncColorToIntensity = false;
         [ChannelField(true)] public float syncIntensityRangeMin = 0f;
         [ChannelField(true)] public float syncIntensityRangeMax = 20f;
+        [ChannelField(true)] public Color fallOffColor = Color.black;
 #endregion
 
 
@@ -208,11 +209,17 @@ namespace StageLightManeuver
             if (syncColorToIntensity)
             {
                 // ライト輝度に合わせて、カラーの輝度を調整
-                float h, s, l;
-                Color.RGBToHSV(lightColor, out h, out s, out l);
+                float h, s, v;
+                Color.RGBToHSV(lightColor, out h, out s, out v);
                 var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
-                l = Mathf.Lerp(0.0f, 1f, ratio);
-                lightColor = Color.HSVToRGB(h, s, l);
+                float newV = Mathf.Lerp(0.0f, v, ratio);
+                lightColor = Color.HSVToRGB(h, s, newV);
+
+                // lightColor に fallOffColor を ratio の割合で混ぜる
+                // カラー合成にしたいので、輝度は変えない lightColor の値を維持
+                lightColor = Color.Lerp(fallOffColor, lightColor, ratio);
+                Color.RGBToHSV(lightColor, out h, out s, out v);
+                lightColor = Color.HSVToRGB(h, s, newV);
             }
         }
 

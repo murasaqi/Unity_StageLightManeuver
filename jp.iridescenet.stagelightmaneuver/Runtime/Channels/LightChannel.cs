@@ -206,20 +206,23 @@ namespace StageLightManeuver
             innerSpotAngle = Mathf.Clamp(innerSpotAngle, limitInnerSpotAngleMin, limitInnerSpotAngleMax);
             spotRange = Mathf.Clamp(spotRange, limitSpotRangeMin, limitSpotRangeMax);
             
-            if (syncColorToIntensity)
+            if (syncColorToIntensity && syncIntensityRangeMin < syncIntensityRangeMax)
             {
                 // ライト輝度に合わせて、カラーの輝度を調整
                 float h, s, v;
                 Color.RGBToHSV(lightColor, out h, out s, out v);
-                var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
-                float newV = Mathf.Lerp(0.0f, v, ratio);
-                lightColor = Color.HSVToRGB(h, s, newV);
+                if (v <= syncIntensityRangeMax) 
+                {
+                    var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
+                    float newV = Mathf.Lerp(0.0f, v, ratio);
+                    lightColor = Color.HSVToRGB(h, s, newV);
 
-                // lightColor に fallOffColor を ratio の割合で混ぜる
-                // カラー合成にしたいので、輝度は変えない lightColor の値を維持
-                lightColor = Color.Lerp(fallOffColor, lightColor, ratio);
-                Color.RGBToHSV(lightColor, out h, out s, out v);
-                lightColor = Color.HSVToRGB(h, s, newV);
+                    // lightColor に fallOffColor を ratio の割合で混ぜる
+                    // カラー合成にしたいので、輝度は変えない lightColor の値を維持
+                    lightColor = Color.Lerp(fallOffColor, lightColor, ratio);
+                    Color.RGBToHSV(lightColor, out h, out s, out v);
+                    lightColor = Color.HSVToRGB(h, s, newV);
+                }
             }
         }
 

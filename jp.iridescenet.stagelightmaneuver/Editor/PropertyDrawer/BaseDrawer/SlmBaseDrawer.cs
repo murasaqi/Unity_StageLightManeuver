@@ -47,7 +47,7 @@ namespace StageLightManeuver
 
             var getDrawerTypeForTypeMethod = scriptAttributeUtilityType.GetMethod("GetDrawerTypeForType",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var drawerType = getDrawerTypeForTypeMethod.Invoke(null, new object[] { valueType }) as Type;
+            var drawerType = getDrawerTypeForTypeMethod.Invoke(null, new object[] { valueType, false }) as Type; //!TODO 2022.3 からは引数が変わるので対応が必要
             return drawerType;
         }
 

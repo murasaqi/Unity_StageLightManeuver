@@ -374,5 +374,26 @@ namespace StageLightManeuver
             
             return result;
         }
+
+        /// <summary>
+        /// <see cref="Type"/>から<see cref="PropertyDrawer"/>の<see cref="Type"/>を取得する
+        /// </summary>
+        /// <param name="valueType"></param>
+        /// <returns></returns>
+
+        // /// <example>
+        // /// <code>
+        //     var drawerType = GetPropertyDrawerTypeForType(valueType);
+        //     if (drawerType != null)
+        //     {
+        //         var drawer = Activator.CreateInstance(drawerType) as PropertyDrawer;
+        //         drawer.OnGUI(position, property, displayLabel);
+        //     }
+        // /// </code>
+        // /// </example>
+        public static Type GetPropertyDrawerTypeForType(Type valueType)
+        {
+            return SlmBaseDrawer.GetPropertyDrawerTypeForType(valueType);
+        }
     }
 }

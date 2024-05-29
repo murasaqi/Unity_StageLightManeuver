@@ -39,11 +39,11 @@ namespace StageLightManeuver
                 if (attributes.Length > 0)
                 {
                     var channelFieldAttribute = (ChannelFieldAttribute)attributes[0];
-                    drawPropertyField(drawHr, serializedProperty, channelFieldAttribute);
+                    drawPropertyField(drawHr, fieldInfo, channelFieldAttribute);
                 }
                 else if (fieldInfo.IsNotSerialized == false)
                 {
-                    drawPropertyField(drawHr, serializedProperty);
+                    drawPropertyField(drawHr, fieldInfo);
                 }
             }
 
@@ -52,12 +52,13 @@ namespace StageLightManeuver
                 serializedObject.ApplyModifiedProperties();
             }
 
-            void drawPropertyField(bool drawHr, SerializedProperty serializedProperty, ChannelFieldAttribute channelFieldAttribute = null)
+            void drawPropertyField(bool drawHr, FieldInfo fieldInfo, ChannelFieldAttribute channelFieldAttribute = null)
             {
+                var serializedProperty = serializedObject.FindProperty(fieldInfo.Name);
                 if (channelFieldAttribute == null)
                 {
                     Debug.LogWarning(serializedProperty.displayName + " is not have ChannelFieldAttribute\nin " + target.GetType().ToString());
-                    EditorGUILayout.PropertyField(serializedProperty);
+                    drawField(fieldInfo);
                     return;
                 }
 
@@ -69,12 +70,29 @@ namespace StageLightManeuver
                 if (channelFieldAttribute.IsConfigField && channelFieldAttribute.SaveToProfile && isSync)
                 {
                     EditorGUI.BeginDisabledGroup(true);
-                    EditorGUILayout.PropertyField(serializedProperty);
+                    drawField(fieldInfo);
                     EditorGUI.EndDisabledGroup();
                 }
                 else if (channelFieldAttribute.IsConfigField)
                 {
-                    EditorGUILayout.PropertyField(serializedProperty);
+                    drawField(fieldInfo);
+                }
+
+                void drawField(FieldInfo fi)
+                {
+                    var value = fi.GetValue(target);
+                    var valueType = value?.GetType();
+                    var drawerType = SlmEditorUtility.GetPropertyDrawerTypeForType(valueType);
+
+                    if (drawerType != null)
+                    {
+                        var drawer = Activator.CreateInstance(drawerType) as PropertyDrawer;
+                        drawer.OnGUI(GUILayoutUtility.GetRect(0, 0), serializedProperty, new GUIContent(serializedProperty.displayName));
+                    }
+                    else
+                    {
+                        EditorGUILayout.PropertyField(serializedProperty);
+                    }
                 }
             }
         }

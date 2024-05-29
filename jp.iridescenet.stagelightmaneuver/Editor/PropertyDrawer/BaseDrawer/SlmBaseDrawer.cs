@@ -41,7 +41,7 @@ namespace StageLightManeuver
             return EditorGUIUtility.singleLineHeight;
         }
 
-        protected static Type GetPropertyDrawerTypeForType(Type valueType)
+        protected internal static Type GetPropertyDrawerTypeForType(Type valueType)
         {
             var scriptAttributeUtilityType = typeof(EditorGUI).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
 

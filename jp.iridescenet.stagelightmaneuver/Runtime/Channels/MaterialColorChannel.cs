@@ -18,6 +18,7 @@ namespace StageLightManeuver
 
 
 #region Configs
+        [ChannelField(true)] [SerializeField] private string colorPropertyName = "_MainColor";
 #endregion
 
 
@@ -25,7 +26,6 @@ namespace StageLightManeuver
         [ChannelField(false)] private MaterialPropertyBlock _materialPropertyBlock;
         [ChannelField(false)] [SerializeField] private float intensity = 1;
         [ChannelField(false)] [SerializeField] private Color color = Color.white;
-        [ChannelField(false)] [SerializeField] private string colorPropertyName = "_MainColor";
         [ChannelField(false)] private Dictionary<Renderer,MaterialPropertyBlock> _materialPropertyBlocks = null;
         [ChannelField(false)] private int propertyId;
 #endregion

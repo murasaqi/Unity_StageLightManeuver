@@ -82,6 +82,7 @@ namespace StageLightManeuver
 #if USE_HDRP
             lightData.Clear();
 #endif
+            GetLightInChildrenAndFetchData();
             foreach (var light in lights)
             {
                 if(light == null) continue;

@@ -65,15 +65,15 @@ namespace StageLightManeuver
 
         public void GetLightInChildrenAndFetchData()
         {
-            var lightList = GetComponentsInChildren<Light>().ToList();
+            lights = GetComponentsInChildren<Light>().ToList();
             
-            if(lightList.Count <= 0) return;
-            lightColor = lightList[0].color;
-            lightIntensity = lightList[0].intensity;
-            spotAngle = lightList[0].spotAngle;
-            innerSpotAngle = lightList[0].innerSpotAngle;
-            spotRange = lightList[0].range;
-            lightCookie = lightList[0].cookie;
+            if(lights.Count <= 0) return;
+            lightColor = lights[0].color;
+            lightIntensity = lights[0].intensity;
+            spotAngle = lights[0].spotAngle;
+            innerSpotAngle = lights[0].innerSpotAngle;
+            spotRange = lights[0].range;
+            lightCookie = lights[0].cookie;
             
         }
         public override void Init()

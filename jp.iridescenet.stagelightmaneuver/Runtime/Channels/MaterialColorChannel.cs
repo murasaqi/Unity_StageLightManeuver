@@ -18,7 +18,7 @@ namespace StageLightManeuver
 
 
 #region Configs
-        [ChannelField(true)] [SerializeField] private string colorPropertyName = "_MainColor";
+        [ChannelField(true)] [SerializeField] public string colorPropertyName = "_MainColor";
 #endregion
 
 

@@ -41,13 +41,13 @@ namespace StageLightManeuver
             return EditorGUIUtility.singleLineHeight;
         }
 
-        protected static Type GetPropertyDrawerTypeForType(Type valueType)
+        protected static Type GetDrawerTypeForPropertyAndType(SerializedProperty prop, Type valueType)
         {
             var scriptAttributeUtilityType = typeof(EditorGUI).Assembly.GetType("UnityEditor.ScriptAttributeUtility");
 
-            var getDrawerTypeForTypeMethod = scriptAttributeUtilityType.GetMethod("GetDrawerTypeForType",
+            var getDrawerTypeForTypeMethod = scriptAttributeUtilityType.GetMethod("GetDrawerTypeForPropertyAndType",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var drawerType = getDrawerTypeForTypeMethod.Invoke(null, new object[] { valueType, false }) as Type; //!TODO 2022.3 からは引数が変わるので対応が必要
+            var drawerType = getDrawerTypeForTypeMethod.Invoke(null, new object[] { prop, valueType }) as Type;
             return drawerType;
         }
 
@@ -153,7 +153,7 @@ namespace StageLightManeuver
 
             var value = GetValueFromCache(property);
             var valueType = value.GetType();
-            var drawerType = GetPropertyDrawerTypeForType(valueType);
+            var drawerType = GetDrawerTypeForPropertyAndType(property, valueType);
             if (drawerType != null)
             {
                 var drawer = Activator.CreateInstance(drawerType) as PropertyDrawer;
@@ -177,7 +177,7 @@ namespace StageLightManeuver
             {
                 var val = GetValueFromCache(property);
                 var valueType = val.GetType();
-                var drawerType = GetPropertyDrawerTypeForType(valueType);
+                var drawerType = GetDrawerTypeForPropertyAndType(property, valueType);
                 if (drawerType != null)
                 {
                     var drawer = Activator.CreateInstance(drawerType) as PropertyDrawer;

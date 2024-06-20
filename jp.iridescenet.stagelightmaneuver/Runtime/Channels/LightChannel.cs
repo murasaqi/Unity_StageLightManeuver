@@ -50,6 +50,10 @@ namespace StageLightManeuver
         [ChannelField(true)] public float limitSpotAngleMax = 100f;
         [ChannelField(true)] public float limitSpotRangeMin = 0f;
         [ChannelField(true)] public float limitSpotRangeMax = 100f;
+        [ChannelField(true)] public bool syncColorToIntensity = false;
+        [ChannelField(true)] public float syncIntensityRangeMin = 0f;
+        [ChannelField(true)] public float syncIntensityRangeMax = 20f;
+        [ChannelField(true)] public Color fallOffColor = Color.black;
 #endregion
 
 
@@ -133,7 +137,7 @@ namespace StageLightManeuver
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(clockProperty == null) continue;
-             
+                
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
                 var manualColorArrayProperty = data.TryGetActiveProperty<ManualColorArrayProperty>();
@@ -203,7 +207,24 @@ namespace StageLightManeuver
             innerSpotAngle = Mathf.Clamp(innerSpotAngle, limitInnerSpotAngleMin, limitInnerSpotAngleMax);
             spotRange = Mathf.Clamp(spotRange, limitSpotRangeMin, limitSpotRangeMax);
             
-            
+            if (syncColorToIntensity && syncIntensityRangeMin < syncIntensityRangeMax)
+            {
+                // ライト輝度に合わせて、カラーの輝度を調整
+                float h, s, v;
+                Color.RGBToHSV(lightColor, out h, out s, out v);
+                if (v <= syncIntensityRangeMax) 
+                {
+                    var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
+                    float newV = Mathf.Lerp(0.0f, v, ratio);
+                    lightColor = Color.HSVToRGB(h, s, newV);
+
+                    // lightColor に fallOffColor を ratio の割合で混ぜる
+                    // カラー合成にしたいので、輝度は変えない lightColor の値を維持
+                    lightColor = Color.Lerp(fallOffColor, lightColor, ratio);
+                    Color.RGBToHSV(lightColor, out h, out s, out v);
+                    lightColor = Color.HSVToRGB(h, s, newV);
+                }
+            }
         }
 
         public override void UpdateChannel()

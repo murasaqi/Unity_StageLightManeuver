@@ -24,14 +24,14 @@ namespace StageLightManeuver
 
 #region Configs
 #if USE_HDRP
-        [ChannelFieldBehavior(false)] public string materialPropertyName =  "_EmissiveColor";
+        [ChannelFieldBehavior(true)] public string materialPropertyName =  "_EmissiveColor";
 #elif USE_URP
-        [ChannelField(false)] public string materialPropertyName =  "_EmissionColor";
+        [ChannelField(true)] public string materialPropertyName =  "_EmissionColor";
 #endif
-        [ChannelField(false)] public float maxIntensityLimit = 3;
-        [ChannelField(false)] public bool brightnessDecreasesToBlack = true;
+        [ChannelField(true)] public float maxIntensityLimit = 3;
+        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
         [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
-        [ChannelField(false)] public LightChannel lightChannel;
+        [ChannelField(true)] public LightChannel lightChannel;
 #endregion
 
 
@@ -52,6 +52,30 @@ namespace StageLightManeuver
             Init(); 
             lightChannel = GetComponent<LightChannel>();
         }
+
+        [ContextMenu("GetMeshRenderer")]
+        public void GetMeshRenderer()
+        {
+            var meshRenderer = GetComponent<MeshRenderer>();
+            if (meshRenderer != null && !meshRenderers.Contains(meshRenderer))
+            {
+                meshRenderers.Add(meshRenderer);
+            }
+        }
+        
+        [ContextMenu("GetMeshRenderers")]
+        public void GetMeshRenderers()
+        {
+            var fetchMeshRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (var meshRenderer in fetchMeshRenderers)
+            {
+                if (!meshRenderers.Contains(meshRenderer))
+                {
+                    meshRenderers.Add(meshRenderer);
+                }
+            }
+        }
+        
 
         public override void Init()
         {

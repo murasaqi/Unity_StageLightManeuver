@@ -29,13 +29,12 @@ namespace StageLightManeuver
         [ChannelField(true)] public string materialPropertyName =  "_EmissionColor";
 #endif
         [ChannelField(true)] public float maxIntensityLimit = 3;
-        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
         [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
         [ChannelField(true)] public LightChannel lightChannel;
 #endregion
 
-
 #region params
+        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
         [ChannelField(false)] [SerializeField] private int materialIndex = 0;
         [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
         [ChannelField(false)] public float intensityMultiplier = 1f;

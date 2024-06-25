@@ -34,7 +34,7 @@ namespace StageLightManeuver
 #endregion
 
 #region params
-        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
+        [ChannelField(false)] public bool brightnessDecreasesToBlack = true;
         [ChannelField(false)] [SerializeField] private int materialIndex = 0;
         [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
         [ChannelField(false)] public float intensityMultiplier = 1f;

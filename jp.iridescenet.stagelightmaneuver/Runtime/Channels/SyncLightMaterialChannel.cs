@@ -28,14 +28,14 @@ namespace StageLightManeuver
 #elif USE_URP
         [ChannelField(true)] public string materialPropertyName =  "_EmissionColor";
 #endif
-        [ChannelField(true)] public float maxIntensityLimit = 3;
-        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
         [ChannelField(true)] public LightChannel lightChannel;
+        [ChannelField(true)] public float maxIntensityLimit = 3;
+        [ChannelField(true)] public int materialIndex = 0;
+        [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
 #endregion
 
 #region params
         [ChannelField(false)] public bool brightnessDecreasesToBlack = true;
-        [ChannelField(false)] [SerializeField] private int materialIndex = 0;
         [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
         [ChannelField(false)] public float intensityMultiplier = 1f;
 #endregion

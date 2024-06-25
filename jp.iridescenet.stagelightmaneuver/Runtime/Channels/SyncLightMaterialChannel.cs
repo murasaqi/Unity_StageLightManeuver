@@ -62,8 +62,8 @@ namespace StageLightManeuver
             }
         }
         
-        [ContextMenu("GetMeshRenderers")]
-        public void GetMeshRenderers()
+        [ContextMenu("GetMeshRenderersInChild")]
+        public void GetMeshRenderersInChild()
         {
             var fetchMeshRenderers = GetComponentsInChildren<MeshRenderer>();
             foreach (var meshRenderer in fetchMeshRenderers)

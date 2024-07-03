@@ -109,10 +109,13 @@ namespace StageLightManeuver
 
                 UpdateBeatPoint(clip);
 
+                var duration = region.endTime - region.startTime;
+                var width = (float)(region.position.width * clip.duration / duration);
+                var left = Mathf.Max((float)clip.clipIn, (float)region.startTime);
+                var offset = (float)(region.position.width * left / duration);
+                var start = region.position.x - offset;
                 if (_beatPoint.ContainsKey(stageLightTimelineClip))
                 {
-                    var width = region.position.width;
-                    var start = region.position.x;
                     foreach (var p in _beatPoint[stageLightTimelineClip])
                     {
 
@@ -135,7 +138,7 @@ namespace StageLightManeuver
                 if (tex)
                 {
                     GUI.DrawTexture(
-                        new Rect(region.position.x, region.position.height - colorHeight, region.position.width,
+                        new Rect(start, region.position.height - colorHeight, width,
                             colorHeight), tex);
                 }
 
@@ -145,7 +148,7 @@ namespace StageLightManeuver
                 if (syncIconTexture && stageLightTimelineClip.referenceStageLightProfile != null &&
                     stageLightTimelineClip.syncReferenceProfile)
                 {
-                    GUI.DrawTexture(new Rect(region.position.width - iconSize - margin, margin, iconSize, iconSize),
+                    GUI.DrawTexture(new Rect(start+width - iconSize - margin, margin, iconSize, iconSize),
                         syncIconTexture, ScaleMode.ScaleAndCrop,
                         true,
                         0,

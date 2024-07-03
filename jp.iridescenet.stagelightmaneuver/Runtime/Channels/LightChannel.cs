@@ -25,7 +25,7 @@ namespace StageLightManeuver
 #region DoNotSaveToProfile-Configs
         [ChannelField(true, false)] public List<Light> lights = new List<Light>();
 #if USE_HDRP
-        [ChannelFieldBehavior(true, false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
+        [ChannelField(true, false)] public Dictionary<Light,HDAdditionalLightData> lightData = new Dictionary<Light, HDAdditionalLightData>();
 #endif
 #endregion
 

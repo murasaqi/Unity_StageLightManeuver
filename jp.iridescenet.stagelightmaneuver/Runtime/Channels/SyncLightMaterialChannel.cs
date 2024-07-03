@@ -24,7 +24,7 @@ namespace StageLightManeuver
 
 #region Configs
 #if USE_HDRP
-        [ChannelFieldBehavior(true)] public string materialPropertyName =  "_EmissiveColor";
+        [ChannelField(true)] public string materialPropertyName =  "_EmissiveColor";
 #elif USE_URP
         [ChannelField(true)] public string materialPropertyName =  "_EmissionColor";
 #endif

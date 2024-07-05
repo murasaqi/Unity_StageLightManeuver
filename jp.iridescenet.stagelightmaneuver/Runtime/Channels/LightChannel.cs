@@ -234,12 +234,13 @@ namespace StageLightManeuver
             {
 #if USE_HDRP
                 
-                light.color = lightColor;
-                light.intensity = lightIntensity;
-                light.spotAngle = spotAngle;
-                light.innerSpotAngle = innerSpotAngle;
-                light.range = spotRange;
-                if(!ignoreLightCookie)light.cookie = lightCookie;
+                //? Unityエディタのバージョンによっては以下のコードが必要かも(UIが更新されない)
+                // light.color = lightColor;
+                // light.intensity = lightIntensity;
+                // light.spotAngle = spotAngle;
+                // light.innerSpotAngle = innerSpotAngle;
+                // light.range = spotRange;
+                // if(!ignoreLightCookie)light.cookie = lightCookie;
                 if (lightData.ContainsKey(light))
                 {
                     var hdAdditionalLightData = lightData[light];

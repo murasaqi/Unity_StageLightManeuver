@@ -25,7 +25,6 @@ namespace StageLightManeuver
         // [ChannelFieldBehavior(false)] private LightTransformType _lightTransformType = LightTransformType.Pan;
         [ChannelField(false)] private float _angle;
         [ChannelField(false)] public Vector3 rotationVector = Vector3.up;
-        [ChannelField(false)] public Transform rotateTransform;
         [ChannelField(false)] private Vector3 currentVelocity;
         [ChannelField(false)] public float smoothTime = 0.1f;
         [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
@@ -36,6 +35,7 @@ namespace StageLightManeuver
 
 
 #region Configs
+        [ChannelField(true)] public Transform rotateTransform;
         [ChannelField(true)] public float minAngleValue = -360;
         [ChannelField(true)] public float maxAngleValue = 360;
 #endregion

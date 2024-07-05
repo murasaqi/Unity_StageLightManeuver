@@ -9,11 +9,11 @@ namespace StageLightManeuver
     public class RotationChannel:StageLightChannelBase
     {
 #region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Transform target;
 #endregion
 
 
 #region Configs
-        [ChannelField(true)] public Transform target;
         [ChannelField(true)] public Vector3 rotationAxis = new Vector3(0,0,1);
         [ChannelField(true)] public Vector3 offsetRotation = new Vector3(0,0,0);
 #endregion

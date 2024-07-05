@@ -31,19 +31,16 @@ namespace StageLightManeuver
         [ChannelField(false)] private float previousAngle = 0f;
 #endregion
 
+#region DoNotSaveToProfile-Configs
+        [ChannelField(true, false)] public Transform rotateTransform;
+#endregion
 
 #region Configs
-        [ChannelField(true)] public Transform rotateTransform;
         [ChannelField(true)] public Vector3 rotationVector = Vector3.up;
         [ChannelField(true)] public float minAngleValue = -360;
         [ChannelField(true)] public float maxAngleValue = 360;
-        [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
+        [ChannelField(true)] private float maxSpeed = float.PositiveInfinity;
 #endregion
-
-
-#region DoNotSaveToProfile-Configs
-#endregion
-
 
         void Start()
         {

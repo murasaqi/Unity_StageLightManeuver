@@ -11,11 +11,9 @@ namespace StageLightManeuver
 #region prams
         // [ChannelFieldBehavior(false)] private LightTransformType _lightTransformType = LightTransformType.Tilt;
         [ChannelField(false)] private float _angle =0f;
-        [ChannelField(false)] public Vector3 rotationVector = Vector3.left;
         [ChannelField(false)] public bool ignore = false;
         [ChannelField(false)] private Vector3 currentVelocity;
         [ChannelField(false)] public float smoothTime = 0.05f;
-        [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
         [ChannelField(false)] [FormerlySerializedAs("smoothness")] public bool useSmoothness = false;
         [ChannelField(false)] private float previousAngle = 0f;
 #endregion
@@ -23,8 +21,10 @@ namespace StageLightManeuver
 
 #region Config
         [ChannelField(true)] public Transform rotateTransform;
+        [ChannelField(false)] public Vector3 rotationVector = Vector3.left;
         [ChannelField(true)] public float minAngleValue = -360;
         [ChannelField(true)] public float maxAngleValue = 360;
+        [ChannelField(false)] private float maxSpeed = float.PositiveInfinity;
 #endregion
 
 #region DoNotSaveToProfile-Configs

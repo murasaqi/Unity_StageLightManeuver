@@ -123,14 +123,17 @@ StageLightManeunver は Volumetric Light Beam を使ったボリューメトリ�
 
 ## Contributor
 
-TRIBALCON inc  
-Compositon inc  
 [Murasaqi](https://github.com/murasaqi)  
 [clocknote.](https://github.com/clocknote)  
-[Kuyuri Iroha](https://github.com/kuyuri-iroha)  
 [pon](https://github.com/AJpon)  
+[RYUNOSUKE HIRAI](https://github.com/Hirai0827)  
+[Kuyuri Iroha](https://github.com/kuyuri-iroha)  
+
+Iridescent inc  
+TRIBALCON inc  
+Compositon inc  
 
 ## License
 
-MIT License
+MIT License  
 Copyright (c) 2024 Murasaqi

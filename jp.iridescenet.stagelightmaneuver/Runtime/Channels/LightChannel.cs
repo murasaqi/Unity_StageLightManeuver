@@ -22,6 +22,11 @@ namespace StageLightManeuver
     [AddComponentMenu("")]
     public class LightChannel : StageLightChannelBase
     {
+        public enum FallOffMode
+        {
+            Default = 0,
+        }
+
 #region DoNotSaveToProfile-Configs
         [ChannelField(true, false)] public List<Light> lights = new List<Light>();
 #if USE_HDRP
@@ -53,7 +58,8 @@ namespace StageLightManeuver
         [ChannelField(true)] public bool syncColorToIntensity = false;
         [ChannelField(true)] public float syncIntensityRangeMin = 0f;
         [ChannelField(true)] public float syncIntensityRangeMax = 20f;
-        [ChannelField(true)] public Color fallOffColor = Color.black;
+        [ChannelField(true)] public FallOffMode fallOffMode = FallOffMode.Default;
+        [ChannelField(true)] public Gradient fallOffGradient;
 #endregion
 
 
@@ -211,18 +217,22 @@ namespace StageLightManeuver
             {
                 // ライト輝度に合わせて、カラーの輝度を調整
                 float h, s, v;
-                Color.RGBToHSV(lightColor, out h, out s, out v);
+                // Color.RGBToHSV(lightColor, out h, out s, out v);
+                v = lightColor.grayscale;
                 if (v <= syncIntensityRangeMax) 
                 {
                     var ratio = Mathf.InverseLerp(syncIntensityRangeMin, syncIntensityRangeMax, lightIntensity);
-                    float newV = Mathf.Lerp(0.0f, v, ratio);
-                    lightColor = Color.HSVToRGB(h, s, newV);
+                    var fallOffColor = fallOffGradient.Evaluate(ratio);
+                    // float newV = Mathf.Lerp(0.0f, v, ratio);
+                    // lightColor = Color.HSVToRGB(h, s, newV);
+                    float brightness = v;
 
                     // lightColor に fallOffColor を ratio の割合で混ぜる
                     // カラー合成にしたいので、輝度は変えない lightColor の値を維持
                     lightColor = Color.Lerp(fallOffColor, lightColor, ratio);
                     Color.RGBToHSV(lightColor, out h, out s, out v);
-                    lightColor = Color.HSVToRGB(h, s, newV);
+                    // lightColor = Color.HSVToRGB(h, s, newV);
+                    lightColor = Color.HSVToRGB(h, s, brightness);
                 }
             }
         }
@@ -234,12 +244,13 @@ namespace StageLightManeuver
             {
 #if USE_HDRP
                 
-                light.color = lightColor;
-                light.intensity = lightIntensity;
-                light.spotAngle = spotAngle;
-                light.innerSpotAngle = innerSpotAngle;
-                light.range = spotRange;
-                if(!ignoreLightCookie)light.cookie = lightCookie;
+                //? Unityエディタのバージョンによっては以下のコードが必要かも(UIが更新されない)
+                // light.color = lightColor;
+                // light.intensity = lightIntensity;
+                // light.spotAngle = spotAngle;
+                // light.innerSpotAngle = innerSpotAngle;
+                // light.range = spotRange;
+                // if(!ignoreLightCookie)light.cookie = lightCookie;
                 if (lightData.ContainsKey(light))
                 {
                     var hdAdditionalLightData = lightData[light];

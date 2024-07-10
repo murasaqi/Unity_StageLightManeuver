@@ -55,16 +55,18 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 
 ## プリセット灯体
 
-`/Resources/SLSAssets/Lights/` 以下に URP/HDRP対応のセットアップ済み灯体を5つ同梱しています
+`/Resources/SLSAssets/Lights/` 以下に URP対応のセットアップ済み灯体を同梱しています
 
 | Light Type | File Name | RenderPipeLine | Rendering Image |
 |:-----------|:----------|:--------------:|:---------------:|
-| LED Strobe | `SLM_LEDStrobe.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/c3df799b-4bd5-484b-a7c0-0a35c22a008a" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_HDRP.prefab` | HDRP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/009226e2-5918-4609-9cbc-82bc733783c2" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_URP_HD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/2f0b3b68-dda4-4a40-b3a4-1f33cb2f0b96" width="64"> |
-| Moving Beam Light | `SLM_MovingBeamLight_URP_SD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/2f0b3b68-dda4-4a40-b3a4-1f33cb2f0b96" width="64"> |
-| Moving Wash Light | `SLM_MovingWashLight_URl.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/d4e6141c-5407-4c85-8fd4-371b039ced32" width="64"> |
-| Rotating Wash Light | `SLM_RotatingWashLight_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/6fca80dc-6d36-42de-8a76-15c92b396573" width="64"> |
+| LED Strobe | `SLM_LEDStrobe_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/9ec8d8da-bb7d-4592-b10d-e672d2564feb" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/748592c8-13c9-46a2-8706-4f44d19fd7c4" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_URP_VLB_HD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/748592c8-13c9-46a2-8706-4f44d19fd7c4" width="64"> |
+| Moving Beam Light | `SLM_MovingBeamLight_URP_VLB_SD.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/748592c8-13c9-46a2-8706-4f44d19fd7c4" width="64"> |
+| Moving Wash Light | `SLM_MovingWashLight_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/5bbdb09e-9554-43a9-ad40-7bf0e0941d3c" width="64"> |
+| Moving Wash Light | `SLM_MovingWashLight_URP_VLB.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/5bbdb09e-9554-43a9-ad40-7bf0e0941d3c" width="64"> |
+| Rotating Wash Light | `SLM_RotatingWashLight_URP.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/f2a705c5-4260-4ccc-8a56-caf522ec8975" width="64"> |
+| Rotating Wash Light | `SLM_RotatingWashLight_URP_VLB.prefab` | URP | <img src="https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/f2a705c5-4260-4ccc-8a56-caf522ec8975" width="64"> |
 
 ## 使い方
 

@@ -30,16 +30,16 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 ## 機能例
 
 - Timelineから複数灯体の一括制御が可能
-    - 灯体を役割単位でグループ化することで、大量のライトを一元管理しながら効率的にライト演出を作成できます。
-    - グループ化された灯体は、灯体同士の演出ディレイやイージングを簡単に適用できるように設計されているので、1グループにつきタイムライントラック1つで演出をつけることができます。
+    - 大量のライトを一元管理しながら効率的にライト演出を作成できます。
+    - グループごとに演出をつけることもできます。
 
     ![feature_overview](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/f3426147-89bc-4f57-a68b-8e6f8d9499b0)
 
 
 - TimelineClipからチャンネルに応じたプロパティを設定することで、効率的に照明演出を設計できます
     - Intensity, Color, Pan/Tilt, Gobo をはじめとした 20以上のプロパティが用意されています
-    - 各チャンネル, プロパティは単純な機能しか持ちませんが、これらを組み合わせることで複雑な演出を作成することができます
-    - クリップをブレンドすることで演出同士を自然に遷移することも可能です
+    - チャンネルの組み合わせで用途に合わせた灯体を作成することができます
+    - クリップをブレンドにも対応しています
     
         ![property](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/90de445d-baab-45a7-bcf8-d9681a950523)
         > Light, Pan/Tilt Property 単体の動作と組み合わせた際の動作
@@ -49,8 +49,7 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 
 
 - TimelineClipをProfileとして保存し、クリップ間でパラメータの同期が可能です
-    - 演出をプロファイルにすることで、変更や再利用が容易になります
-- [VolumetricLightBeam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)と連携させることで、軽量なボリューメトリックライトを演出に組み込むことができます
+- [VolumetricLightBeam](https://assetstore.unity.com/packages/vfx/shaders/volumetric-light-beam-99888)と連携させることが可能です（後述）
     ![link_vlb](https://github.com/murasaqi/Unity_StageLightManeuver/assets/49616225/b3ada0a7-3cc6-4b11-87a0-d719b5d7e266)
     
 
@@ -88,21 +87,6 @@ DMXやArtnetで制御される照明コントロールシステムを参考に�
 5. トラックにクリップを作成すると灯体の対応チャンネルに応じて自動的にプロパティが追加されます
 6. クリップからプロパティの設定を変更すると、それに応じて灯体が制御されます
     
-
-### **Volumetric Light Beam**
-ムービングライトの演出を作るうえでボリューメトリックライトの存在は欠かせません。
-ボリューメトリックライトを使うことでムービングライトの光が空間全体に広がり、よりリアルな演出を作ることができます。
-<!--TODO VLB有り無しの画像 or GIF -->
-
-しかし標準でボリューメトリックライトをサポートしているのはHDRPのみで、URPではサポートされていません。
-またHDRPのボリューメトリックライトは高負荷であるため、大量に使うことはできません。
-
-これらの問題に対処するために、Stage Light Maneuver では Volumetric Light Beam を利用することを推奨します。
-
-Volumetric Light Beam はURP、HDRPの両方で使用可能な、軽量で高品質なボリューメトリックライトエフェクトを提供します。
-StageLightManeunver は Volumetric Light Beam を使ったボリューメトリックライトの演出設計に対応しているので、ぜひご利用ください。
-
-
 ### **Volumetric Light Beamとの連携**
 
 本パッケージはVolumetric Light Beam(以下VLB)との連携にも対応しています。

@@ -306,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 01d72afcfc16e9e43a5b9c82c39fefde,
         type: 3}
       propertyPath: m_Name
-      value: SLM_MovingWashLight
+      value: SLM_MovingWashLight_URP
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

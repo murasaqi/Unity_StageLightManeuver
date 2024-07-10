@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 588513960569361035}
   - component: {fileID: 2679935268127646435}
   m_Layer: 0
-  m_Name: SLM_MovingBeamLight
+  m_Name: SLM_MovingBeamLight_URP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

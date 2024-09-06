@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 #if UNITY_EDITOR
@@ -18,7 +19,7 @@ namespace StageLightManeuver
     public class StageLightTimelineClip : PlayableAsset, ITimelineClipAsset
     {
         
-        [SerializeReference]public StageLightProfile referenceStageLightProfile;
+        [FormerlySerializedAs("referenceStageLightProfile")] [SerializeReference]public StageLightClipProfile referenceStageLightClipProfile;
         [HideInInspector] public StageLightTimelineBehaviour behaviour = new StageLightTimelineBehaviour();
 
         private StageLightQueueData _stageLightQueData = new StageLightQueueData();
@@ -26,9 +27,9 @@ namespace StageLightManeuver
         {
             get
             {
-                if (syncReferenceProfile && referenceStageLightProfile != null)
+                if (syncReferenceProfile && referenceStageLightClipProfile != null)
                 {
-                    _stageLightQueData.stageLightProperties = referenceStageLightProfile.stageLightProperties;
+                    _stageLightQueData.stageLightProperties = referenceStageLightClipProfile.stageLightProperties;
                     return _stageLightQueData;
                 }
                 else
@@ -73,7 +74,7 @@ namespace StageLightManeuver
                 AddAllProperty(playabledirector, queData);
             }
 
-            if (syncReferenceProfile && referenceStageLightProfile != null)
+            if (syncReferenceProfile && referenceStageLightClipProfile != null)
             {
                 InitSyncData();
             }
@@ -175,9 +176,9 @@ namespace StageLightManeuver
 
         public void OverwriteDiffProperty()
         {
-            if (referenceStageLightProfile == null) return;
+            if (referenceStageLightClipProfile == null) return;
             var properties = behaviour.stageLightQueueData.stageLightProperties;
-            var profileData = SlmUtility.CopyProperties(referenceStageLightProfile);
+            var profileData = SlmUtility.CopyProperties(referenceStageLightClipProfile);
             // var diffData = new List<SlmProperty>();
             foreach (var stageLightProperty in profileData)
             {
@@ -195,9 +196,9 @@ namespace StageLightManeuver
         [ContextMenu("Apply")]
         public void LoadProfile()
         {
-            if (referenceStageLightProfile == null) return;            
+            if (referenceStageLightClipProfile == null) return;            
             
-            var copyList = SlmUtility.CopyProperties(referenceStageLightProfile);
+            var copyList = SlmUtility.CopyProperties(referenceStageLightClipProfile);
             behaviour.stageLightQueueData.stageLightProperties = copyList;
             stopEditorUiUpdate = false;
         }
@@ -211,9 +212,9 @@ namespace StageLightManeuver
         public void SaveProfile()
         {
 #if UNITY_EDITOR
-            if (referenceStageLightProfile.stageLightProperties.Count > 0)
+            if (referenceStageLightClipProfile.stageLightProperties.Count > 0)
             {
-                Undo.RegisterCompleteObjectUndo(referenceStageLightProfile, referenceStageLightProfile.name);
+                Undo.RegisterCompleteObjectUndo(referenceStageLightClipProfile, referenceStageLightClipProfile.name);
             }
             var copyList = new List<SlmProperty>();
             // Clipのコピーを作成してからプロパティーの取り出しをしているが、多分もっといい方法がある
@@ -232,24 +233,24 @@ namespace StageLightManeuver
             // クリップのコピーを破棄
             UnityEngine.Object.DestroyImmediate(clipInstance);
 
-            referenceStageLightProfile.stageLightProperties.Clear();
-            referenceStageLightProfile.stageLightProperties = copyList;
-            referenceStageLightProfile.isUpdateGuiFlag = true;
-            EditorUtility.SetDirty(referenceStageLightProfile);
+            referenceStageLightClipProfile.stageLightProperties.Clear();
+            referenceStageLightClipProfile.stageLightProperties = copyList;
+            referenceStageLightClipProfile.isUpdateGuiFlag = true;
+            EditorUtility.SetDirty(referenceStageLightClipProfile);
             AssetDatabase.SaveAssets();
             
-            track.ApplyProfileAllClip( referenceStageLightProfile);
+            track.ApplyProfileAllClip( referenceStageLightClipProfile);
 #endif
         }
 
         public void InitSyncData()
         {
             
-            if (referenceStageLightProfile != null)
+            if (referenceStageLightClipProfile != null)
             {
 
                 var copyList = new List<SlmProperty>();
-                foreach (var stageLightProperty in referenceStageLightProfile.stageLightProperties)
+                foreach (var stageLightProperty in referenceStageLightClipProfile.stageLightProperties)
                 {
                     if(stageLightProperty == null) continue;
                     var type = stageLightProperty.GetType();

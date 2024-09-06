@@ -52,8 +52,8 @@ namespace StageLightManeuver
             if (stageLightTimelineClip == null)
                 return;
             GetGradientTexture(clip, true);
-            if (stageLightTimelineClip.referenceStageLightProfile != null && stageLightTimelineClip.syncClipName)
-                clip.displayName = stageLightTimelineClip.referenceStageLightProfile.name;
+            if (stageLightTimelineClip.referenceStageLightClipProfile != null && stageLightTimelineClip.syncClipName)
+                clip.displayName = stageLightTimelineClip.referenceStageLightClipProfile.name;
             
             stageLightTimelineClip.clipDisplayName = clip.displayName;
         }
@@ -96,10 +96,10 @@ namespace StageLightManeuver
 
                 if (syncIconTexture == null) syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
                 var update = stageLightTimelineClip.forceTimelineClipUpdate;
-                if (stageLightTimelineClip.referenceStageLightProfile != null)
+                if (stageLightTimelineClip.referenceStageLightClipProfile != null)
                 {
-                    if (stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag) update = true;
-                    stageLightTimelineClip.referenceStageLightProfile.isUpdateGuiFlag = false;
+                    if (stageLightTimelineClip.referenceStageLightClipProfile.isUpdateGuiFlag) update = true;
+                    stageLightTimelineClip.referenceStageLightClipProfile.isUpdateGuiFlag = false;
                 }
 
                 var tex = GetGradientTexture(clip, update);
@@ -145,7 +145,7 @@ namespace StageLightManeuver
 
                 var iconSize = 12;
                 var margin = 4;
-                if (syncIconTexture && stageLightTimelineClip.referenceStageLightProfile != null &&
+                if (syncIconTexture && stageLightTimelineClip.referenceStageLightClipProfile != null &&
                     stageLightTimelineClip.syncReferenceProfile)
                 {
                     GUI.DrawTexture(new Rect(start+width - iconSize - margin, margin, iconSize, iconSize),

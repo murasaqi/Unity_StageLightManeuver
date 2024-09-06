@@ -21,7 +21,7 @@ namespace StageLightManeuver
     //     public string jsonInfo;
     // }
     // [CreateAssetMenu(fileName = "New LightFixtureProfile", menuName = "StageLightManeuver/LightFixtureProfile")]
-    public class LightFixtureProfile: ScriptableObject
+    public class StageLightFixtureProfile: ScriptableObject
     {
         // public string name;
         // [TextArea(3, 10)]
@@ -43,12 +43,12 @@ namespace StageLightManeuver
             Init();
         }
 
-        public LightFixtureProfile()
+        public StageLightFixtureProfile()
         {
             Init();
         }
 
-        public LightFixtureProfile(List<StageLightChannelBase> channels)
+        public StageLightFixtureProfile(List<StageLightChannelBase> channels)
         {
             Init(channels);
         }

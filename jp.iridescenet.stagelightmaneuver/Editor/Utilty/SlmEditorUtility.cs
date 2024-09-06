@@ -91,10 +91,10 @@ namespace StageLightManeuver
 
         public static StageLightTimelineClip currentEditingClip;
 
-        public static void OverwriteProperties(StageLightProfile stageLightProfileCopy,
+        public static void OverwriteProperties(StageLightClipProfile stageLightClipProfileCopy,
             List<StageLightTimelineClip> selectedClips)
         {
-            var properties = stageLightProfileCopy.stageLightProperties.FindAll(x => x.propertyOverride == true);
+            var properties = stageLightClipProfileCopy.stageLightProperties.FindAll(x => x.propertyOverride == true);
 
             foreach (var p in properties)
             {
@@ -209,10 +209,10 @@ namespace StageLightManeuver
             }
         }
 
-        public static void InitAndProperties(StageLightProfile stageLightProfileCopy,
+        public static void InitAndProperties(StageLightClipProfile stageLightClipProfileCopy,
             List<StageLightTimelineClip> selectedClips)
         {
-            stageLightProfileCopy.stageLightProperties.Clear();
+            stageLightClipProfileCopy.stageLightProperties.Clear();
             var propertyTypes = new List<System.Type>();
 
             foreach (var selectedClip in selectedClips)
@@ -233,7 +233,7 @@ namespace StageLightManeuver
                         new object[] { }, null)
                     as SlmProperty);
                 // var property = System.Activator.CreateInstance(propertyType) as SlmProperty;
-                stageLightProfileCopy.TryAdd(slm);
+                stageLightClipProfileCopy.TryAdd(slm);
             }
 
             // Repaint();

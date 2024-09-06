@@ -10,17 +10,17 @@ namespace StageLightManeuver
     public static class SlmSettingsUtility
     {
         /// <summary>
-        /// <see cref="StageLightProfile"/>のデフォルトのエクスポート先のパス
+        /// <see cref="StageLightClipProfile"/>のデフォルトのエクスポート先のパス
         /// </summary>
         public const string BaseExportProfilePath = "Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>";
 
         /// <summary>
-        /// <see cref="LightFixtureProfile"/> のデフォルトのエクスポートパス
+        /// <see cref="StageLightFixtureProfile"/> のデフォルトのエクスポートパス
         /// </summary>
         public const string FixtureProfileDefaultExportPath = "Assets/StageLightManeuver/Profiles/FixtureProfiles/<LightName>";
 
         /// <summary>
-        /// 全ての<see cref="SlmProperty"/>を含むリストを返す。このリストの順番が<see cref="StageLightProfile"/>のデフォルトの順番になる。
+        /// 全ての<see cref="SlmProperty"/>を含むリストを返す。このリストの順番が<see cref="StageLightClipProfile"/>のデフォルトの順番になる。
         /// </summary>
         public static readonly List<Type> SlmPropertys = new List<Type>
         {

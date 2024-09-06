@@ -117,7 +117,7 @@ namespace StageLightManeuver
                 {
                     var stageLightFixture = obj as StageLightFixture;
                     if (stageLightFixture == null) continue;
-                    if (stageLightFixture.lightFixtureProfile == null)
+                    if (stageLightFixture.stageLightFixtureProfile == null)
                     {
                         var fieldInfo = stageLightFixture.GetType().GetField("syncReferenceProfile");
                         bool syncReferenceProfile = (bool)fieldInfo.GetValue(stageLightFixture);
@@ -249,7 +249,7 @@ namespace StageLightManeuver
 
             void UpdateButtonState()
             {
-                var isProfileSet = _targetStageLightFixture.lightFixtureProfile != null;
+                var isProfileSet = _targetStageLightFixture.stageLightFixtureProfile != null;
                 var isSingleSelection = IsMultipleSelectionMode == false;
                 var canSave = isProfileSet
                                 && string.IsNullOrEmpty(_targetStageLightFixture.profileExportPath) == false
@@ -322,7 +322,7 @@ namespace StageLightManeuver
         public void SaveProfile(StageLightFixture fixture, string? savePath = null)
         {
             var channels = fixture.StageLightChannels;
-            var profile = fixture.lightFixtureProfile;
+            var profile = fixture.stageLightFixtureProfile;
             if (profile == null)
             {
                 string path = savePath;
@@ -331,7 +331,7 @@ namespace StageLightManeuver
                     var settings = SlmEditorSettingsUtility.GetStageLightManeuverSettingsAsset();
                     path = settings.lightFixtureProfileExportPath;
                 }
-                profile = ScriptableObject.CreateInstance<LightFixtureProfile>();
+                profile = ScriptableObject.CreateInstance<StageLightFixtureProfile>();
 
                 var lightName = fixture.gameObject.name;
                 path = path.Replace("<LightName>", lightName);
@@ -347,7 +347,7 @@ namespace StageLightManeuver
                     Directory.CreateDirectory(dir);
                 }
                 AssetDatabase.CreateAsset(profile, path);
-                fixture.lightFixtureProfile = profile;
+                fixture.stageLightFixtureProfile = profile;
             }
             profile.Init(channels);
 
@@ -359,7 +359,7 @@ namespace StageLightManeuver
             var stageLightFixtures = FindObjectsOfType<StageLightFixture>();
             foreach (var stageLightFixture in stageLightFixtures)
             {
-                if (stageLightFixture.lightFixtureProfile == profile)
+                if (stageLightFixture.stageLightFixtureProfile == profile)
                 {
                     LoadProfile(stageLightFixture);
                 }
@@ -368,7 +368,7 @@ namespace StageLightManeuver
 
         public void LoadProfile(StageLightFixture fixture)
         {
-            var profile = fixture.lightFixtureProfile;
+            var profile = fixture.stageLightFixtureProfile;
             if (profile == null) return;
             var channels = fixture.StageLightChannels;
             profile.RestoreChannelData(channels);

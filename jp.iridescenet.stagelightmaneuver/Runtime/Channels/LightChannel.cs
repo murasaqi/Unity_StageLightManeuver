@@ -56,6 +56,7 @@ namespace StageLightManeuver
         [ChannelField(true)] public float limitSpotRangeMin = 0f;
         [ChannelField(true)] public float limitSpotRangeMax = 100f;
         [ChannelField(true)] public bool syncColorToIntensity = false;
+        [ChannelField(true)] public bool autoSpotRangeZeroOnIntensityZero = true;
         [ChannelField(true)] public float syncIntensityRangeMin = 0f;
         [ChannelField(true)] public float syncIntensityRangeMax = 20f;
         [ChannelField(true)] public FallOffMode fallOffMode = FallOffMode.Default;
@@ -279,7 +280,7 @@ namespace StageLightManeuver
                 light.intensity = lightIntensity;
                 light.spotAngle = spotAngle;
                 light.innerSpotAngle = innerSpotAngle;
-                light.range = spotRange;
+                light.range = autoSpotRangeZeroOnIntensityZero && light.intensity <= 0f ? 0 : spotRange;
                 if(!ignoreLightCookie)light.cookie = lightCookie;
 #endif
 

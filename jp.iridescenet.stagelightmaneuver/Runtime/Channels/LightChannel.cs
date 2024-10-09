@@ -259,7 +259,7 @@ namespace StageLightManeuver
                     // hdAdditionalLightData.SetIntensity(lightIntensity);
                     // hdAdditionalLightData.SetLightDimmer(lightIntensity);
                     hdAdditionalLightData.intensity = lightIntensity;
-                    hdAdditionalLightData.color = lightColor;
+                    hdAdditionalLightData.SetColor( lightColor);
                     hdAdditionalLightData.SetSpotAngle(spotAngle);
                     hdAdditionalLightData.innerSpotPercent = innerSpotAngle;
                     hdAdditionalLightData.range = spotRange;

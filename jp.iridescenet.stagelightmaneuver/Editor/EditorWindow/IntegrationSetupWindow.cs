@@ -1,27 +1,28 @@
+#if VLB_URP || VLB_HDRP
+#define VLB_INSTALLED
+#endif
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-#if VLB_URP || VLB_HDRP
-#define VLB_INSTALLED
-#endif
 
 namespace StageLightManeuver
 {
-    public class IntegrationSetup : EditorWindow
+    public class IntegrationSetupWindow : EditorWindow
     {
 #if VLB_INSTALLED
         private const bool VLB_INSTALLED = true; 
 #else
         private const bool VLB_INSTALLED = false;
 #endif
-        string const WINDOW_TITLE = "Setup SLM Integration";
+        private const string WINDOW_TITLE = "Setup SLM Integration";
 
         [MenuItem("Window/StageLightManeuver/" + WINDOW_TITLE)]
-        private static void ShowWindow()
+        private void ShowWindow()
         {
-            EditorWindow.GetWindow(typeof(IntegrationSetup), false, WINDOW_TITLE);
+            EditorWindow.GetWindow(typeof(IntegrationSetupWindow), false, WINDOW_TITLE);
         }
 
         private void OnGUI()
@@ -71,20 +72,39 @@ namespace StageLightManeuver
             //     symbols += ";USE_VLB";
             //     PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
             // }
-            return symbols.Contains("USE_VLB")
+            return symbols.Contains("USE_VLB");
 #endif
         }
 
         /// <summary>
-        /// VLB の API にアクセスできるかチェックします
+        /// VLB の アセンブリ定義が存在するか確認します
+        /// アセンブリ定義が存在しない場合は、VLBのAPI機能へのアクセスはできません
         /// </summary>
         /// <returns></returns>
         private bool CheckVLBAvailable()
         {
+            // try
+            // {
+            //     var vlb = new VLB.VolumetricLightBeam();
+            //     return true;
+            // }
+            // catch (System.Exception)
+            // {
+            //     return false;
+            // }
+
+            // VLB のアセンブリ定義が存在するか確認
             try
             {
-                var vlb = new VLB.VolumetricLightBeam();
-                return true;
+                var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+                foreach (var assembly in assemblies)
+                {
+                    if (assembly.GetName().Name == "VLB")
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
             catch (System.Exception)
             {

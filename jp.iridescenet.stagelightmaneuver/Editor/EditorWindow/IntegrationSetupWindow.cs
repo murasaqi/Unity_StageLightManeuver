@@ -89,7 +89,7 @@ namespace StageLightManeuver
                 }
             }
 
-            if (EditorGUILayout.Button("Fix All", GUILayout.Width(60f)))
+            if (GUILayout.Button("Fix All"))
             {
                 Debug.Log("This is a Mockup");
             }

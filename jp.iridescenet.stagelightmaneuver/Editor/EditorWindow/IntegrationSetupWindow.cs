@@ -18,11 +18,47 @@ namespace StageLightManeuver
         private const bool VLB_INSTALLED = false;
 #endif
         private const string WINDOW_TITLE = "Setup SLM Integration";
+        private const string MENU_PATH = "Tools/Stage Light Maneuver/Integration Setup";
 
-        [MenuItem("Window/StageLightManeuver/" + WINDOW_TITLE)]
-        private void ShowWindow()
+        private static class Styles
         {
-            EditorWindow.GetWindow(typeof(IntegrationSetupWindow), false, WINDOW_TITLE);
+            private static GUIStyle m_flatBox;
+            public static GUIStyle flatBox
+            {
+                get
+                {
+                    m_flatBox = m_flatBox ?? new GUIStyle("OL box flat");
+                    return m_flatBox;
+                }
+            }
+            private static GUIStyle m_frameBox;
+            public static GUIStyle frameBox
+            {
+                get
+                {
+                    m_frameBox = m_frameBox ?? new GUIStyle("FrameBox");
+                    return m_frameBox;
+                }
+            }
+
+            private static GUIStyle m_headerLabel;
+            public static GUIStyle headerLabel
+            {
+                get
+                {
+                    m_headerLabel = m_headerLabel ?? new GUIStyle("SettingsHeader");
+                    return m_headerLabel;
+                }
+            }
+        }
+
+
+
+        [MenuItem(MENU_PATH)]
+        private static void ShowWindow()
+        {
+            IntegrationSetupWindow window = EditorWindow.GetWindow<IntegrationSetupWindow>(true, WINDOW_TITLE, true);
+            window.Show();
         }
 
         private void OnGUI()
@@ -30,20 +66,33 @@ namespace StageLightManeuver
             // EditorApplication.projectChanged += () => UpdatePackageInfoFromManifest(); // プロジェクトが変更されたらパッケージ情報を更新
             minSize = new(440, 260);
             titleContent = new GUIContent(WINDOW_TITLE);
-            GUIStyle style = new GUIStyle(EditorStyles.label);
-            style.richText = true;
+            GUIStyle labelStyle = new GUIStyle(EditorStyles.label);
+            labelStyle.richText = true;
 
-            EditorGUILayout.LabelField("Setup VLB Integration", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Setup VLB Integration", Styles.headerLabel);
             EditorGUILayout.Space();
-            // 各ステータスを表示 
-            EditorGUILayout.LabelField("Integration Status", EditorStyles.boldLabel);
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-            // VLB Integration のインストールステータス
-            // - VLB のインストールステータス
-            // - VLB のシンボル定義ステータス
-            // - VLB の API にアクセスできるか
-            EditorGUILayout.LabelField("VLB Integration", VLB_INSTALLED ? "Installed" : "Not Installed");
+            using (new EditorGUILayout.VerticalScope(Styles.flatBox))
+            {
+                EditorGUILayout.LabelField("Integration Status", EditorStyles.boldLabel);
+                using (new EditorGUILayout.VerticalScope(Styles.frameBox))
+                {
+                    // 各ステータスを表示 
+                    // VLB Integration のインストールステータス
+                    // - VLB のインストールステータス
+                    // - VLB のシンボル定義ステータス
+                    // - VLB の API にアクセスできるか
+                    EditorGUILayout.LabelField("VLB Integration", VLB_INSTALLED ? "Installed" : "Not Installed");
+                    EditorGUILayout.LabelField("VLB Symbol Define", CheckSymbolDefine() ? "Defined" : "Not Defined");
+                    EditorGUILayout.LabelField("VLB Integration Available", CheckVLBAvailable() ? "Available" : "Not Available");
+                }
+            }
+
+            if (EditorGUILayout.Button("Fix All", GUILayout.Width(60f)))
+            {
+                Debug.Log("This is a Mockup");
+            }
         }
 
 

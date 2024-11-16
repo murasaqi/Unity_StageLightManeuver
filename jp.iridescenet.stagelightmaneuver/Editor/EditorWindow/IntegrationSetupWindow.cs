@@ -1,27 +1,40 @@
-#if VLB_URP || VLB_HDRP
-#define VLB_INSTALLED
-#endif
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Compilation;
+using UnityEditor.SceneManagement;
 
 
 namespace StageLightManeuver
 {
+    [InitializeOnLoad]
     public class IntegrationSetupWindow : EditorWindow
     {
-#if VLB_INSTALLED
-        private const bool VLB_INSTALLED = true;
-#else
-        private const bool VLB_INSTALLED = false;
-#endif
+        private const string ASSEMBLY_NAME = "com.saladgamer.volumetriclightbeam";
+        private const string VLB_INTEGRATION_SYMBOL = "USE_VLB";
+        private const string VLB_MENU_CATEGORY_NAME = "\U0001F4A1 Volumetric Light Beam";
+        private const string VLB_CALL_INIT_MENU_NAME = "\u2699 Open Config";
+        private const string VLB_CALL_INIT_MENU_PATH = "Edit/" + VLB_MENU_CATEGORY_NAME + "/" + VLB_CALL_INIT_MENU_NAME;
         private const string WINDOW_TITLE = "Setup SLM Integration";
         private const string MENU_PATH = "Tools/Stage Light Maneuver/Integration Setup";
 
         private static class Styles
         {
+            private static GUIStyle m_boxHeader;
+            
+            public static GUIStyle boxHeader
+            {
+                get
+                {
+                    m_boxHeader = m_boxHeader ?? new GUIStyle("PreToolbar2");
+                    m_boxHeader.richText = true;
+                    return m_boxHeader;
+                }
+            }
+            
             private static GUIStyle m_flatBox;
 
             public static GUIStyle flatBox
@@ -62,6 +75,7 @@ namespace StageLightManeuver
                 get
                 {
                     m_statusDisabled = m_statusDisabled ?? new GUIStyle("PR DisabledLabel");
+                    m_statusDisabled.richText = true;
                     return m_statusDisabled;
                 }
             }
@@ -172,6 +186,12 @@ namespace StageLightManeuver
         }
 
 
+        static IntegrationSetupWindow()
+        {
+            CompilationPipeline.assemblyCompilationFinished += (assembly, messages) => UpdateIntegrationStatus();
+            // CompilationPipeline.compilationFinished += UpdateIntegrationStatus;
+        }
+
         [MenuItem(MENU_PATH)]
         private static void ShowWindow()
         {
@@ -181,7 +201,6 @@ namespace StageLightManeuver
 
         private void OnGUI()
         {
-            // EditorApplication.projectChanged += () => UpdatePackageInfoFromManifest(); // プロジェクトが変更されたらパッケージ情報を更新
             minSize = new(440, 260);
             titleContent = new GUIContent(WINDOW_TITLE);
             // GUIStyle labelStyle = new GUIStyle(EditorStyles.label);
@@ -190,14 +209,21 @@ namespace StageLightManeuver
             EditorGUILayout.LabelField("Setup SLM Integration", Styles.headerLabel,
                 GUILayout.Height(Styles.headerLabel.lineHeight));
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            
+            EditorGUILayout.HelpBox(
+                "After setup or uninstallation of the integration or update associated packages, some errors may occur.\nIn this case, restart Unity and reopen this window.",
+                MessageType.Info);
+            EditorGUILayout.Separator();
 
             using (new EditorGUILayout.VerticalScope(Styles.flatBox))
             {
                 EditorGUILayout.LabelField("Integration Status", EditorStyles.boldLabel);
                 using (new EditorGUILayout.VerticalScope(Styles.frameBox))
                 {
-                    EditorGUILayout.LabelField("VLB Integration", new GUIStyle("PreToolbar2"));
+                    EditorGUILayout.LabelField("VLB Integration", Styles.boxHeader);
                     EditorGUILayout.Space(4);
+
+                    EditorGUILayout.LabelField(" Used in SLM", "Optional", Styles.statusSuccess);
 
                     // 各ステータスを表示 
                     // VLB Integration のインストールステータス
@@ -208,10 +234,10 @@ namespace StageLightManeuver
                     GUIContent vlbPackage = new GUIContent(" Package");
                     GUIContent vlbInstalled = new GUIContent("Installed", Styles.iconSuccess);
                     GUIContent vlbNotInstalled = new GUIContent("Not Installed", Styles.iconWarn);
-                    GUIContent vlbSymbol = new GUIContent(" Symbol");
+                    GUIContent vlbSymbol = new GUIContent(" Integration Symbols");
                     GUIContent vlbSymbolDefined = new GUIContent("Defined", Styles.iconSuccess);
                     GUIContent vlbSymbolNotDefined = new GUIContent("Not Defined",
-                        CheckVLBAvailable() ? Styles.iconError : Styles.iconWarn,
+                        CheckVlbApi() ? Styles.iconError : Styles.iconWarn,
                         "Integration activation symbol is undefined");
                     GUIContent vlbIntegration = new GUIContent(" API Access");
                     GUIContent vlbIntegrationAvailable =
@@ -220,7 +246,7 @@ namespace StageLightManeuver
                         new GUIContent("Not Available", Styles.iconError, "Cannot access API");
 
 
-                    if (VLB_INSTALLED)
+                    if (CheckVlbInstalled())
                     {
                         EditorGUILayout.LabelField(vlbPackage, vlbInstalled, Styles.statusSuccess);
                         if (CheckSymbolDefine())
@@ -230,10 +256,10 @@ namespace StageLightManeuver
                         else
                         {
                             EditorGUILayout.LabelField(vlbSymbol, vlbSymbolNotDefined,
-                                CheckVLBAvailable() ? Styles.statusError : Styles.statusWarn);
+                                CheckVlbApi() ? Styles.statusError : Styles.statusWarn);
                         }
 
-                        if (CheckVLBAvailable())
+                        if (CheckVlbApi())
                         {
                             EditorGUILayout.LabelField(vlbIntegration, vlbIntegrationAvailable, Styles.statusSuccess);
                         }
@@ -246,22 +272,28 @@ namespace StageLightManeuver
                     else
                     {
                         EditorGUILayout.LabelField(vlbPackage, vlbNotInstalled, Styles.statusWarn);
-                        EditorGUILayout.LabelField(vlbSymbol,
-                            CheckSymbolDefine() ? vlbSymbolDefined.text : vlbSymbolNotDefined.text);
-                        EditorGUILayout.LabelField(vlbIntegration,
-                            CheckVLBAvailable() ? vlbIntegrationAvailable.text : vlbIntegrationNotAvailable.text);
+                        EditorGUILayout.LabelField(vlbSymbol.text,
+                            CheckSymbolDefine() ? vlbSymbolDefined.text : vlbSymbolNotDefined.text,
+                            Styles.statusDisabled);
+                        EditorGUILayout.LabelField(vlbIntegration.text,
+                            CheckVlbApi() ? vlbIntegrationAvailable.text : vlbIntegrationNotAvailable.text,
+                            Styles.statusDisabled);
                     }
                 }
             }
-
-            EditorGUI.BeginDisabledGroup(CheckSymbolDefine() && CheckVLBAvailable() || !VLB_INSTALLED);
+            EditorGUILayout.Separator();
+            
+            EditorGUI.BeginDisabledGroup(CheckSymbolDefine() && CheckVlbApi() || !CheckVlbInstalled());
             if (GUILayout.Button("Fix All"))
             {
                 InstallAssembly();
-                SetSymbolDefine(true);
+                CompilationPipeline.RequestScriptCompilation();
+                SetSymbolDefine(VLB_INTEGRATION_SYMBOL, true);
+                CompilationPipeline.RequestScriptCompilation();
+                Repaint();
             }
-
             EditorGUI.EndDisabledGroup();
+            EditorGUILayout.Separator();
         }
 
         /// <summary>
@@ -280,72 +312,107 @@ namespace StageLightManeuver
         /// USE_VLB シンボルが定義済みであれば true を返します
         /// </summary>
         /// <returns></returns>
-        private bool CheckSymbolDefine()
+        private static bool CheckSymbolDefine()
         {
 #if USE_VLB
             return true;
 #else
             var symbols =
- PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
-            return symbols.Contains("USE_VLB");
+                PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            return symbols.Contains(VLB_INTEGRATION_SYMBOL);
 #endif
         }
 
         /// <summary>
         /// USE_VLB シンボルを定義または未定義にします
         /// </summary>
-        private void SetSymbolDefine(bool define)
+        private static void SetSymbolDefine(string symbolName, bool define)
         {
             var symbols =
                 PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
             if (define)
             {
-                if (!symbols.Contains("USE_VLB"))
+                if (!symbols.Contains(symbolName))
                 {
 #if !USE_VLB
-                    symbols += ";USE_VLB";
-                    PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, symbols);
+                    symbols += ";" + symbolName;
+                    PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup,
+                        symbols);
+                    CompilationPipeline.RequestScriptCompilation();
 #endif
                 }
             }
             else
             {
-                if (symbols.Contains("USE_VLB"))
+                if (symbols.Contains(symbolName))
                 {
-                    symbols = symbols.Replace("USE_VLB", "");
+                    symbols = symbols.Replace(symbolName, "");
                     PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup,
                         symbols);
+                    CompilationPipeline.RequestScriptCompilation();
                 }
             }
+        }
+
+        /// <summary>
+        /// VLB がインストール済みか確認します
+        /// </summary>
+        /// <returns> VLB がインストール済みか否か </returns>
+        private static bool CheckVlbInstalled()
+        {
+            var menuItemExistsMethod = typeof(Menu).GetMethod("MenuItemExists",
+                System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Static);
+            return (bool)menuItemExistsMethod.Invoke(null, new object[] { VLB_CALL_INIT_MENU_PATH });
         }
 
         /// <summary>
         /// VLB の アセンブリ定義が存在するか確認します
         /// アセンブリ定義が存在しない場合は、VLBのAPI機能へのアクセスはできません
         /// </summary>
-        /// <returns></returns>
-        private bool CheckVLBAvailable()
+        /// <returns>SLM から VLB の API にアクセスできるか否か</returns>
+        private static bool CheckVlbApi()
         {
             // VLB のアセンブリ定義が存在するか確認
             try
             {
+                // var assembly = CompilationPipeline.GetAssemblies().FirstOrDefault(a => a.name == ASSEMBLY_NAME);
                 var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
-                foreach (var assembly in assemblies)
-                {
-                    if (assembly.GetName().Name == "com.saladgamer.volumetriclightbeam")
-                    {
-                        // VLB.Version.CurrentAsString にアクセスできるか確認
-                        // var type = assembly.GetType("VLB.Version");
-                        return true;
-                    }
-                }
-
-                return false;
+                return assemblies.Any(assembly => assembly.GetName().Name == ASSEMBLY_NAME);
             }
             catch (System.Exception)
             {
                 return false;
             }
+        }
+
+        private static void UpdateIntegrationStatus(object obj = null) => DisableUnsupportedFeatures();
+
+        /// <summary>
+        /// 依存関係が確認できない機能を無効化します
+        /// </summary>
+        internal static void DisableUnsupportedFeatures()
+        {
+            // TODO: 遅延評価
+            
+            // Debug.Log("RUN DisableUnsupportedFeatures");
+            // if (CheckVlbInstalled() == false)
+            // {
+            //     SetSymbolDefine(VLB_INTEGRATION_SYMBOL, false);
+            // }
+            
+
+            if (CheckVlbInstalled() && !CheckSymbolDefine() && CheckVlbApi())
+            {
+                SetSymbolDefine(VLB_INTEGRATION_SYMBOL, true);
+            }
+        }
+
+        private static void RestartUnity()
+        {
+            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+            AssetDatabase.Refresh();
+            EditorApplication.OpenProject(System.IO.Directory.GetCurrentDirectory());
         }
     }
 }

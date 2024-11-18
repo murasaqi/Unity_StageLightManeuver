@@ -126,12 +126,12 @@ namespace StageLightManeuver
             }
         }
         
-        public void ApplyProfileAllClip(StageLightProfile stageLightProfile)
+        public void ApplyProfileAllClip(StageLightClipProfile stageLightClipProfile)
         {
             // var copy = SlmUtility.CopyProperties(stageLightProfile);
             foreach (var clip in stageLightTimelineClips)
             {
-                if(clip.referenceStageLightProfile != stageLightProfile) continue;
+                if(clip.referenceStageLightClipProfile != stageLightClipProfile) continue;
                 // if(clip.syncReferenceProfile) clip.SetProperties(copy);
                 clip.InitSyncData();
             }

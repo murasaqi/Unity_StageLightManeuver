@@ -19,8 +19,8 @@ namespace StageLightManeuver
         public string type;
         public string jsonInfo;
     }
-    [CreateAssetMenu(fileName = "New StageLightProfile", menuName = "StageLightManeuver/StageLightProfile")]
-    public class StageLightProfile: ScriptableObject
+    [CreateAssetMenu(fileName = "New StageLightClipProfile", menuName = "StageLightManeuver/StageLightClipProfile")]
+    public class StageLightClipProfile: ScriptableObject
     {
        
         public bool isUpdateGuiFlag = false;
@@ -146,13 +146,13 @@ namespace StageLightManeuver
             var result = stageLightProperties.Find(x => x.GetType() == type) as SlmAdditionalProperty;
             return result;
         }
-        public StageLightProfile()
+        public StageLightClipProfile()
         {
             Init();
         }
-        public StageLightProfile Clone()
+        public StageLightClipProfile Clone()
         {
-            var result = CreateInstance<StageLightProfile>();
+            var result = CreateInstance<StageLightClipProfile>();
             // result.stageLightProperties.Clear();
 
             foreach (var stageLightProperty in stageLightProperties)

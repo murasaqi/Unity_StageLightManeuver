@@ -58,10 +58,10 @@ namespace StageLightManeuver
             return SlmUtility.GetNormalizedTime(currentTime+offsetTime, bpm, stagger,bpmScale,clockOverride.clipProperty, loopType,arrayStaggerValue);
         }
 
-        public static List<SlmProperty> CopyProperties(StageLightProfile referenceStageLightProfile)
+        public static List<SlmProperty> CopyProperties(StageLightClipProfile referenceStageLightClipProfile)
         {
             // プロファイルのコピーを作成
-            var profile = UnityEngine.Object.Instantiate(referenceStageLightProfile);
+            var profile = UnityEngine.Object.Instantiate(referenceStageLightClipProfile);
             var copyList = new List<SlmProperty>();
             foreach (var stageLightProperty in profile.stageLightProperties)
             {
@@ -118,15 +118,15 @@ namespace StageLightManeuver
         }
 
         
-        public static List<StageLightProfile> GetProfileInProject()
+        public static List<StageLightClipProfile> GetProfileInProject()
         {
 #if UNITY_EDITOR
             var guids = AssetDatabase.FindAssets("t:StageLightProfile");
-              var profiles = new List<StageLightProfile>();
+              var profiles = new List<StageLightClipProfile>();
               foreach (var guid in guids)
               {
                   var path = AssetDatabase.GUIDToAssetPath(guid);
-                  var profile = AssetDatabase.LoadAssetAtPath<StageLightProfile>(path);
+                  var profile = AssetDatabase.LoadAssetAtPath<StageLightClipProfile>(path);
                   profiles.Add(profile);
               }
               

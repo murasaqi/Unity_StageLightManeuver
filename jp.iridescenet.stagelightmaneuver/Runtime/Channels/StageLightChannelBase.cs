@@ -27,7 +27,7 @@ namespace StageLightManeuver
         /// この属性は、対象のフィールドが灯体の振る舞いを定義するための設定フィールドかどうかを指定します。
         /// インスペクターには設定フィールドに指定されたフィールドのみ表示されます。
         /// </para><para>
-        /// フィールドを灯体設定に指定した場合、<paramref name="saveToProfile"/>で<see cref="LightFixtureProfile"/>に保存するかどうかを指定できます。
+        /// フィールドを灯体設定に指定した場合、<paramref name="saveToProfile"/>で<see cref="StageLightFixtureProfile"/>に保存するかどうかを指定できます。
         /// デフォルトでは<c>true</c>です。
         /// ただし、Profileに保存できるのはプリミティブ型のみです。参照型は保存できません。
         /// </para>

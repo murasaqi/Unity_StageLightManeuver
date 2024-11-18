@@ -30,10 +30,10 @@ namespace StageLightManeuver.StageLightTimeline.Editor
     [CanEditMultipleObjects]
     public class StageLightTimelineClipCustomInspector : UnityEditor.Editor
     {
-        private List<StageLightProfile> allProfilesInProject = new List<StageLightProfile>();
+        private List<StageLightClipProfile> allProfilesInProject = new List<StageLightClipProfile>();
         private List<string> profileNames = new List<string>();
         private int selectedProfileIndex = 0;
-        private Dictionary<string, List<StageLightProfile>> folderNamesProfileDict = new Dictionary<string, List<StageLightProfile>>();
+        private Dictionary<string, List<StageLightClipProfile>> folderNamesProfileDict = new Dictionary<string, List<StageLightClipProfile>>();
         private StageLightTimelineClip stageLightTimelineClip;
         public override void OnInspectorGUI()
         {
@@ -95,8 +95,8 @@ namespace StageLightManeuver.StageLightTimeline.Editor
 
         private void SetFilePath(StageLightTimelineClip stageLightTimelineClip)
         {
-            var exportPath = stageLightTimelineClip.referenceStageLightProfile != null ? AssetDatabase.GetAssetPath(stageLightTimelineClip.referenceStageLightProfile) : "Asset";
-            var exportName = stageLightTimelineClip.referenceStageLightProfile != null ? stageLightTimelineClip.referenceStageLightProfile.name+"(Clone)" : "new stageLightProfile";
+            var exportPath = stageLightTimelineClip.referenceStageLightClipProfile != null ? AssetDatabase.GetAssetPath(stageLightTimelineClip.referenceStageLightClipProfile) : "Asset";
+            var exportName = stageLightTimelineClip.referenceStageLightClipProfile != null ? stageLightTimelineClip.referenceStageLightClipProfile.name+"(Clone)" : "new stageLightProfile";
             var path = EditorUtility.SaveFilePanel("Save StageLightProfile Asset", exportPath,exportName, "asset");
             string fileName = Path.GetFileName(path);
             if(path == "") return;
@@ -114,11 +114,11 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             {
                 EditorGUILayout.LabelField("Profile", GUILayout.MaxWidth(60));
                 EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("referenceStageLightProfile"),
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("referenceStageLightClipProfile"),
                     new GUIContent(""));
                 if (EditorGUI.EndChangeCheck())
                 {
-                    if (serializedObject.FindProperty("referenceStageLightProfile").objectReferenceValue == null)
+                    if (serializedObject.FindProperty("referenceStageLightClipProfile").objectReferenceValue == null)
                     {
                         stageLightTimelineClip.syncReferenceProfile = false;
                     }
@@ -126,14 +126,14 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 }
             }
 
-            if (stageLightTimelineClip.referenceStageLightProfile == null &&
+            if (stageLightTimelineClip.referenceStageLightClipProfile == null &&
                 stageLightTimelineClip.syncReferenceProfile)
             {
                 stageLightTimelineClip.syncReferenceProfile = false;
                 serializedObject.ApplyModifiedProperties();
             }
             
-            EditorGUI.BeginDisabledGroup(stageLightTimelineClip.referenceStageLightProfile == null);
+            EditorGUI.BeginDisabledGroup(stageLightTimelineClip.referenceStageLightClipProfile == null);
 
 
             if(stageLightTimelineClip == null)
@@ -262,7 +262,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             Undo.RegisterCompleteObjectUndo(stageLightTimelineClip, stageLightTimelineClip.name);
             EditorUtility.SetDirty(stageLightTimelineClip);
 
-            var newProfile = CreateInstance<StageLightProfile>();
+            var newProfile = CreateInstance<StageLightClipProfile>();
             var exportPath = SlmUtility.GetExportPath(stageLightTimelineClip.exportPath, stageLightTimelineClip.clipDisplayName);
 
             // ディレクトリが存在しない場合は作成
@@ -318,7 +318,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             AssetDatabase.Refresh();
             InitProfileList(stageLightTimelineClip);
             // ステージライトタイムラインクリップの参照ステージライトプロファイルを設定
-            stageLightTimelineClip.referenceStageLightProfile = AssetDatabase.LoadAssetAtPath<StageLightProfile>(exportPath);
+            stageLightTimelineClip.referenceStageLightClipProfile = AssetDatabase.LoadAssetAtPath<StageLightClipProfile>(exportPath);
             stageLightTimelineClip.SaveProfile();
             // AssetDatabase.SaveAssets();
         }
@@ -337,7 +337,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             profileNames.Clear();
 
             // group by folder
-            folderNamesProfileDict = new Dictionary<string, List<StageLightProfile>>();
+            folderNamesProfileDict = new Dictionary<string, List<StageLightClipProfile>>();
             foreach (var profile in allProfilesInProject)
             {
                 var path = AssetDatabase.GetAssetPath(profile);
@@ -349,7 +349,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 }
                 else
                 {
-                    folderNamesProfileDict.Add(parentDirectory, new List<StageLightProfile> {profile});
+                    folderNamesProfileDict.Add(parentDirectory, new List<StageLightClipProfile> {profile});
                 }
 
             }
@@ -362,7 +362,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 }
             }
             
-            selectedProfileIndex = allProfilesInProject.IndexOf(stageLightTimelineClip.referenceStageLightProfile);
+            selectedProfileIndex = allProfilesInProject.IndexOf(stageLightTimelineClip.referenceStageLightClipProfile);
         }
 
         private void DrawProfilesPopup(StageLightTimelineClip stageLightTimelineClip)
@@ -376,7 +376,7 @@ namespace StageLightManeuver.StageLightTimeline.Editor
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(stageLightTimelineClip, "Changed StageLightProfile");
-                stageLightTimelineClip.referenceStageLightProfile = allProfilesInProject[selectedProfileIndex];
+                stageLightTimelineClip.referenceStageLightClipProfile = allProfilesInProject[selectedProfileIndex];
                 serializedObject.ApplyModifiedProperties();
             }
         }

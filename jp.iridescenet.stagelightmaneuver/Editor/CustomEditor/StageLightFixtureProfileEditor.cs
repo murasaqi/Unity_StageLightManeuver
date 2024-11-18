@@ -8,14 +8,14 @@ using UnityEngine;
 
 namespace StageLightManeuver
 {
-    [CustomEditor(typeof(LightFixtureProfile), true)]
-    public class LightFixtureProfileEditor : Editor
+    [CustomEditor(typeof(StageLightFixtureProfile), true)]
+    public class StageLightFixtureProfileEditor : Editor
     {
-        public LightFixtureProfile fixtureProfile;
+        public StageLightFixtureProfile fixtureProfile;
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            fixtureProfile = target as LightFixtureProfile;
+            fixtureProfile = target as StageLightFixtureProfile;
 
             EditorGUI.BeginChangeCheck();
             EditorUtility.SetDirty(fixtureProfile);

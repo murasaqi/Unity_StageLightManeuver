@@ -6,25 +6,26 @@ using StageLightManeuver;
 using StageLightManeuver.StageLightTimeline.Editor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace StageLightManeuver
 {
-    [CustomEditor(typeof(StageLightProfile), true)]
+    [CustomEditor(typeof(StageLightClipProfile), true)]
     // Custom Editor stage light profile
-    public class StageLightProfileEditor : Editor
+    public class StageLightClipProfileEditor : Editor
     {
-        public StageLightProfile stageLightProfile;
+        [FormerlySerializedAs("stageLightProfile")] public StageLightClipProfile stageLightClipProfile;
         public override void OnInspectorGUI()
         {
 
             serializedObject.Update();
-            stageLightProfile = target as StageLightProfile;
-            var stageLightProperties = stageLightProfile.stageLightProperties;
+            stageLightClipProfile = target as StageLightClipProfile;
+            var stageLightProperties = stageLightClipProfile.stageLightProperties;
             var serializedProperty = serializedObject.FindProperty("stageLightProperties");
 
             EditorGUI.BeginChangeCheck();
-            EditorUtility.SetDirty(stageLightProfile);
+            EditorUtility.SetDirty(stageLightClipProfile);
             var drawer = new StageLightPropertiesDrawer();
             drawer.OnGUI(EditorGUILayout.GetControlRect(), serializedProperty, GUIContent.none);
             if (EditorGUI.EndChangeCheck())

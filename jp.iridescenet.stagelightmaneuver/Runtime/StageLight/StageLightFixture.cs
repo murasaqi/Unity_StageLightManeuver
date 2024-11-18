@@ -9,6 +9,7 @@ using System.Linq;
 // using UnityEditor;
 // #endif
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace StageLightManeuver
 {
@@ -17,7 +18,7 @@ namespace StageLightManeuver
     {
         [SerializeReference] private List<StageLightChannelBase> stageLightChannels = new List<StageLightChannelBase>();
         // private List<StageLightChannelBase> channelsBuffer = new List<StageLightChannelBase>();
-        public bool isSync { get => syncReferenceProfile && lightFixtureProfile != null; }
+        public bool isSync { get => syncReferenceProfile && stageLightFixtureProfile != null; }
         public List<StageLightChannelBase> StageLightChannels 
         {
             get
@@ -47,7 +48,7 @@ namespace StageLightManeuver
             }
         }
 
-        public LightFixtureProfile lightFixtureProfile;
+        [FormerlySerializedAs("lightFixtureProfile")] public StageLightFixtureProfile stageLightFixtureProfile;
         [SerializeField] private bool syncReferenceProfile = false;
 
 #if UNITY_EDITOR

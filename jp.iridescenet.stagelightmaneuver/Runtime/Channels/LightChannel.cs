@@ -47,6 +47,7 @@ namespace StageLightManeuver
 
 
 #region Configs
+        [ChannelField(true)] public float intensityMultiplier = 1f;
         [ChannelField(true)] public float limitIntensityMin = 0f;
         [ChannelField(true)] public float limitIntensityMax = 10000f;
         [ChannelField(true)] public float limitInnerSpotAngleMin = 0f;
@@ -209,7 +210,7 @@ namespace StageLightManeuver
                 }
             }
             
-            lightIntensity = Mathf.Clamp(lightIntensity, limitIntensityMin, limitIntensityMax);
+            lightIntensity = Mathf.Clamp(lightIntensity, limitIntensityMin, limitIntensityMax) * intensityMultiplier;
             spotAngle = Mathf.Clamp(spotAngle, limitSpotAngleMin, limitSpotAngleMax);
             innerSpotAngle = Mathf.Clamp(innerSpotAngle, limitInnerSpotAngleMin, limitInnerSpotAngleMax);
             spotRange = Mathf.Clamp(spotRange, limitSpotRangeMin, limitSpotRangeMax);

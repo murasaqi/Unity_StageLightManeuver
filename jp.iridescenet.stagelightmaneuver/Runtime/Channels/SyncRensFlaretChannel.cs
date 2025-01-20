@@ -24,6 +24,7 @@ namespace StageLightManeuver
 
 #region Configs
         [ChannelField(true)] public float maxIntensityLimit = 3;
+        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
 #endregion
 
 
@@ -80,6 +81,14 @@ namespace StageLightManeuver
             var intensity = Mathf.Min(lightChannel.lightIntensity * intensityMultiplier,maxIntensityLimit);
             lensFlareSRP.intensity = intensity;
             lensFlareSRP.scale = scale;
+
+            //? ライトの色を考慮
+            //! レンズフレアの色変える方法わからんので、一旦単に明るさを変えるだけにする
+            if (brightnessDecreasesToBlack)
+            {
+                float lightColorBrightness = lightChannel.lightColor.grayscale;
+                lensFlareSRP.intensity *= lightColorBrightness;
+            }
         }
     }
 

@@ -32,10 +32,10 @@ namespace StageLightManeuver
         [ChannelField(true)] public float maxIntensityLimit = 3;
         [ChannelField(true)] public int materialIndex = 0;
         [FormerlySerializedAs("lightChannelChannel")] [FormerlySerializedAs("lightFxChannel")]
+        [ChannelField(true)] public bool brightnessDecreasesToBlack = true;
 #endregion
 
 #region params
-        [ChannelField(false)] public bool brightnessDecreasesToBlack = true;
         [ChannelField(false)] private Dictionary<MeshRenderer,MaterialPropertyBlock> _materialPropertyBlocks;
         [ChannelField(false)] public float intensityMultiplier = 1f;
 #endregion
@@ -106,10 +106,10 @@ namespace StageLightManeuver
                 if(syncLightMaterialProperty != null)
                 {
                     intensityMultiplier += syncLightMaterialProperty.intensitymultiplier.value * data.weight;
-                    if(data.weight > 0.5f)
-                    {
-                        brightnessDecreasesToBlack = syncLightMaterialProperty.brightnessDecreasesToBlack.value;
-                    }
+                    // if(data.weight > 0.5f)
+                    // {
+                    //     brightnessDecreasesToBlack = syncLightMaterialProperty.brightnessDecreasesToBlack.value;
+                    // }
 
                     maxIntensityLimit += syncLightMaterialProperty.maxIntensityLimit.value * data.weight;
                 }

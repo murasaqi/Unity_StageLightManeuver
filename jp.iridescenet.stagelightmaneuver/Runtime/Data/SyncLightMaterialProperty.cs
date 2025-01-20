@@ -3,7 +3,7 @@
     public class SyncLightMaterialProperty:SlmAdditionalProperty
     {
         public SlmToggleValue<float> intensitymultiplier;
-        public SlmToggleValue<bool> brightnessDecreasesToBlack;
+        internal SlmToggleValue<bool> brightnessDecreasesToBlack;
         public SlmToggleValue<float> maxIntensityLimit;
         public SyncLightMaterialProperty()
         {

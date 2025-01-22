@@ -152,16 +152,16 @@ namespace StageLightManeuver
                 {
                     var manualLightArrayProperty = property as ManualLightArrayProperty;
                     var lightProperty = stageLightProperties.Find(x => x.GetType() == typeof(LightProperty)) as LightProperty;
-                    var lightIntensityProperty = stageLightProperties.Find(x => x.GetType() == typeof(LightIntensityProperty)) as LightIntensityProperty;
+                    var lightDimmerProperty = stageLightProperties.Find(x => x.GetType() == typeof(LightIntensityProperty)) as LightIntensityProperty;
                     if (lightProperty != null)
                     {
                         manualLightArrayProperty.initialValue.angle = lightProperty.spotAngle.value.constant;
                         manualLightArrayProperty.initialValue.innerAngle = lightProperty.innerSpotAngle.value.constant;
                         manualLightArrayProperty.initialValue.range = lightProperty.range.value.constant;
                     }
-                    if (lightIntensityProperty != null)
+                    if (lightDimmerProperty != null)
                     {
-                        manualLightArrayProperty.initialValue.intensity = lightIntensityProperty.lightToggleIntensity.value.constant;
+                        manualLightArrayProperty.initialValue.intensity = lightDimmerProperty.lightToggleDimmer.value.constant;
                     }
                 }
                 stageLightProperties.Add(property);

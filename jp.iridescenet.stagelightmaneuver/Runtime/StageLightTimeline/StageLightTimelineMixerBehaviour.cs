@@ -31,7 +31,8 @@ namespace StageLightManeuver
                 firstFrameHappened = true;
             }
             
-            queueDatas = new List<StageLightQueueData>();
+            queueDatas ??= new List<StageLightQueueData>();
+            queueDatas.Clear();
 
 
             var hasAnyClipPlaying = false;

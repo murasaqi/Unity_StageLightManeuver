@@ -58,17 +58,18 @@ namespace StageLightManeuver
 
                 foreach (var queueData in queueDatas)
                 {
-                    var tmpQueueData = new StageLightQueueData();
-                    tmpQueueData.stageLightOrder = queueData.stageLightOrder;
-                    tmpQueueData.weight = queueData.weight;
-                    foreach (var prop in queueData.stageLightProperties)
-                    {
-                        if (!alreadyAddedPropNames.Contains(prop.propertyName))
-                        {
-                            tmpQueueData.stageLightProperties.Add(prop);
-                        }
-                    }
-                    composedQueueDatas.Add(tmpQueueData);
+                    // var tmpQueueData = new StageLightQueueData();
+                    // tmpQueueData.stageLightOrder = queueData.stageLightOrder;
+                    // tmpQueueData.weight = queueData.weight;
+                    // foreach (var prop in queueData.stageLightProperties)
+                    // {
+                    //     if (!alreadyAddedPropNames.Contains(prop.propertyName))
+                    //     {
+                    //         tmpQueueData.stageLightProperties.Add(prop);
+                    //     }
+                    // }
+                    // composedQueueDatas.Add(tmpQueueData);
+                    composedQueueDatas.Add(queueData);
                 }
             }
 

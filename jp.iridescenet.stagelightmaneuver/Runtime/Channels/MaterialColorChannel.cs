@@ -49,18 +49,20 @@ namespace StageLightManeuver
 
         public override void Init()
         {
-            
-            _materialPropertyBlock = new MaterialPropertyBlock();
+            _materialPropertyBlock ??= new MaterialPropertyBlock();
             if(meshRenderer)meshRenderer.GetPropertyBlock(_materialPropertyBlock);
-            _materialPropertyBlocks = new Dictionary<Renderer, MaterialPropertyBlock>();
+
+            _materialPropertyBlocks ??= new Dictionary<Renderer, MaterialPropertyBlock>();
+
             foreach (var meshRenderer in syncMeshRenderers)
             {
-                if(meshRenderer == null) continue;
+                if(meshRenderer == null || _materialPropertyBlocks.TryGetValue(meshRenderer, out var prop) || prop == null) continue;
                 var materialPropertyBlock = new MaterialPropertyBlock();
                 meshRenderer.GetPropertyBlock(materialPropertyBlock);
                 _materialPropertyBlocks.Add(meshRenderer,materialPropertyBlock);
             }
             
+            PropertyTypes.Clear();
             PropertyTypes.Add(typeof(MaterialColorProperty));
         }
 
@@ -103,9 +105,12 @@ namespace StageLightManeuver
             }
         }
 
+        List<Material> sharedMaterials = new();
+
+
         public override void UpdateChannel()
         {
-            if (_materialPropertyBlock == null || _materialPropertyBlocks == null) return;
+            if (_materialPropertyBlock == null || _materialPropertyBlocks == null) /*return;*/ // ?
             {
                 Init();
             }
@@ -113,7 +118,8 @@ namespace StageLightManeuver
 
             if (meshRenderer)
             {
-                if(meshRenderer.sharedMaterials.Length <= materialIndex) return;
+                meshRenderer.GetSharedMaterials(sharedMaterials);
+                if(sharedMaterials.Count <= materialIndex) return;
                 meshRenderer.GetPropertyBlock(_materialPropertyBlock,materialIndex);
                 _materialPropertyBlock.SetColor(colorPropertyName,SlmUtility.GetHDRColor(color,intensity));
                 meshRenderer.SetPropertyBlock(_materialPropertyBlock,materialIndex);

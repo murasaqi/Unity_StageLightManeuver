@@ -92,8 +92,9 @@ namespace StageLightManeuver
 
         public override void ResyncArraySize(List<StageLightFixture> stageLights)
         {
-            
             var lightPrimitiveValues = lightValues.value;
+            if(lightPrimitiveValues.Count == stageLights.Count) return;
+            
             if (lightPrimitiveValues.Count < stageLights.Count)
             {
                 while (lightPrimitiveValues.Count < stageLights.Count)

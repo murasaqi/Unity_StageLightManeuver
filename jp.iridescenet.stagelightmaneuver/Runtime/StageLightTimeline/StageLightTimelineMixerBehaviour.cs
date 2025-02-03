@@ -16,7 +16,7 @@ namespace StageLightManeuver
         private bool firstFrameHappened = false;
 
         public StageLightFixtureBase trackBinding;
-        private List<StageLightQueueData> queueDatas;
+        private List<StageLightQueueData> queueDatas = new();
         public List<StageLightQueueData> QueueDatas => queueDatas;
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
@@ -31,9 +31,7 @@ namespace StageLightManeuver
                 firstFrameHappened = true;
             }
             
-            queueDatas ??= new List<StageLightQueueData>();
             queueDatas.Clear();
-
 
             var hasAnyClipPlaying = false;
             for (int i = 0; i < clips.Count; i++)

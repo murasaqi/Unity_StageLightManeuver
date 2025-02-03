@@ -30,6 +30,8 @@ namespace StageLightManeuver
         [ChannelField(false)] private int propertyId;
 #endregion
 
+        private List<Material> sharedMaterials = new();
+
 
         void Start()
         {
@@ -53,13 +55,15 @@ namespace StageLightManeuver
             if(meshRenderer)meshRenderer.GetPropertyBlock(_materialPropertyBlock);
 
             _materialPropertyBlocks ??= new Dictionary<Renderer, MaterialPropertyBlock>();
+            _materialPropertyBlocks.Clear();
 
             foreach (var meshRenderer in syncMeshRenderers)
             {
-                if(meshRenderer == null || _materialPropertyBlocks.TryGetValue(meshRenderer, out var prop) || prop == null) continue;
+                if(meshRenderer == null || (_materialPropertyBlocks.TryGetValue(meshRenderer, out var prop) && prop != null)) continue;
                 var materialPropertyBlock = new MaterialPropertyBlock();
                 meshRenderer.GetPropertyBlock(materialPropertyBlock);
-                _materialPropertyBlocks.Add(meshRenderer,materialPropertyBlock);
+
+                _materialPropertyBlocks.Add(meshRenderer, materialPropertyBlock);
             }
             
             PropertyTypes.Clear();
@@ -105,16 +109,14 @@ namespace StageLightManeuver
             }
         }
 
-        List<Material> sharedMaterials = new();
-
-
         public override void UpdateChannel()
         {
-            if (_materialPropertyBlock == null || _materialPropertyBlocks == null) /*return;*/ // ?
+            if (_materialPropertyBlock == null || _materialPropertyBlocks == null)
             {
                 Init();
             }
-            if(_materialPropertyBlock ==null) return;
+
+            if(_materialPropertyBlock == null) return;
 
             if (meshRenderer)
             {

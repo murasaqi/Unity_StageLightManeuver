@@ -49,28 +49,7 @@ namespace StageLightManeuver
                     }
                 }
 
-                // var str = "";
-                // foreach (var propName in alreadyAddedPropNames)
-                // {
-                //     str += propName + ",";
-                // }
-                // Debug.Log(str);
-
-                foreach (var queueData in queueDatas)
-                {
-                    // var tmpQueueData = new StageLightQueueData();
-                    // tmpQueueData.stageLightOrder = queueData.stageLightOrder;
-                    // tmpQueueData.weight = queueData.weight;
-                    // foreach (var prop in queueData.stageLightProperties)
-                    // {
-                    //     if (!alreadyAddedPropNames.Contains(prop.propertyName))
-                    //     {
-                    //         tmpQueueData.stageLightProperties.Add(prop);
-                    //     }
-                    // }
-                    // composedQueueDatas.Add(tmpQueueData);
-                    composedQueueDatas.Add(queueData);
-                }
+                foreach (var queueData in queueDatas) composedQueueDatas.Add(queueData);
             }
 
             for (int i = 0; i < composedQueueDatas.Count; i++)

@@ -78,8 +78,8 @@ namespace StageLightManeuver
 
         public override void Init()
         {
+            _materialPropertyBlocks ??= new Dictionary<MeshRenderer, MaterialPropertyBlock>();
             if(_materialPropertyBlocks != null) _materialPropertyBlocks.Clear();
-            _materialPropertyBlocks = new Dictionary<MeshRenderer, MaterialPropertyBlock>();
 
             foreach (var meshRenderer in meshRenderers)
             {

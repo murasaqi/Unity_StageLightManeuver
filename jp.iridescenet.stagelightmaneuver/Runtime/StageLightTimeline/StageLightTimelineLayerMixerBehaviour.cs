@@ -16,6 +16,10 @@ namespace StageLightManeuver
         public StageLightFixtureBase trackBinding;
 
         private List<string> overwriteExceptionPropNames = new List<string>() {"Clock","StageLight Order"};
+
+        private List<StageLightQueueData> composedQueueDatas;
+        private List<string> alreadyAddedPropNames = new();
+
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             
@@ -27,13 +31,15 @@ namespace StageLightManeuver
                 return;
 
             int inputCount = playable.GetInputCount();
-            var composedQueueDatas = new List<StageLightQueueData>();
+            composedQueueDatas ??= new List<StageLightQueueData>();
+            composedQueueDatas.Clear();
+
             for (int i = 0; i < inputCount; i++)
             {
                 var input = playable.GetInput(inputCount - 1 - i);
                 var trackMixer = ((ScriptPlayable<StageLightTimelineMixerBehaviour>) input).GetBehaviour();
                 var queueDatas = trackMixer.QueueDatas;
-                var alreadyAddedPropNames = new List<string>();
+                alreadyAddedPropNames.Clear();
                 foreach (var queueData in composedQueueDatas)
                 {
                     foreach (var propName in queueData.stageLightProperties.Where(x => x.propertyOverride).Select(x => x.propertyName))
@@ -43,27 +49,7 @@ namespace StageLightManeuver
                     }
                 }
 
-                var str = "";
-                foreach (var propName in alreadyAddedPropNames)
-                {
-                    str += propName + ",";
-                }
-                // Debug.Log(str);
-
-                foreach (var queueData in queueDatas)
-                {
-                    var tmpQueueData = new StageLightQueueData();
-                    tmpQueueData.stageLightOrder = queueData.stageLightOrder;
-                    tmpQueueData.weight = queueData.weight;
-                    foreach (var prop in queueData.stageLightProperties)
-                    {
-                        if (!alreadyAddedPropNames.Contains(prop.propertyName))
-                        {
-                            tmpQueueData.stageLightProperties.Add(prop);
-                        }
-                    }
-                    composedQueueDatas.Add(tmpQueueData);
-                }
+                foreach (var queueData in queueDatas) composedQueueDatas.Add(queueData);
             }
 
             for (int i = 0; i < composedQueueDatas.Count; i++)

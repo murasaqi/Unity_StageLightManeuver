@@ -240,7 +240,7 @@ namespace StageLightManeuver
             }
            
 
-            var lightIntensityProperty = customClip.StageLightQueueData.TryGetActiveProperty<LightIntensityProperty>();
+            var lightDimmerProperty = customClip.StageLightQueueData.TryGetActiveProperty<LightIntensityProperty>();
             if (update) 
             {
                 _gradientTextures.Remove(customClip);
@@ -277,10 +277,10 @@ namespace StageLightManeuver
                     }
 
                     var intensityValue = 1f;
-                    if (lightIntensityProperty != null)
+                    if (lightDimmerProperty != null)
                     {
-                        var t = SlmUtility.GetNormalizedTime(currentTime, timeProperty, lightIntensityProperty);
-                        intensityValue = lightIntensityProperty.lightToggleIntensity.value.Evaluate(t);
+                        var t = SlmUtility.GetNormalizedTime(currentTime, timeProperty, lightDimmerProperty);
+                        intensityValue = lightDimmerProperty.lightToggleDimmer.value.Evaluate(t);
                         // intensityValue = intensityValue
                     }
                     else if(materialColorProperty != null)

@@ -47,6 +47,7 @@ namespace StageLightManeuver
 
 
 #region Configs
+        [ChannelField(true)] public float intensityMultiplier = 1f;
         [ChannelField(true)] public float limitIntensityMin = 0f;
         [ChannelField(true)] public float limitIntensityMax = 10000f;
         [ChannelField(true)] public float limitInnerSpotAngleMin = 0f;
@@ -138,7 +139,7 @@ namespace StageLightManeuver
                 var clockProperty= data.TryGetActiveProperty<ClockProperty>() as ClockProperty;
                 var lightProperty = data.TryGetActiveProperty<LightProperty>() as LightProperty;
                 var lightColorProperty = data.TryGetActiveProperty<LightColorProperty>() as LightColorProperty;
-                var lightIntensityProperty = data.TryGetActiveProperty<LightIntensityProperty>() as LightIntensityProperty;
+                var lightDimmerProperty = data.TryGetActiveProperty<LightIntensityProperty>() as LightIntensityProperty;
                 var lightFlickerProperty = data.TryGetActiveProperty<LightFlickerProperty>() as LightFlickerProperty;
                 var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
@@ -163,10 +164,10 @@ namespace StageLightManeuver
                 }
                 else
                 {
-                    if (lightIntensityProperty != null)
+                    if (lightDimmerProperty != null)
                     {
                         var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index);
-                        lightIntensity += lightIntensityProperty.lightToggleIntensity.value.Evaluate(t) * weight;
+                        lightIntensity += lightDimmerProperty.lightToggleDimmer.value.Evaluate(t) * weight;
                     }
                     if(lightFlickerProperty != null)
                     {
@@ -209,7 +210,7 @@ namespace StageLightManeuver
                 }
             }
             
-            lightIntensity = Mathf.Clamp(lightIntensity, limitIntensityMin, limitIntensityMax);
+            lightIntensity = Mathf.Clamp(lightIntensity, limitIntensityMin, limitIntensityMax) * intensityMultiplier;
             spotAngle = Mathf.Clamp(spotAngle, limitSpotAngleMin, limitSpotAngleMax);
             innerSpotAngle = Mathf.Clamp(innerSpotAngle, limitInnerSpotAngleMin, limitInnerSpotAngleMax);
             spotRange = Mathf.Clamp(spotRange, limitSpotRangeMin, limitSpotRangeMax);

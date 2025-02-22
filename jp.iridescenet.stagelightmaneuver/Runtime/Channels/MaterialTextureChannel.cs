@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,14 +36,19 @@ namespace StageLightManeuver
 
         public override void Init()
         {
-            _materialPropertyBlockDictionary = new Dictionary<MeshRenderer, MaterialPropertyBlock>();
+            _materialPropertyBlockDictionary ??= new Dictionary<MeshRenderer, MaterialPropertyBlock>();
+            _materialPropertyBlockDictionary.Clear();
+
             foreach (var meshRenderer in meshRenderers)
             {
                 if(meshRenderer == null) continue;
                 var materialPropertyBlock = new MaterialPropertyBlock();
                 meshRenderer.GetPropertyBlock(materialPropertyBlock);
-                _materialPropertyBlockDictionary.Add(meshRenderer,materialPropertyBlock);
+
+                _materialPropertyBlockDictionary.Add(meshRenderer, materialPropertyBlock);
             }
+
+            PropertyTypes.Clear();
             PropertyTypes.Add(typeof(MaterialTextureProperty));
         }
         

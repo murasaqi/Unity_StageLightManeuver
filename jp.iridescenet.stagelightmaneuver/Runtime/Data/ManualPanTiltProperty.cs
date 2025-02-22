@@ -56,6 +56,8 @@ namespace StageLightManeuver
         {
             base.ResyncArraySize(stageLights);
             var manualPanTiltArray = positions.value;
+            if(manualPanTiltArray.Count == stageLights.Count) return;
+            
             if (manualPanTiltArray.Count < stageLights.Count)
             {
                 while (manualPanTiltArray.Count < stageLights.Count)

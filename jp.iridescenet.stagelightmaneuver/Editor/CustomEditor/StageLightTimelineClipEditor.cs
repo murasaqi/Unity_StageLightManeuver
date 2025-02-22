@@ -86,6 +86,7 @@ namespace StageLightManeuver
             var stageLightTimelineClip = (StageLightTimelineClip) clip.asset;
 
 
+            if(stageLightTimelineClip.track == null) return;
 
             if (stageLightTimelineClip.clipDisplayName != clip.displayName)
             {

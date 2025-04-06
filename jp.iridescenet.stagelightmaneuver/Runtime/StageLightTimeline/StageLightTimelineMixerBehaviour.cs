@@ -25,9 +25,17 @@ namespace StageLightManeuver
             if (!trackBinding)
                 return;
 
-            if (firstFrameHappened)
+            if (!firstFrameHappened)
             {
                 trackBinding.Init();
+
+                for (int i = 0; i < clips.Count; i++)
+                {
+                    var clip = clips[i];
+                    var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
+                    if (stageLightTimelineClip == null) continue;
+                    UpdateProperty(clip);
+                }
                 firstFrameHappened = true;
             }
             
@@ -40,23 +48,13 @@ namespace StageLightManeuver
                 var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
                 if (stageLightTimelineClip == null) continue;
                 float inputWeight = playable.GetInputWeight(i);
-                var clockProperty = stageLightTimelineClip.StageLightQueueData.TryGetActiveProperty<ClockProperty>();
-                if (clockProperty != null)
+                
+#if UNITY_EDITOR
+                if (!Application.isPlaying)
                 {
-                    clockProperty.clipProperty.clipStartTime = (float)clip.start;
-                    clockProperty.clipProperty.clipEndTime = (float)clip.end;
+                    UpdateProperty(clip);
                 }
-
-                foreach (var stageLightProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)
-                {
-                    if(stageLightProperty == null) continue;
-                    stageLightProperty.InitStageLightFixture(trackBinding);
-                    if (stageLightProperty.propertyType == StageLightPropertyType.Array )
-                    {
-                        var additionalArrayProperty = stageLightProperty as IArrayProperty;
-                        additionalArrayProperty?.ResyncArraySize(trackBinding.stageLightFixtures);
-                    }
-                }
+#endif
                 
                 if (inputWeight > 0)
                 {
@@ -65,13 +63,29 @@ namespace StageLightManeuver
                     hasAnyClipPlaying = true;
                 }
             }
-
         }
+        
+        private void UpdateProperty(TimelineClip clip)
+        {
+            var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
+            if (stageLightTimelineClip == null) return;
+            var clockProperty = stageLightTimelineClip.StageLightQueueData.TryGetActiveProperty<ClockProperty>();
+            if (clockProperty != null)
+            {
+                clockProperty.clipProperty.clipStartTime = (float)clip.start;
+                clockProperty.clipProperty.clipEndTime = (float)clip.end;
+            }
 
-       
-        
-
-        
-        
+            foreach (var stageLightProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)
+            {
+                if(stageLightProperty == null) continue;
+                stageLightProperty.InitStageLightFixture(trackBinding);
+                if (stageLightProperty.propertyType == StageLightPropertyType.Array )
+                {
+                    var additionalArrayProperty = stageLightProperty as IArrayProperty;
+                    additionalArrayProperty?.ResyncArraySize(trackBinding.stageLightFixtures);
+                }
+            }
+        }
     }
 }

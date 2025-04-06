@@ -270,7 +270,16 @@ namespace StageLightManeuver
                     }
                     else
                     {
-                        hdAdditionalLightData.SetCookie( Texture2D.whiteTexture);
+                        if (light.type == LightType.Point)
+                        {
+                            // SetCookieの処理がNULLを想定してないが初期値はNULLの為、直接設定
+                            // ※hdAdditionalLightData.SetCookieも、セットしているだけ（HDRP 14.0.8、17.0.8で確認）
+                            light.cookie = null;
+                        }
+                        else
+                        {
+                            hdAdditionalLightData.SetCookie( Texture2D.whiteTexture);
+                        }
                     }
                     // hdAdditionalLightData.UpdateAllLightValues();
                     // hdAdditionalLightData.setli

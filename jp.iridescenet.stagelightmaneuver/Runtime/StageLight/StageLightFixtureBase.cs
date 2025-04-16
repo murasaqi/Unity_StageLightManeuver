@@ -8,6 +8,10 @@ namespace StageLightManeuver
     public abstract class StageLightFixtureBase : MonoBehaviour
     {
         [FormerlySerializedAs("stageLights")] public List<StageLightFixture> stageLightFixtures = new List<StageLightFixture>();
+        [SerializeField] private bool showGizmo = false;
+        [SerializeField] private Color gizmoColor = Color.yellow;
+        [SerializeField] private Vector3 gizmoSize = Vector3.one;
+
         public virtual void Init()
         {
         }
@@ -27,5 +31,27 @@ namespace StageLightManeuver
         {
             return new List<Type>();
         }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            if (!showGizmo) return;
+
+            Gizmos.color = gizmoColor;
+            foreach (var fixture in stageLightFixtures)
+            {
+                if (fixture != null)
+                {
+                    Gizmos.DrawWireCube(fixture.transform.position, gizmoSize);
+                }
+            }
+        }
+
+        [ContextMenu("Toggle Gizmo")]
+        private void ToggleGizmo()
+        {
+            showGizmo = !showGizmo;
+        }
+#endif
     }
 }

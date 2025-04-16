@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf03fac15989554f9d86f1f5de217d0, type: 3}
+  m_Name: SLM_MovingBeamLight_VLB_HD
+  m_EditorClassIdentifier: 
+  serializedChannels:
+  - '{"channelType":"StageLightManeuver.LightPanChannel","fieldInfo":{"m_Keys":["rotationVector","minAngleValue","maxAngleValue","maxSpeed"],"m_Values":["{\"x\":0.0,\"y\":1.0,\"z\":0.0}","-360","360","Infinity"]}}'
+  - '{"channelType":"StageLightManeuver.LightTiltChannel","fieldInfo":{"m_Keys":["rotationVector","minAngleValue","maxAngleValue","maxSpeed"],"m_Values":["{\"x\":1.0,\"y\":0.0,\"z\":0.0}","-360","360","Infinity"]}}'
+  - '{"channelType":"StageLightManeuver.LightChannel","fieldInfo":{"m_Keys":["limitIntensityMin","limitIntensityMax","limitInnerSpotAngleMin","limitInnerSpotAngleMax","limitSpotAngleMin","limitSpotAngleMax","limitSpotRangeMin","limitSpotRangeMax","syncColorToIntensity","syncIntensityRangeMin","syncIntensityRangeMax","fallOffMode"],"m_Values":["0","10000","0","100","0","100","0","100","False","0","20","{\"value__\":0}"]}}'
+  - '{"channelType":"StageLightManeuver.SyncLightMaterialChannel","fieldInfo":{"m_Keys":["materialPropertyName","maxIntensityLimit","materialIndex"],"m_Values":["_EmissionColor","3","0"]}}'
+  - '{"channelType":"StageLightManeuver.SyncLensFlareChannel","fieldInfo":{"m_Keys":["maxIntensityLimit"],"m_Values":["5"]}}'
+  - '{"channelType":"StageLightManeuver.RotationChannel","fieldInfo":{"m_Keys":["rotationAxis","offsetRotation"],"m_Values":["{\"x\":0.0,\"y\":0.0,\"z\":1.0}","{\"x\":-90.0,\"y\":0.0,\"z\":0.0}"]}}'
+  - '{"channelType":"StageLightManeuver.LightPanChannel","fieldInfo":{"m_Keys":["rotationVector","minAngleValue","maxAngleValue","maxSpeed"],"m_Values":["{\"x\":0.0,\"y\":1.0,\"z\":0.0}","-360","360","Infinity"]}}'
+  - '{"channelType":"StageLightManeuver.LightTiltChannel","fieldInfo":{"m_Keys":["rotationVector","minAngleValue","maxAngleValue","maxSpeed"],"m_Values":["{\"x\":1.0,\"y\":0.0,\"z\":0.0}","-360","360","Infinity"]}}'
+  - '{"channelType":"StageLightManeuver.LightChannel","fieldInfo":{"m_Keys":["limitIntensityMin","limitIntensityMax","limitInnerSpotAngleMin","limitInnerSpotAngleMax","limitSpotAngleMin","limitSpotAngleMax","limitSpotRangeMin","limitSpotRangeMax","syncColorToIntensity","syncIntensityRangeMin","syncIntensityRangeMax","fallOffMode"],"m_Values":["0","10000","0","100","0","100","0","100","False","0","20","{\"value__\":0}"]}}'
+  - '{"channelType":"StageLightManeuver.SyncLightMaterialChannel","fieldInfo":{"m_Keys":["materialPropertyName","maxIntensityLimit","materialIndex"],"m_Values":["_EmissionColor","3","0"]}}'
+  - '{"channelType":"StageLightManeuver.SyncLensFlareChannel","fieldInfo":{"m_Keys":["maxIntensityLimit"],"m_Values":["5"]}}'
+  - '{"channelType":"StageLightManeuver.RotationChannel","fieldInfo":{"m_Keys":["rotationAxis","offsetRotation"],"m_Values":["{\"x\":0.0,\"y\":0.0,\"z\":1.0}","{\"x\":-90.0,\"y\":0.0,\"z\":0.0}"]}}'

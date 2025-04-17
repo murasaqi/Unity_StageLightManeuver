@@ -26,56 +26,47 @@ namespace StageLightManeuver
 
             static void OnSelectionChanged()
             {
-                // Timelineの選択状態を取得
-                var selectedClips = TimelineEditor.selectedClips;
-                var selectedTracks = new List<TrackAsset>();
-                
+                var selectedTracks = new HashSet<TrackAsset>();
+                var director = TimelineEditor.inspectedDirector;
+                if (director == null) return;
+
                 // 選択されたClipのTrackを取得
-                foreach (var clip in selectedClips)
+                foreach (var clip in TimelineEditor.selectedClips)
                 {
-                    var track = clip.GetParentTrack();
-                    if (track != null)
+                    if (clip.asset is StageLightTimelineClip)
                     {
-                        // 親Trackを追加
-                        if (!selectedTracks.Contains(track))
+                        var track = clip.GetParentTrack();
+                        if (track != null)
                         {
                             selectedTracks.Add(track);
-                        }
-
-                        // レイヤーで追加されている子Trackも取得
-                        if (track is ILayerable layerable)
-                        {
-                            var subTracks = track.GetChildTracks();
-                            foreach (var subTrack in subTracks)
-                            {
-                                if (!selectedTracks.Contains(subTrack))
-                                {
-                                    selectedTracks.Add(subTrack);
-                                }
-                            }
+                            // 親Trackの子Trackも取得
+                            GetSubTracks(track, selectedTracks);
                         }
                     }
                 }
 
                 // 選択されたTrackを取得
-                var selectedTrackAssets = Selection.GetFiltered<TrackAsset>(SelectionMode.Editable);
-                foreach (var track in selectedTrackAssets)
+                foreach (var track in Selection.GetFiltered<TrackAsset>(SelectionMode.Editable))
                 {
-                    if (!selectedTracks.Contains(track))
+                    if (track is StageLightTimelineTrack)
                     {
                         selectedTracks.Add(track);
+                        // 選択されたTrackの子Trackも取得
+                        GetSubTracks(track, selectedTracks);
                     }
+                }
 
-                    // レイヤーで追加されている子Trackも取得
-                    if (track is ILayerable layerable)
+                // すべてのTrackを取得
+                var allTracks = new HashSet<TrackAsset>();
+                var timelineAsset = director.playableAsset as TimelineAsset;
+                if (timelineAsset != null)
+                {
+                    foreach (var track in timelineAsset.GetOutputTracks())
                     {
-                        var subTracks = track.GetChildTracks();
-                        foreach (var subTrack in subTracks)
+                        if (track is StageLightTimelineTrack)
                         {
-                            if (!selectedTracks.Contains(subTrack))
-                            {
-                                selectedTracks.Add(subTrack);
-                            }
+                            allTracks.Add(track);
+                            GetSubTracks(track, allTracks);
                         }
                     }
                 }
@@ -90,15 +81,26 @@ namespace StageLightManeuver
                 }
 
                 // 選択が解除されたTrackのbindingを更新
-                var allTracks = TimelineEditor.inspectedDirector?.playableAsset as TimelineAsset;
-                if (allTracks != null)
+                foreach (var track in allTracks)
                 {
-                    foreach (var track in allTracks.GetOutputTracks())
+                    if (track is StageLightTimelineTrack stageLightTrack && 
+                        !selectedTracks.Contains(track))
                     {
-                        if (track is StageLightTimelineTrack stageLightTrack && 
-                            !selectedTracks.Contains(track))
+                        UpdateTrackBindingGizmo(stageLightTrack, false);
+                    }
+                }
+            }
+
+            static void GetSubTracks(TrackAsset track, HashSet<TrackAsset> tracks)
+            {
+                if (track is ILayerable layerable)
+                {
+                    foreach (var subTrack in track.GetChildTracks())
+                    {
+                        if (subTrack is StageLightTimelineTrack && !tracks.Contains(subTrack))
                         {
-                            UpdateTrackBindingGizmo(stageLightTrack, false);
+                            tracks.Add(subTrack);
+                            GetSubTracks(subTrack, tracks);
                         }
                     }
                 }

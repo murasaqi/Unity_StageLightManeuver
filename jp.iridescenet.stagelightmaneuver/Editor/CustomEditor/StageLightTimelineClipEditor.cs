@@ -21,8 +21,110 @@ namespace StageLightManeuver
                 syncIconTexture = Resources.Load<Texture2D>("Icons/icon_sync");
                 backgroundTexture.SetPixel(0, 0, Color.white);
                 backgroundTexture.Apply();
-           
-            } 
+                Selection.selectionChanged += OnSelectionChanged;
+            }
+
+            static void OnSelectionChanged()
+            {
+                // Timelineの選択状態を取得
+                var selectedClips = TimelineEditor.selectedClips;
+                var selectedTracks = new List<TrackAsset>();
+                
+                // 選択されたClipのTrackを取得
+                foreach (var clip in selectedClips)
+                {
+                    var track = clip.GetParentTrack();
+                    if (track != null)
+                    {
+                        // 親Trackを追加
+                        if (!selectedTracks.Contains(track))
+                        {
+                            selectedTracks.Add(track);
+                        }
+
+                        // レイヤーで追加されている子Trackも取得
+                        if (track is ILayerable layerable)
+                        {
+                            var subTracks = track.GetChildTracks();
+                            foreach (var subTrack in subTracks)
+                            {
+                                if (!selectedTracks.Contains(subTrack))
+                                {
+                                    selectedTracks.Add(subTrack);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 選択されたTrackを取得
+                var selectedTrackAssets = Selection.GetFiltered<TrackAsset>(SelectionMode.Editable);
+                foreach (var track in selectedTrackAssets)
+                {
+                    if (!selectedTracks.Contains(track))
+                    {
+                        selectedTracks.Add(track);
+                    }
+
+                    // レイヤーで追加されている子Trackも取得
+                    if (track is ILayerable layerable)
+                    {
+                        var subTracks = track.GetChildTracks();
+                        foreach (var subTrack in subTracks)
+                        {
+                            if (!selectedTracks.Contains(subTrack))
+                            {
+                                selectedTracks.Add(subTrack);
+                            }
+                        }
+                    }
+                }
+
+                // 選択されたTrackのbindingを更新
+                foreach (var track in selectedTracks)
+                {
+                    if (track is StageLightTimelineTrack stageLightTrack)
+                    {
+                        UpdateTrackBindingGizmo(stageLightTrack, true);
+                    }
+                }
+
+                // 選択が解除されたTrackのbindingを更新
+                var allTracks = TimelineEditor.inspectedDirector?.playableAsset as TimelineAsset;
+                if (allTracks != null)
+                {
+                    foreach (var track in allTracks.GetOutputTracks())
+                    {
+                        if (track is StageLightTimelineTrack stageLightTrack && 
+                            !selectedTracks.Contains(track))
+                        {
+                            UpdateTrackBindingGizmo(stageLightTrack, false);
+                        }
+                    }
+                }
+            }
+
+            static void UpdateTrackBindingGizmo(StageLightTimelineTrack track, bool isSelected)
+            {
+                if (track == null) return;
+
+                var director = TimelineEditor.inspectedDirector;
+                if (director == null) return;
+
+                var binding = director.GetGenericBinding(track);
+                if (binding == null) return;
+
+                var drawGizmoMethod = binding.GetType().GetMethod("DrawGizmo", 
+                    System.Reflection.BindingFlags.Public | 
+                    System.Reflection.BindingFlags.NonPublic | 
+                    System.Reflection.BindingFlags.Instance);
+
+                if (drawGizmoMethod != null)
+                {
+                    drawGizmoMethod.Invoke(binding, new object[] { isSelected });
+                }
+            }
+
             static PlayableDirector GetMasterDirector() { return TimelineEditor.masterDirector; }
         }
         Dictionary<StageLightTimelineClip, Texture2D> _gradientTextures = new Dictionary<StageLightTimelineClip, Texture2D>();

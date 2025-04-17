@@ -48,9 +48,14 @@ namespace StageLightManeuver
         }
 
         [ContextMenu("Toggle Gizmo")]
-        private void ToggleGizmo()
+        public void ToggleGizmo()
         {
             showGizmo = !showGizmo;
+        }
+
+        public void DrawGizmo(bool show)
+        {
+            showGizmo = show;
         }
 #endif
     }

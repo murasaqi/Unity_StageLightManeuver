@@ -113,6 +113,8 @@ namespace StageLightManeuver
                                 {
                                     // 新しいQueueDataを作成
                                     var bpmQueueData = new StageLightQueueData();
+                                    
+                                    // Timeline システムが提供する重みをそのまま使用
                                     bpmQueueData.weight = queueData.weight * bpmClip.Weight;
                                     
                                     // 新しいClockPropertyを作成

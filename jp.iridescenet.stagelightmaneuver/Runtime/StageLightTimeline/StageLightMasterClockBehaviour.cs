@@ -5,11 +5,11 @@ using UnityEngine.Playables;
 namespace StageLightManeuver
 {
     /// <summary>
-    /// Clock Trackで使用するBehaviourクラス
+    /// StageLightMasterClock Trackで使用するBehaviourクラス
     /// ClockPropertyを処理します
     /// </summary>
     [Serializable]
-    public class StageLightMasterClockTimelineBehaviour : PlayableBehaviour
+    public class StageLightMasterClockBehaviour : PlayableBehaviour
     {
         /// <summary>
         /// ClockPropertyの設定
@@ -37,7 +37,7 @@ namespace StageLightManeuver
         /// </summary>
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            // ClockTimelineMixerBehaviourで処理するため、ここでは何もしない
+            // StageLightMasterClockMixerで処理するため、ここでは何もしない
         }
     }
 }

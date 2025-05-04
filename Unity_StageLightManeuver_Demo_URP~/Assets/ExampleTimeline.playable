@@ -837,6 +837,136 @@ MonoBehaviour:
           propertyOverride: 0
           sortOrder: 0
           value: 1
+--- !u!114 &-8965510642572822565
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c2407a9f9ff994383ff9ddeb6c5617, type: 3}
+  m_Name: StageLightMasterClockTimelineClip
+  m_EditorClassIdentifier: 
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 60
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        m_Curve:
+        - time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: 0
+      isEditable: 1
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 60
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          m_Curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterClockTimelineClip
+  track: {fileID: 0}
+  clipDisplayName: StageLightMasterClockTimelineClip
 --- !u!114 &-8100372210919858705
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2891,7 +3021,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3836,6 +3984,142 @@ MonoBehaviour:
           propertyOverride: 1
           sortOrder: 0
           value: 1
+--- !u!114 &-6801829917287783828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23352cc3ea377348b665efee0612b14, type: 3}
+  m_Name: StageLightMasterClockClip(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 100
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: 0
+      isEditable: 1
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 100
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterClockClip
+  track: {fileID: 6421621459818115688}
+  clipDisplayName: StageLightMasterClockClip
 --- !u!114 &-6546027387696717877
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5502,6 +5786,278 @@ MonoBehaviour:
             color: {r: 1, g: 0, b: 0, a: 1}
           - name: SLM_MovingBeamLight_VLB_SD (7)
             color: {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &-3228082048988590791
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23352cc3ea377348b665efee0612b14, type: 3}
+  m_Name: StageLightMasterClockClip
+  m_EditorClassIdentifier: 
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 10
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: 0
+      isEditable: 1
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 10
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterClockClip
+  track: {fileID: 6421621459818115688}
+  clipDisplayName: StageLightMasterClockClip
+--- !u!114 &-3050776472234793993
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23352cc3ea377348b665efee0612b14, type: 3}
+  m_Name: StageLightMasterClockClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 120
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: 0
+      isEditable: 1
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 120
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterClockClip
+  track: {fileID: 6421621459818115688}
+  clipDisplayName: StageLightMasterClockClip
 --- !u!114 &-2207772002642741846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7237,7 +7793,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -8289,6 +8863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
+  - {fileID: 6421621459818115688}
   - {fileID: -7224192005156784325}
   - {fileID: -1453361107619708966}
   - {fileID: 6534155050390660213}
@@ -12606,6 +13181,296 @@ MonoBehaviour:
               m_PostInfinity: 2
               m_RotationOrder: 4
             baseIntensity: 1
+--- !u!114 &6421621459818115688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a286145236753547b50e0a74c84abfb, type: 3}
+  m_Name: Stage Light Master Clock Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 1.1333333333333333
+    m_ClipIn: 0
+    m_Asset: {fileID: -3228082048988590791}
+    m_Duration: 6.083333333333333
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6421621459818115688}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 4.666666666666667
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 1
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightMasterClockClip
+  - m_Version: 1
+    m_Start: 2.55
+    m_ClipIn: 0
+    m_Asset: {fileID: -3050776472234793993}
+    m_Duration: 8.899999999999999
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6421621459818115688}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 4.666666666666667
+    m_BlendOutDuration: 2.716666666666667
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightMasterClockClip
+  - m_Version: 1
+    m_Start: 8.733333333333333
+    m_ClipIn: 0
+    m_Asset: {fileID: -6801829917287783828}
+    m_Duration: 4.566666666666668
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6421621459818115688}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 2.716666666666667
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 1
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightMasterClockClip
+  m_Markers:
+    m_Objects: []
+  _currentClockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 100
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
 --- !u!114 &6534155050390660213
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14495,7 +15360,7 @@ MonoBehaviour:
         bpm:
           propertyOverride: 1
           sortOrder: 0
-          value: 60
+          value: 120
         bpmScale:
           propertyOverride: 1
           sortOrder: 0

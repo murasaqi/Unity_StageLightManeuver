@@ -136,8 +136,6 @@ namespace StageLightManeuver
                             mergedProperty.clipProperty.clipStartTime = clipStartTime;
                             mergedProperty.clipProperty.clipEndTime = clipEndTime;
                             
-                            // デバッグ情報
-                            Debug.Log($"StageLightTimelineMixerBehaviour: Merged ClockProperty - BPM = {mergedProperty.bpm.value} (from MasterClock)");
                             
                             queueData.stageLightProperties.Add(mergedProperty);
                         }

@@ -92,9 +92,6 @@ namespace StageLightManeuver
                 currentTime = playable.GetTime();
             }
             
-            // デバッグ情報
-            Debug.Log($"StageLightMasterClockMixer: CurrentTime = {currentTime}");
-            
             // 現在のClockPropertyを計算
             var currentClockProperty = GetActiveClockPropertyAtTime(currentTime);
             
@@ -104,9 +101,6 @@ namespace StageLightManeuver
                 if (currentClockProperty != null)
                 {
                     masterClockTrack.UpdateCurrentClockProperty(currentClockProperty);
-                    
-                    // デバッグ情報
-                    Debug.Log($"StageLightMasterClockMixer: Updated CurrentClockProperty - BPM = {currentClockProperty.bpm.value}");
                 }
                 else
                 {
@@ -115,8 +109,6 @@ namespace StageLightManeuver
                     defaultProperty.bpm.value = 120f; // デフォルトBPM
                     defaultProperty.bpmScale.value = 1f;
                     masterClockTrack.UpdateCurrentClockProperty(defaultProperty);
-                    
-                    Debug.Log("StageLightMasterClockMixer: No active clips, using default property");
                 }
             }
         }
@@ -184,8 +176,6 @@ namespace StageLightManeuver
             blendedProperty.loopType.value = maxWeightClip.Property.loopType.value;
             blendedProperty.arrayStaggerValue = maxWeightClip.Property.arrayStaggerValue;
             blendedProperty.clipProperty = maxWeightClip.Property.clipProperty;
-            
-            Debug.Log($"StageLightMasterClockMixer: Linear Blend - BPM = {blendedProperty.bpm.value}, Clips: {activeClips.Count}, Weights: {string.Join(", ", activeClips.Select(c => c.Weight))}");
             
             return blendedProperty;
         }

@@ -64,9 +64,6 @@ namespace StageLightManeuver
                     _currentClockProperty.clipProperty.clipEndTime = newProperty.clipProperty.clipEndTime;
                 }
                 
-                // デバッグ情報
-                Debug.Log($"StageLightMasterClockTrack: Updated CurrentClockProperty - BPM = {_currentClockProperty.bpm.value}");
-                
                 // エディタでの更新を通知
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(this);

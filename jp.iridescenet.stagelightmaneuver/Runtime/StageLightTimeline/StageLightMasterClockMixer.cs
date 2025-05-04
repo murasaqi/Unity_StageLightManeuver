@@ -109,6 +109,9 @@ namespace StageLightManeuver
                     defaultProperty.bpm.value = 120f; // デフォルトBPM
                     defaultProperty.bpmScale.value = 1f;
                     masterClockTrack.UpdateCurrentClockProperty(defaultProperty);
+                    
+                    // アクティブなクリップが存在しないことを示す
+                    masterClockTrack.SetActiveClipState(false);
                 }
             }
         }

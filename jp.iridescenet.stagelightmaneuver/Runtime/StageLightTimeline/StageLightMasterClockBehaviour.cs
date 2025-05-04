@@ -32,12 +32,5 @@ namespace StageLightManeuver
             }
         }
         
-        /// <summary>
-        /// フレーム処理
-        /// </summary>
-        public override void ProcessFrame(Playable playable, FrameData info, object playerData)
-        {
-            // StageLightMasterClockMixerで処理するため、ここでは何もしない
-        }
     }
 }

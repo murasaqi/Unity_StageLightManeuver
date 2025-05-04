@@ -17,20 +17,37 @@ namespace StageLightManeuver
         // 現在のClockの状態をシリアライズ可能な形で保持
         [SerializeField] private ClockProperty _currentClockProperty;
         
+        // アクティブなクリップが存在するかどうか
+        private bool _hasActiveClip = false;
+        
+        // アクティブなクリップが存在するかどうかを示すプロパティ
+        public bool HasActiveClip => _hasActiveClip;
+        
+        // アクティブなクリップの状態を設定するメソッド
+        public void SetActiveClipState(bool hasActiveClip)
+        {
+            _hasActiveClip = hasActiveClip;
+        }
+        
         // 読み取り専用プロパティ（外部からの参照用）
         public ClockProperty CurrentClockProperty
         {
             get
             {
-                // nullチェックと初期化
-                if (_currentClockProperty == null)
-                {
-                    _currentClockProperty = new ClockProperty();
-                    // デフォルト値を設定
-                    _currentClockProperty.bpm.value = 120f;
-                    _currentClockProperty.bpmScale.value = 1f;
-                }
+                InitializeClockPropertyIfNeeded();
                 return _currentClockProperty;
+            }
+        }
+        
+        // ClockPropertyの初期化
+        private void InitializeClockPropertyIfNeeded()
+        {
+            if (_currentClockProperty == null)
+            {
+                _currentClockProperty = new ClockProperty();
+                // デフォルト値を設定
+                _currentClockProperty.bpm.value = 120f;
+                _currentClockProperty.bpmScale.value = 1f;
             }
         }
         
@@ -39,11 +56,7 @@ namespace StageLightManeuver
         {
             if (newProperty != null)
             {
-                // nullチェックと初期化
-                if (_currentClockProperty == null)
-                {
-                    _currentClockProperty = new ClockProperty();
-                }
+                InitializeClockPropertyIfNeeded();
                 
                 // 値をコピー（参照ではなく）
                 _currentClockProperty.bpm.value = newProperty.bpm.value;
@@ -64,6 +77,9 @@ namespace StageLightManeuver
                     _currentClockProperty.clipProperty.clipEndTime = newProperty.clipProperty.clipEndTime;
                 }
                 
+                // アクティブなクリップが存在することを示す
+                _hasActiveClip = true;
+                
                 // エディタでの更新を通知
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(this);
@@ -74,14 +90,7 @@ namespace StageLightManeuver
         // OnEnableでの初期化
         public void OnEnable()
         {
-            // nullチェックと初期化
-            if (_currentClockProperty == null)
-            {
-                _currentClockProperty = new ClockProperty();
-                // デフォルト値を設定
-                _currentClockProperty.bpm.value = 120f;
-                _currentClockProperty.bpmScale.value = 1f;
-            }
+            InitializeClockPropertyIfNeeded();
         }
         /// <summary>
         /// Mixerの作成

@@ -37,10 +37,6 @@ namespace StageLightManeuver
                 if (output.sourceObject is StageLightMasterClockTrack masterClockTrack)
                 {
                     _masterClockTrack = masterClockTrack;
-                    
-                    // Trackの参照を保存するだけでよい
-                    _masterClockTrack = masterClockTrack;
-                    
                     break;
                 }
             }
@@ -60,16 +56,6 @@ namespace StageLightManeuver
             if (_masterClockTrack != null)
             {
                 masterClockProperty = _masterClockTrack.CurrentClockProperty;
-                
-                // デバッグ情報
-                if (masterClockProperty != null)
-                {
-                    Debug.Log($"StageLightTimelineMixerBehaviour: Using MasterClockProperty - BPM = {masterClockProperty.bpm.value}");
-                }
-                else
-                {
-                    Debug.LogWarning("StageLightTimelineMixerBehaviour: MasterClockProperty is null");
-                }
             }
 
             if (!firstFrameHappened)
@@ -81,14 +67,14 @@ namespace StageLightManeuver
                     var clip = clips[i];
                     var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
                     if (stageLightTimelineClip == null) continue;
-                    UpdateProperty(clip, masterClockProperty);
+                    // MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
+                    UpdateProperty(clip, _masterClockTrack != null && _masterClockTrack.HasActiveClip ? masterClockProperty : null);
                 }
                 firstFrameHappened = true;
             }
             
             queueDatas.Clear();
 
-            var hasAnyClipPlaying = false;
             for (int i = 0; i < clips.Count; i++)
             {
                 var clip = clips[i];
@@ -99,7 +85,8 @@ namespace StageLightManeuver
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
                 {
-                    UpdateProperty(clip, masterClockProperty);
+                    // MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
+                    UpdateProperty(clip, _masterClockTrack != null && _masterClockTrack.HasActiveClip ? masterClockProperty : null);
                 }
 #endif
                 
@@ -114,8 +101,8 @@ namespace StageLightManeuver
                     {
                         if (property == null) continue;
                         
-                        // ClockPropertyの場合、MasterClockPropertyがあればマージ
-                        if (property is ClockProperty clockProperty && masterClockProperty != null)
+                        // ClockPropertyの場合、MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
+                        if (property is ClockProperty clockProperty && masterClockProperty != null && _masterClockTrack.HasActiveClip)
                         {
                             // 新しいClockPropertyを作成してマージ
                             var mergedProperty = new ClockProperty(clockProperty);
@@ -147,7 +134,6 @@ namespace StageLightManeuver
                     }
                     
                     queueDatas.Add(queueData);
-                    hasAnyClipPlaying = true;
                 }
             }
             

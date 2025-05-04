@@ -197,15 +197,8 @@ namespace StageLightManeuver.StageLightTimeline.Editor
                 serializedObject.ApplyModifiedProperties();
             }
             
-            // Clock Track設定の受け入れ/拒否UI
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("acceptClockTrackSettings"),
-                new GUIContent("Accept Clock Track Settings", "Clock Trackからの設定を受け入れるかどうか"));
-            if (EditorGUI.EndChangeCheck())
-            {
-                serializedObject.ApplyModifiedProperties();
-            }
-            
+           
+
 
             using (new EditorGUILayout.HorizontalScope())
             {

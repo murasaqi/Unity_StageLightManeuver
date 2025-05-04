@@ -5,11 +5,11 @@ using UnityEngine.Playables;
 namespace StageLightManeuver
 {
     /// <summary>
-    /// StageLightMasterClock Trackで使用するBehaviourクラス
+    /// StageLightMasterBPM Trackで使用するBehaviourクラス
     /// ClockPropertyを処理します
     /// </summary>
     [Serializable]
-    public class StageLightMasterClockBehaviour : PlayableBehaviour
+    public class StageLightMasterBPMBehaviour : PlayableBehaviour
     {
         /// <summary>
         /// ClockPropertyの設定

@@ -4,10 +4,10 @@ using UnityEngine;
 namespace StageLightManeuver
 {
     /// <summary>
-    /// StageLightMasterClockClipのカスタムエディタ
+    /// StageLightMasterBPMClipのカスタムエディタ
     /// </summary>
-    [CustomEditor(typeof(StageLightMasterClockClip))]
-    public class StageLightMasterClockClipEditor : Editor
+    [CustomEditor(typeof(StageLightMasterBPMClip))]
+    public class StageLightMasterBPMClipEditor : Editor
     {
         private SerializedProperty clockSettings;
         private SerializedProperty bpm;
@@ -24,7 +24,7 @@ namespace StageLightManeuver
         {
             serializedObject.Update();
             
-            EditorGUILayout.LabelField("StageLightMasterClock Settings", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("StageLightMasterBPM Settings", EditorStyles.boldLabel);
             EditorGUILayout.Space();
             
             // BPMとBPM Scaleのみを表示

@@ -6,11 +6,11 @@ using UnityEngine.Timeline;
 namespace StageLightManeuver
 {
     /// <summary>
-    /// StageLightMasterClock Trackで使用するClipクラス
+    /// StageLightMasterBPM Trackで使用するClipクラス
     /// ClockPropertyを管理します
     /// </summary>
     [Serializable]
-    public class StageLightMasterClockClip : PlayableAsset, ITimelineClipAsset
+    public class StageLightMasterBPMClip : PlayableAsset, ITimelineClipAsset
     {
         /// <summary>
         /// BPMとBPM Scaleのみを持つ簡易設定クラス
@@ -38,12 +38,12 @@ namespace StageLightManeuver
         /// <summary>
         /// Behaviourインスタンス
         /// </summary>
-        [HideInInspector] public StageLightMasterClockBehaviour behaviour = new StageLightMasterClockBehaviour();
+        [HideInInspector] public StageLightMasterBPMBehaviour behaviour = new StageLightMasterBPMBehaviour();
         
         /// <summary>
         /// 所属するTrack
         /// </summary>
-        [HideInInspector] public StageLightMasterClockTrack track;
+        [HideInInspector] public StageLightMasterBPMTrack track;
         
         /// <summary>
         /// クリップの表示名
@@ -60,7 +60,7 @@ namespace StageLightManeuver
         /// </summary>
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            var playable = ScriptPlayable<StageLightMasterClockBehaviour>.Create(graph, behaviour);
+            var playable = ScriptPlayable<StageLightMasterBPMBehaviour>.Create(graph, behaviour);
             behaviour = playable.GetBehaviour();
             
             // 完全なClockPropertyを作成

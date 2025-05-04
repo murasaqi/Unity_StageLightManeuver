@@ -19,8 +19,8 @@ namespace StageLightManeuver
         private List<StageLightQueueData> queueDatas = new();
         public List<StageLightQueueData> QueueDatas => queueDatas;
         
-        // MasterClockTrackの参照（Mixerは不要になる）
-        private StageLightMasterClockTrack _masterClockTrack;
+        // Master BPM Trackの参照（Mixerは不要になる）
+        private StageLightMasterBPMTrack _masterBPMTrack;
         private PlayableDirector _director;
         
         public override void OnGraphStart(Playable playable)
@@ -31,12 +31,12 @@ namespace StageLightManeuver
             _director = playable.GetGraph().GetResolver() as PlayableDirector;
             if (_director == null) return;
             
-            // StageLightMasterClockTrackを検索
+            // StageLightMasterBPMTrackを検索
             foreach (var output in _director.playableAsset.outputs)
             {
-                if (output.sourceObject is StageLightMasterClockTrack masterClockTrack)
+                if (output.sourceObject is StageLightMasterBPMTrack masterBPMTrack)
                 {
-                    _masterClockTrack = masterClockTrack;
+                    _masterBPMTrack = masterBPMTrack;
                     break;
                 }
             }
@@ -51,11 +51,23 @@ namespace StageLightManeuver
             // 現在の時間を取得
             double currentTime = _director != null ? _director.time : 0;
             
-            // 現在のMasterClockPropertyを取得（簡略化）
-            ClockProperty masterClockProperty = null;
-            if (_masterClockTrack != null)
+            // 現在のアクティブなMaster BPM Clipsを取得
+            List<ClockProperty> activeMasterBPMProperties = new List<ClockProperty>();
+            if (_masterBPMTrack != null && _masterBPMTrack.HasActiveClip)
             {
-                masterClockProperty = _masterClockTrack.CurrentClockProperty;
+                // Mixerから直接アクティブクリップを取得
+                if (_masterBPMTrack.Mixer != null && _masterBPMTrack.Mixer.ActiveClockClips.Count > 0)
+                {
+                    foreach (var activeClip in _masterBPMTrack.Mixer.ActiveClockClips)
+                    {
+                        activeMasterBPMProperties.Add(activeClip.Property);
+                    }
+                }
+                else
+                {
+                    // 後方互換性のため、Mixerが取得できない場合はCurrentClockPropertyを使用
+                    activeMasterBPMProperties.Add(_masterBPMTrack.CurrentClockProperty);
+                }
             }
 
             if (!firstFrameHappened)
@@ -67,8 +79,8 @@ namespace StageLightManeuver
                     var clip = clips[i];
                     var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
                     if (stageLightTimelineClip == null) continue;
-                    // MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
-                    UpdateProperty(clip, _masterClockTrack != null && _masterClockTrack.HasActiveClip ? masterClockProperty : null);
+                    // Master BPM Propertiesがあり、かつアクティブなクリップが存在する場合のみマージ
+                    UpdateProperty(clip, activeMasterBPMProperties);
                 }
                 firstFrameHappened = true;
             }
@@ -85,8 +97,8 @@ namespace StageLightManeuver
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
                 {
-                    // MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
-                    UpdateProperty(clip, _masterClockTrack != null && _masterClockTrack.HasActiveClip ? masterClockProperty : null);
+                    // Master BPM Propertiesがあり、かつアクティブなクリップが存在する場合のみマージ
+                    UpdateProperty(clip, activeMasterBPMProperties);
                 }
 #endif
                 
@@ -101,30 +113,48 @@ namespace StageLightManeuver
                     {
                         if (property == null) continue;
                         
-                        // ClockPropertyの場合、MasterClockPropertyがあり、かつアクティブなクリップが存在する場合のみマージ
-                        if (property is ClockProperty clockProperty && masterClockProperty != null && _masterClockTrack.HasActiveClip)
+                        // ClockPropertyの場合の処理
+                        if (property is ClockProperty clockProperty)
                         {
-                            // 新しいClockPropertyを作成してマージ
+                            // 新しいClockPropertyを作成
                             var mergedProperty = new ClockProperty(clockProperty);
                             
                             // クリップの開始・終了時間は保持
                             var clipStartTime = mergedProperty.clipProperty.clipStartTime;
                             var clipEndTime = mergedProperty.clipProperty.clipEndTime;
                             
-                            // Ignore MasterClockフラグがtrueの場合は、クリップ自身のBPMとBPM Scaleを優先
-                            // falseの場合はMasterClockのBPMとBPM Scaleを使用
-                            if (!mergedProperty.ignoreMasterClock)
+                            // Ignore Master BPMフラグがtrueの場合は、クリップ自身のBPMとBPM Scaleを優先
+                            if (!mergedProperty.ignoreMasterBPM && activeMasterBPMProperties.Count > 0)
                             {
-                                // MasterClockPropertyからBPMとBPM Scaleを使用
-                                mergedProperty.bpm.value = masterClockProperty.bpm.value;
-                                mergedProperty.bpmScale.value = masterClockProperty.bpmScale.value;
+                                // 複数のMaster BPM Propertiesがある場合、それらの値をブレンド
+                                if (activeMasterBPMProperties.Count > 1)
+                                {
+                                    float bpm = 0f;
+                                    float bpmScale = 0f;
+                                    float totalWeight = 1.0f; // 簡略化のため、均等な重みを使用
+                                    
+                                    foreach (var masterProperty in activeMasterBPMProperties)
+                                    {
+                                        float weight = 1.0f / activeMasterBPMProperties.Count;
+                                        bpm += masterProperty.bpm.value * weight;
+                                        bpmScale += masterProperty.bpmScale.value * weight;
+                                    }
+                                    
+                                    mergedProperty.bpm.value = bpm;
+                                    mergedProperty.bpmScale.value = bpmScale;
+                                }
+                                else
+                                {
+                                    // 単一のMaster BPM Propertyの場合
+                                    mergedProperty.bpm.value = activeMasterBPMProperties[0].bpm.value;
+                                    mergedProperty.bpmScale.value = activeMasterBPMProperties[0].bpmScale.value;
+                                }
                             }
-                            // ignoreMasterClock = trueの場合は、クリップ自身のBPMとBPM Scaleをそのまま使用
+                            // ignoreMasterBPM = trueの場合は、クリップ自身のBPMとBPM Scaleをそのまま使用
                             
                             // クリップの開始・終了時間を復元
                             mergedProperty.clipProperty.clipStartTime = clipStartTime;
                             mergedProperty.clipProperty.clipEndTime = clipEndTime;
-                            
                             
                             queueData.stageLightProperties.Add(mergedProperty);
                         }
@@ -146,7 +176,7 @@ namespace StageLightManeuver
             }
         }
         
-        private void UpdateProperty(TimelineClip clip, ClockProperty masterClockProperty = null)
+        private void UpdateProperty(TimelineClip clip, List<ClockProperty> activeMasterBPMProperties)
         {
             var stageLightTimelineClip = clip.asset as StageLightTimelineClip;
             if (stageLightTimelineClip == null) return;

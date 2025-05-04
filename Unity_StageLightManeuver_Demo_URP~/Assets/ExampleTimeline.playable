@@ -183,7 +183,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 21
           clipEndTime: 26
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Name: StageLightMasterBPMClip
   m_EditorClassIdentifier: 
   clockSettings:
-    bpm: 60
+    bpm: 10
     bpmScale: 1
   clockProperty:
     propertyOverride: 1
@@ -1125,7 +1125,7 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
-    ignoreMasterClock: 0
+    ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
       clipEndTime: 0
@@ -1187,7 +1187,7 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
-      ignoreMasterClock: 0
+      ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
         clipEndTime: 0
@@ -1198,7 +1198,7 @@ MonoBehaviour:
       bpm:
         propertyOverride: 1
         sortOrder: 0
-        value: 60
+        value: 10
       bpmScale:
         propertyOverride: 1
         sortOrder: 0
@@ -1584,9 +1584,9 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 1
         clipProperty:
-          clipStartTime: 3.2833333
+          clipStartTime: 4.1819725
           clipEndTime: 5
         loopType:
           propertyOverride: 1
@@ -1595,7 +1595,7 @@ MonoBehaviour:
         bpm:
           propertyOverride: 1
           sortOrder: 0
-          value: 40
+          value: 60
         bpmScale:
           propertyOverride: 1
           sortOrder: 0
@@ -2422,7 +2422,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
           clipEndTime: 10
@@ -3226,7 +3226,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 18
           clipEndTime: 20.25
@@ -3967,13 +3967,13 @@ MonoBehaviour:
     m_Start: 5
     m_ClipIn: 0
     m_Asset: {fileID: 7796291029014370851}
-    m_Duration: 1.5999999999999992
+    m_Duration: 3.2666666666666675
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7224192005156784325}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0.34999999999999964
+    m_BlendOutDuration: 2.0166666666666675
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -4023,7 +4023,7 @@ MonoBehaviour:
     m_ParentTrack: {fileID: -7224192005156784325}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.34999999999999964
+    m_BlendInDuration: 2.0166666666666675
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -4120,7 +4120,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4147,13 +4165,49 @@ MonoBehaviour:
     m_BlendOutDuration: 0.25
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4180,13 +4234,49 @@ MonoBehaviour:
     m_BlendOutDuration: 0.25
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4267,37 +4357,19 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: StageLightTimelineClip
   - m_Version: 1
-    m_Start: 3.283333333333333
+    m_Start: 4.181972594698891
     m_ClipIn: 0
     m_Asset: {fileID: -7622742821940575164}
-    m_Duration: 1.7166666666666668
+    m_Duration: 0.818027405301109
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7224192005156784325}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1.4079304365285985
+    m_BlendInDuration: 0.5092911751630407
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4327,7 +4399,7 @@ MonoBehaviour:
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 1.4079304365285985
+    m_BlendOutDuration: 0.5092911751630407
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -4354,25 +4426,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4454,7 +4508,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -5210,15 +5264,48 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 3.6166666666666667
+    m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -8497319258759520984}
-    m_Duration: 2.6333333333333333
+    m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6900802896298929452}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.5653059280322243
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 3.05
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightMasterBPMClip
+  - m_Version: 1
+    m_Start: 10
+    m_ClipIn: 0
+    m_Asset: {fileID: 1619630385665560412}
+    m_Duration: 16.683333333333337
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6900802896298929452}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 3.908178015239537
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -5279,16 +5366,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: StageLightMasterBPMClip
   - m_Version: 1
-    m_Start: 1.2500000000000002
+    m_Start: 1.95
     m_ClipIn: 0
-    m_Asset: {fileID: 5814468542645703067}
-    m_Duration: 2.931972594698891
+    m_Asset: {fileID: -4352052203898097634}
+    m_Duration: 11.958178015239538
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6900802896298929452}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: 0.5653059280322243
+    m_BlendInDuration: 3.05
+    m_BlendOutDuration: 3.908178015239537
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -5356,7 +5443,7 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
-    ignoreMasterClock: 0
+    ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
       clipEndTime: 0
@@ -5593,7 +5680,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 10
           clipEndTime: 15
@@ -6383,6 +6470,147 @@ MonoBehaviour:
           propertyOverride: 0
           sortOrder: 0
           value: 1
+--- !u!114 &-4352052203898097634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d603da1fc0b208f4aaabc5bf2794d766, type: 3}
+  m_Name: StageLightMasterBPMClip(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  clockSettings:
+    bpm: 10
+    bpmScale: 1
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    ignoreMasterBPM: 0
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 60
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: -999
+      isEditable: 1
+      ignoreMasterBPM: 0
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 10
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterBPMClip
+  track: {fileID: -6900802896298929452}
+  clipDisplayName: StageLightMasterBPMClip
 --- !u!114 &-3794416902298742578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6431,7 +6659,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 14
           clipEndTime: 15.5
@@ -7531,7 +7759,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
           clipEndTime: 5
@@ -8336,7 +8564,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
           clipEndTime: 26
@@ -9220,7 +9448,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -9247,7 +9493,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -9637,7 +9901,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 20
           clipEndTime: 25
@@ -10467,7 +10731,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 10
           clipEndTime: 15
@@ -11371,7 +11635,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
           clipEndTime: 10
@@ -12134,7 +12398,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 6.25
           clipEndTime: 10
@@ -12924,6 +13188,147 @@ MonoBehaviour:
           propertyOverride: 0
           sortOrder: 0
           value: 1
+--- !u!114 &1619630385665560412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d603da1fc0b208f4aaabc5bf2794d766, type: 3}
+  m_Name: StageLightMasterBPMClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  clockSettings:
+    bpm: 120
+    bpmScale: 1
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    ignoreMasterBPM: 0
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 60
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: -999
+      isEditable: 1
+      ignoreMasterBPM: 0
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 120
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterBPMClip
+  track: {fileID: -6900802896298929452}
+  clipDisplayName: StageLightMasterBPMClip
 --- !u!114 &1689647454884509485
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13109,7 +13514,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 14
           clipEndTime: 15.5
@@ -14196,147 +14601,6 @@ MonoBehaviour:
     clipDisplayName: StageLightMasterClockClip
   track: {fileID: 0}
   clipDisplayName: StageLightMasterClockClip
---- !u!114 &5814468542645703067
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d603da1fc0b208f4aaabc5bf2794d766, type: 3}
-  m_Name: StageLightMasterBPMClip(Clone)
-  m_EditorClassIdentifier: 
-  clockSettings:
-    bpm: 120
-    bpmScale: 1
-  clockProperty:
-    propertyOverride: 1
-    sortOrder: 0
-    propertyType: 0
-    propertyName: Clock
-    propertyOrder: -999
-    isEditable: 1
-    ignoreMasterClock: 0
-    clipProperty:
-      clipStartTime: 0
-      clipEndTime: 0
-    loopType:
-      propertyOverride: 1
-      sortOrder: 0
-      value: 0
-    bpm:
-      propertyOverride: 1
-      sortOrder: 0
-      value: 60
-    bpmScale:
-      propertyOverride: 1
-      sortOrder: 0
-      value: 1
-    offsetTime:
-      propertyOverride: 1
-      sortOrder: 0
-      value: 0
-    staggerDelay:
-      propertyOverride: 0
-      sortOrder: 0
-      value: 0
-    arrayStaggerValue:
-      staggerCalculationType: 2
-      animationDuration: 1
-      delayRatio: 0.1
-      animationCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      lightStaggerInfo: []
-      randomStaggerInfo: []
-  behaviour:
-    clockProperty:
-      propertyOverride: 1
-      sortOrder: 0
-      propertyType: 0
-      propertyName: Clock
-      propertyOrder: -999
-      isEditable: 1
-      ignoreMasterClock: 0
-      clipProperty:
-        clipStartTime: 0
-        clipEndTime: 0
-      loopType:
-        propertyOverride: 1
-        sortOrder: 0
-        value: 0
-      bpm:
-        propertyOverride: 1
-        sortOrder: 0
-        value: 120
-      bpmScale:
-        propertyOverride: 1
-        sortOrder: 0
-        value: 1
-      offsetTime:
-        propertyOverride: 1
-        sortOrder: 0
-        value: 0
-      staggerDelay:
-        propertyOverride: 0
-        sortOrder: 0
-        value: 0
-      arrayStaggerValue:
-        staggerCalculationType: 2
-        animationDuration: 1
-        delayRatio: 0.1
-        animationCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        lightStaggerInfo: []
-        randomStaggerInfo: []
-    clipDisplayName: StageLightMasterBPMClip
-  track: {fileID: -6900802896298929452}
-  clipDisplayName: StageLightMasterBPMClip
 --- !u!114 &5903220285671074932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14385,7 +14649,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 15
           clipEndTime: 20
@@ -15293,7 +15557,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 20
           clipEndTime: 21.5
@@ -16218,7 +16482,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 10
           clipEndTime: 15
@@ -17023,10 +17287,10 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
-          clipEndTime: 6.6
+          clipEndTime: 8.266666
         loopType:
           propertyOverride: 1
           sortOrder: 0
@@ -17861,7 +18125,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 1
         clipProperty:
           clipStartTime: 0
           clipEndTime: 4.6912637
@@ -17872,7 +18136,7 @@ MonoBehaviour:
         bpm:
           propertyOverride: 1
           sortOrder: 0
-          value: 60
+          value: 10
         bpmScale:
           propertyOverride: 1
           sortOrder: 0
@@ -18701,7 +18965,7 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
-        ignoreMasterClock: 0
+        ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 15.25
           clipEndTime: 20.25

@@ -14,14 +14,14 @@ namespace StageLightManeuver
     [TrackClipType(typeof(StageLightMasterBPMClip))]
     public class StageLightMasterBPMTrack : TrackAsset
     {
-        // 現在のClockの状態をシリアライズ可能な形で保持
-        [SerializeField] private ClockProperty _currentClockProperty;
-        
         // アクティブなクリップが存在するかどうか
         private bool _hasActiveClip = false;
         
         // Mixerへの参照
         private StageLightMasterBPMMixer _mixer;
+        
+        // アクティブなクリップとその重みのリスト
+        private List<StageLightMasterBPMMixer.ClockClipInfo> _activeClips = new List<StageLightMasterBPMMixer.ClockClipInfo>();
         
         // アクティブなクリップが存在するかどうかを示すプロパティ
         public bool HasActiveClip => _hasActiveClip;
@@ -29,36 +29,21 @@ namespace StageLightManeuver
         // Mixerへのアクセスを提供するプロパティ
         public StageLightMasterBPMMixer Mixer => _mixer;
         
+        // アクティブなクリップとその重みのリストを提供するプロパティ
+        public IReadOnlyList<StageLightMasterBPMMixer.ClockClipInfo> ActiveClips => _activeClips;
+        
         // アクティブなクリップの状態を設定するメソッド
         public void SetActiveClipState(bool hasActiveClip)
         {
             _hasActiveClip = hasActiveClip;
         }
         
-        // 読み取り専用プロパティ（外部からの参照用、後方互換性のため残す）
-        public ClockProperty CurrentClockProperty
+        // アクティブなクリップを更新するメソッド
+        internal void UpdateActiveClips(List<StageLightMasterBPMMixer.ClockClipInfo> activeClips)
         {
-            get
-            {
-                if (_currentClockProperty == null)
-                {
-                    _currentClockProperty = new ClockProperty();
-                    // デフォルト値を設定
-                    _currentClockProperty.bpm.value = 120f;
-                    _currentClockProperty.bpmScale.value = 1f;
-                }
-                
-                // アクティブなクリップがある場合は、最初のアクティブクリップの値を返す
-                if (_mixer != null && _mixer.ActiveClockClips.Count > 0)
-                {
-                    var activeClip = _mixer.ActiveClockClips[0];
-                    _currentClockProperty.bpm.value = activeClip.Property.bpm.value;
-                    _currentClockProperty.bpmScale.value = activeClip.Property.bpmScale.value;
-                    _currentClockProperty.offsetTime.value = activeClip.Property.offsetTime.value;
-                }
-                
-                return _currentClockProperty;
-            }
+            _activeClips.Clear();
+            _activeClips.AddRange(activeClips);
+            _hasActiveClip = _activeClips.Count > 0;
         }
         
         // OnEnableでの初期化

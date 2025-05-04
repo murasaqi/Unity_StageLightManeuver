@@ -40,31 +40,23 @@ namespace StageLightManeuver
         /// <summary>
         /// フレーム処理
         /// </summary>
+        // クリップIDと重みのマッピング
+        private Dictionary<TimelineClip, float> _clipWeights = new Dictionary<TimelineClip, float>();
+        
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
-            // 各クリップの重みを更新
-            _activeClockClips.Clear();
+            // クリップの重みを更新
+            _clipWeights.Clear();
             
             int inputCount = playable.GetInputCount();
             for (int i = 0; i < inputCount; i++)
             {
                 float inputWeight = playable.GetInputWeight(i);
                 
-                if (i < clips.Count && inputWeight > 0)
+                if (i < clips.Count)
                 {
                     var clip = clips[i];
-                    var masterBPMClip = clip.asset as StageLightMasterBPMClip;
-                    if (masterBPMClip != null)
-                    {
-                        // クリップの情報を登録
-                        _activeClockClips.Add(new ClockClipInfo
-                        {
-                            Property = masterBPMClip.behaviour.clockProperty,
-                            Weight = inputWeight,
-                            StartTime = clip.start,
-                            EndTime = clip.end
-                        });
-                    }
+                    _clipWeights[clip] = inputWeight;
                 }
             }
             
@@ -98,10 +90,10 @@ namespace StageLightManeuver
             // アクティブなクリップを更新
             UpdateActiveClipsAtTime(currentTime);
             
-            // TrackのHasActiveClip状態を更新
+            // Trackのアクティブクリップを更新
             if (masterClockTrack != null)
             {
-                masterClockTrack.SetActiveClipState(_activeClockClips.Count > 0);
+                masterClockTrack.UpdateActiveClips(_activeClockClips);
             }
         }
         
@@ -123,10 +115,14 @@ namespace StageLightManeuver
                         var masterBPMClip = clip.asset as StageLightMasterBPMClip;
                         if (masterBPMClip != null)
                         {
-                            // クリップの重みを計算（エッジでのブレンドを考慮）
-                            float weight = 1.0f;
+                            // クリップの重みを取得（ProcessFrameで計算された値を使用）
+                            float weight = 0f;
+                            if (_clipWeights.TryGetValue(clip, out float storedWeight))
+                            {
+                                weight = storedWeight;
+                            }
                             
-                            // クリップの情報を登録
+                            // クリップの情報を登録（重みが0でも登録）
                             _activeClockClips.Add(new ClockClipInfo
                             {
                                 Property = masterBPMClip.behaviour.clockProperty,

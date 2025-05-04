@@ -50,20 +50,16 @@ namespace StageLightManeuver
                 }
                 else
                 {
-                    // アクティブなクリップがない場合は、CurrentClockPropertyを表示
-                    var currentProperty = track.CurrentClockProperty;
-                    if (currentProperty != null)
+                    // アクティブなクリップがない場合は、デフォルト値を表示
+                    EditorGUILayout.LabelField("現在のClock設定", EditorStyles.boldLabel);
+                    EditorGUILayout.HelpBox("現在アクティブなクリップはありません。デフォルト値を表示しています。", MessageType.Info);
+                    
+                    // デフォルト値を表示
+                    using (new EditorGUI.DisabledGroupScope(true)) // 読み取り専用
                     {
-                        EditorGUILayout.LabelField("現在のClock設定", EditorStyles.boldLabel);
-                        EditorGUILayout.HelpBox("現在アクティブなクリップはありません。デフォルト値を表示しています。", MessageType.Info);
-                        
-                        // 必要な情報のみを表示
-                        using (new EditorGUI.DisabledGroupScope(true)) // 読み取り専用
-                        {
-                            EditorGUILayout.FloatField("BPM", currentProperty.bpm.value);
-                            EditorGUILayout.FloatField("BPMスケール", currentProperty.bpmScale.value);
-                            EditorGUILayout.FloatField("オフセット時間", currentProperty.offsetTime.value);
-                        }
+                        EditorGUILayout.FloatField("BPM", 120f);
+                        EditorGUILayout.FloatField("BPMスケール", 1f);
+                        EditorGUILayout.FloatField("オフセット時間", 0f);
                     }
                 }
             }

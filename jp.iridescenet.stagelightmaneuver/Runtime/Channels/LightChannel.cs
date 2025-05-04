@@ -141,10 +141,16 @@ namespace StageLightManeuver
                 var lightColorProperty = data.TryGetActiveProperty<LightColorProperty>() as LightColorProperty;
                 var lightDimmerProperty = data.TryGetActiveProperty<LightIntensityProperty>() as LightIntensityProperty;
                 var lightFlickerProperty = data.TryGetActiveProperty<LightFlickerProperty>() as LightFlickerProperty;
-                var weight = data.weight;
                 var stageLightOrderProperty = data.TryGetActiveProperty<StageLightOrderProperty>() as StageLightOrderProperty;
                 var index =stageLightOrderProperty!=null? stageLightOrderProperty.stageLightOrderQueue.GetStageLightIndex(parentStageLightFixture) :  parentStageLightFixture.order;
                 if(clockProperty == null) continue;
+                
+                // 各プロパティの重みを取得（明示的に設定されていない場合はQueueDataの重みを使用）
+                float clockWeight = clockProperty.hasExplicitWeight ? clockProperty.weight : data.weight;
+                float lightWeight = lightProperty != null && lightProperty.hasExplicitWeight ? lightProperty.weight : data.weight;
+                float colorWeight = lightColorProperty != null && lightColorProperty.hasExplicitWeight ? lightColorProperty.weight : data.weight;
+                float dimmerWeight = lightDimmerProperty != null && lightDimmerProperty.hasExplicitWeight ? lightDimmerProperty.weight : data.weight;
+                float flickerWeight = lightFlickerProperty != null && lightFlickerProperty.hasExplicitWeight ? lightFlickerProperty.weight : data.weight;
                 
                 // Debug.Log($"{lightProperty.clockOverride.value.childStagger}, {lightProperty.clockOverride.value.propertyOverride}");
                 var manualLightArrayProperty = data.TryGetActiveProperty<ManualLightArrayProperty>();
@@ -156,10 +162,10 @@ namespace StageLightManeuver
                     if (index < values.Count)
                     {
                         var lightValue = values[index];
-                        lightIntensity += lightValue.intensity * weight;
-                        spotAngle += lightValue.angle * weight;
-                        innerSpotAngle += lightValue.innerAngle * weight;
-                        spotRange += lightValue.range * weight;
+                        lightIntensity += lightValue.intensity * data.weight;
+                        spotAngle += lightValue.angle * data.weight;
+                        innerSpotAngle += lightValue.innerAngle * data.weight;
+                        spotRange += lightValue.range * data.weight;
                     }
                 }
                 else
@@ -167,22 +173,22 @@ namespace StageLightManeuver
                     if (lightDimmerProperty != null)
                     {
                         var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightIntensityProperty),index);
-                        lightIntensity += lightDimmerProperty.lightToggleDimmer.value.Evaluate(t) * weight;
+                        lightIntensity += lightDimmerProperty.lightToggleDimmer.value.Evaluate(t) * dimmerWeight;
                     }
                     if(lightFlickerProperty != null)
                     {
                         var staggerValue = clockProperty.staggerDelay.value * (index + 1);
                         var clipDuration = clockProperty.clipProperty.clipEndTime - clockProperty.clipProperty.clipStartTime;
                         var offset = clipDuration * staggerValue;
-                        lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * weight;
+                        lightIntensity *= lightFlickerProperty.GetNoiseValue(currentTime +offset, index) * flickerWeight;
                     }
 
                     if (lightProperty != null)
                     {
                         var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightProperty),index);
-                        spotAngle += lightProperty.spotAngle.value.Evaluate(t) * weight;
-                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(t) * weight;
-                        spotRange += lightProperty.range.value.Evaluate(t) * weight;
+                        spotAngle += lightProperty.spotAngle.value.Evaluate(t) * lightWeight;
+                        innerSpotAngle += lightProperty.innerSpotAngle.value.Evaluate(t) * lightWeight;
+                        spotRange += lightProperty.range.value.Evaluate(t) * lightWeight;
                     }
                 }
 
@@ -192,16 +198,16 @@ namespace StageLightManeuver
                     if (index < values.Count)
                     {
                         var colorValue = values[index];
-                        lightColor += colorValue.color * weight;
+                        lightColor += colorValue.color * colorWeight;
                     }
                     
                 }else if (lightColorProperty != null)
                 {
                     var t = SlmUtility.GetNormalizedTime(currentTime, data, typeof(LightColorProperty),index);
-                    lightColor += lightColorProperty.lightToggleColor.value.Evaluate(t) * weight;
+                    lightColor += lightColorProperty.lightToggleColor.value.Evaluate(t) * colorWeight;
                 }
 
-                if (weight >= 0.5f)
+                if (data.weight >= 0.5f)
                 {
                     if (lightProperty != null)
                     {

@@ -183,6 +183,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 20.733334
@@ -246,6 +248,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -258,6 +262,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -329,6 +335,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -435,6 +443,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -541,6 +551,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -713,6 +725,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -809,6 +823,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -907,6 +923,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -1125,6 +1143,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -1187,6 +1207,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -1266,6 +1288,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -1328,6 +1352,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -1677,7 +1703,8 @@ MonoBehaviour:
   - {fileID: 5903220285671074932}
   - {fileID: -501563822831587940}
   selectedClips:
-  - {fileID: -7041797988665787710}
+  - {fileID: 2496576431367613358}
+  - {fileID: 6944790829651653456}
 --- !u!114 &-7849007763080196061
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1700,6 +1727,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -1762,6 +1791,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -1867,6 +1898,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 4.1819725
@@ -1930,6 +1963,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -1942,6 +1977,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2013,6 +2050,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -2119,6 +2158,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -2225,6 +2266,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2397,6 +2440,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -2493,6 +2538,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -2591,6 +2638,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2705,6 +2754,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
@@ -2768,6 +2819,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -2780,6 +2833,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -2843,6 +2898,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -2941,6 +2998,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3039,6 +3098,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3203,6 +3264,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3291,6 +3354,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3381,6 +3446,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3509,6 +3576,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 18
@@ -3572,6 +3641,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -3584,6 +3655,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -3655,6 +3728,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3761,6 +3836,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -3867,6 +3944,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4039,6 +4118,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -4135,6 +4216,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -4565,7 +4648,7 @@ MonoBehaviour:
     m_Start: 25.116666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 2496576431367613358}
-    m_Duration: 10.18333333333333
+    m_Duration: 12.366666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7224192005156784325}
     m_EaseInDuration: 0
@@ -4633,7 +4716,8 @@ MonoBehaviour:
   - {fileID: -8968713135442786758}
   - {fileID: 2496576431367613358}
   selectedClips:
-  - {fileID: -7041797988665787710}
+  - {fileID: 2496576431367613358}
+  - {fileID: 6944790829651653456}
 --- !u!114 &-7041797988665787710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4682,6 +4766,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
@@ -4745,6 +4831,8 @@ MonoBehaviour:
         propertyName: StageLightFixture Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -4757,6 +4845,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -4921,6 +5011,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5009,6 +5101,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5099,6 +5193,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5162,6 +5258,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5260,6 +5358,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5358,6 +5458,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -5471,15 +5573,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: StageLightMasterBPMClip
   - m_Version: 1
-    m_Start: 28.47798099895008
+    m_Start: 30.85
     m_ClipIn: 0
     m_Asset: {fileID: 1619630385665560412}
-    m_Duration: 7.222019001049922
+    m_Duration: 7.083333333333329
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6900802896298929452}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 2.889274962355067
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -5758,6 +5860,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: StageLightMasterBPMClip
+  - m_Version: 1
+    m_Start: 28.47798099895008
+    m_ClipIn: 0
+    m_Asset: {fileID: -2238123261819440778}
+    m_Duration: 5.261293963404988
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6900802896298929452}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 2.889274962355067
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightMasterBPMClip
   m_Markers:
     m_Objects: []
 --- !u!114 &-6801829917287783828
@@ -5943,6 +6114,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 9.7
@@ -6006,6 +6179,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -6018,6 +6193,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6089,6 +6266,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -6195,6 +6374,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -6301,6 +6482,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6473,6 +6656,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -6569,6 +6754,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -6667,6 +6854,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -6755,6 +6944,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -6817,6 +7008,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -6922,6 +7115,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 14.416667
@@ -6985,6 +7180,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -6997,6 +7194,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -7068,6 +7267,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -7174,6 +7375,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -7280,6 +7483,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -7452,6 +7657,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -7548,6 +7755,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -7646,6 +7855,8 @@ MonoBehaviour:
         propertyName: Manual Color Array
         propertyOrder: 7
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -7861,6 +8072,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -7923,6 +8136,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -8115,6 +8330,151 @@ MonoBehaviour:
     clipDisplayName: StageLightMasterClockClip
   track: {fileID: 0}
   clipDisplayName: StageLightMasterClockClip
+--- !u!114 &-2238123261819440778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d603da1fc0b208f4aaabc5bf2794d766, type: 3}
+  m_Name: StageLightMasterBPMClip(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  clockSettings:
+    bpm: 60
+    bpmScale: 1
+  clockProperty:
+    propertyOverride: 1
+    sortOrder: 0
+    propertyType: 0
+    propertyName: Clock
+    propertyOrder: -999
+    isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
+    ignoreMasterBPM: 0
+    clipProperty:
+      clipStartTime: 0
+      clipEndTime: 0
+    loopType:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    bpm:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 60
+    bpmScale:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 1
+    offsetTime:
+      propertyOverride: 1
+      sortOrder: 0
+      value: 0
+    staggerDelay:
+      propertyOverride: 0
+      sortOrder: 0
+      value: 0
+    arrayStaggerValue:
+      staggerCalculationType: 2
+      animationDuration: 1
+      delayRatio: 0.1
+      animationCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      lightStaggerInfo: []
+      randomStaggerInfo: []
+  behaviour:
+    clockProperty:
+      propertyOverride: 1
+      sortOrder: 0
+      propertyType: 0
+      propertyName: Clock
+      propertyOrder: -999
+      isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
+      ignoreMasterBPM: 0
+      clipProperty:
+        clipStartTime: 0
+        clipEndTime: 0
+      loopType:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      bpm:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 60
+      bpmScale:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 1
+      offsetTime:
+        propertyOverride: 1
+        sortOrder: 0
+        value: 0
+      staggerDelay:
+        propertyOverride: 0
+        sortOrder: 0
+        value: 0
+      arrayStaggerValue:
+        staggerCalculationType: 2
+        animationDuration: 1
+        delayRatio: 0.1
+        animationCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        lightStaggerInfo: []
+        randomStaggerInfo: []
+    clipDisplayName: StageLightMasterBPMClip
+  track: {fileID: -6900802896298929452}
+  clipDisplayName: StageLightMasterBPMClip
 --- !u!114 &-2207772002642741846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8163,6 +8523,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
@@ -8226,6 +8588,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -8238,6 +8602,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -8301,6 +8667,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -8399,6 +8767,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -8497,6 +8867,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -8661,6 +9033,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -8749,6 +9123,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -8839,6 +9215,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -8968,6 +9346,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
@@ -9031,6 +9411,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -9043,6 +9425,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -9106,6 +9490,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -9204,6 +9590,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -9302,6 +9690,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -9466,6 +9856,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -9554,6 +9946,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -9644,6 +10038,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -9852,7 +10248,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -9879,7 +10293,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -9983,7 +10415,8 @@ MonoBehaviour:
   - {fileID: -3794416902298742578}
   - {fileID: -7597752821135520833}
   selectedClips:
-  - {fileID: -7041797988665787710}
+  - {fileID: 2496576431367613358}
+  - {fileID: 6944790829651653456}
 --- !u!114 &-1453361107619708966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10079,7 +10512,7 @@ MonoBehaviour:
     m_Start: 26
     m_ClipIn: 0
     m_Asset: {fileID: 6944790829651653456}
-    m_Duration: 10.18333333333333
+    m_Duration: 11.483333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1453361107619708966}
     m_EaseInDuration: 0
@@ -10139,7 +10572,8 @@ MonoBehaviour:
   - {fileID: -1758682824798444127}
   - {fileID: 6944790829651653456}
   selectedClips:
-  - {fileID: -7041797988665787710}
+  - {fileID: 2496576431367613358}
+  - {fileID: 6944790829651653456}
 --- !u!114 &-1142625511733072864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10297,6 +10731,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -10359,6 +10795,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -10464,6 +10902,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 20
@@ -10527,6 +10967,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -10539,6 +10981,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -10602,6 +11046,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -10700,6 +11146,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -10798,6 +11246,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -10962,6 +11412,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11050,6 +11502,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11140,6 +11594,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11294,6 +11750,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 10
@@ -11357,6 +11815,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -11369,6 +11829,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -11440,6 +11902,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11546,6 +12010,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11652,6 +12118,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -11824,6 +12292,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -11920,6 +12390,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -12018,6 +12490,8 @@ MonoBehaviour:
         propertyName: Manual Color Array
         propertyOrder: 7
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -12085,6 +12559,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -12198,6 +12674,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
@@ -12261,6 +12739,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -12273,6 +12753,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -12344,6 +12826,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -12450,6 +12934,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -12556,6 +13042,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -12728,6 +13216,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -12824,6 +13314,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -12961,6 +13453,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 6.25
@@ -13024,6 +13518,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -13036,6 +13532,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -13107,6 +13605,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -13213,6 +13713,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -13319,6 +13821,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -13491,6 +13995,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -13587,6 +14093,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -13685,6 +14193,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -13764,7 +14274,7 @@ MonoBehaviour:
   m_Name: StageLightMasterBPMClip(Clone)(Clone)
   m_EditorClassIdentifier: 
   clockSettings:
-    bpm: 60
+    bpm: 120
     bpmScale: 1
   clockProperty:
     propertyOverride: 1
@@ -13773,6 +14283,8 @@ MonoBehaviour:
     propertyName: Clock
     propertyOrder: -999
     isEditable: 1
+    weight: 1
+    hasExplicitWeight: 0
     ignoreMasterBPM: 0
     clipProperty:
       clipStartTime: 0
@@ -13835,6 +14347,8 @@ MonoBehaviour:
       propertyName: Clock
       propertyOrder: -999
       isEditable: 1
+      weight: 1
+      hasExplicitWeight: 0
       ignoreMasterBPM: 0
       clipProperty:
         clipStartTime: 0
@@ -13846,7 +14360,7 @@ MonoBehaviour:
       bpm:
         propertyOverride: 1
         sortOrder: 0
-        value: 60
+        value: 120
       bpmScale:
         propertyOverride: 1
         sortOrder: 0
@@ -14075,10 +14589,12 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 25.116667
-          clipEndTime: 35.3
+          clipEndTime: 37.483334
         loopType:
           propertyOverride: 1
           sortOrder: 0
@@ -14138,6 +14654,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -14150,6 +14668,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -14221,6 +14741,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -14327,6 +14849,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -14433,6 +14957,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -14605,6 +15131,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -14701,6 +15229,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -14799,6 +15329,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -14915,6 +15447,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 14.8
@@ -14978,6 +15512,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -14990,6 +15526,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -15061,6 +15599,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -15167,6 +15707,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -15273,6 +15815,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -15445,6 +15989,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -15541,6 +16087,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -15639,6 +16187,8 @@ MonoBehaviour:
         propertyName: Manual Color Array
         propertyOrder: 7
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -15706,6 +16256,8 @@ MonoBehaviour:
         propertyName: Manual Pan Tilt
         propertyOrder: 19
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -15801,6 +16353,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -15865,6 +16419,806 @@ MonoBehaviour:
           value: 100
         scale:
           propertyOverride: 0
+          sortOrder: 0
+          value: 1
+--- !u!114 &3517910077089726310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ff0a1be3fd1e54990ef200772f9250, type: 3}
+  m_Name: StageLightTimelineClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  referenceStageLightProfile: {fileID: 0}
+  behaviour:
+    stageLightQueueData:
+      stageLightProperties:
+      - rid: 3058271930455687178
+      - rid: 3058271930455687179
+      - rid: 3058271930455687180
+      - rid: 3058271930455687182
+      - rid: 3058271930455687181
+      - rid: 3058271930455687183
+      - rid: 3058271930455687184
+      - rid: 3058271930455687185
+      - rid: 3058271930455687186
+      weight: 1
+    syncStageLightQueData:
+      stageLightProperties: []
+      weight: 1
+  forceTimelineClipUpdate: 0
+  syncReferenceProfile: 0
+  syncClipName: 0
+  track: {fileID: 6534155050390660213}
+  exportPath: Assets/StageLightManeuver/Profiles/<Scene>/<ClipName>
+  clipDisplayName: StageLightTimelineClip
+  stopEditorUiUpdate: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3058271930455687178
+      type: {class: ClockProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 0
+        propertyName: Clock
+        propertyOrder: -999
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        ignoreMasterBPM: 0
+        clipProperty:
+          clipStartTime: 22.283333
+          clipEndTime: 42.283333
+        loopType:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 0
+        bpm:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 60
+        bpmScale:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 1
+        offsetTime:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 0
+        staggerDelay:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+        arrayStaggerValue:
+          staggerCalculationType: 2
+          animationDuration: 1
+          delayRatio: 0.1
+          animationCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          lightStaggerInfo: []
+          randomStaggerInfo: []
+    - rid: 3058271930455687179
+      type: {class: StageLightOrderProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 0
+        propertyName: StageLightFixture Order
+        propertyOrder: -998
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        stageLightOrderQueue:
+          index: -1
+          stageLightOrderSettingList: []
+    - rid: 3058271930455687180
+      type: {class: LightProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Light
+        propertyOrder: 0
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        spotAngle:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 180}
+            easeType: 0
+            constant: 30
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+        innerSpotAngle:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 180}
+            easeType: 0
+            constant: 10
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+        range:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 100}
+            easeType: 0
+            constant: 5
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+        cookie:
+          propertyOverride: 0
+          sortOrder: 0
+          value: {fileID: 0}
+    - rid: 3058271930455687181
+      type: {class: LightColorProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Light Color
+        propertyOrder: 4
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        lightToggleColor:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            serializedVersion: 2
+            key0: {r: 1, g: 1, b: 1, a: 1}
+            key1: {r: 1, g: 1, b: 1, a: 1}
+            key2: {r: 0, g: 0, b: 0, a: 0}
+            key3: {r: 0, g: 0, b: 0, a: 0}
+            key4: {r: 0, g: 0, b: 0, a: 0}
+            key5: {r: 0, g: 0, b: 0, a: 0}
+            key6: {r: 0, g: 0, b: 0, a: 0}
+            key7: {r: 0, g: 0, b: 0, a: 0}
+            ctime0: 0
+            ctime1: 65535
+            ctime2: 0
+            ctime3: 0
+            ctime4: 0
+            ctime5: 0
+            ctime6: 0
+            ctime7: 0
+            atime0: 0
+            atime1: 65535
+            atime2: 0
+            atime3: 0
+            atime4: 0
+            atime5: 0
+            atime6: 0
+            atime7: 0
+            m_Mode: 0
+            m_ColorSpace: -1
+            m_NumColorKeys: 2
+            m_NumAlphaKeys: 2
+    - rid: 3058271930455687182
+      type: {class: LightIntensityProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Intensity
+        propertyOrder: 1
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        lightToggleDimmer:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: 0, y: 10}
+            easeType: 0
+            constant: 0
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+    - rid: 3058271930455687183
+      type: {class: SyncLightMaterialProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Sync Light Material
+        propertyOrder: 10
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        intensitymultiplier:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 1
+        maxIntensityLimit:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 3
+    - rid: 3058271930455687184
+      type: {class: PanProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Pan
+        propertyOrder: 16
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        rollTransform:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: -90, y: 90}
+            easeType: 0
+            constant: 0
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+        smoothTime:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0.05
+        useSmoothness:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+    - rid: 3058271930455687185
+      type: {class: TiltProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Tilt
+        propertyOrder: 17
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        rollTransform:
+          propertyOverride: 1
+          sortOrder: 0
+          value:
+            mode: 2
+            inverse: 0
+            minMaxLimit: {x: -180, y: 180}
+            minMaxValue: {x: -90, y: 90}
+            easeType: 0
+            constant: 0
+            animationCurve:
+              serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 0
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            baseIntensity: 1
+        smoothTime:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0.05
+        useSmoothness:
+          propertyOverride: 0
+          sortOrder: 0
+          value: 0
+    - rid: 3058271930455687186
+      type: {class: SyncLensFlareProperty, ns: StageLightManeuver, asm: Iridescenent.SLM.Runtime}
+      data:
+        propertyOverride: 1
+        sortOrder: 0
+        propertyType: 1
+        propertyName: Sync Lens Flare
+        propertyOrder: 9999
+        isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
+        clockOverride:
+          propertyOverride: 0
+          sortOrder: 0
+          value:
+            loopType: 0
+            offsetTime: 0
+            bpmScale: 1
+            childStagger: 0
+            arrayStaggerValue:
+              staggerCalculationType: 2
+              animationDuration: 1
+              delayRatio: 0.1
+              animationCurve:
+                serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                - serializedVersion: 3
+                  time: 1
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 0
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 4
+              lightStaggerInfo:
+              - {x: 0, y: 0.9}
+              - {x: 0.033333335, y: 0.93333334}
+              - {x: 0.06666667, y: 0.96666664}
+              - {x: 0.1, y: 1}
+              randomStaggerInfo:
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+              - {x: 0, y: 1}
+        intensitymultiplier:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 1
+        maxIntensityLimit:
+          propertyOverride: 1
+          sortOrder: 0
+          value: 100
+        scale:
+          propertyOverride: 1
           sortOrder: 0
           value: 1
 --- !u!114 &5714054092333706370
@@ -16050,6 +17404,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 15
@@ -16113,6 +17469,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -16125,6 +17483,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -16188,6 +17548,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -16286,6 +17648,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -16384,6 +17748,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -16548,6 +17914,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -16636,6 +18004,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -16726,6 +18096,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -16897,6 +18269,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: StageLightTimelineClip
+  - m_Version: 1
+    m_Start: 22.283333333333335
+    m_ClipIn: 0
+    m_Asset: {fileID: 3517910077089726310}
+    m_Duration: 20
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6534155050390660213}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: StageLightTimelineClip
   m_Markers:
     m_Objects: []
   drawCustomClip: 1
@@ -16908,8 +18349,10 @@ MonoBehaviour:
   updateOnOutOfClip: 0
   stageLightTimelineClips:
   - {fileID: -7041797988665787710}
+  - {fileID: 3517910077089726310}
   selectedClips:
-  - {fileID: -7041797988665787710}
+  - {fileID: 2496576431367613358}
+  - {fileID: 6944790829651653456}
 --- !u!114 &6745644536576571756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16959,6 +18402,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 20
@@ -17022,6 +18467,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -17034,6 +18481,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -17105,6 +18554,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -17211,6 +18662,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -17317,6 +18770,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -17489,6 +18944,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -17585,6 +19042,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -17683,6 +19142,8 @@ MonoBehaviour:
         propertyName: Manual Color Array
         propertyOrder: 7
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -17750,6 +19211,8 @@ MonoBehaviour:
         propertyName: Manual Pan Tilt
         propertyOrder: 19
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -17884,10 +19347,12 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 26
-          clipEndTime: 36.183334
+          clipEndTime: 37.483334
         loopType:
           propertyOverride: 1
           sortOrder: 0
@@ -17947,6 +19412,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -17959,6 +19426,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -18022,6 +19491,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -18120,6 +19591,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -18218,6 +19691,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -18382,6 +19857,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -18470,6 +19947,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -18560,6 +20039,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -18666,6 +20147,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 10
@@ -18729,6 +20212,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -18741,6 +20226,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -18804,6 +20291,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -18902,6 +20391,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19000,6 +20491,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -19164,6 +20657,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19252,6 +20747,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19342,6 +20839,8 @@ MonoBehaviour:
         propertyName: Rotation
         propertyOrder: 15
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19471,6 +20970,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 5
@@ -19534,6 +21035,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -19546,6 +21049,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -19617,6 +21122,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19723,6 +21230,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -19829,6 +21338,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -20001,6 +21512,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -20097,6 +21610,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -20195,6 +21710,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -20309,6 +21826,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 0
@@ -20372,6 +21891,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -20384,6 +21905,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -20455,6 +21978,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -20561,6 +22086,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -20667,6 +22194,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -20839,6 +22368,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -20935,6 +22466,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -21033,6 +22566,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -21149,6 +22684,8 @@ MonoBehaviour:
         propertyName: Clock
         propertyOrder: -999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         ignoreMasterBPM: 0
         clipProperty:
           clipStartTime: 15.25
@@ -21212,6 +22749,8 @@ MonoBehaviour:
         propertyName: StageLight Order
         propertyOrder: -998
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         stageLightOrderQueue:
           index: -1
           stageLightOrderSettingList: []
@@ -21224,6 +22763,8 @@ MonoBehaviour:
         propertyName: Sync Light Material
         propertyOrder: 10
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -21295,6 +22836,8 @@ MonoBehaviour:
         propertyName: Tilt
         propertyOrder: 17
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -21401,6 +22944,8 @@ MonoBehaviour:
         propertyName: Pan
         propertyOrder: 16
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -21507,6 +23052,8 @@ MonoBehaviour:
         propertyName: Light
         propertyOrder: 0
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0
@@ -21679,6 +23226,8 @@ MonoBehaviour:
         propertyName: Light Color
         propertyOrder: 4
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -21775,6 +23324,8 @@ MonoBehaviour:
         propertyName: Intensity
         propertyOrder: 1
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 1
           sortOrder: 0
@@ -21891,6 +23442,8 @@ MonoBehaviour:
         propertyName: Manual Color Array
         propertyOrder: 7
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -21958,6 +23511,8 @@ MonoBehaviour:
         propertyName: Manual Pan Tilt
         propertyOrder: 19
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: -999
@@ -22053,6 +23608,8 @@ MonoBehaviour:
         propertyName: Sync Lens Flare
         propertyOrder: 9999
         isEditable: 1
+        weight: 1
+        hasExplicitWeight: 0
         clockOverride:
           propertyOverride: 0
           sortOrder: 0

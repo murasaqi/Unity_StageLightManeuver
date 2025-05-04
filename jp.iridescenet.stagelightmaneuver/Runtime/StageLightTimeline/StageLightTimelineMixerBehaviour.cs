@@ -114,11 +114,14 @@ namespace StageLightManeuver
                                     // 新しいQueueDataを作成
                                     var bpmQueueData = new StageLightQueueData();
                                     
-                                    // Timeline システムが提供する重みをそのまま使用
-                                    bpmQueueData.weight = queueData.weight * bpmClip.Weight;
+                                    // QueueDataの重みはStageLightTimelineClipの重みをそのまま使用
+                                    bpmQueueData.weight = queueData.weight;
                                     
                                     // 新しいClockPropertyを作成
                                     var bpmProperty = new ClockProperty(clockProperty);
+                                    
+                                    // ClockPropertyの重みをMasterBPMTrackのクリップの重みに設定
+                                    bpmProperty.SetWeight(bpmClip.Weight);
                                     
                                     // MasterBPMClipのプロパティを適用
                                     bpmProperty.bpm.value = bpmClip.Property.bpm.value;
@@ -131,12 +134,18 @@ namespace StageLightManeuver
                                     // プロパティをQueueDataに追加
                                     bpmQueueData.stageLightProperties.Add(bpmProperty);
                                     
-                                    // その他のプロパティもコピー
+                                    // その他のプロパティもコピー（重みはリセット）
                                     foreach (var otherProperty in stageLightTimelineClip.StageLightQueueData.stageLightProperties)
                                     {
                                         if (otherProperty != null && !(otherProperty is ClockProperty))
                                         {
-                                            bpmQueueData.stageLightProperties.Add(otherProperty);
+                                            // 他のプロパティをコピー
+                                            var copiedProperty = Activator.CreateInstance(otherProperty.GetType(), otherProperty) as SlmProperty;
+                                            
+                                            // 重みをリセット（QueueDataのデフォルト重みを使用）
+                                            copiedProperty.ResetWeight();
+                                            
+                                            bpmQueueData.stageLightProperties.Add(copiedProperty);
                                         }
                                     }
                                     

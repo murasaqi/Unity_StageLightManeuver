@@ -194,6 +194,12 @@ namespace StageLightManeuver
         {
             propertyOverride = other.propertyOverride;
             propertyName = other.propertyName;
+            propertyOrder = other.propertyOrder;
+            
+            // 重みプロパティをコピー
+            weight = other.weight;
+            hasExplicitWeight = other.hasExplicitWeight;
+            
             bpm = new SlmToggleValue<float>(other.bpm);
             bpmScale = new SlmToggleValue<float>(other.bpmScale);
             ignoreMasterBPM = other.ignoreMasterBPM;
@@ -202,6 +208,8 @@ namespace StageLightManeuver
             clipProperty = new ClipProperty(other.clipProperty);
             offsetTime = new SlmToggleValue<float>(other.offsetTime);
             
+            // ArrayStaggerValueをコピー
+            arrayStaggerValue = new ArrayStaggerValue(other.arrayStaggerValue);
         }
 
         public override void OverwriteProperty(SlmProperty other)

@@ -26,6 +26,12 @@ namespace StageLightManeuver
         {
             propertyName = other.propertyName;
             propertyOverride = other.propertyOverride;
+            propertyOrder = other.propertyOrder;
+            
+            // 重みプロパティをコピー
+            weight = other.weight;
+            hasExplicitWeight = other.hasExplicitWeight;
+            
             clockOverride = new SlmToggleValue<ClockOverride>(other.clockOverride);
             lightToggleColor = new SlmToggleValue<Gradient>()
             {

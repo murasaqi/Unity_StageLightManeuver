@@ -80,6 +80,26 @@ namespace StageLightManeuver
         [SlmValue(isHidden: true)] public string propertyName;
         [SlmValue(isHidden: true)] public int propertyOrder = 0;
         [SlmValue(isHidden: true)] public bool isEditable = true;
+        
+        // 新しく追加する重みフィールド
+        [SlmValue(isHidden: true)] public float weight = 1.0f;
+        
+        // 重みが明示的に設定されたかどうかを示すフラグ
+        [SlmValue(isHidden: true)] public bool hasExplicitWeight = false;
+        
+        // 重みを設定するメソッド
+        public void SetWeight(float value)
+        {
+            weight = value;
+            hasExplicitWeight = true;
+        }
+        
+        // 重みをリセットするメソッド
+        public void ResetWeight()
+        {
+            weight = 1.0f;
+            hasExplicitWeight = false;
+        }
         public virtual void ToggleOverride(bool toggle)
         {
             propertyOverride = toggle;

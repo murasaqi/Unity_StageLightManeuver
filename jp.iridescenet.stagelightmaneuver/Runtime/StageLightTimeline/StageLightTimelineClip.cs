@@ -45,6 +45,12 @@ namespace StageLightManeuver
         public string exportPath = "";
         public StageLightTimelineMixerBehaviour mixer;
         
+        /// <summary>
+        /// Clock Trackの設定を受け入れるかどうか
+        /// </summary>
+        [Tooltip("Clock Trackの設定を受け入れるかどうか")]
+        public bool acceptClockTrackSettings = true;
+        
         public ClipCaps clipCaps
         {
             get { return ClipCaps.Blending; }

@@ -6,8 +6,8 @@ namespace StageLightManeuver
     /// <summary>
     /// ClockTimelineClip用のカスタムエディタ
     /// </summary>
-    [CustomEditor(typeof(ClockTimelineClip))]
-    public class ClockTimelineClipEditor : Editor
+    [CustomEditor(typeof(StageLightMasterClockTimelineClip))]
+    public class StageLightMasterClockTimelineClipEditor : Editor
     {
         private SerializedProperty clockPropertyProp;
         

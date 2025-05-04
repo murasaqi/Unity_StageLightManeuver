@@ -10,7 +10,7 @@ namespace StageLightManeuver
     /// ClockPropertyを管理します
     /// </summary>
     [Serializable]
-    public class ClockTimelineClip : PlayableAsset, ITimelineClipAsset
+    public class StageLightMasterClockTimelineClip : PlayableAsset, ITimelineClipAsset
     {
         /// <summary>
         /// ClockPropertyの設定
@@ -20,12 +20,12 @@ namespace StageLightManeuver
         /// <summary>
         /// Behaviourインスタンス
         /// </summary>
-        [HideInInspector] public ClockTimelineBehaviour behaviour = new ClockTimelineBehaviour();
+        [HideInInspector] public StageLightMasterClockTimelineBehaviour behaviour = new StageLightMasterClockTimelineBehaviour();
         
         /// <summary>
         /// 所属するTrack
         /// </summary>
-        [HideInInspector] public ClockTimelineTrack track;
+        [HideInInspector] public StageLightMasterClockTimelineTrack track;
         
         /// <summary>
         /// クリップの表示名
@@ -42,7 +42,7 @@ namespace StageLightManeuver
         /// </summary>
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            var playable = ScriptPlayable<ClockTimelineBehaviour>.Create(graph, behaviour);
+            var playable = ScriptPlayable<StageLightMasterClockTimelineBehaviour>.Create(graph, behaviour);
             behaviour = playable.GetBehaviour();
             behaviour.clockProperty = new ClockProperty(clockProperty);
             behaviour.clipDisplayName = clipDisplayName;

@@ -12,8 +12,8 @@ namespace StageLightManeuver
     /// 下位のStageLightTrackに影響を与えることができます。
     /// </summary>
     [TrackColor(0.5f, 0.8f, 0.8f)]
-    [TrackClipType(typeof(ClockTimelineClip))]
-    public class ClockTimelineTrack : TrackAsset
+    [TrackClipType(typeof(StageLightMasterClockTimelineClip))]
+    public class StageLightMasterClockTimelineTrack : TrackAsset
     {
         /// <summary>
         /// このTrackの下にある全てのTrackに影響を与えるかどうか
@@ -26,16 +26,16 @@ namespace StageLightManeuver
         /// </summary>
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
-            var mixer = ScriptPlayable<ClockTimelineMixerBehaviour>.Create(graph, inputCount);
+            var mixer = ScriptPlayable<StageLightMasterClockTimelineMixerBehaviour>.Create(graph, inputCount);
             var clockTimelineMixer = mixer.GetBehaviour();
-            clockTimelineMixer.clockTimelineTrack = this;
+            clockTimelineMixer.StageLightMasterClockTimelineTrack = this;
             
             var timelineClips = GetClips().ToList();
             clockTimelineMixer.clips = timelineClips;
             
             foreach (var clip in timelineClips)
             {
-                var clockTimelineClip = clip.asset as ClockTimelineClip;
+                var clockTimelineClip = clip.asset as StageLightMasterClockTimelineClip;
                 if (clockTimelineClip != null)
                 {
                     clockTimelineClip.track = this;

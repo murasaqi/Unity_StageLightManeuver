@@ -10,7 +10,7 @@ namespace StageLightManeuver
     /// Clock Trackで使用するMixerBehaviourクラス
     /// 複数のClockTimelineClipを処理し、現在のClockPropertyを管理します
     /// </summary>
-    public class ClockTimelineMixerBehaviour : PlayableBehaviour
+    public class StageLightMasterClockTimelineMixerBehaviour : PlayableBehaviour
     {
         /// <summary>
         /// Timelineクリップのリスト
@@ -20,7 +20,7 @@ namespace StageLightManeuver
         /// <summary>
         /// 所属するTrack
         /// </summary>
-        public ClockTimelineTrack clockTimelineTrack;
+        public StageLightMasterClockTimelineTrack StageLightMasterClockTimelineTrack;
         
         /// <summary>
         /// 現在アクティブなClockProperty
@@ -54,8 +54,8 @@ namespace StageLightManeuver
                 
                 if (inputWeight > 0)
                 {
-                    ScriptPlayable<ClockTimelineBehaviour> inputPlayable = (ScriptPlayable<ClockTimelineBehaviour>)playable.GetInput(i);
-                    ClockTimelineBehaviour behaviour = inputPlayable.GetBehaviour();
+                    ScriptPlayable<StageLightMasterClockTimelineBehaviour> inputPlayable = (ScriptPlayable<StageLightMasterClockTimelineBehaviour>)playable.GetInput(i);
+                    StageLightMasterClockTimelineBehaviour behaviour = inputPlayable.GetBehaviour();
                     
                     // 最も重みの高いClockPropertyを選択
                     if (inputWeight > highestWeight)

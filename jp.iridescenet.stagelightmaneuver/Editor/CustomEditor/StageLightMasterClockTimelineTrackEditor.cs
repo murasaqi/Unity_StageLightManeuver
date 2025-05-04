@@ -9,8 +9,8 @@ namespace StageLightManeuver
     /// <summary>
     /// Clock Track用のカスタムエディタ
     /// </summary>
-    [CustomTimelineEditor(typeof(ClockTimelineTrack))]
-    public class ClockTimelineTrackEditor : TrackEditor
+    [CustomTimelineEditor(typeof(StageLightMasterClockTimelineTrack))]
+    public class StageLightMasterClockTimelineTrackEditor : TrackEditor
     {
         /// <summary>
         /// トラックのカスタムオプションを取得
@@ -19,7 +19,7 @@ namespace StageLightManeuver
         {
             var options = base.GetTrackOptions(track, binding);
             
-            var clockTrack = track as ClockTimelineTrack;
+            var clockTrack = track as StageLightMasterClockTimelineTrack;
             if (clockTrack != null && clockTrack.affectAllTracksBelow)
             {
                 // 影響範囲を持つトラックの色を変更
@@ -37,7 +37,7 @@ namespace StageLightManeuver
         {
             base.OnTrackChanged(track);
             
-            var clockTrack = track as ClockTimelineTrack;
+            var clockTrack = track as StageLightMasterClockTimelineTrack;
             if (clockTrack == null) return;
             
             // トラックが変更された時の処理
@@ -46,9 +46,9 @@ namespace StageLightManeuver
         /// <summary>
         /// カスタムGUIを描画するためのメソッド
         /// </summary>
-        private void DrawInfluenceIndicator(Rect trackRect, ClockTimelineTrack clockTrack)
+        private void DrawInfluenceIndicator(Rect trackRect, StageLightMasterClockTimelineTrack stageLightMasterClockTrack)
         {
-            if (clockTrack.affectAllTracksBelow)
+            if (stageLightMasterClockTrack.affectAllTracksBelow)
             {
                 // 影響範囲を示す視覚的な表示を追加
                 Color originalColor = GUI.color;

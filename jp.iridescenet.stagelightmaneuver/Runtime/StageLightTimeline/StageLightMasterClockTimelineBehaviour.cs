@@ -9,7 +9,7 @@ namespace StageLightManeuver
     /// ClockPropertyを処理します
     /// </summary>
     [Serializable]
-    public class ClockTimelineBehaviour : PlayableBehaviour
+    public class StageLightMasterClockTimelineBehaviour : PlayableBehaviour
     {
         /// <summary>
         /// ClockPropertyの設定

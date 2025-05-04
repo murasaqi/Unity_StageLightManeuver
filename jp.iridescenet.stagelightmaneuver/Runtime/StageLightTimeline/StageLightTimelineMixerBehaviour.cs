@@ -111,13 +111,15 @@ namespace StageLightManeuver
                             var clipStartTime = mergedProperty.clipProperty.clipStartTime;
                             var clipEndTime = mergedProperty.clipProperty.clipEndTime;
                             
-                            // MasterClockPropertyの値をそのまま使用（線形補間はMasterClockMixerで既に行われている）
-                            mergedProperty.bpm.value = masterClockProperty.bpm.value;
-                            mergedProperty.bpmScale.value = masterClockProperty.bpmScale.value;
-                            mergedProperty.offsetTime.value = masterClockProperty.offsetTime.value;
-                            mergedProperty.staggerDelay.value = masterClockProperty.staggerDelay.value;
-                            mergedProperty.loopType.value = masterClockProperty.loopType.value;
-                            mergedProperty.arrayStaggerValue = masterClockProperty.arrayStaggerValue;
+                            // Ignore MasterClockフラグがtrueの場合は、クリップ自身のBPMとBPM Scaleを優先
+                            // falseの場合はMasterClockのBPMとBPM Scaleを使用
+                            if (!mergedProperty.ignoreMasterClock)
+                            {
+                                // MasterClockPropertyからBPMとBPM Scaleを使用
+                                mergedProperty.bpm.value = masterClockProperty.bpm.value;
+                                mergedProperty.bpmScale.value = masterClockProperty.bpmScale.value;
+                            }
+                            // ignoreMasterClock = trueの場合は、クリップ自身のBPMとBPM Scaleをそのまま使用
                             
                             // クリップの開始・終了時間を復元
                             mergedProperty.clipProperty.clipStartTime = clipStartTime;

@@ -150,10 +150,12 @@ namespace StageLightManeuver
     [Serializable, SlmProperty(isRemovable: false)]
     public class ClockProperty: SlmProperty,IArrayProperty
     {
+        [SlmValue("Ignore MasterClock")]public bool ignoreMasterClock = false;
         [SlmValue("Clip Duration", true)] public ClipProperty clipProperty;
         [SlmValue("Loop Type")] public SlmToggleValue<LoopType> loopType;
         [SlmValue("BPM")]public SlmToggleValue<float> bpm;
         [SlmValue("BPM Scale")]public SlmToggleValue<float> bpmScale;
+    
         [SlmValue("Offset Time")] public SlmToggleValue<float> offsetTime;
         [FormerlySerializedAs("childStagger")] [SlmValue("Child Stagger")]public SlmToggleValue<float> staggerDelay;
         public ArrayStaggerValue arrayStaggerValue = new ArrayStaggerValue();
@@ -167,6 +169,7 @@ namespace StageLightManeuver
             clipProperty = new ClipProperty(){clipStartTime = 0, clipEndTime = 0};
             bpm = new SlmToggleValue<float>() { value = 60 , propertyOverride = true};
             bpmScale = new SlmToggleValue<float>() { value = 1f , propertyOverride = true};
+            ignoreMasterClock = false; // デフォルトではMasterClockを優先
             staggerDelay = new SlmToggleValue<float>() { value = 0f , propertyOverride = false};
             offsetTime = new SlmToggleValue<float>() { value = 0f , propertyOverride = true};
         }
@@ -193,6 +196,7 @@ namespace StageLightManeuver
             propertyName = other.propertyName;
             bpm = new SlmToggleValue<float>(other.bpm);
             bpmScale = new SlmToggleValue<float>(other.bpmScale);
+            ignoreMasterClock = other.ignoreMasterClock;
             staggerDelay = new SlmToggleValue<float>(other.staggerDelay);
             loopType = new SlmToggleValue<LoopType>(other.loopType);
             clipProperty = new ClipProperty(other.clipProperty);

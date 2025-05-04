@@ -58,13 +58,9 @@ namespace StageLightManeuver
             {
                 InitializeClockPropertyIfNeeded();
                 
-                // 値をコピー（参照ではなく）
+                // 値をコピー（参照ではなく）- BPMとBPM Scaleのみ
                 _currentClockProperty.bpm.value = newProperty.bpm.value;
                 _currentClockProperty.bpmScale.value = newProperty.bpmScale.value;
-                _currentClockProperty.offsetTime.value = newProperty.offsetTime.value;
-                _currentClockProperty.staggerDelay.value = newProperty.staggerDelay.value;
-                _currentClockProperty.loopType.value = newProperty.loopType.value;
-                _currentClockProperty.arrayStaggerValue = newProperty.arrayStaggerValue;
                 
                 // clipPropertyがnullでない場合はそれもコピー
                 if (newProperty.clipProperty != null)

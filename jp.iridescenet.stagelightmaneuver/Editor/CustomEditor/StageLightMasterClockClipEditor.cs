@@ -9,11 +9,15 @@ namespace StageLightManeuver
     [CustomEditor(typeof(StageLightMasterClockClip))]
     public class StageLightMasterClockClipEditor : Editor
     {
-        private SerializedProperty clockProperty;
+        private SerializedProperty clockSettings;
+        private SerializedProperty bpm;
+        private SerializedProperty bpmScale;
         
         private void OnEnable()
         {
-            clockProperty = serializedObject.FindProperty("clockProperty");
+            clockSettings = serializedObject.FindProperty("clockSettings");
+            bpm = clockSettings.FindPropertyRelative("bpm");
+            bpmScale = clockSettings.FindPropertyRelative("bpmScale");
         }
         
         public override void OnInspectorGUI()
@@ -23,8 +27,9 @@ namespace StageLightManeuver
             EditorGUILayout.LabelField("StageLightMasterClock Settings", EditorStyles.boldLabel);
             EditorGUILayout.Space();
             
-            // ClockPropertyを表示（StageLightMasterClockPropertyDrawerが使用される）
-            EditorGUILayout.PropertyField(clockProperty);
+            // BPMとBPM Scaleのみを表示
+            EditorGUILayout.PropertyField(bpm, new GUIContent("BPM", "Beats Per Minute"));
+            EditorGUILayout.PropertyField(bpmScale, new GUIContent("BPM Scale", "Scale factor for BPM"));
             
             serializedObject.ApplyModifiedProperties();
         }

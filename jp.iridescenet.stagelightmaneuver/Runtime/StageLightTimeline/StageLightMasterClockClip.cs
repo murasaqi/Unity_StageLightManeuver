@@ -13,9 +13,27 @@ namespace StageLightManeuver
     public class StageLightMasterClockClip : PlayableAsset, ITimelineClipAsset
     {
         /// <summary>
-        /// ClockPropertyの設定
+        /// BPMとBPM Scaleのみを持つ簡易設定クラス
         /// </summary>
-        public ClockProperty clockProperty = new ClockProperty();
+        [Serializable]
+        public class SimplifiedClockSettings
+        {
+            [Tooltip("Beats Per Minute")]
+            public float bpm = 60f;
+            
+            [Tooltip("BPM Scale")]
+            public float bpmScale = 1f;
+        }
+        
+        /// <summary>
+        /// 簡易化されたクロック設定（BPMとBPM Scaleのみ）
+        /// </summary>
+        public SimplifiedClockSettings clockSettings = new SimplifiedClockSettings();
+        
+        /// <summary>
+        /// 内部使用のClockProperty
+        /// </summary>
+        [HideInInspector] public ClockProperty clockProperty = new ClockProperty();
         
         /// <summary>
         /// Behaviourインスタンス
@@ -44,7 +62,16 @@ namespace StageLightManeuver
         {
             var playable = ScriptPlayable<StageLightMasterClockBehaviour>.Create(graph, behaviour);
             behaviour = playable.GetBehaviour();
-            behaviour.clockProperty = new ClockProperty(clockProperty);
+            
+            // 完全なClockPropertyを作成
+            var fullClockProperty = new ClockProperty();
+            
+            // 簡易設定からBPMとBPM Scaleのみをコピー
+            fullClockProperty.bpm.value = clockSettings.bpm;
+            fullClockProperty.bpmScale.value = clockSettings.bpmScale;
+            
+            // BehaviourにClockPropertyを設定
+            behaviour.clockProperty = fullClockProperty;
             behaviour.clipDisplayName = clipDisplayName;
             
             return playable;

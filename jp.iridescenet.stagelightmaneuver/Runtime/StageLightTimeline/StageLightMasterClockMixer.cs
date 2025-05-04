@@ -148,13 +148,11 @@ namespace StageLightManeuver
                 return activeClips[0].Property;
             }
             
-            // 各プロパティの値をリセット
+            // 各プロパティの値をリセット - BPMとBPM Scaleのみ
             float bpm = 0f;
             float bpmScale = 0f;
-            float offsetTime = 0f;
-            float staggerDelay = 0f;
             
-            // 最も重みの大きいクリップを見つける（非数値プロパティ用）
+            // 最も重みの大きいクリップを見つける（その他のプロパティ用）
             var maxWeightClip = activeClips.OrderByDescending(c => c.Weight).First();
             
             // 各クリップの寄与を計算
@@ -162,20 +160,18 @@ namespace StageLightManeuver
             {
                 float normalizedWeight = clip.Weight / totalWeight;
                 
-                // 数値プロパティは線形補間
+                // BPMとBPM Scaleのみ線形補間
                 bpm += clip.Property.bpm.value * normalizedWeight;
                 bpmScale += clip.Property.bpmScale.value * normalizedWeight;
-                offsetTime += clip.Property.offsetTime.value * normalizedWeight;
-                staggerDelay += clip.Property.staggerDelay.value * normalizedWeight;
             }
             
-            // ブレンドした値を設定
+            // ブレンドした値を設定 - BPMとBPM Scaleのみ
             blendedProperty.bpm.value = bpm;
             blendedProperty.bpmScale.value = bpmScale;
-            blendedProperty.offsetTime.value = offsetTime;
-            blendedProperty.staggerDelay.value = staggerDelay;
             
-            // 非数値プロパティは最も重みの大きいクリップのものを使用
+            // その他のプロパティは最も重みの大きいクリップのものを使用
+            blendedProperty.offsetTime.value = maxWeightClip.Property.offsetTime.value;
+            blendedProperty.staggerDelay.value = maxWeightClip.Property.staggerDelay.value;
             blendedProperty.loopType.value = maxWeightClip.Property.loopType.value;
             blendedProperty.arrayStaggerValue = maxWeightClip.Property.arrayStaggerValue;
             blendedProperty.clipProperty = maxWeightClip.Property.clipProperty;
